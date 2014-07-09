@@ -1,0 +1,9 @@
+[user]
+	name = i05nagai
+	email = nagai.m.ac@t.titech.ac.jp
+[core]
+	editor = vim
+[alias]
+	l = log --abbrev-commit --date=iso --graph --pretty=format:'%C(red)%h %C(yellow)%d%C(green)%cd %C(blue)%cn\n%C(reset)%s\n'
+[color]
+	ui = auto
