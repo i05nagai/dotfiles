@@ -25,7 +25,15 @@ set nocp
 "
 set encoding=utf-8
 "
-set fileencodings=iso-2022-jp,cp932,sjis,euc-jp,utf-8
+set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp,utf-8
+"
+set cursorline
+"hilight search
+set hlsearch
+"color
+set t_Co=256
+"nocompatible
+set nocompatible
 
 
 " Enable mouse support.
@@ -48,9 +56,33 @@ if has('gui_running')
 endif
 
 
+"-------------------register mapping-------------------------
+"-------------------------------------------------------
+nmap <Leader>sp "sp<CR>
+
 "-------------------Key mapping-------------------------
 "-------------------------------------------------------
 nnoremap <CR> :<C-u>w<CR>
+"Escの2回押しでハイライト消去
+nmap <esc><esc> :<C-u>nohlsearch<CR>
+"--- <F6>  タイムスタンプを挿入してinsertモードへ移行 ----
+function! GetTimeStampInEnglish(type)
+	let wday = strftime("%w")
+	let mday = strftime("%m")
+	let months = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Non", "Dec" ]
+	let weeks = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ]
+	"Japanese
+	if a:type == 1
+		return strftime("%Y/%m/%d (". weeks[wday] .") %H:%M")
+	"Amarican
+	elseif a:type == 2
+		return strftime(months[mday]."/%d/%Y (". weeks[wday] .") %H:%M")
+	"Blighty
+	else
+		return strftime("%d/". months[mday] ."/%Y (". weeks[wday] .") %H:%M")
+	endif
+endfunction
+nmap <F6> <ESC>i<C-R>=GetTimeStampInEnglish(3)<CR>
 
 "-------------------タブ関連設定------------------------
 "-------------------------------------------------------
@@ -160,6 +192,8 @@ nnoremap [UNITE]m :<C-u>Unite file_mru<CR>
 nnoremap [UNITE]v :vsplit<CR>:<C-u>UniteWithBufferDir -buffer-name=files buffer bookmark file<CR>
 "レジスタ一覧
 nnoremap <silent> [UNITE]r :<C-u>Unite -buffer-name=register register<CR>
+"タブ一覧
+nnoremap [UNITE]t :<C-u>Unite tab<CR>
 
 "data_directory 
 if has('win32')
@@ -177,6 +211,14 @@ endif
 "Prefix
 nnoremap [VIMFILER]  <Nop>
 nmap <Space>f [VIMFILER]
+
+let g:vimfiler_as_default_explorer = 1
+
+"custom commands
+"let g:vimfiler_edit_action = 'edit'
+call vimfiler#custom#profile('default', 'context', {
+			\ 'edit_action' : 'tabopen',
+\ })
 
 "現在開いているバッファのディレクトリを開く
 nnoremap <silent> [VIMFILER]e :<C-u>VimFilerBufferDir -quit<CR>
@@ -290,10 +332,6 @@ if has('conceal')
 	"set conceallevel=2 concealcursor=i
 endif
 
-"ファイルタイプの変更時自動読み込みする
-filetype plugin indent on
-syntax on
-
 "---------------------------------------------------------
 "Quickrun
 "---------------------------------------------------------
@@ -321,11 +359,13 @@ let g:quickrun_config = {
 \	},
 \}
 
-if filereadable( $HOME . ".vim/envs.vim" )
-	source ~/.vim/envs.vim
+if filereadable( $HOME . "/.vim/envs.vim" )
+  source ~/.vim/envs.vim
 endif
 
 set runtimepath+=~/.vim/
 runtime! userautoload/*.vim
 
-
+"ファイルタイプの変更時自動読み込みする
+filetype plugin indent on
+syntax on
