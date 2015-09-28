@@ -147,25 +147,30 @@ let g:netrw_alto = 1
 "---------------------------------------------------------
 if has('vim_starting')
 	set runtimepath+=~/.vim/bundle/neobundle.vim
-	call neobundle#rc(expand('~/.vim/bundle/'))
+	"call neobundle#rc(expand('~/.vim/bundle/'))
+	call neobundle#begin(expand('~/.vim/bundle/'))
+		" originalrepos on github
+		NeoBundle 'Shougo/neobundle.vim'
+		NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
+		NeoBundle 'Shougo/neosnippet'
+		NeoBundle 'Shougo/neosnippet-snippets'
+		NeoBundle 'Shougo/unite.vim'
+		NeoBundle 'Shougo/vimproc', {
+		  \ 'build' : {
+			\ 'windows' : 'make -f make_mingw32.mak',
+			\ 'cygwin' : 'make -f make_cygwin.mak',
+			\ 'mac' : 'make -f make_mac.mak',
+			\ 'unix' : 'make -f make_unix.mak',
+		  \ },
+		\ }
+		NeoBundle 'tpope/vim-surround'
+		NeoBundle 'Shougo/vimfiler'
+		NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
+		NeoBundle 'vim-scripts/SingleCompile'
+		NeoBundle 'mopp/next-alter.vim'
+
+	call neobundle#end()
 endif
-" originalrepos on github
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc', {
-  \ 'build' : {
-    \ 'windows' : 'make -f make_mingw32.mak',
-    \ 'cygwin' : 'make -f make_cygwin.mak',
-    \ 'mac' : 'make -f make_mac.mak',
-    \ 'unix' : 'make -f make_unix.mak',
-  \ },
-\ }
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 
 ""NeoBundle 'https://bitbucket.org/kovisoft/slimv'
 
@@ -213,9 +218,10 @@ nnoremap [VIMFILER]  <Nop>
 nmap <Space>f [VIMFILER]
 
 let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_enable_auto_cd = 1
 
 "custom commands
-"let g:vimfiler_edit_action = 'edit'
+let g:vimfiler_edit_action = 'edit'
 call vimfiler#custom#profile('default', 'context', {
 			\ 'edit_action' : 'tabopen',
 \ })
@@ -317,12 +323,14 @@ endif
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 "スニペットファイルの置き場所
-let g:neocomplcache_snippets_dir = '~/.vim/bundle/neosnippet/autoload/neosnippet/snippets'
+let g:neocomplcache_snippets_dir = '~/.vim/bundle/neosnippet-snippets/neosnippets'
 
 
 "---------------------------------------------------------
 "neosnippet
 "---------------------------------------------------------
+let s:my_snippet = '~/.vim/snippets/'
+let g:neosnippet#snippets_directory = s:my_snippet
 " " Plugin key-mappings.
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -369,3 +377,53 @@ runtime! userautoload/*.vim
 "ファイルタイプの変更時自動読み込みする
 filetype plugin indent on
 syntax on
+
+"---------------------------------------------------------
+"Quickfix
+"---------------------------------------------------------
+"Prefix
+nnoremap [QUICKFIX]  <Nop>
+nmap <Space>q [QUICKFIX]
+
+nnoremap [QUICKFIX]p :cprevious<CR>   " 前へ
+nnoremap [QUICKFIX]n :cnext<CR>       " 次へ
+nnoremap [QUICKFIX]f :<C-u>cfirst<CR> " 最初へ
+nnoremap [QUICKFIX]l :<C-u>clast<CR>  " 最後へ
+
+
+"---------------------------------------------------------
+" SingleCompile
+"---------------------------------------------------------
+nmap <F9> :SCCompile<cr>
+nmap <F10> :SCCompileRun<cr>
+
+"---------------------------------------------------------
+" next-alter
+"---------------------------------------------------------
+"Prefix
+nnoremap [NEXTALTER]  <Nop>
+nmap <Space>n [NEXTALTER]
+
+nmap [NEXTALTER]o <Plug>(next-alter-open)
+
+" key is file extension, value is alternate file extension.
+let g:next_alter#pair_extension = {
+            \ 'c'   : [ 'h' ],
+            \ 'C'   : [ 'H' ],
+            \ 'cc'  : [ 'h' ],
+            \ 'CC'  : [ 'H', 'h'],
+            \ 'cpp' : [ 'h', 'hpp' ],
+            \ 'CPP' : [ 'H', 'HPP' ],
+            \ 'cxx' : [ 'h', 'hpp' ],
+            \ 'CXX' : [ 'H', 'HPP' ],
+            \ 'h'   : [ 'c', 'cpp', 'cxx' ],
+            \ 'H'   : [ 'C', 'CPP', 'CXX' ],
+            \ 'hpp' : [ 'cpp', 'cxx'],
+            \ 'HPP' : [ 'CPP', 'CXX'],
+            \ }
+" this list shows search directory to find alternate file.
+let g:next_alter#search_dir = [ '.' , '..', './include', '../include' ]
+
+" this is used when it opens alternate file buffer.
+let g:next_alter#open_option = 'vertical topleft'
+

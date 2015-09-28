@@ -1,99 +1,152 @@
 include c.snip
 
-# #include <...>
-snippet inc
-alias   #inc, #include
-    #include <${1:iostream}>${0}
 # #include "..."
 snippet inc2
 alias   #inc2, #include2
     #include "${1}"${0}
 
-snippet     template
-abbr        template <T>
-    template<typename ${1:T}> 
-
-snippet     class
-abbr        class {}
-    class ${1:#:name} {
-        ${2}
-    public:
-        $1(${3});
-    };
-    $1::$1($3) {
-        ${0:TARGET}
-    }
-
-snippet     class-without-constructor
-abbr        class {}
-    class ${1:#:name} {
-        ${2}
-    };
-
-snippet     try
-abbr        try catch
-    try {
-        ${1:TARGET}
-    } catch (${2:e:xception}) {
-        ${3}
-    }
-
-# range based for ( C++11 feature )
-snippet     for_CPP11
-abbr        for (:) {}
-    for (${1:auto&& }${2:var} : ${3:container}) {
-        ${0:TARGET}
-    }
-
-# lambda expression ( C++11 feature )
-snippet     lambda
-abbr        [](){}
-    [${1}](${2})${3}{ ${4:TARGET} }
-
-# scoped enumeration ( C++11 feature )
-snippet     enum_scoped
-abbr        enum struct {}
-    enum struct { ${1:TARGET} }
-
-# static assert ( C++11 feature )
-snippet     static_assert
-abbr        static_assert(,"")
-    static_assert( ${1}, "${2}" );${0}
-
-delete      namespace
-snippet     namespace
-abbr        namespace {}
+snippet     p
 options     head
-    namespace ${1:#:name} {
-        ${0:TARGET}
-    } // namespace $1
+  std::cout << ${0:TARGET} << std::endl;
 
-snippet     static_cast
-abbr        static_cast<>()
-    static_cast<${1}>(${2})${0}
-
-snippet     reinterpret_cast
-abbr        reinterpret_cast<>()
-    reinterpret_cast<${1}>(${2})${0}
-
-snippet     const_cast
-abbr        const_cast<>()
-    const_cast<${1}>(${2})${0}
-
-snippet     dynamic_cast
-abbr        dynamic_cast<>()
-    dynamic_cast<${1}>(${2})${0}
-
-snippet     helloworld
-abbr        #include<iostream> int main...
-    #include <iostream>
-
-    int main(int argc, char const* argv[])
+snippet     mfunction
+abbr        void className::funcitonName() {}
+    ${1} ${2}::${3}(${4})
     {
-        std::cout << "hello, world!" << std::endl;
-        return 0;
+        ${5}
     }
+
+snippet     bs
+abbr        boost::shared_ptr
+    boost::shared_ptr<${1}>${2} ${0:TARGET}
+
+snippet     bv
+abbr        boost::numeric::ublas::vector
+    boost::numeric::ublas::vector<${1}>${2} ${0:TARGET}
+
+snippet     sv
+abbr        std::vector
+    std::vector<${1}> ${0:TARGET}
+
+snippet     bm
+abbr        boost::numeric::ublas::matrix
+    boost::numeric::ublas::matrix<${1}>${2} ${0:TARGET}
 
 snippet     p
 options     head
   std::cout << ${0:TARGET} << std::endl;
+
+snippet     cfunc
+abbr        void className::funcitonName() {}
+    ${1}::$1(${2})
+    {
+        ${0:TARGET}
+    }
+
+snippet     dfunc
+abbr        void className::funcitonName() {}
+    ~${1}::$1(${2})
+    {
+        ${0:TARGET}
+    }
+
+snippet     mfunc
+abbr        void className::funcitonName() {}
+    ${1} ${2}::${3}(${4})
+    {
+        ${5}
+    }
+
+snippet     comment
+abbr        /**** comment *****/
+    /******************************************************************************
+    * ${0:TARGET}.
+    ******************************************************************************/
+
+snippet     comment4
+abbr        /**** comment *****/
+    /**************************************************************************
+    * ${0:TARGET}.
+    **************************************************************************/
+
+snippet     comment8
+abbr        /**** comment *****/
+    /**********************************************************************
+    * ${0:TARGET}.
+    **********************************************************************/
+
+snippet     cdcomment
+abbr        Constructers and Destructers
+    Constructers and Destructer
+
+snippet     mcomment
+abbr        member functions
+    member functions
+
+snippet     pvfcomment
+abbr        pure virtual functions
+    pure virtual functions
+
+snippet     ipvfcomment
+abbr        inherited pure virtual functions
+    inherited pure virtual functions
+
+snippet     pvcomment
+abbr        private variables 
+    private variables
+
+snippet     pfcomment
+abbr        private variables 
+    private functions
+
+snippet     testclass
+abbr        
+    #ifndef ${1}_TEST_H_INCLUDED
+    #define $1_TEST_H_INCLUDED
+
+    #include <cppunit/extensions/HelperMacros.h>
+
+    #include <boost/shared_ptr.hpp>
+
+    #include <${2:test target}>
+
+    namespace ${3:test namespace}_test {
+
+        class ${4:TestClassName} : public CppUnit::TestFixture {
+            CPPUNIT_TEST_SUITE($4);
+            CPPUNIT_TEST(${0:test function});
+            CPPUNIT_TEST_SUITE_END();
+
+        public:
+            $4();
+            ~$4();
+
+            void setUp();
+            void tearDown();
+                
+        private:
+
+        };  
+
+        CPPUNIT_TEST_SUITE_REGISTRATION($4);
+    } // namespace smoking_test
+
+    #endif
+
+snippet     testmain
+abbr        int main(...
+options     head
+    #include <cppunit/ui/text/TestRunner.h>
+    #include <cppunit/extensions/TestFactoryRegistry.h>
+
+    int main(int argc, char const* argv[])
+    {
+        CppUnit::TextUi::TestRunner runner;
+        runner.addTest(
+            CppUnit::TestFactoryRegistry::getRegistry().makeTest());
+        bool retcode = runner.run();
+
+        return !retcode;
+    }
+  
+
