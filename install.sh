@@ -59,7 +59,7 @@ function ln_env_file() {
   if [[ ! $1 =~ $pattern ]]; then
     filename=`echo $1 | awk -F'/' '{print $NF}'`
     #ln -fsv `pwd`/$1 $HOME/$filename
-	ln_file $filename
+	ln_file_from_to $1 $filename
   fi
 }
 
@@ -69,7 +69,7 @@ function ln_vim_env_file() {
   if [[ ! $1 =~ $pattern ]]; then
     filename=`echo $1 | awk -F'/' '{print $NF}'`
     #ln -fsv `pwd`/$1 $HOME/.vim/$filename
-	ln_file .vim/$filename
+	ln_file_from_to $1 .vim/$filename
   fi
   #vim plugin settings.
   
