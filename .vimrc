@@ -168,6 +168,10 @@ if has('vim_starting')
 		NeoBundle 'git://git.code.sf.net/p/vim-latex/vim-latex'
 		NeoBundle 'vim-scripts/SingleCompile'
 		NeoBundle 'mopp/next-alter.vim'
+		NeoBundle 'thinca/vim-quickrun'
+		NeoBundle 'mattn/webapi-vim'
+		NeoBundle 'tyru/open-browser.vim'
+		NeoBundle 'superbrothers/vim-quickrun-markdown-gfm'
 
 	call neobundle#end()
 endif
@@ -177,196 +181,64 @@ endif
 "vi上から、:NeoBundleInstallで.vimrcのNeoBundleで指定されているリポジトリのプラグインをインストールできる。
 "プラグインを削除したい場合は、vimrc上からNeoBundleの記述を消して:NeoBundleCleanでできる。
 
-
 "---------------------------------------------------------
 "unite
 "---------------------------------------------------------
-"Prefix
-nnoremap [UNITE]  <Nop>
-nmap <Space>u [UNITE]
-
-" start normal mode
-let g:unite_enable_start_insert = 0
-"buffer一覧を表示
-nnoremap [UNITE]b :<C-u>Unite buffer<CR>
-"Current Directoryを開く
-nnoremap [UNITE]f :<C-u>UniteWithBufferDir file<CR>
-"Most Recently used file
-nnoremap [UNITE]m :<C-u>Unite file_mru<CR>
-"画面分割してuniteを開く
-nnoremap [UNITE]v :vsplit<CR>:<C-u>UniteWithBufferDir -buffer-name=files buffer bookmark file<CR>
-"レジスタ一覧
-nnoremap <silent> [UNITE]r :<C-u>Unite -buffer-name=register register<CR>
-"タブ一覧
-nnoremap [UNITE]t :<C-u>Unite tab<CR>
-
-"data_directory 
-if has('win32')
-	"let g:unite_data_directory = 'c:\.unite'
-elseif has('macunix')
-	let g:unite_data_directory = '~/.vim/.unite'
-else
-	let g:unite_data_directory = '~/.unite'
+if filereadable( $HOME . "/.vim/plugin_settings/unite.vim" )
+  source ~/.vim/plugin_settings/unite.vim
 endif
-
 
 "---------------------------------------------------------
 "vimfiler
 "---------------------------------------------------------
-"Prefix
-nnoremap [VIMFILER]  <Nop>
-nmap <Space>f [VIMFILER]
-
-let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_enable_auto_cd = 1
-
-"custom commands
-let g:vimfiler_edit_action = 'edit'
-call vimfiler#custom#profile('default', 'context', {
-			\ 'edit_action' : 'tabopen',
-\ })
-
-"現在開いているバッファのディレクトリを開く
-nnoremap <silent> [VIMFILER]e :<C-u>VimFilerBufferDir -quit<CR>
-""現在開いているバッファをIDE風に開く
-nnoremap <silent> [VIMFILER]i :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
-
-"data_directory
-if has('win32')
-	"let g:vimfiler_data_directory = 'C:\.vimfiler'
-elseif has('macunix')
-	let g:vimfiler_data_directory = '~/.vim/.vimfiler'
-else
-	let g:vimfiler_data_directory = '~/.vimfiler'
+if filereadable( $HOME . "/.vim/plugin_settings/vimfiler.vim" )
+  source ~/.vim/plugin_settings/vimfiler.vim
 endif
-
-
-"change default key mappings
-augroup vimrc
-	autocmd FileType vimfiler call s:vimfiler_my_settings()
-augroup END
-function! s:vimfiler_my_settings()
-	nmap <buffer> q <Plug>(vimfiler_exit)
-	nmap <buffer> Q <Plug>(vimfiler_hide)
-endfunction
 
 "---------------------------------------------------------
 "neocomplete and neocomplecache
 "---------------------------------------------------------
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-if neobundle#is_installed('neocomplete')
-	" Use neocomplete.
-	let g:neocomplete#enable_at_startup = 1
-	" Use smartcase.
-	let g:neocomplete#enable_smart_case = 1
-	" Set minimum syntax keyword length.
-	let g:neocomplete#sources#syntax#min_keyword_length = 3
-	let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-	" Define dictionary.
-	let g:neocomplete#sources#dictionary#dictionaries = {
-		\ 'default' : '',
-		\ }
-
-	" Define keyword.
-	if !exists('g:neocomplete#keyword_patterns')
-		let g:neocomplete#keyword_patterns = {}
-	endif
-	let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-	" Plugin key-mappings.
-	inoremap <expr><C-g>     neocomplete#undo_completion()
-	inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-	" Recommended key-mappings.
-	" <CR>: close popup and save indent.
-	inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-	function! s:my_cr_function()
-	  return neocomplete#close_popup() . "\<CR>"
-	  " For no inserting <CR> key.
-	  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-	endfunction
-	" <TAB>: completion.
-	" <C-h>, <BS>: close popup and delete backword char.
-	inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-	inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-	inoremap <expr><C-y>  neocomplete#close_popup()
-	inoremap <expr><C-e>  neocomplete#cancel_popup()
-
-elseif neobundle#is_installed('neocomplcache')
-	" Disable AutoComplPop.
-	let g:acp_enableAtStartup = 0
-	let g:neocomplcashe_enable_at_startup=1
-	let g:neocomplcache_auto_completion_start_length=2
-	let g:neocomplcache_enable_smart_case = 1
-	" シンタックスをキャッシュするときの最小文字長
-	let g:neocomplcache_min_syntax_length = 3
-	" Define dictionary.
-	let g:neocomplcache_dictionary_filetype_lists = {
-		\ 'default' : ''
-		\ }
-	" Plugin key-mappings.
-	inoremap <expr><C-g> neocomplcache#undo_completion()
-	" 補完候補のなかから、共通する部分を補完します。ちょうど、シェルの補完のような動作
-	inoremap <expr><C-l> neocomplcache#complete_common_string()
-	"改行で補完ウィンドウを閉じる
-	inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
-	" Define keyword.
-	if !exists('g:neocomplcache_keyword_patterns')
-		let g:neocomplcache_keyword_patterns = {}
-	endif 
-	let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+if filereadable( $HOME . "/.vim/plugin_settings/neocomplete.vim" )
+  source ~/.vim/plugin_settings/neocomplete.vim
 endif
-
-"TABで保管候補の選択
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-"スニペットファイルの置き場所
-let g:neocomplcache_snippets_dir = '~/.vim/bundle/neosnippet-snippets/neosnippets'
-
 
 "---------------------------------------------------------
 "neosnippet
 "---------------------------------------------------------
-let s:my_snippet = '~/.vim/snippets/'
-let g:neosnippet#snippets_directory = s:my_snippet
-" " Plugin key-mappings.
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-" For snippet_complete marker.
-" texの数式も隠れるので
-if has('conceal')
-	"set conceallevel=2 concealcursor=i
+if filereadable( $HOME . "/.vim/plugin_settings/neosnippet.vim" )
+  source ~/.vim/plugin_settings/neosnippet.vim
 endif
 
 "---------------------------------------------------------
-"Quickrun
+"vim-quickrun
 "---------------------------------------------------------
-"makeの割り当て
-nnoremap <Space>qmake :QuickRun make<CR>
-let g:quickrun_config = {
-\	"_" : {
-\		"hook/close_unite_quickfix/enable_hook_loaded" : 1,
-\		"hook/unite_quickfix/enable_failure" : 1,
-\		"hook/close_quickfix/enable_exit" : 1,
-\		"hook/close_buffer/enable_empty_data" : 1,
-\		"hook/close_buffer/enable_failure" : 1,
-\		"hook/time/enable" : 1,
-\		"outputter" : "multi:buffer:quickfix",
-\		"outputter/buffer/split" : ":botright 8sp",
-\		"runner" : "vimproc",
-\		"runner/vimproc/updatetime" : 40,
-\	},
-\	"make" : {
-\		"command" : "make",
-\		"exec" : "%c %o",
-\		"hook/close_buffer/enable_success" : 1,
-\		"outputter" : "error:buffer:quickfix",
-\		"runner" : "vimproc",
-\	},
-\}
+if filereadable( $HOME . "/.vim/plugin_settings/vim-quickrun.vim" )
+  source ~/.vim/plugin_settings/vim-quickrun.vim
+endif
 
+"---------------------------------------------------------
+"Quickfix
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/Quickfix.vim" )
+  source ~/.vim/plugin_settings/Quickfix.vim
+endif
+
+"---------------------------------------------------------
+" SingleCompile
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/SingleCompile.vim" )
+  source ~/.vim/plugin_settings/SingleCompile.vim
+endif
+
+"---------------------------------------------------------
+" next-alter
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/next-alter.vim" )
+  source ~/.vim/plugin_settings/next-alter.vim
+endif
+
+
+"end of settings
 if filereadable( $HOME . "/.vim/envs.vim" )
   source ~/.vim/envs.vim
 endif
@@ -377,53 +249,4 @@ runtime! userautoload/*.vim
 "ファイルタイプの変更時自動読み込みする
 filetype plugin indent on
 syntax on
-
-"---------------------------------------------------------
-"Quickfix
-"---------------------------------------------------------
-"Prefix
-nnoremap [QUICKFIX]  <Nop>
-nmap <Space>q [QUICKFIX]
-
-nnoremap [QUICKFIX]p :cprevious<CR>   " 前へ
-nnoremap [QUICKFIX]n :cnext<CR>       " 次へ
-nnoremap [QUICKFIX]f :<C-u>cfirst<CR> " 最初へ
-nnoremap [QUICKFIX]l :<C-u>clast<CR>  " 最後へ
-
-
-"---------------------------------------------------------
-" SingleCompile
-"---------------------------------------------------------
-nmap <F9> :SCCompile<cr>
-nmap <F10> :SCCompileRun<cr>
-
-"---------------------------------------------------------
-" next-alter
-"---------------------------------------------------------
-"Prefix
-nnoremap [NEXTALTER]  <Nop>
-nmap <Space>n [NEXTALTER]
-
-nmap [NEXTALTER]o <Plug>(next-alter-open)
-
-" key is file extension, value is alternate file extension.
-let g:next_alter#pair_extension = {
-            \ 'c'   : [ 'h' ],
-            \ 'C'   : [ 'H' ],
-            \ 'cc'  : [ 'h' ],
-            \ 'CC'  : [ 'H', 'h'],
-            \ 'cpp' : [ 'h', 'hpp' ],
-            \ 'CPP' : [ 'H', 'HPP' ],
-            \ 'cxx' : [ 'h', 'hpp' ],
-            \ 'CXX' : [ 'H', 'HPP' ],
-            \ 'h'   : [ 'c', 'cpp', 'cxx' ],
-            \ 'H'   : [ 'C', 'CPP', 'CXX' ],
-            \ 'hpp' : [ 'cpp', 'cxx'],
-            \ 'HPP' : [ 'CPP', 'CXX'],
-            \ }
-" this list shows search directory to find alternate file.
-let g:next_alter#search_dir = [ '.' , '..', './include', '../include' ]
-
-" this is used when it opens alternate file buffer.
-let g:next_alter#open_option = 'vertical topleft'
 

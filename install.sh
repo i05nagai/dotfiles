@@ -47,6 +47,12 @@ function ln_file() {
 #v: verbose. print name of each file before linking.
   ln -fsv `pwd`/$1 $HOME/$1
 }
+function ln_file_from_to() {
+#f: remove existing destination files.
+#s: make symbolic links instead of hard links.
+#v: verbose. print name of each file before linking.
+  ln -fsv `pwd`/$1 $HOME/$2
+}
 
 function ln_env_file() {
   pattern="\/\.+$"
@@ -66,7 +72,7 @@ function ln_vim_env_file() {
 	ln_file .vim/$filename
   fi
   #vim plugin settings.
-
+  
 }
 
 function must_install() {
@@ -126,6 +132,15 @@ function vim_env_install() {
       goto_error
       ;;
   esac
+
+  #plugin settings
+  if [ ! -d $HOME/.vim/plugin_settings ]; then
+	mkdir $HOME/.vim/plugin_settings
+  fi
+  for file in vimenvs/plugin_settings/*
+  do 
+	  ln_file_from_to $file .vim/plugin_settings/`basename $file` 
+  done
 }
 
 function add_install() {
