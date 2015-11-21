@@ -1,4 +1,7 @@
 .vim/bundle/
 .vim/.netrwhist
 .vim/.yankround/
+.vim/.vimfiler/
+.vim/.unite/
+.vim/plugin_settings/
 
