@@ -4,4 +4,8 @@
 .vim/.vimfiler/
 .vim/.unite/
 .vim/plugin_settings/
+.vim/.vimwinpos
+.vim/vimbackup/
+.vim/undo/
+
 
