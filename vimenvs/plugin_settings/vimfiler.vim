@@ -19,7 +19,7 @@ nnoremap <silent> [VIMFILER]i :<C-u>VimFilerBufferDir -split -simple -winwidth=3
 
 "data_directory
 if has('win32')
-	"let g:vimfiler_data_directory = 'C:\.vimfiler'
+	"let g:vimfiler_data_directory = $HOME . '.vim/.vimfiler'
 elseif has('macunix')
 	let g:vimfiler_data_directory = '~/.vim/.vimfiler'
 else
@@ -35,4 +35,9 @@ function! s:vimfiler_my_settings()
 	nmap <buffer> q <Plug>(vimfiler_exit)
 	nmap <buffer> Q <Plug>(vimfiler_hide)
 endfunction
+
+"change default aciton
+autocmd FileType vimfiler call unite#custom_default_action('directory', 'lcd')
+" もしくは
+autocmd FileType vimfiler call unite#custom_default_action('directory', 'cd')
 
