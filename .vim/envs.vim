@@ -1,1 +1,0 @@
-/Users/admin/dotfiles/vimenvs/osx/envs.vim
