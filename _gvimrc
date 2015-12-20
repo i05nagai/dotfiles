@@ -1,0 +1,72 @@
+
+"--------------------------for gvim---------------
+"モードラインをONにする
+set modeline
+"メニューバーを非表示にする
+set guioptions-=m
+"ツールバーを非表示にする
+set guioptions-=T
+"左右のスクロールバーを非表示にする
+set guioptions-=r
+set guioptions-=R
+set guioptions-=l
+set guioptions-=L
+"水平スクロールバーを非表示にする
+set guioptions-=b
+"OSのクリップボードを使う
+set clipboard=unnamed
+"ルーラーを表示
+set ruler
+"行数を表示
+set number
+"ステータスラインを常に表示
+set laststatus=2
+"カーソルの上または下に表示する最小限の行数
+set scrolloff=5
+"コマンドラインモードで保存する履歴件数
+set history=100
+"コマンドラインモードでTABキーによるファイル名補完を有効にする
+set wildmenu wildmode=list:longest,full
+"スペルチェックを有効にする(ただし日本語は除外する)
+set spelllang+=cjk
+set spell
+"不可視文字を可視化する
+set list
+set listchars=tab:>.,trail:_
+
+"color
+colorscheme desert
+
+"undoファイルの場所を指定
+set undodir=$HOME/.vim/undo
+"undoファイルの作成を無効化
+"set noundofile
+
+"-----------------tab settings---------------
+"ドラッグアンドドロップで新しいタブで開く。（複数同時にドロップはだめ）
+"autocmd VimEnter * tab all
+"autocmd BufAdd * exe 'tablast | tabe "' . expand( "<afile") .'"'
+
+
+"-----------------window settings---------------
+let g:save_window_file = expand('~/.vim/.vimwinpos')
+augroup SaveWindow
+  autocmd!
+  autocmd VimLeavePre * call s:save_window()
+  function! s:save_window()
+    let options = [
+      \ 'set columns=' . &columns,
+      \ 'set lines=' . &lines,
+      \ 'winpos ' . getwinposx() . ' ' . getwinposy(),
+      \ ]
+    call writefile(options, g:save_window_file)
+  endfunction
+augroup END
+
+if filereadable(g:save_window_file)
+  execute 'source' g:save_window_file
+endif
+
+
+"-----------------plugin settings------------
+"
