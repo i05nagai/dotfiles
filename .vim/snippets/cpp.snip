@@ -1,9 +1,55 @@
 include c.snip
 
+delete inc
+snippet inc
+alias   #inc, #include
+    #include <${1}>${0}
+
 # #include "..."
 snippet inc2
 alias   #inc2, #include2
     #include "${1}"${0}
+
+delete      namespace2
+snippet     namespace2
+abbr        namespace { namespace { } }
+options     head
+    namespace ${1:#:name} { namespace ${2:name} {
+        ${0:TARGET}
+    } // namespace $1 { namespace $2 {
+
+snippet     ifndef2
+abbr        #ifndef HOGE...
+    #ifndef ${1:HOGE_}_H_INCLUDED
+    #define $1_H_INCLUDED
+    ${0:TARGET}
+    #endif // #ifndef $1_H_INCLUDED
+
+snippet     ublas
+abbr        namespace ublas =...
+    namespace ublas = boost::numeric::ublas;
+
+snippet     func2
+abbr        void func(...
+    ${1:void} ${2:func_name}(
+        ${3:attr})
+    {
+        ${0}
+    }
+
+snippet     func3
+abbr        void func(...
+    ${1:void} ${2:func_name}(${3:attr})
+    {
+        ${0}
+    }
+
+snippet     forstd
+abbr        for (std::size_t index) {}
+    for (std::size_t ${1:index} = 0; $1 < ${2:size}; ++$1) {
+        ${0:TARGET}
+    }
+
 
 snippet     p
 options     head
@@ -31,10 +77,6 @@ abbr        std::vector
 snippet     bm
 abbr        boost::numeric::ublas::matrix
     boost::numeric::ublas::matrix<${1}>${2} ${0:TARGET}
-
-snippet     p
-options     head
-  std::cout << ${0:TARGET} << std::endl;
 
 snippet     cfunc
 abbr        void className::funcitonName() {}
@@ -100,7 +142,7 @@ abbr        private variables
     private functions
 
 snippet     testclass
-abbr        
+abbr        testclass
     #ifndef ${1}_TEST_H_INCLUDED
     #define $1_TEST_H_INCLUDED
 
@@ -149,4 +191,32 @@ options     head
         return !retcode;
     }
   
+
+snippet     classs
+abbr        simple class
+options     head
+    class ${1:name} {
+        ${0:end}
+    };
+
+snippet     classi
+abbr        inheriting class
+options     head
+    class ${1:name} : ${2:base} {
+        ${0:end}
+    };
+
+snippet     structs
+abbr        simple struct
+options     head
+    struct ${1:name} {
+        ${0:end}
+    };
+
+snippet     structi
+abbr        inheriting struct
+options     head
+    struct ${1:name} : ${2:base} {
+        ${0:end}
+    };
 

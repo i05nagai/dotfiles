@@ -26,3 +26,22 @@ abbr git README.md
     ## Author
     
     [i05nagai](https://github.com/i05nagai)
+
+snippet table
+abbr table cell
+    | ${1:start} | ${2:next} |
+    | ----- | ----- |
+
+snippet tcell
+abbr table cell
+    | ${1:cell} | ${0:tcell2}
+
+snippet tcell2
+abbr table component after cell
+    ${1:cell} | ${0:tcell2}
+
+snippet tcell3
+abbr table component after cell
+    ${1:cell} | 
+    | ${0:tcell2}
+
