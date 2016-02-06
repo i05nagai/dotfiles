@@ -35,7 +35,13 @@ set list
 set listchars=tab:>.,trail:_
 
 "color
-colorscheme desert
+colorscheme wombat
+set transparency=230
+
+"半角文字の設定
+set guifont=Ricty\ Discord:h12
+"全角文字の設定
+set guifontwide=Ricty\ Discord:h12
 
 "undoファイルの場所を指定
 set undodir=$HOME/.vim/undo

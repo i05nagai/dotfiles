@@ -1,18 +1,17 @@
 
-"normal mode emacs like keybind
-nnoremap [NORMAL_EMACS]  <Nop>
-inoremap [NORMAL_EMACS]<C-a> <C-o>^
-inoremap [NORMAL_EMACS]<C-e> <C-o>$
-inoremap [NORMAL_EMACS]<C-f> <C-o>w
-inoremap [NORMAL_EMACS]<C-b> <C-o>b
-inoremap [NORMAL_EMACS]<C-d> <C-o>x
-inoremap [NORMAL_EMACS]<C-h> <C-o>h
-inoremap [NORMAL_EMACS]<C-j> <C-o>j
-inoremap [NORMAL_EMACS]<C-k> <C-o>k
-inoremap [NORMAL_EMACS]<C-l> <C-o>l
+"insert mode emacs like keybind
+inoremap [INSERT_EMACS] <Nop>
+inoremap [INSERT_EMACS]<C-a> <C-o>^
+inoremap [INSERT_EMACS]<C-e> <C-o>$
+inoremap [INSERT_EMACS]<C-f> <C-o>w
+inoremap [INSERT_EMACS]<C-b> <C-o>b
+inoremap [INSERT_EMACS]<C-d> <C-o>x
+inoremap [INSERT_EMACS]<C-h> <C-o>h
+inoremap [INSERT_EMACS]<C-j> <C-o>j
+inoremap [INSERT_EMACS]<C-k> <C-o>k
+inoremap [INSERT_EMACS]<C-l> <C-o>l
 
 "toggle settings
-
 
 "reload vimrc and gvirc
 if has('vim_starting')
