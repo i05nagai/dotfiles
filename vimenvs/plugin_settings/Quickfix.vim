@@ -1,7 +1,7 @@
 
 "Prefix
 nnoremap [QUICKFIX]  <Nop>
-nmap <Space>q [QUICKFIX]
+nmap <leader>q [QUICKFIX]
 
 nnoremap [QUICKFIX]p :cprevious<CR>   " 前へ
 nnoremap [QUICKFIX]n :cnext<CR>       " 次へ
