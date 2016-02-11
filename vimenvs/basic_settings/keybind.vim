@@ -1,3 +1,16 @@
+"disable arrow key
+vnoremap  <Up>     <Nop>
+vnoremap  <Down>   <Nop>
+vnoremap  <Left>   <Nop>
+vnoremap  <Right>  <Nop>
+inoremap  <Up>     <Nop>
+inoremap  <Down>   <Nop>
+inoremap  <Left>   <Nop>
+inoremap  <Right>  <Nop>
+noremap   <Up>     <Nop>
+noremap   <Down>   <Nop>
+noremap   <Left>   <Nop>
+noremap   <Right>  <Nop>
 
 "insert mode emacs like keybind
 inoremap [INSERT_EMACS] <Nop>
@@ -36,4 +49,16 @@ imap <MiddleMouse>   <Nop>
 imap <2-MiddleMouse> <Nop>
 imap <3-MiddleMouse> <Nop>
 imap <4-MiddleMouse> <Nop>
+
+" next windw
+nnoremap <Tab> <Nop>
+nnoremap <Tab> <C-w>w
+nnoremap <S-Tab> <Nop>
+nnoremap <S-Tab> <C-w>p
+
+"window size configuration
+nnoremap <Up> <C-w>+
+nnoremap <Down> <C-w>-
+nnoremap <Left> <C-w><
+nnoremap <Right> <C-w>>
 
