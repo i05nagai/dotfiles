@@ -136,7 +136,6 @@ let g:netrw_liststyle = 3
 " 'o'でファイルを開くときは下側に開く。(デフォルトが上側なので入れ替え)
 let g:netrw_alto = 1
 
-
 "---------------------------------------------------------
 "NeoBundle
 "---------------------------------------------------------
@@ -153,25 +152,27 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundle 'Shougo/unite.vim'
 	NeoBundle 'Shougo/vimproc', {
 	  \ 'build' : {
-		\ 'windows' : 'make -f make_mingw32.mak',
+		\ 'windows' : 'make -f make_mingw64.mak',
 		\ 'cygwin' : 'make -f make_cygwin.mak',
 		\ 'mac' : 'make -f make_mac.mak',
 		\ 'unix' : 'make -f make_unix.mak',
 	  \ },
 	\ }
 	NeoBundle 'tpope/vim-surround'
-	NeoBundle 'Shougo/vimfiler'
+	NeoBundle 'Shougo/vimfiler.vim'
 	NeoBundle 'vim-latex/vim-latex'
 	NeoBundle 'vim-scripts/SingleCompile'
 	NeoBundle 'mopp/next-alter.vim'
 	NeoBundle 'thinca/vim-quickrun'
 	NeoBundle 'tpope/vim-fugitive'
-	NeoBundle 'superbrothers/vim-quickrun-markdown-gfm'
 	NeoBundle 'h1mesuke/vim-alignta'
 	NeoBundle 'vim-scripts/DoxygenToolkit.vim'
+	NeoBundle 'i05nagai/previm'
+	NeoBundle 'tyru/open-browser.vim'
+	NeoBundle 'PProvost/vim-ps1'
 call neobundle#end()
 
-"vi上から、:NeoBundleInstallで.vimrcのNeoBundleで指定されているリポジトリのプラグインをインストールできる。
+"vi上から、:NeoBundleInstallで.vmrcのNeoBundleで指定されているリポジトリのプラグインをインストールできる。
 "プラグインを削除したい場合は、vimrc上からNeoBundleの記述を消して:NeoBundleCleanでできる。
 
 "---------------------------------------------------------
@@ -241,7 +242,21 @@ endif
 " DoxygenToolkit
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/DoxygenToolkit.vim" )
-  source "~/.vim/plugin_settings/DoxygenToolkit.vim"
+  source ~/.vim/plugin_settings/DoxygenToolkit.vim
+endif
+
+"---------------------------------------------------------
+" open-browser
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/open-browser.vim" )
+  source ~/.vim/plugin_settings/open-browser.vim
+endif
+
+"---------------------------------------------------------
+" previm
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/previm.vim" )
+  source ~/.vim/plugin_settings/previm.vim
 endif
 
 if filereadable( $HOME . "/.vim/envs.vim" )

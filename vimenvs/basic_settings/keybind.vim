@@ -34,7 +34,7 @@ if has('vim_starting')
       execute printf('source %s', $MYGVIMRC)
     endif
     redraw
-    echo printf('.vimrc/.gvimrc has reloaded (%s).', strftime('%c'))
+    echo printf('vimrc/gvimrc has reloaded (%s).', strftime('%c'))
   endfunction
 endif
 nmap <silent> <Plug>(my-reload-vimrc) :<C-u>call <SID>reload_vimrc()<CR>
@@ -50,7 +50,7 @@ imap <2-MiddleMouse> <Nop>
 imap <3-MiddleMouse> <Nop>
 imap <4-MiddleMouse> <Nop>
 
-" next windw
+" next window
 nnoremap <Tab> <Nop>
 nnoremap <Tab> <C-w>w
 nnoremap <S-Tab> <Nop>
@@ -61,4 +61,27 @@ nnoremap <Up> <C-w>+
 nnoremap <Down> <C-w>-
 nnoremap <Left> <C-w><
 nnoremap <Right> <C-w>>
+
+"exchange displays line moving and linewise moving.
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
+
+"delete default mapping to s key
+nnoremap s <NOP>
+vnoremap s <NOP>
+
+"add keybind to  key
+nnoremap [SHORTCUT] <NOP>
+nmap s [SHORTCUT]
+
+"shocrtcut to vifile
+nnoremap [SHORTCUT]vi :tabedit $HOME/.vimrc<CR>
+nnoremap [SHORTCUT]v_ :tabedit $HOME/_vimrc<CR>
+nnoremap [SHORTCUT]vc :tabedit ~/.vim/basic_settings/common_settings.vim<CR>
+nnoremap [SHORTCUT]vk :tabedit ~/.vim/basic_settings/keybind.vim<CR>
+nnoremap [SHORTCUT]vp :tabedit ~/.vim/plugin_settings<CR>
+nnoremap [SHORTCUT]ve :tabedit ~/.vim/envs.vim<CR>
+
 

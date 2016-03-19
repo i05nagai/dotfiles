@@ -35,8 +35,8 @@ set list
 set listchars=tab:>.,trail:_
 
 "color
+set transparency=235
 colorscheme wombat
-set transparency=230
 
 "”¼Šp•¶š‚Ìİ’è
 set guifont=Ricty\ Discord:h12

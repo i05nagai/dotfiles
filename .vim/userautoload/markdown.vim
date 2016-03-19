@@ -5,7 +5,6 @@ function! s:markdown()
     setlocal shiftwidth=4
 
     " 空白文字ではなくてタブ文字を使用する
-    "setlocal noexpandtab
     setlocal expandtab
 
 endfunction

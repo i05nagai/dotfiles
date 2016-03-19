@@ -1,5 +1,10 @@
 include c.snip
 
+delete template
+snippet template
+alias   temp
+    template <typename ${1}>${0}
+
 delete inc
 snippet inc
 alias   #inc, #include
@@ -17,6 +22,14 @@ options     head
     namespace ${1:#:name} { namespace ${2:name} {
         ${0:TARGET}
     } } // namespace $1 { namespace $2 {
+
+delete      namespace3
+snippet     namespacae3
+abbr        namespace { namespace { namespace { } } }
+options     head
+    namespace ${1:#:name} { namespace ${2:name} { namespace ${3:name} {
+        ${0:TARGET}
+    } } } // namespace $1 { namespace $2 { namespace $3 {
 
 snippet     ifndef2
 abbr        #ifndef HOGE...
@@ -199,6 +212,19 @@ options     head
         ${0:end}
     };
 
+snippet     classt
+abbr        template class
+options     head
+    template <typename ${1}>
+    class ${2:name} {
+    private:
+        typedef $2 this_type;
+    public:
+    public:
+        ${0:end}
+    private:
+    };
+
 snippet     classi
 abbr        inheriting class
 options     head
@@ -211,6 +237,19 @@ abbr        simple struct
 options     head
     struct ${1:name} {
         ${0:end}
+    };
+
+snippet     structt
+abbr        template struct
+options     head
+    template <typename ${1}>
+    struct ${2:name} {
+    private:
+        typedef $2 this_type;
+    public:
+    public:
+        ${0:end}
+    private:
     };
 
 snippet     structi
