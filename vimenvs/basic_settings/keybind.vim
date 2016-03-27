@@ -84,4 +84,10 @@ nnoremap [SHORTCUT]vk :tabedit ~/.vim/basic_settings/keybind.vim<CR>
 nnoremap [SHORTCUT]vp :tabedit ~/.vim/plugin_settings<CR>
 nnoremap [SHORTCUT]ve :tabedit ~/.vim/envs.vim<CR>
 
+"register shortcut
+nnoremap [SHORTCUT]rp :let @* = getcwd()<CR>
+
+"directory shortcut
+nnoremap [SHORTCUT]dv :tabedit ~/.vim<CR>
+nnoremap [SHORTCUT]dh :tabedit ~/<CR>
 

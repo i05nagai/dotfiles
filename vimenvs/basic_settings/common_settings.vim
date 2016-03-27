@@ -144,7 +144,7 @@ if has('vim_starting')
 	"call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
-	" originalrepos on github
+	"utilities
 	NeoBundle 'Shougo/neobundle.vim'
 	NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
 	NeoBundle 'Shougo/neosnippet'
@@ -158,17 +158,24 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 		\ 'unix' : 'make -f make_unix.mak',
 	  \ },
 	\ }
-	NeoBundle 'tpope/vim-surround'
 	NeoBundle 'Shougo/vimfiler.vim'
-	NeoBundle 'vim-latex/vim-latex'
-	NeoBundle 'vim-scripts/SingleCompile'
-	NeoBundle 'mopp/next-alter.vim'
 	NeoBundle 'thinca/vim-quickrun'
-	NeoBundle 'tpope/vim-fugitive'
-	NeoBundle 'h1mesuke/vim-alignta'
-	NeoBundle 'vim-scripts/DoxygenToolkit.vim'
-	NeoBundle 'i05nagai/previm'
+	NeoBundle 'tpope/vim-surround'
+	NeoBundle 'mopp/next-alter.vim'
 	NeoBundle 'tyru/open-browser.vim'
+	NeoBundle 'h1mesuke/vim-alignta'
+	NeoBundle 'LeafCage/yankround.vim'
+	"git
+	NeoBundle 'tpope/vim-fugitive'
+	"doxygen
+	NeoBundle 'vim-scripts/DoxygenToolkit.vim'
+	"latex
+	NeoBundle 'vim-latex/vim-latex'
+	"markdown
+	NeoBundle 'i05nagai/previm'
+	"C++
+	NeoBundle 'vim-scripts/SingleCompile'
+	"powershell
 	NeoBundle 'PProvost/vim-ps1'
 call neobundle#end()
 
@@ -229,6 +236,13 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/next-alter.vim" )
   source ~/.vim/plugin_settings/next-alter.vim
+endif
+
+"---------------------------------------------------------
+" yankround
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/yankround.vim" )
+  source ~/.vim/plugin_settings/yankround.vim
 endif
 
 "---------------------------------------------------------
