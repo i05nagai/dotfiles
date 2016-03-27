@@ -5,5 +5,8 @@
 	editor = vim
 [alias]
 	l = log --abbrev-commit --date=iso --graph --pretty=format:'%C(red)%h %C(yellow)%d%C(green)%cd %C(blue)%cn\n%C(reset)%s\n'
+	pom = push origin master
+	po = push origin
+	s = status
 [color]
 	ui = auto
