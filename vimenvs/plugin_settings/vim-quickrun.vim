@@ -1,5 +1,10 @@
+
+"Prefix
+nnoremap [QUICKRUN]  <Nop>
+nmap <Space>q [QUICKRUN]
+
 "makeの割り当て
-nnoremap <Space>qmake :QuickRun make<CR>
+nnoremap [QUICKRUN]m :QuickRun make<CR>
 let g:quickrun_config = {
 \	"_" : {
 \		"hook/close_unite_quickfix/enable_hook_loaded" : 1,

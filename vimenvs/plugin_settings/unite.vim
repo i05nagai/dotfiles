@@ -17,6 +17,11 @@ nnoremap [UNITE]v :vsplit<CR>:<C-u>UniteWithBufferDir -buffer-name=files buffer 
 nnoremap <silent> [UNITE]r :<C-u>Unite -buffer-name=register register<CR>
 "タブ一覧
 nnoremap [UNITE]t :<C-u>Unite tab<CR>
+"neosnippet/user
+nnoremap [UNITE]su :<C-u>Unite neosnippet/user<CR>
+
+"s
+nnoremap [SHORTCUT]ut :<C-u>Unite tab<CR>
 
 "data_directory 
 if has('win32')
