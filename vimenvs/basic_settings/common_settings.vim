@@ -162,6 +162,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundle 'vim-scripts/taglist.vim'
 	"git
 	NeoBundle 'tpope/vim-fugitive'
+	NeoBundle 'gregsexton/gitv'
 	"doxygen
 	NeoBundle 'vim-scripts/DoxygenToolkit.vim'
 	"latex
@@ -252,6 +253,13 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/vim-figutive.vim" )
   source ~/.vim/plugin_settings/vim-fugitive.vim
+endif
+
+"---------------------------------------------------------
+" gitv
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/gitv.vim" )
+  source ~/.vim/plugin_settings/gitv.vim
 endif
 
 "---------------------------------------------------------
