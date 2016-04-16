@@ -159,6 +159,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundle 'tyru/open-browser.vim'
 	NeoBundle 'h1mesuke/vim-alignta'
 	NeoBundle 'LeafCage/yankround.vim'
+	NeoBundle 'vim-scripts/taglist.vim'
 	"git
 	NeoBundle 'tpope/vim-fugitive'
 	"doxygen
@@ -237,6 +238,13 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/yankround.vim" )
   source ~/.vim/plugin_settings/yankround.vim
+endif
+
+"---------------------------------------------------------
+" taglist
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/taglist.vim" )
+  source ~/.vim/plugin_settings/taglist.vim
 endif
 
 "---------------------------------------------------------
