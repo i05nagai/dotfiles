@@ -20,8 +20,11 @@ nnoremap [UNITE]t :<C-u>Unite tab<CR>
 "neosnippet/user
 nnoremap [UNITE]su :<C-u>Unite neosnippet/user<CR>
 
-"s
+"other shortcuts for vimfiler because of vimfiler overide many keys.
+nnoremap [SHORTCUT]ub :Unite bookmark<CR>
+nnoremap [SHORTCUT]uB :<C-u>Unite buffer<CR>
 nnoremap [SHORTCUT]ut :<C-u>Unite tab<CR>
+
 
 "data_directory 
 if has('win32')

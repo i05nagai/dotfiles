@@ -71,23 +71,31 @@ nnoremap gk k
 "delete default mapping to s key
 nnoremap s <NOP>
 vnoremap s <NOP>
+nnoremap S <NOP>
+vnoremap S <NOP>
 
 "add keybind to  key
 nnoremap [SHORTCUT] <NOP>
 nmap s [SHORTCUT]
 
 "shocrtcut to vifile
-nnoremap [SHORTCUT]vi :tabedit $HOME/.vimrc<CR>
+noremap [SHORTCUT]vi :tabedit $HOME/.vimrc<CR>
 nnoremap [SHORTCUT]v_ :tabedit $HOME/_vimrc<CR>
 nnoremap [SHORTCUT]vc :tabedit ~/.vim/basic_settings/common_settings.vim<CR>
 nnoremap [SHORTCUT]vk :tabedit ~/.vim/basic_settings/keybind.vim<CR>
 nnoremap [SHORTCUT]vp :tabedit ~/.vim/plugin_settings<CR>
 nnoremap [SHORTCUT]ve :tabedit ~/.vim/envs.vim<CR>
 
-"register shortcut
+"-------------------register mapping----------------------
+"---------------------------------------------------------
+nmap <Leader>sp "sp<CR>
 nnoremap [SHORTCUT]rp :let @* = getcwd()<CR>
 
 "directory shortcut
 nnoremap [SHORTCUT]dv :tabedit ~/.vim<CR>
 nnoremap [SHORTCUT]dh :tabedit ~/<CR>
+
+nnoremap <CR> :<C-u>w<CR>
+"Escの2回押しでハイライト消去
+nmap <esc><esc> :<C-u>nohlsearch<CR>
 

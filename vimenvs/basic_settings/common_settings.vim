@@ -37,9 +37,6 @@ set t_Co=256
 "nocompatible with vi
 set nocompatible
 
-"-------------------register mapping----------------------
-"---------------------------------------------------------
-nmap <Leader>sp "sp<CR>
 
 "---------------------------------------------------------
 "key bind
@@ -57,9 +54,6 @@ endif
 
 "-------------------Key mapping-------------------------
 "-------------------------------------------------------
-nnoremap <CR> :<C-u>w<CR>
-"Escの2回押しでハイライト消去
-nmap <esc><esc> :<C-u>nohlsearch<CR>
 "--- <F6>  タイムスタンプを挿入してinsertモードへ移行 ----
 function! GetTimeStampInEnglish(type)
 	let wday = strftime("%w")
@@ -279,4 +273,6 @@ endif
 
 set runtimepath+=~/.vim/
 runtime! userautoload/*.vim
+
+
 
