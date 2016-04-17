@@ -19,6 +19,7 @@ nnoremap <silent> [UNITE]r :<C-u>Unite -buffer-name=register register<CR>
 nnoremap [UNITE]t :<C-u>Unite tab<CR>
 "neosnippet/user
 nnoremap [UNITE]su :<C-u>Unite neosnippet/user<CR>
+nnoremap [UNITE]sr :<C-u>Unite neosnippet/runtime<CR>
 
 "other shortcuts for vimfiler because of vimfiler overide many keys.
 nnoremap [SHORTCUT]ub :Unite bookmark<CR>
