@@ -160,6 +160,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundle 'h1mesuke/vim-alignta'
 	NeoBundle 'LeafCage/yankround.vim'
 	NeoBundle 'vim-scripts/taglist.vim'
+	NeoBundle 'itchyny/lightline.vim'
 	"git
 	NeoBundle 'tpope/vim-fugitive'
 	NeoBundle 'gregsexton/gitv'
@@ -246,6 +247,13 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/taglist.vim" )
   source ~/.vim/plugin_settings/taglist.vim
+endif
+
+"---------------------------------------------------------
+" lightline
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/lightline.vim" )
+  source ~/.vim/plugin_settings/lightline.vim
 endif
 
 "---------------------------------------------------------
