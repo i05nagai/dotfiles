@@ -155,7 +155,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundle 'Shougo/vimfiler.vim'
 	NeoBundle 'thinca/vim-quickrun'
 	NeoBundle 'tpope/vim-surround'
-	NeoBundle 'mopp/next-alter.vim'
+	NeoBundleLazy 'mopp/next-alter.vim'
 	NeoBundle 'tyru/open-browser.vim'
 	NeoBundle 'h1mesuke/vim-alignta'
 	NeoBundle 'LeafCage/yankround.vim'
@@ -172,12 +172,16 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundle 'i05nagai/previm'
 	"C++
 	NeoBundle 'vim-scripts/SingleCompile'
+	NeoBundleLazy 'rhysd/unite-n3337', {
+				\ 'depends' : 'Shougo/unite.vim',
+				\ 'autoload' : {'filetypes' : 'cpp'}
+				\ }
 	"powershell
 	NeoBundle 'PProvost/vim-ps1'
 call neobundle#end()
 
 "vi上から、:NeoBundleInstallで.vmrcのNeoBundleで指定されているリポジトリのプラグインをインストールできる。
-"プラグインを削除したい場合は、vimrc上からNeoBundleの記述を消して:NeoBundleCleanでできる。
+"vimrc上からNeoBundleの記述をけせば、pluginはロードされない。
 
 "---------------------------------------------------------
 "unite
