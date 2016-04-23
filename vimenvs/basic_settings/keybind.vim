@@ -83,7 +83,7 @@ noremap [SHORTCUT]vi :tabedit $HOME/.vimrc<CR>
 nnoremap [SHORTCUT]v_ :tabedit $HOME/_vimrc<CR>
 nnoremap [SHORTCUT]vc :tabedit ~/.vim/basic_settings/common_settings.vim<CR>
 nnoremap [SHORTCUT]vk :tabedit ~/.vim/basic_settings/keybind.vim<CR>
-nnoremap [SHORTCUT]vp :tabedit ~/.vim/plugin_settings<CR>
+nnoremap [SHORTCUT]vp :tabedit ~/.vim/plugin_settings/<CR>
 nnoremap [SHORTCUT]ve :tabedit ~/.vim/envs.vim<CR>
 
 "-------------------register mapping----------------------
