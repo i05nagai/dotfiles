@@ -144,6 +144,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundle 'Shougo/neosnippet'
 	NeoBundle 'Shougo/neosnippet-snippets'
 	NeoBundle 'Shougo/unite.vim'
+	NeoBundle 'tsukkee/unite-tag'
 	NeoBundle 'Shougo/vimproc', {
 	  \ 'build' : {
 		\ 'windows' : 'make -f make_mingw64.mak',
@@ -155,7 +156,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundle 'Shougo/vimfiler.vim'
 	NeoBundle 'thinca/vim-quickrun'
 	NeoBundle 'tpope/vim-surround'
-	NeoBundleLazy 'mopp/next-alter.vim'
+	NeoBundle 'mopp/next-alter.vim'
 	NeoBundle 'tyru/open-browser.vim'
 	NeoBundle 'h1mesuke/vim-alignta'
 	NeoBundle 'LeafCage/yankround.vim'
@@ -171,13 +172,21 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	"markdown
 	NeoBundle 'i05nagai/previm'
 	"C++
-	NeoBundle 'vim-scripts/SingleCompile'
 	NeoBundleLazy 'rhysd/unite-n3337', {
 				\ 'depends' : 'Shougo/unite.vim',
 				\ 'autoload' : {'filetypes' : 'cpp'}
 				\ }
 	"powershell
 	NeoBundle 'PProvost/vim-ps1'
+	"C#
+	NeoBundleLazy 'nosami/Omnisharp', {
+	\   'autoload': {'filetypes': ['cs']},
+	\   'build': {
+	\     'windows': 'MSBuild.exe server/OmniSharp.sln /p:Platform="Any CPU"',
+	\     'mac': 'xbuild server/OmniSharp.sln',
+	\     'unix': 'xbuild server/OmniSharp.sln',
+	\   }
+	\ }
 call neobundle#end()
 
 "vi上から、:NeoBundleInstallで.vmrcのNeoBundleで指定されているリポジトリのプラグインをインストールできる。
@@ -223,13 +232,6 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/Quickfix.vim" )
   source ~/.vim/plugin_settings/Quickfix.vim
-endif
-
-"---------------------------------------------------------
-" SingleCompile
-"---------------------------------------------------------
-if filereadable( $HOME . "/.vim/plugin_settings/SingleCompile.vim" )
-  source ~/.vim/plugin_settings/SingleCompile.vim
 endif
 
 "---------------------------------------------------------
