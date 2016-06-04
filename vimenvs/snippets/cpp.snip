@@ -112,31 +112,6 @@ snippet     pfcomment
 abbr        private variables 
     private functions
 
-snippet targetheader
-abbr targetheader
-	#pragma once
-	
-	namespace ${1:namespace} {
-		class ${2:basename} {
-		//private typedef
-		private:
-		//public typedef
-		public:
-		//public function
-		public:
-			${3:end}
-		//private function
-		private:
-		//private members
-		private:
-		}; // class $2 {
-	} // namespace $1 {
-
-snippet targetsource
-abbr target source
-	namespace ${1:namespace} {
-		${0:mfunc}
-	} // namespace $1 {
 
 snippet     testclass
 abbr        testclass
@@ -207,10 +182,126 @@ options     head
 	private:
 	};
 
+delete      struct
 snippet     struct
 abbr        simple struct
 options     head
     struct ${1:name} {
         ${0:end}
     };
+
+snippet targetheader
+abbr targetheader
+	#pragma once
+	
+	namespace ${1:namespace} {
+		class ${2:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}${3} {
+		//private typedef
+		private:
+		//public typedef
+		public:
+		//public function
+		public:
+			${4:end}
+		//private function
+		private:
+		//private members
+		private:
+		}; // class $2$3 {
+	} // namespace $1 {
+
+snippet targetsource
+abbr target source
+	#include "${1:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`.h}"
+
+	namespace ${2:namespace} {
+		${0:mfunc}
+	} // namespace $2 {
+
+snippet targetheader2
+abbr namespace2 target header
+	#pragma once
+	
+	namespace ${1:namespace} { namespace ${2:namespace} {
+		class ${3:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}${4} {
+		//private typedef
+		private:
+		//public typedef
+		public:
+		//public function
+		public:
+			${0:end}
+		//private function
+		private:
+		//private members
+		private:
+		}; // class $3$4 {
+	} // namespace $1 { namespace $2 {
+
+snippet targetsource2
+abbr namespace2 target source
+	#include "${1:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`.h}"
+
+	namespace ${2:namespace} { namespace ${3:namespace} {
+		${0:mfunc}
+	} // namespace $2 { namespace $3 {
+
+snippet     targetiheader
+abbr        namespace target interface header
+options     head
+	#pragma once
+	
+	namespace ${1:namespace} {
+		class ${2:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}${3} {
+		//private typedef
+		private:
+		//public typedef
+		public:
+		//public function
+		public:
+			${0:end}
+		//private function
+		private:
+		//private members
+		private:
+		}; // class $2$3 {
+	} // namespace $1 { 
+
+snippet targetisource
+abbr namespace target interface source
+	#include "${1:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`.h}"
+
+	namespace ${2:namespace} {
+		${0:mfunc}
+	} // namespace $2 {
+
+snippet     targetiheader2
+abbr        namespace2 target interface header
+options     head
+	#pragma once
+	
+	namespace ${1:namespace} { namespace ${2:namespace} {
+		class ${3:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}${4} {
+		//private typedef
+		private:
+		//public typedef
+		public:
+		//public function
+		public:
+			${0:end}
+		//private function
+		private:
+		//private members
+		private:
+		}; // class $3$4 {
+	} // namespace $1 { namespace $2 {
+
+snippet targetisource2
+abbr namespace2 target interface source
+	#include "${1:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`.h}"
+
+	namespace ${2:namespace} { namespace ${3:namespace} {
+		${0:mfunc}
+	} // namespace $2 { namespace $3 {
+
 

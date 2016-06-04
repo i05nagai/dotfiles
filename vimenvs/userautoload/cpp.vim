@@ -23,6 +23,10 @@ function! s:cpp()
     " 最後に定義された include 箇所へ移動してを挿入モードへ
     nnoremap <buffer><silent> <Space>ii :execute "?".&include<CR> :noh<CR> o
 
+    "indent option
+	"scope indent
+	setlocal cino+=g0
+	
 
     " BOOST_PP_XXX 等のハイライトを行う
     syntax match boost_pp /BOOST_PP_[A-z0-9_]*/
