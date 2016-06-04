@@ -3,5 +3,5 @@
 nnoremap [TAGLIST]  <Nop>
 nmap <Space>t [TAGLIST]
 
-nnoremap [TAGLIST]l :Tlist<CR>
+nnoremap [TAGLIST]l :TlistToggle<CR>
 
