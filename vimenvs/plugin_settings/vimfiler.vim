@@ -8,9 +8,6 @@ nnoremap <silent> [VIMFILER]e :<C-u>VimFilerBufferDir -quit<CR>
 ""現在開いているバッファをIDE風に開く
 nnoremap <silent> [VIMFILER]i :<C-u>VimFilerBufferDir -split -simple -winwidth=35 -no-quit<CR>
 
-"other shortcuts for vimfiler because of vimfiler overide many keys.
-nnoremap [SHORTCUT]fb :Unite bookmark<CR>
-
 let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_enable_auto_cd = 1
 

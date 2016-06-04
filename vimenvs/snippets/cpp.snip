@@ -42,15 +42,7 @@ snippet     ublas
 abbr        namespace ublas =...
     namespace ublas = boost::numeric::ublas;
 
-snippet     func2
-abbr        void func(...
-    ${1:void} ${2:func_name}(
-        ${3:attr})
-    {
-        ${0}
-    }
-
-snippet     func3
+snippet     ffunc
 abbr        void func(...
     ${1:void} ${2:func_name}(${3:attr})
     {
@@ -63,17 +55,9 @@ abbr        for (std::size_t index) {}
         ${0:TARGET}
     }
 
-
 snippet     p
 options     head
   std::cout << ${0:TARGET} << std::endl;
-
-snippet     mfunction
-abbr        void className::funcitonName() {}
-    ${1} ${2}::${3}(${4})
-    {
-        ${5}
-    }
 
 snippet     bs
 abbr        boost::shared_ptr
@@ -91,25 +75,11 @@ snippet     bm
 abbr        boost::numeric::ublas::matrix
     boost::numeric::ublas::matrix<${1}>${2} ${0:TARGET}
 
-snippet     cfunc
-abbr        void className::funcitonName() {}
-    ${1}::$1(${2})
-    {
-        ${0:TARGET}
-    }
-
-snippet     dfunc
-abbr        void className::funcitonName() {}
-    ~${1}::$1(${2})
-    {
-        ${0:TARGET}
-    }
-
 snippet     mfunc
 abbr        void className::funcitonName() {}
-    ${1} ${2}::${3}(${4})
+    ${1:void} ${2:class}::${3:function}(${4:attr})
     {
-        ${5}
+        ${0:last}
     }
 
 snippet     sep1
@@ -141,6 +111,32 @@ abbr        private variables
 snippet     pfcomment
 abbr        private variables 
     private functions
+
+snippet targetheader
+abbr targetheader
+	#pragma once
+	
+	namespace ${1:namespace} {
+		class ${2:basename} {
+		//private typedef
+		private:
+		//public typedef
+		public:
+		//public function
+		public:
+			${3:end}
+		//private function
+		private:
+		//private members
+		private:
+		}; // class $2 {
+	} // namespace $1 {
+
+snippet targetsource
+abbr target source
+	namespace ${1:namespace} {
+		${0:mfunc}
+	} // namespace $1 {
 
 snippet     testclass
 abbr        testclass
@@ -193,57 +189,28 @@ options     head
     }
   
 
-snippet     classs
-abbr        simple class
+delete class
+snippet     class
+abbr        class
 options     head
-    class ${1:name} {
-        ${0:end}
-    };
+	class ${1:name} {
+	//private typedef
+	private:
+	//public typedef
+	public:
+	//public function
+	public:
+		${0:end}
+	//private function
+	private:
+	//private members
+	private:
+	};
 
-snippet     classt
-abbr        template class
-options     head
-    template <typename ${1}>
-    class ${2:name} {
-    private:
-        typedef $2 this_type;
-    public:
-    public:
-        ${0:end}
-    private:
-    };
-
-snippet     classi
-abbr        inheriting class
-options     head
-    class ${1:name} : ${2:base} {
-        ${0:end}
-    };
-
-snippet     structs
+snippet     struct
 abbr        simple struct
 options     head
     struct ${1:name} {
-        ${0:end}
-    };
-
-snippet     structt
-abbr        template struct
-options     head
-    template <typename ${1}>
-    struct ${2:name} {
-    private:
-        typedef $2 this_type;
-    public:
-    public:
-        ${0:end}
-    private:
-    };
-
-snippet     structi
-abbr        inheriting struct
-options     head
-    struct ${1:name} : ${2:base} {
         ${0:end}
     };
 

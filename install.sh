@@ -13,8 +13,10 @@ CP_GROUP=(
 LN_GROUP=(
 ".ctags"
 ".gitconfig"
-".vim"
 ".vimrc"
+"_vimrc"
+"_gvimrc"
+".tmux.conf"
 ".zsh"
 )
 
@@ -133,14 +135,25 @@ function vim_env_install() {
       ;;
   esac
 
+  #basic settings
+  if [ ! -d $HOME/.vim/basic_settings ]; then
+	ln_file_from_to vimenvs/basic_settings .vim/basic_settings 
+  fi
+
   #plugin settings
   if [ ! -d $HOME/.vim/plugin_settings ]; then
-	mkdir $HOME/.vim/plugin_settings
+	ln_file_from_to vimenvs/plugin_settings .vim/plugin_settings 
   fi
-  for file in vimenvs/plugin_settings/*
-  do 
-	  ln_file_from_to $file .vim/plugin_settings/`basename $file` 
-  done
+
+  #snippets
+  if [ ! -d $HOME/.vim/snippets ]; then
+	ln_file_from_to vimenvs/snippets .vim/snippets
+  fi
+
+  #user_autoload
+  if [ ! -d $HOME/.vim/userautoload ]; then
+	ln_file_from_to vimenvs/userautoload .vim/userautoload
+  fi
 }
 
 function add_install() {
@@ -172,7 +185,7 @@ env_install $env_type
 vim_env_install $env_type
 add_install $@
 
-if [ ! -d $HOME/.vimbackup ]; then
-	mkdir $HOME/.vimbackup
+if [ ! -d $HOME/.vim/vimbackup ]; then
+	mkdir $HOME/.vim/vimbackup
 fi
 

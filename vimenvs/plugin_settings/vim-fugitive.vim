@@ -1,4 +1,4 @@
 "Prefix
 nnoremap [VIMFIGUTIVE]  <Nop>
-nmap <Space>g [VIMFIGUTIVE]
+nmap <Space>G [VIMFIGUTIVE]
 

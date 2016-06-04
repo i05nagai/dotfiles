@@ -22,14 +22,6 @@ if filereadable( $HOME . "/.vim/plugin_settings/vimshell.vim" )
   source ~/.vim/plugin_settings/vimshell.vim
 endif
 
-"---------------------------------------------------------
-" read einvironment settings
-"---------------------------------------------------------
-if filereadable( $HOME . "/.vim/envs.vim" )
-  source ~/.vim/envs.vim
-endif
-
-
 "end of settings
 "ファイルタイプの変更時自動読み込みする
 filetype plugin indent on

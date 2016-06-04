@@ -37,9 +37,6 @@ set t_Co=256
 "nocompatible with vi
 set nocompatible
 
-"-------------------register mapping----------------------
-"---------------------------------------------------------
-nmap <Leader>sp "sp<CR>
 
 "---------------------------------------------------------
 "key bind
@@ -57,9 +54,6 @@ endif
 
 "-------------------Key mapping-------------------------
 "-------------------------------------------------------
-nnoremap <CR> :<C-u>w<CR>
-"Escの2回押しでハイライト消去
-nmap <esc><esc> :<C-u>nohlsearch<CR>
 "--- <F6>  タイムスタンプを挿入してinsertモードへ移行 ----
 function! GetTimeStampInEnglish(type)
 	let wday = strftime("%w")
@@ -161,13 +155,15 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundle 'Shougo/vimfiler.vim'
 	NeoBundle 'thinca/vim-quickrun'
 	NeoBundle 'tpope/vim-surround'
-	NeoBundle 'mopp/next-alter.vim'
+	NeoBundleLazy 'mopp/next-alter.vim'
 	NeoBundle 'tyru/open-browser.vim'
 	NeoBundle 'h1mesuke/vim-alignta'
 	NeoBundle 'LeafCage/yankround.vim'
 	NeoBundle 'vim-scripts/taglist.vim'
+	NeoBundle 'itchyny/lightline.vim'
 	"git
 	NeoBundle 'tpope/vim-fugitive'
+	NeoBundle 'gregsexton/gitv'
 	"doxygen
 	NeoBundle 'vim-scripts/DoxygenToolkit.vim'
 	"latex
@@ -176,12 +172,16 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundle 'i05nagai/previm'
 	"C++
 	NeoBundle 'vim-scripts/SingleCompile'
+	NeoBundleLazy 'rhysd/unite-n3337', {
+				\ 'depends' : 'Shougo/unite.vim',
+				\ 'autoload' : {'filetypes' : 'cpp'}
+				\ }
 	"powershell
 	NeoBundle 'PProvost/vim-ps1'
 call neobundle#end()
 
 "vi上から、:NeoBundleInstallで.vmrcのNeoBundleで指定されているリポジトリのプラグインをインストールできる。
-"プラグインを削除したい場合は、vimrc上からNeoBundleの記述を消して:NeoBundleCleanでできる。
+"vimrc上からNeoBundleの記述をけせば、pluginはロードされない。
 
 "---------------------------------------------------------
 "unite
@@ -254,10 +254,24 @@ if filereadable( $HOME . "/.vim/plugin_settings/taglist.vim" )
 endif
 
 "---------------------------------------------------------
+" lightline
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/lightline.vim" )
+  source ~/.vim/plugin_settings/lightline.vim
+endif
+
+"---------------------------------------------------------
 " vim-fugitive
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/vim-figutive.vim" )
   source ~/.vim/plugin_settings/vim-fugitive.vim
+endif
+
+"---------------------------------------------------------
+" gitv
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/gitv.vim" )
+  source ~/.vim/plugin_settings/gitv.vim
 endif
 
 "---------------------------------------------------------
@@ -287,4 +301,6 @@ endif
 
 set runtimepath+=~/.vim/
 runtime! userautoload/*.vim
+
+
 
