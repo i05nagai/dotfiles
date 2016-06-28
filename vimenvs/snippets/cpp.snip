@@ -304,4 +304,45 @@ abbr namespace2 target interface source
 		${0:mfunc}
 	} // namespace $2 { namespace $3 {
 
+snippet     gtestheader
+abbr        namespace test interface header
+options     head
+	#pragma once
+	
+	namespace ${1:namespace} {
+		class ${2:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}${3} : public ::testing::Test {
+		protected:
+			//set-up
+			TargetTest();
+			//clean-up does not throw exceptions
+			virtual ~TargetTest();
+			//called before every test immediately after constructor
+			virtual void SetUp();
+			//called after every test before destructor
+			virtual void TearDown();
+			
+			//target::Target _target;
+		}; // class $2 : public ::testing::Test {
+	} // namespace $1
+
+snippet     gtestsource
+abbr        namespace test interface header
+options     head
+	#include "${1:pch}/pre_compiled_header.h"
+	#include "$1/TargetTest.h"
+	
+	namespace ${2:namespace} {
+		TEST_F(TargetTest, sayDoubleTest)
+		{
+			const double actual = _target.sayDouble();
+			EXPECT_EQ(432.423424, actual);
+		}
+	} // namespace target_test
+
+snippet gtestf
+abbr    TEST_F
+	TEST_F(${1:test class}, ${2:test name})
+	 {
+		 ${0}
+	 }
 
