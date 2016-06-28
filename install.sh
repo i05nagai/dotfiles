@@ -111,6 +111,11 @@ function env_install() {
 }
 
 function vim_env_install() {
+  # check .vim
+  if [ ! -d $HOME/.vim  ]; then
+  	mkdir $HOME/.vim
+  fi
+
   env_path="vimenvs/$env_type/"
   case "$1" in
     "lic" )
