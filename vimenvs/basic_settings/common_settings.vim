@@ -1,4 +1,9 @@
 
+set nowritebackup
+set nobackup
+set noswapfile
+"draw line
+set colorcolumn=80
 "スワップファイル用のディレクトリ
 set directory=$HOME/.vim/vimbackup
 "バックアップファイルを作るディレクトリ
