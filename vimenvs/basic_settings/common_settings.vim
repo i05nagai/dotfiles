@@ -181,6 +181,15 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 				\ 'depends' : 'Shougo/unite.vim',
 				\ 'autoload' : {'filetypes' : 'cpp'}
 				\ }
+	"python
+	NeoBundleLazy "davidhalter/jedi-vim", {
+	      \ "autoload": {
+	      \   "filetypes": ["python", "python3", "djangohtml"],
+	      \ },
+	      \ "build": {
+	      \   "mac": "pip install jedi",
+	      \   "unix": "pip install jedi",
+	      \ }}
 	"powershell
 	NeoBundle 'PProvost/vim-ps1'
 	"C#
@@ -300,6 +309,13 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/previm.vim" )
   source ~/.vim/plugin_settings/previm.vim
+endif
+
+"---------------------------------------------------------
+" jedi-vim
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/jedi-vim.vim" )
+  source ~/.vim/plugin_settings/jedi-vim.vim
 endif
 
 if filereadable( $HOME . "/.vim/envs.vim" )
