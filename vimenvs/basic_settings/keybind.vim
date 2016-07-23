@@ -24,6 +24,9 @@ inoremap [INSERT_EMACS]<C-j> <C-o>j
 inoremap [INSERT_EMACS]<C-k> <C-o>k
 inoremap [INSERT_EMACS]<C-l> <C-o>l
 
+"inverse tab
+inoremap <S-Tab> <C-d>
+
 "toggle settings
 
 "reload vimrc and gvirc
