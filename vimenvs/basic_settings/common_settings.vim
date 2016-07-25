@@ -167,6 +167,15 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundle 'LeafCage/yankround.vim'
 	NeoBundle 'vim-scripts/taglist.vim'
 	NeoBundle 'itchyny/lightline.vim'
+	"cmake
+	NeoBundleLazy 'jalcine/cmake.vim', {
+		\ "autoload": {
+		\	"filetypes": ["cmake"],
+		\ },
+		\ "build": {
+		\	"mac": "rake",
+		\	"unix": "rake",
+		\ }}
 	"git
 	NeoBundle 'tpope/vim-fugitive'
 	NeoBundle 'gregsexton/gitv'
@@ -274,6 +283,13 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/lightline.vim" )
   source ~/.vim/plugin_settings/lightline.vim
+endif
+
+"---------------------------------------------------------
+" cmake
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/cmake.vim" )
+  source ~/.vim/plugin_settings/cmake.vim
 endif
 
 "---------------------------------------------------------
