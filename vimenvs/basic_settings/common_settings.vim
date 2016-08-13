@@ -168,14 +168,14 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundle 'vim-scripts/taglist.vim'
 	NeoBundle 'itchyny/lightline.vim'
 	"cmake
-	NeoBundleLazy 'jalcine/cmake.vim', {
-		\ "autoload": {
-		\	"filetypes": ["cmake"],
-		\ },
-		\ "build": {
-		\	"mac": "rake",
-		\	"unix": "rake",
-		\ }}
+	"NeoBundleLazy 'jalcine/cmake.vim', {
+	"	\ "autoload": {
+	"	\	"filetypes": ["cmake"],
+	"	\ },
+	"	\ "build": {
+	"	\	"mac": "rake",
+	"	\	"unix": "rake",
+	"	\ }}
 	"git
 	NeoBundle 'tpope/vim-fugitive'
 	NeoBundle 'gregsexton/gitv'
