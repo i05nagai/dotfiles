@@ -184,7 +184,7 @@ abbr namespace2 target header
 		//private members
 		private:
 		}; // class $3$4 {
-	} // namespace $1 { namespace $2 {
+	} } // namespace $1 { namespace $2 {
 
 snippet targetsource2
 abbr namespace2 target source
@@ -192,7 +192,7 @@ abbr namespace2 target source
 
 	namespace ${2:namespace} { namespace ${3:namespace} {
 		${0:mfunc}
-	} // namespace $2 { namespace $3 {
+	} } // namespace $2 { namespace $3 {
 
 snippet     targetiheader
 abbr        namespace target interface header
@@ -242,7 +242,7 @@ options     head
 		//private members
 		private:
 		}; // class $3$4 {
-	} // namespace $1 { namespace $2 {
+	} } // namespace $1 { namespace $2 {
 
 snippet targetisource2
 abbr namespace2 target interface source
@@ -250,7 +250,7 @@ abbr namespace2 target interface source
 
 	namespace ${2:namespace} { namespace ${3:namespace} {
 		${0:mfunc}
-	} // namespace $2 { namespace $3 {
+	} } // namespace $2 { namespace $3 {
 
 include cppunit.snip
 include gmock.snip

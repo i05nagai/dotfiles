@@ -42,3 +42,47 @@ options     head
 		private:
 		};
 	} // namespace $2
+
+snippet     gmockinterface
+abbr        gmock for interface class
+options     head
+	#pragma once
+	
+	#include "${1:/path/to/targe}"
+	#include <gmock/gmock.h>
+
+	namespace ${2:namespace} { namespace ${3:namespace} { 
+		using ::testing::_;
+		using ::testing::Invoke;
+		class ${4:MockName} : public ${5:TargetClass} {
+		//private typedef
+		private:
+		//public typedef
+		public:
+		//public function
+		public:
+			//MOCK_CONST_METHOD0(doGetData, double());
+
+			void delegateToDefault()
+			{
+				ON_CALL(*this, doClone())
+					.WillByDefault(Invoke(this, &$4::doCloneMock));
+				ON_CALL(*this, doEqual())
+					.WillByDefault(Invoke(this, &$4::doEqualeMock));
+			}
+
+			$4* doCloneMock()
+			{
+				return new $4();
+			}
+
+			bool doEqualeMock(const $4& other)
+			{
+				return true;
+			}
+		//private function
+		private:
+		//private members
+		private:
+		};
+	} } // namespace $2 { namespace $3 {

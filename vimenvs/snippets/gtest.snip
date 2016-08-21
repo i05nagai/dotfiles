@@ -4,7 +4,7 @@ options     head
 	#include "pre_compiled_header.h"
 	#include <gtest/gtest.h>
 
-	int main(int argc, char **aragv)
+	int main(int argc, char **argv)
 	{
 		::testing::InitGoogleTest(&argc, argv);
 
@@ -51,7 +51,7 @@ options     head
 			
 			//target::Target _target;
 		}; // class $3 : public ::testing::Test {
-	} // namespace $1 { namespace $2 {
+	} } // namespace $1 { namespace $2 {
 
 snippet     gtestsource
 abbr        namespace test interface header
@@ -63,12 +63,15 @@ options     head
 		$3::$3() 
 	    {
 		}
+
 		$3::~$3() 
 		{
 	    }
+
 		void $3::SetUp()
 		{
 	    }
+
 		void $3::TearDown()
 		{
 	    }
@@ -89,21 +92,24 @@ options     head
 		$3::$3() 
 	    {
 		}
+		
 		$3::~$3() 
 		{
 	    }
+
 		void $3::SetUp()
 		{
 	    }
+		
 		void $3::TearDown()
 		{
 	    }
 
-		TEST_F($4, ${6:TestName})
+		TEST_F($3, ${6:TestName})
 		{
 			${0:TARGET}
 		}
-	} // namespace $4 { namespace $5 {
+	} } // namespace $4 { namespace $5 {
 
 snippet gtestf
 abbr    TEST_F
