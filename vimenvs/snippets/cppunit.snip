@@ -1,0 +1,50 @@
+
+snippet     xunitmain
+abbr        int main(...
+options     head
+    #include <cppunit/ui/text/TestRunner.h>
+    #include <cppunit/extensions/TestFactoryRegistry.h>
+
+    int main(int argc, char const* argv[])
+    {
+        CppUnit::TextUi::TestRunner runner;
+        runner.addTest(
+            CppUnit::TestFactoryRegistry::getRegistry().makeTest());
+        bool retcode = runner.run();
+
+        return !retcode;
+    }
+
+snippet     xunitheader
+abbr        testclass
+    #ifndef ${1}_TEST_H_INCLUDED
+    #define $1_TEST_H_INCLUDED
+
+    #include <cppunit/extensions/HelperMacros.h>
+
+    #include <boost/shared_ptr.hpp>
+
+    #include <${2:test target}>
+
+    namespace ${3:test namespace}_test {
+
+        class ${4:TestClassName} : public CppUnit::TestFixture {
+            CPPUNIT_TEST_SUITE($4);
+            CPPUNIT_TEST(${0:test function});
+            CPPUNIT_TEST_SUITE_END();
+
+        public:
+            $4();
+            ~$4();
+
+            void setUp();
+            void tearDown();
+                
+        private:
+
+        };  
+
+        CPPUNIT_TEST_SUITE_REGISTRATION($4);
+    } // namespace smoking_test
+
+    #endif

@@ -1,0 +1,113 @@
+snippet     gtestmain
+abbr        gtest main
+options     head
+	#include "pre_compiled_header.h"
+	#include <gtest/gtest.h>
+
+	int main(int argc, char **aragv)
+	{
+		::testing::InitGoogleTest(&argc, argv);
+
+		return RUN_ALL_TESTS();
+	}
+
+snippet     gtestheader
+abbr        namespace test interface header
+options     head
+	#pragma once
+	#include <gtest/gtest.h>	
+	namespace ${1:namespace} {
+		class ${2:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`} : public ::testing::Test {
+		protected:
+			//set-up
+			$2();
+			//clean-up does not throw exceptions
+			virtual ~$2();
+			//called before every test immediately after constructor
+			virtual void SetUp();
+			//called after every test before destructor
+			virtual void TearDown();
+			
+			//target::Target _target;
+		}; // class $2 : public ::testing::Test {
+	} // namespace $1
+
+snippet     gtestheader2
+abbr        namespace test interface header
+options     head
+	#pragma once
+	#include <gtest/gtest.h>	
+	namespace ${1:namespace} { namespace ${2:namespace} {
+		class ${3:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`} : public ::testing::Test {
+		protected:
+			//set-up
+			$3();
+			//clean-up does not throw exceptions
+			virtual ~$3();
+			//called before every test immediately after constructor
+			virtual void SetUp();
+			//called after every test before destructor
+			virtual void TearDown();
+			
+			//target::Target _target;
+		}; // class $3 : public ::testing::Test {
+	} // namespace $1 { namespace $2 {
+
+snippet     gtestsource
+abbr        namespace test interface header
+options     head
+	#include "${1:target}/pre_compiled_header.h"
+	#include "${2:path/to/test}/${3:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}.h"
+	
+	namespace ${4:namespace} {
+		$3::$3() 
+	    {
+		}
+		$3::~$3() 
+		{
+	    }
+		void $3::SetUp()
+		{
+	    }
+		void $3::TearDown()
+		{
+	    }
+
+		TEST_F($4, ${5:TestName})
+		{
+			${0:TARGET}
+		}
+	} // namespace $4
+
+snippet     gtestsource2
+abbr        gtest source2
+options     head
+	#include "${1:target}/pre_compiled_header.h"
+	#include "${2:path/to/test}/${3:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}.h"
+	
+	namespace ${4:namespace} { namespace ${5:namespace} {
+		$3::$3() 
+	    {
+		}
+		$3::~$3() 
+		{
+	    }
+		void $3::SetUp()
+		{
+	    }
+		void $3::TearDown()
+		{
+	    }
+
+		TEST_F($4, ${6:TestName})
+		{
+			${0:TARGET}
+		}
+	} // namespace $4 { namespace $5 {
+
+snippet gtestf
+abbr    TEST_F
+	TEST_F(${1:test class}, ${2:test name})
+	 {
+		 ${0}
+	 }
