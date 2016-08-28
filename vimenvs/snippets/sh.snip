@@ -1,0 +1,79 @@
+snippet     usage
+abbr        usage
+	function usage {
+	    cat <<EOF
+	${1:basename} is a tool for ...
+
+	Usage:
+	    $1 [command] [<options>]
+
+	Options:
+		--version, -v     print $1 version
+		--help, -h        print this
+	EOF
+	}
+
+snippet     version
+abbr        version
+	function version {
+		echo "basename${0} version 0.0.1"
+	}    
+	
+snippet     subcommand
+abbr        subcommand
+	case \${1} in
+		start)
+			start
+		;;
+
+		stop)
+			stop
+		;;
+
+		restart)
+			start && stop
+		;;
+
+		help|--help|-h)
+			usage
+		;;
+
+		version|--version|-v)
+			version
+		;;
+		
+		*)
+			echo "[ERROR] Invalid subcommand '\${1}'"
+			usage
+			exit 1
+		;;
+	esac
+	
+snippet     option
+abbr        option
+	while [ $# -gt 0 ];
+	do
+		case \${1} in
+			--debug|-d)
+				set -x
+			;;
+
+			--help|-h)
+				usage
+				exit 0
+			;;
+
+			--version|-v)
+				version
+				exit 0
+			;;
+
+			*)
+				echo "[ERROR] Invalid option '\${1}'"
+				usage
+				exit 1
+			;;
+		esac
+		shift
+	done	
+
