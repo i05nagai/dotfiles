@@ -10,5 +10,6 @@
 	s = status
 	initial-commit = commit --allow-empty -m 'Initial commit'
 	alias = !git config --get-regexp alias
+	make-patch = diff --no-prefix
 [color]
 	ui = auto
