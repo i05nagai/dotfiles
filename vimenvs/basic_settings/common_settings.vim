@@ -196,20 +196,12 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	      \   "filetypes": ["python", "python3", "djangohtml"],
 	      \ },
 	      \ "build": {
-	      \   "mac": "pip install jedi",
-	      \   "unix": "pip install jedi",
 	      \ }}
 	"powershell
 	NeoBundle 'PProvost/vim-ps1'
+	"coffee script
+	NeoBundle 'kchmck/vim-coffee-script'
 	"C#
-	NeoBundleLazy 'nosami/Omnisharp', {
-	\   'autoload': {'filetypes': ['cs']},
-	\   'build': {
-	\     'windows': 'MSBuild.exe server/OmniSharp.sln /p:Platform="Any CPU"',
-	\     'mac': 'xbuild server/OmniSharp.sln',
-	\     'unix': 'xbuild server/OmniSharp.sln',
-	\   }
-	\ }
 call neobundle#end()
 
 "vi上から、:NeoBundleInstallで.vmrcのNeoBundleで指定されているリポジトリのプラグインをインストールできる。
@@ -332,6 +324,14 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/jedi-vim.vim" )
   source ~/.vim/plugin_settings/jedi-vim.vim
+endif
+
+
+"---------------------------------------------------------
+" vim-coffee-script
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/vim-coffee-script.vim" )
+  source ~/.vim/plugin_settings/vim-coffee-script.vim
 endif
 
 if filereadable( $HOME . "/.vim/envs.vim" )
