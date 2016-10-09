@@ -42,9 +42,50 @@ snippet     RNdim
 abbr        \mathbb{R}^{?}
 	\mathbb{R}^{${1}}${0}
 
-snippet     Rdim
-abbr        \mathbb{R}
-	\mathbb{R}${0}
+snippet     natural_number
+abbr        Natural Number
+	\mathbb{N}
+
+snippet     integer
+abbr        integer
+	\mathbb{Z}
+
+snippet     real_number
+abbr        real number
+	\mathbb{R}
+
+snippet     limit
+abbr        limit superior
+	\lim_{${1} \rightarrow \infty} ${0}
+
+snippet     limit_superior
+abbr        limit superior
+	\limsup_{${1} \rightarrow \infty} ${0}
+
+snippet     limit_inferior
+abbr        limit inferior
+	\liminf_{${1} \rightarrow \infty} ${0}
+
+##### Set
+snippet     set_limit_superior
+abbr        limit superior
+	\bigcap_{n = 1}^{\infty}\bigcup_{m = n}^{\infty} ${0}
+
+snippet     set_limit_inferior
+abbr        limit inferior
+	\bigcup_{n = 1}^{\infty}\bigcap_{m = n}^{\infty} ${0}
+
+snippet     set_intersection
+abbr        set intersection
+	\bigcap_{${1}}^{${2}} ${0}
+
+snippet     set_union
+abbr        set union
+	\bigcup_{${1}}^{${2}} ${0}
+
+snippet     set
+abbr        set
+	\left\{ ${1} \mid ${2} \right\} ${0}
 
 snippet     equation
 abbr        \begin{equation} \end{equation}
@@ -80,18 +121,6 @@ abbr        \begin{eqnarray*} \end{eqnarray*}
 		${1}
 	\end{eqnarray*}
 	${0}
-
-snippet     natural_number
-abbr        Natural Number
-	\mathbb{N}
-
-snippet     integer
-abbr        integer
-	\mathbb{Z}
-
-snippet     real_number
-abbr        real number
-	\mathbb{R}
 
 snippet     def_jacobian_matrix
 abbr        definition of jacobian matrix
