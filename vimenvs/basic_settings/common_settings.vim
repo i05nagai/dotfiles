@@ -150,6 +150,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundle 'Shougo/neosnippet-snippets'
 	NeoBundle 'Shougo/unite.vim'
 	NeoBundle 'tsukkee/unite-tag'
+	NeoBundle 'hewes/unite-gtags'
 	NeoBundle 'Shougo/vimproc', {
 	  \ 'build' : {
 		\ 'windows' : 'make -f make_mingw64.mak',
@@ -212,6 +213,13 @@ call neobundle#end()
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/unite.vim" )
   source ~/.vim/plugin_settings/unite.vim
+endif
+
+"---------------------------------------------------------
+"unite-gtags
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/unite-gtags.vim" )
+  source ~/.vim/plugin_settings/unite-gtags.vim
 endif
 
 "---------------------------------------------------------
