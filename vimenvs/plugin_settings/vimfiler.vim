@@ -3,6 +3,10 @@
 nnoremap [VIMFILER]  <Nop>
 nmap <Space>f [VIMFILER]
 
+"show keymap
+nnoremap [VIMFILER] :<C-u>map [VIMFILER]<CR>
+
+
 "現在開いているバッファのディレクトリを開く
 nnoremap <silent> [VIMFILER]e :<C-u>VimFilerBufferDir -quit<CR>
 ""現在開いているバッファをIDE風に開く

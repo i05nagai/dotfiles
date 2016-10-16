@@ -3,6 +3,8 @@
 nnoremap [NEXTALTER]  <Nop>
 nmap <Space>n [NEXTALTER]
 
+nnoremap [NEXTALTER] :<C-u>map [NEXTALTER]<CR>
+
 nmap [NEXTALTER]o <Plug>(next-alter-open)
 
 " key is file extension, value is alternate file extension.
