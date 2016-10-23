@@ -186,6 +186,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundle 'vim-latex/vim-latex'
 	"markdown
 	NeoBundle 'i05nagai/previm'
+	NeoBundle 'mzlogin/vim-markdown-toc'
 	"C++
 	NeoBundleLazy 'rhysd/unite-n3337', {
 				\ 'depends' : 'Shougo/unite.vim',
@@ -325,6 +326,13 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/previm.vim" )
   source ~/.vim/plugin_settings/previm.vim
+endif
+
+"---------------------------------------------------------
+" markdonw-toc
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/markdown-toc.vim" )
+  source ~/.vim/plugin_settings/markdown-toc.vim
 endif
 
 "---------------------------------------------------------
