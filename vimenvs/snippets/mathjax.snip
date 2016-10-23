@@ -46,6 +46,44 @@ snippet     natural_number
 abbr        Natural Number
 	\mathbb{N}
 
+#Symbols
+snippet     left(
+abbr        left( right)
+	\left(
+	    ${1:inner}
+	\right)
+	${2:outer}
+	
+snippet     left{
+abbr        left{ right}
+	\left\{
+	    ${1:inner}
+	\right\}
+	${2:outer}
+	
+snippet     left[
+abbr        left[ right]
+	\left[
+	    ${1:inner}
+	\right]
+	${2:outer}
+
+snippet     eqref
+abbr        $eqref{}$
+	$\eqref{${1}}$${0}
+	
+snippet     frac
+abbr        frac{}{}
+	\frac{${1:numerator}}{${2:denominator}}${3:outer}
+
+snippet     summation
+abbr        summation 
+	\sum_{${1:init}}^{${2:cond}} ${3:summand}
+	
+snippet     product
+abbr        prod_{}^{}
+	\prod_{${1}}^{${2}}${3}
+
 snippet     integer
 abbr        integer
 	\mathbb{Z}
@@ -53,6 +91,41 @@ abbr        integer
 snippet     real_number
 abbr        real number
 	\mathbb{R}
+
+snippet     integral
+abbr        interal with interval
+	\int_{${1:lower}}^{${2:upper}} ${3:integrand}\ d${4:variable}
+
+snippet     integral_without_interval
+abbr        interal with interval
+	\int ${1:integrand}\ d${2:variable}
+
+snippet     derivative
+abbr        frac{d }{ d}
+	\frac{d${1:numerator}}{d${2:denominator}} ${0:outer}
+
+snippet     partial_derivative
+abbr        frac{partial }{partial }
+	\frac{\partial${1:numerator}}{\partial${2:denominator}} ${0:outer}
+
+snippet     expectation
+abbr        E[ | ]
+	E^{${1:measure}}
+	\left[
+		${2}
+	\right]
+	${3}
+
+snippet     conditional_expectation
+abbr        E[ | ]
+	E
+	\left[
+	\left.
+		${1}
+	\right|
+		${2:condition}
+	\right]
+	${3}
 
 snippet     limit
 abbr        limit superior
