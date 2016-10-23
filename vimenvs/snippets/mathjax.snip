@@ -109,8 +109,8 @@ abbr        frac{partial }{partial }
 	\frac{\partial${1:numerator}}{\partial${2:denominator}} ${0:outer}
 
 snippet     expectation
-abbr        E[ | ]
-	E^{${1:measure}}
+abbr        E[ ]
+	\mathrm{E}^{${1:measure}}
 	\left[
 		${2}
 	\right]
@@ -118,12 +118,20 @@ abbr        E[ | ]
 
 snippet     conditional_expectation
 abbr        E[ | ]
-	E
+	\mathrm{E}
 	\left[
 	\left.
 		${1}
 	\right|
 		${2:condition}
+	\right]
+	${3}
+
+snippet     variance
+abbr        mathrm{Var}^{}[ ]
+	\mathrm{Var}^{${1:measure}}
+	\left[
+		${2}
 	\right]
 	${3}
 
