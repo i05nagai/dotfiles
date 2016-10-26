@@ -49,6 +49,7 @@ abbr        Natural Number
 #Symbols
 snippet     left(
 abbr        left( right)
+options		word
 	\left(
 	    ${1:inner}
 	\right)
@@ -56,6 +57,7 @@ abbr        left( right)
 	
 snippet     left{
 abbr        left{ right}
+options		word
 	\left\{
 	    ${1:inner}
 	\right\}
@@ -63,37 +65,60 @@ abbr        left{ right}
 	
 snippet     left[
 abbr        left[ right]
+options		word
 	\left[
 	    ${1:inner}
 	\right]
 	${2:outer}
 
+snippet     ()
+abbr        ( )
+options		word
+	(${1})${0}
+
+snippet     {}
+abbr        { }
+options		word
+	{${1}}${0}
+
+snippet     []
+abbr        [ ]
+options		word
+	[${1}]${0}
+
 snippet     eqref
 abbr        $eqref{}$
+options		word
 	$\eqref{${1}}$${0}
 	
 snippet     frac
 abbr        frac{}{}
+options		word
 	\frac{${1:numerator}}{${2:denominator}}${3:outer}
 
 snippet     summation
 abbr        summation 
+options		word
 	\sum_{${1:init}}^{${2:cond}} ${3:summand}
 	
 snippet     product
 abbr        prod_{}^{}
+options		word
 	\prod_{${1}}^{${2}}${3}
 
 snippet     integer
 abbr        integer
+options		word
 	\mathbb{Z}
 
 snippet     real_number
 abbr        real number
+options		word
 	\mathbb{R}
 
 snippet     integral
 abbr        interal with interval
+options		word
 	\int_{${1:lower}}^{${2:upper}} ${3:integrand}\ d${4:variable}
 
 snippet     integral_without_interval
@@ -146,6 +171,11 @@ abbr        limit superior
 snippet     limit_inferior
 abbr        limit inferior
 	\liminf_{${1} \rightarrow \infty} ${0}
+
+snippet     transpose
+abbr        ^{mathrm{T}}
+options		word
+	^{\mathrm{T}}
 
 ##### Set
 snippet     set_limit_superior
@@ -244,3 +274,17 @@ abbr        defnition of upper matrix
 			0         & 0         & \ldots    &        & u_{N}^{M}
 			\end{array}
 		\right)
+
+## finance
+snippet     def_libar_market_model_stochastic_volatility
+abbr        defnition of Libor Market Model with stochastic volatility
+	\begin{eqnarray}
+		dL_{n}(t) 
+			& = & \sqrt{z(t)}\phi(L_{n}(t)) \lambda_{n}(t) ^{\mathrm{T}} dW^{T_{n+1}}(t),
+			\\
+		d z(t)
+			& = & \theta(z_{0} - z(t)) dt + \eta(t) \sqrt{z(t)} dZ(t), z(0) = z_{0} = 1,
+			\\
+		\langle dW^{T_{n+1}}(t), dZ(t) \rangle
+			& = & 0
+	\end{eqnarray}
