@@ -35,15 +35,28 @@ abbr        matrix5
 	${0}
 
 snippet     derivative
-abbr        partial derivative
-	\frac{\partial ${1}}{\partial ${2}}${0}
+abbr        derivative
+options		word
+	\frac{d ${1}}{d ${2}}${0}
 
-snippet     RNdim
+snippet     real_number_d
 abbr        \mathbb{R}^{?}
+options		word
 	\mathbb{R}^{${1}}${0}
+
+snippet     real_number
+abbr        real Number
+options		word
+	\mathbb{R}
+
+snippet     natural_number_d
+abbr        mathbb{N}^{?}
+options		word
+	\mathbb{N}^{${1}}${0}
 
 snippet     natural_number
 abbr        Natural Number
+options		word
 	\mathbb{N}
 
 #Symbols
@@ -69,6 +82,14 @@ options		word
 	\left[
 	    ${1:inner}
 	\right]
+	${2:outer}
+
+snippet     left_norm
+abbr        left| right|
+options		word
+	\left\|
+	    ${1:inner}
+	\right\|
 	${2:outer}
 
 snippet     ()
@@ -135,14 +156,21 @@ abbr        frac{partial }{partial }
 
 snippet     expectation
 abbr        E[ ]
+options		word
 	\mathrm{E}^{${1:measure}}
 	\left[
 		${2}
 	\right]
 	${3}
 
+snippet     expectation_without_parenthesis
+abbr        E
+options		word
+	\mathrm{E}^{${1:measure}}${2}
+
 snippet     conditional_expectation
 abbr        E[ | ]
+options		word
 	\mathrm{E}
 	\left[
 	\left.
@@ -232,6 +260,28 @@ abbr        \begin{eqnarray*} \end{eqnarray*}
 		${1}
 	\end{eqnarray*}
 	${0}
+
+snippet     tilde
+abbr        tilde{}
+options     word
+	\tilde{${1}}${0}
+
+snippet     bar
+abbr        bar{}
+options     word
+	\bar{${1}}${0}
+
+snippet     mathrm
+abbr        mathrm{}
+options     word
+	\mathrm{${1}}${0}
+
+snippet     label
+abbr        label{}
+options     word
+	\label{${1}}${0}
+
+##### definition
 
 snippet     def_jacobian_matrix
 abbr        definition of jacobian matrix
