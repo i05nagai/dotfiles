@@ -23,5 +23,47 @@ abbr        nose test
         def teardown(self):
             pass
         
-        def test_${3:test_case}:
+        def test_${3:test_case}(self):
             ${0:end}
+
+
+snippet     pytest_class
+abbr        pytest class 
+options     word
+    
+    class Test${2:Name}:
+
+        # before all tests starts
+        @classmethod
+        def setup_class(cls):
+            pass
+        
+        # after all tests finish
+        @classmethod
+        def teardown_class(cls):
+            pass
+        
+        # before each test start
+        def setup(self):
+            pass
+        
+        # after each test finish
+        def teardown(self):
+            pass
+        
+        def test_${3:test_case}(self):
+            ${0:end}
+
+snippet     pytest_func
+abbr        pytest function
+options     word
+    def test_${1:name}():
+        ${0:end}
+
+snippet     pytest_parameter
+abbr        pytest.mark.parametrize
+options     word
+    @pytest.mark.parametrize("${1:params}, expect", [
+        (${2:param_value}, ${3:expect}),${0:end}
+    ])
+    
