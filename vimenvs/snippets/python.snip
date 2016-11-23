@@ -1,69 +1,175 @@
+include sphinx.snip
+include python_pytest.snip
 
+snippet shebang
+    #!/usr/bin/env python
+    # -*- coding: utf-8 -*-
 
-snippet     nose_test
-abbr        nose test
-    ${1:import}
-    
-    class Test${2:Name}:
-        # before all tests starts
-        @classmethod
-        def setup_class(clazz):
-            pass
-        
-        # after all tests finish
-        @classmethod
-        def teardown_class(clazz):
-            pass
-        
-        # before each test start
-        def setup(self):
-            pass
-        
-        # after each test finish
-        def teardown(self):
-            pass
-        
-        def test_${3:test_case}(self):
-            ${0:end}
+snippet shebang3
+    #!/usr/bin/env python3
+    # -*- coding: utf-8 -*-
 
+snippet import
+    import ${0:module}
 
-snippet     pytest_class
-abbr        pytest class 
-options     word
-    
-    class Test${2:Name}:
+snippet unicode
+    def __unicode__(self):
+        ${0:representation}
 
-        # before all tests starts
-        @classmethod
-        def setup_class(cls):
-            pass
-        
-        # after all tests finish
-        @classmethod
-        def teardown_class(cls):
-            pass
-        
-        # before each test start
-        def setup(self):
-            pass
-        
-        # after each test finish
-        def teardown(self):
-            pass
-        
-        def test_${3:test_case}(self):
-            ${0:end}
+snippet import_from
+    from ${1:package} import ${0:module}
 
-snippet     pytest_func
-abbr        pytest function
-options     word
-    def test_${1:name}():
-        ${0:end}
+# Module Docstring
+snippet docs_module
+    """
+    File: ${1:`vim_snippets#Filename('$1.py', 'foo.py')`}
+    Author: `g:snips_author`
+    Email: `g:snips_email`
+    Github: `g:snips_github`
+    Description: ${0}
+    """
 
-snippet     pytest_parameter
-abbr        pytest.mark.parametrize
-options     word
-    @pytest.mark.parametrize("${1:params}, expect", [
-        (${2:param_value}, ${3:expect}),${0:end}
-    ])
-    
+snippet while
+    while ${1:condition}:
+        ${0}
+
+snippet do_while
+    while True:
+        ${1}
+        if ${0:condition}:
+            break
+
+snippet with
+    with ${1:expr} as ${2:var}:
+        ${0}
+
+# New Class
+snippet cl
+    class ${1:ClassName}(${2:object}):
+        """${3:docstring for $1}"""
+        def __init__(self, ${4:arg}):
+            ${5:super($1, self).__init__()}
+            self.$4 = $4
+            ${0}
+
+# New Function
+snippet def
+    def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
+        ${0}
+
+# New Method
+snippet def_method
+    def ${1:mname}(self, ${2:arg}):
+        ${0}
+
+# New Property
+snippet def_property
+    def ${1:foo}():
+        doc = "${2:The $1 property.}"
+        def fget(self):
+            ${3:return self._$1}
+        def fset(self, value):
+            ${4:self._$1 = value}
+        def fdel(self):
+            ${0:del self._$1}
+        return locals()
+    $1 = property(**$1())
+
+# Ifs
+snippet if
+    if ${1:condition}:
+        ${0}
+snippet else
+    else:
+        ${0}
+
+snippet elif
+    elif ${1:condition}:
+        ${0}
+
+# For
+snippet for
+    for ${1:item} in ${2:items}:
+        ${0}
+
+# Encodes
+snippet utf8
+    # -*- coding: utf-8 -*-
+
+snippet try_except
+    try:
+        ${1}
+    except ${2:Exception}, ${3:e}:
+        ${0:raise $3}
+
+snippet try_except_else
+    try:
+        ${1}
+    except ${2:Exception}, ${3:e}:
+        ${4:raise $3}
+    else:
+        ${0}
+
+snippet try_except_finally
+    try:
+        ${1}
+    except ${2:Exception}, ${3:e}:
+        ${4:raise $3}
+    finally:
+        ${0}
+
+snippet try_except_else_finally
+    try:
+        ${1}
+    except ${2:Exception}, ${3:e}:
+        ${4:raise $3}
+    else:
+        ${5}
+    finally:
+        ${0}
+
+# if __name__ == '__main__':
+snippet main
+    if __name__ == '__main__':
+        ${0:main()}
+
+snippet """
+    """${0:doc}
+    """
+
+snippet commandline_argument
+    try:
+        # Short option syntax: "hv:"
+        # Long option syntax: "help" or "verbose="
+        opts, args = getopt.getopt(sys.argv[1:], "${1:short_options}", [${2:long_options}])
+
+    except getopt.GetoptError, err:
+        # Print debug info
+        print str(err)
+        ${3:error_action}
+
+    for option, argument in opts:
+        if option in ("-h", "--help"):
+            ${0}
+        elif option in ("-v", "--verbose"):
+            verbose = argument
+
+snippet log
+    import logging
+    logger = logging.getLogger(${0:__name__})
+
+snippet log_error
+    logger.error(${0:msg})
+
+snippet log_debug
+    logger.debug(${0:msg})
+
+snippet log_warning
+    logger.warning(${0:msg})
+
+snippet log_critical
+    logger.critical(${0:msg})
+
+snippet log_info
+    logger.info(${0:msg})
+
