@@ -1,3 +1,80 @@
 include mathjax.snip
 include rst.snip
 
+snippet     param
+abbr        :param type name:
+options     word
+    :param ${1:type} ${2:name}:${0}
+    
+snippet     param_and_type
+abbr        :param type name:
+options     word
+    :param ${1:name}:${2:description}
+    :type: ${3:description}
+    ${0}
+
+snippet     return
+abbr        :retrun: 
+options     word
+    :return: ${1}
+    ${0}
+
+snippet     return_with_type
+abbr        :retrun: :rtype:
+options     word
+    :return: ${1}
+    :rtype: ${2}
+    ${0}
+
+snippet     raise
+abbr        :raise:
+options     word
+    :raise ${1:error}: ${2:description}
+    ${0}
+
+snippet     reference_module
+abbr        :py:mod:
+options     word
+    :py:mod:\`${1:name}\`${0}
+
+snippet     reference_func
+abbr        :py:func:
+options     word
+    :py:func:\`${1:name}\`${0}
+
+snippet     reference_data
+abbr        :py:data:
+options     word
+    :py:data:\`${1:name}\`${0}
+
+snippet     reference_const
+abbr        :py:const:
+options     word
+    :py:const:\`${1:name}\`${0}
+
+snippet     reference_class
+abbr        :py:class:
+options     word
+    :py:class:\`${1:name}\`${0}
+
+snippet     reference_method
+abbr        :py:meth:
+options     word
+    :py:meth:\`${1:name}\`${0}
+
+snippet     reference_attribute
+abbr        :py:attr:
+options     word
+    :py:attr:\`${1:name}\`${0}
+
+snippet     reference_exception
+abbr        :py:exc:
+options     word
+    :py:exc:\`${1:name}\`${0}
+
+# object of which type is not specified
+snippet     reference_object
+abbr        :py:obj:
+options     word
+    :py:obj:\`${1:name}\`${0}
+
