@@ -112,10 +112,20 @@ abbr        $eqref{}$
 options		word
 	$\eqref{${1}}$${0}
 	
-snippet     frac
+snippet     frac_inline
 abbr        frac{}{}
 options		word
 	\frac{${1:numerator}}{${2:denominator}}${3:outer}
+
+snippet     frac
+abbr        frac{ }{ }
+options		word
+	\frac{
+		${1:numerator}
+	}{
+		${2:denominator}
+	}
+	${3:outer}
 
 snippet     summation
 abbr        summation 
@@ -200,7 +210,7 @@ snippet     limit_inferior
 abbr        limit inferior
 	\liminf_{${1} \rightarrow \infty} ${0}
 
-snippet     transpose
+snippet     \transpose
 abbr        ^{mathrm{T}}
 options		word
 	^{\mathrm{T}}
@@ -260,6 +270,22 @@ abbr        \begin{eqnarray*} \end{eqnarray*}
 		${1}
 	\end{eqnarray*}
 	${0}
+
+snippet     array
+abbr        begin{array}{} \end{array}
+options     word
+	\begin{array}{${1}}
+		${2} & ${3}
+	\end{array}
+
+snippet     matrix
+abbr        (begin{array}{} \end{array})
+options     word
+	\left(
+		\begin{array}{${1}}
+			${2} & ${3}
+		\end{array}
+	\right)
 
 snippet     tilde
 abbr        tilde{}
