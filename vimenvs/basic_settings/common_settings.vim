@@ -42,6 +42,10 @@ set t_Co=256
 "nocompatible with vi
 set nocompatible
 
+" spell check laguage excluded japanese
+" :set spell if you want to check spell
+set spelllang=en,cjk
+
 
 "---------------------------------------------------------
 "key bind
@@ -168,6 +172,9 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundle 'LeafCage/yankround.vim'
 	NeoBundle 'vim-scripts/taglist.vim'
 	NeoBundle 'itchyny/lightline.vim'
+	"text-object
+	NeoBundle 'kana/vim-textobj-user'
+	NeoBundle "bps/vim-textobj-python"
 	"cmake
 	"NeoBundleLazy 'jalcine/cmake.vim', {
 	"	\ "autoload": {
@@ -180,6 +187,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	"git
 	NeoBundle 'tpope/vim-fugitive'
 	NeoBundle 'gregsexton/gitv'
+	"github
+	NeoBundle 'rhysd/github-complete.vim'
 	"doxygen
 	NeoBundle 'vim-scripts/DoxygenToolkit.vim'
 	"latex
@@ -198,12 +207,37 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	      \   "filetypes": ["python", "python3", "djangohtml"],
 	      \ },
 	      \ "build": {
+	      \   "mac": "",
+	      \   "unix": "",
 	      \ }}
+	NeoBundleLazy "andviro/flake8-vim", {
+	      \ "autoload": {
+	      \   "filetypes": ["python", "python3", "djangohtml"],
+	      \ },
+	      \ }
+	NeoBundleLazy "hynek/vim-python-pep8-indent", {
+	      \ "autoload": {
+	      \   "filetypes": ["python", "python3", "djangohtml"],
+	      \ },
+	      \ }
+	NeoBundleLazy "heavenshell/vim-pydocstring", {
+	      \ "autoload": {
+	      \   "filetypes": ["python", "python3", "djangohtml"],
+	      \ },
+	      \ }
 	"powershell
 	NeoBundle 'PProvost/vim-ps1'
 	"coffee script
 	NeoBundle 'kchmck/vim-coffee-script'
 	"C#
+	"NeoBundleLazy 'nosami/Omnisharp', {
+	"\   'autoload': {'filetypes': ['cs']},
+	"\   'build': {
+	"\     'windows': 'MSBuild.exe server/OmniSharp.sln /p:Platform="Any CPU"',
+	"\     'mac': 'xbuild server/OmniSharp.sln',
+	"\     'unix': 'xbuild server/OmniSharp.sln',
+	"\   }
+	"\ }
 call neobundle#end()
 
 "vi上から、:NeoBundleInstallで.vmrcのNeoBundleで指定されているリポジトリのプラグインをインストールできる。
@@ -287,6 +321,13 @@ if filereadable( $HOME . "/.vim/plugin_settings/lightline.vim" )
 endif
 
 "---------------------------------------------------------
+" vim-textobj-python
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/vim-textobj-python.vim" )
+  source ~/.vim/plugin_settings/vim-textobj-python.vim
+endif
+
+"---------------------------------------------------------
 " cmake
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/cmake.vim" )
@@ -342,6 +383,26 @@ if filereadable( $HOME . "/.vim/plugin_settings/jedi-vim.vim" )
   source ~/.vim/plugin_settings/jedi-vim.vim
 endif
 
+"---------------------------------------------------------
+" flake8-vim
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/flake8-vim.vim" )
+  source ~/.vim/plugin_settings/flake8-vim.vim
+endif
+
+"---------------------------------------------------------
+" vim-python-pep8-indent
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/vim-python-pep8-indent.vim" )
+  source ~/.vim/plugin_settings/vim-python-pep8-indent.vim
+endif
+
+"---------------------------------------------------------
+" vim-pydocstring
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/vim-pydocstring.vim" )
+  source ~/.vim/plugin_settings/vim-pydocstring.vim
+endif
 
 "---------------------------------------------------------
 " vim-coffee-script
