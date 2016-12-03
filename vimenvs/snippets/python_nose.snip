@@ -1,0 +1,26 @@
+snippet     nose_test
+abbr        nose test
+    ${1:import}
+    
+    class Test${2:Name}:
+        # before all tests starts
+        @classmethod
+        def setup_class(clazz):
+            pass
+        
+        # after all tests finish
+        @classmethod
+        def teardown_class(clazz):
+            pass
+        
+        # before each test start
+        def setup(self):
+            pass
+        
+        # after each test finish
+        def teardown(self):
+            pass
+        
+        def test_${3:test_case}(self):
+            ${0:end}
+
