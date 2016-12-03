@@ -3,6 +3,8 @@ function! s:yaml()
     setlocal shiftwidth=2
 
     setlocal expandtab
+	setlocal softtabstop=0
+	setlocal smarttab
 
     " 括弧を構成する設定に <> を追加する
     " template<> を多用するのであれば
