@@ -3,6 +3,9 @@
 nnoremap [QUICKRUN]  <Nop>
 nmap <Space>q [QUICKRUN]
 
+"show keymap
+nnoremap [QUICKRUN] :map [QUICKRUN]<CR>
+
 "makeの割り当て
 nnoremap [QUICKRUN]m :QuickRun make<CR>
 let g:quickrun_config = {
