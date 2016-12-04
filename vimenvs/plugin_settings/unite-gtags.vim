@@ -3,6 +3,9 @@
 nnoremap [UNITE-GTAGS]  <Nop>
 nmap [UNITE]g [UNITE-GTAGS]
 
+"show keymap
+nnoremap [UNITE-GTAGS] :map [UNITE-GTAGS]<CR>
+
 "You can specify <pattern> as an argument :Unite gtags/ref:<pattern>. 
 nnoremap [UNITE-GTAGS]r :<C-u>Unite gtags/ref
 "Unite gtags/def lists definitions of a word. (It executes global -qd -e <pattern> in internal.)
