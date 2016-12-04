@@ -196,6 +196,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	"markdown
 	NeoBundle 'i05nagai/previm'
 	NeoBundle 'mzlogin/vim-markdown-toc'
+	"restructuredText
+	NeoBundle 'Rykka/riv.vim'
 	"C++
 	NeoBundleLazy 'rhysd/unite-n3337', {
 				\ 'depends' : 'Shougo/unite.vim',
@@ -374,6 +376,13 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/markdown-toc.vim" )
   source ~/.vim/plugin_settings/markdown-toc.vim
+endif
+
+"---------------------------------------------------------
+" riv
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/riv.vim" )
+  source ~/.vim/plugin_settings/riv.vim
 endif
 
 "---------------------------------------------------------
