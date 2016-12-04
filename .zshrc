@@ -7,6 +7,11 @@ if [ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
 	source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 fi
 
+#add completion directory
+fpath=(~/.zsh/completion/docker/ $fpath)
+fpath=(~/.zsh/completion/zsh-completions/src/ $fpath)
+fpath=(~/.zsh/completion/ $fpath)
+
 #autoload
 autoload -Uz compinit
 compinit 
@@ -116,7 +121,6 @@ setopt list_types
 setopt mark_dirs
 #
 setopt no_menu_complete
-
 
 ###Directory
 setopt auto_cd
