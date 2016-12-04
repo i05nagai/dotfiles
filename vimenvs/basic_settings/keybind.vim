@@ -104,7 +104,7 @@ nmap <esc><esc> :<C-u>nohlsearch<CR>
 
 "tag
 "tag jump                                                   
-nnoremap <F3> :tab tag <C-R>=expand('<cword>')<CR><CR>
+"nnoremap <F3> :tab tag <C-R>=expand('<cword>')<CR><CR>
 " tag jamp
-nnoremap <F4> :stj <C-R>=expand('<cword>')<CR><CR> <C-w><S-j><CR>
+"nnoremap <F4> :stj <C-R>=expand('<cword>')<CR><CR> <C-w><S-j><CR>
 
