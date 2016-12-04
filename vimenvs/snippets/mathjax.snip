@@ -107,6 +107,11 @@ abbr        [ ]
 options		word
 	[${1}]${0}
 
+snippet     qed
+abbr        qed
+options     word
+	<div class="QED" style="text-align: right">$\Box$</div>
+
 snippet     eqref
 abbr        $eqref{}$
 options		word
@@ -215,6 +220,11 @@ abbr        ^{mathrm{T}}
 options		word
 	^{\mathrm{T}}
 
+snippet     \inverse
+abbr        ^{-1}
+options		word
+	^{-1}
+
 ##### Set
 snippet     set_limit_superior
 abbr        limit superior
@@ -286,6 +296,11 @@ options     word
 			${2} & ${3}
 		\end{array}
 	\right)
+
+snippet     rank
+abbr        \mathrm{rank}(${1})
+options     word
+	\mathrm{rank}(${1})${0}
 
 snippet     tilde
 abbr        tilde{}
