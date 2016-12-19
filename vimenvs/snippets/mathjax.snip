@@ -267,6 +267,19 @@ abbr        \begin{eqnarray} \end{eqnarray}
 	\end{eqnarray}
 	${0}
 
+snippet     eqnarray_newline_with_nonumber
+abbr        \nonumber \\ & = &
+options     word
+	\nonumber
+	\\
+	& = &
+
+snippet     eqnarray_newline
+abbr        \\ & = &
+options     word
+	\\
+	& = &
+
 snippet     cases
 abbr        cases
 	\begin{cases}	
@@ -379,3 +392,129 @@ abbr        defnition of Libor Market Model with stochastic volatility
 		\langle dW^{T_{n+1}}(t), dZ(t) \rangle
 			& = & 0
 	\end{eqnarray}
+
+snippet     def_black_call_formula
+abbr        definition of black formula for call option
+options     word
+	\begin{eqnarray}
+		c(S, r, T, \sigma; K)
+			& := & S\Phi(d_{1}) - e^{-rT}K\Phi(d_{2}),
+		\\
+		d_{1} 
+			& := &
+				\frac{
+					\ln\left(\frac{S}{K} \right) + (r + \frac{1}{2}\sigma^{2})T
+				}{
+					\sigma \sqrt{T}
+				},
+		\\
+		d_{2}
+			& := & 
+				\frac{
+					\ln\left(\frac{S}{K} \right) + (r - \frac{1}{2}\sigma^{2})T
+				}{
+					\sigma \sqrt{T}
+				}
+	\end{eqnarray}
+
+snippet     def_sabr_model
+abbr        definition of SABR model in integral form
+options     word
+	\begin{eqnarray}
+		S(t) 
+			& = & S(0) + \int_{0}^{t} \alpha(s) S(s)^{\beta} dW_{1}(s),
+		\\
+		\alpha(t) 
+			& = & \alpha(0) + \int_{0}^{t} \nu\alpha(s) dW_{2}(s),
+		\\
+		\langle W_{1}(\cdot), W_{2}(\cdot) \rangle(t)
+			& = & \rho t
+	\end{eqnarray}
+
+snippet     def_sabr_model_diff
+abbr        definition of SABR model in differential form
+options     word
+	\begin{eqnarray}
+		d S(t) 
+			& = & \alpha(t)S(t)^{\beta} dW_{1}(t),
+		\quad
+		S(0) = S,
+		\\
+		d\alpha(t) 
+			& = & \nu \alpha(t) dW_{2}(t),
+		\quad
+		\alpha(0) = \alpha,
+		\\
+		dW_{1}(t)dW_{2}(t) 
+			& = & \rho dt,
+	\end{eqnarray}
+
+snippet     def_sabr_model_implied_vol
+abbr        definition of implied volatility under SABR model
+options     word
+	\begin{eqnarray}
+		\sigma_{B}(K, S; T)
+			& \approx &
+			\frac{
+				\alpha
+			}{
+				(SK)^{(1-\beta)/2}
+				\left(
+					1
+					+ \frac{(1 - \beta)^{2}}{24}
+						\log^{2}\frac{S}{K}
+					+ \frac{(1 - \beta)^{4}}{1920}
+						\log^{4}\frac{S}{K}
+				\right)
+			}
+			\left(
+				\frac{z}{x(z)}
+			\right)
+			\left[
+				1
+				+
+				\left(
+					\frac{(1 - \beta)^{2}}{24}
+						\frac{\alpha^{2}}{(SK)^{1-\beta}}
+					+ \frac{1}{4}
+						\frac{\rho\beta\nu\alpha}{(SK)^{(1-\beta)/2}}
+					+ \frac{2 - 3\rho^{2}}{24}\nu^{2}
+				\right) T
+			\right],
+		\\
+		z 
+			& := &
+			\frac{\nu}{\alpha}
+				(SK)^{(1-\beta)/2}
+				\log\left( \frac{S}{K} \right),
+		\\
+		x(z) 
+			& := &
+				\log
+				\left(
+					\frac{
+						\sqrt{1 - 2\rho z + z^{2}} + z - \rho
+					}{
+						1 - \rho
+					}
+				\right)
+	\end{eqnarray}
+
+snippet     def_sabr_model_atm_implied_vol
+abbr        definition of atm implied volatility under SABR model
+options     word
+	\sigma_{ATM}(S; T)
+		:= \sigma_{B}(S, S; T)
+        \approx
+        \frac{\alpha}{S^{(1-\beta)}}
+        \left[
+            1
+            + 
+            \left(
+                \frac{(1-\beta)^{2}}{24}
+                    \frac{\alpha^{2}}{S^{2 - 2\beta}}
+                + \frac{1}{4}
+                    \frac{\rho \beta \alpha \nu}{S^{1-\beta}}
+                + \frac{2 - 3\rho^{2}}{24} \nu^{2}
+            \right) T
+        \right]
