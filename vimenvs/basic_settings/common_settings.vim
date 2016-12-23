@@ -61,6 +61,13 @@ if filereadable( $HOME . "/.vim/basic_settings/disable_default_plugin.vim" )
   source ~/.vim/basic_settings/disable_default_plugin.vim
 endif
 
+"---------------------------------------------------------
+"file type settings
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/basic_settings/def_filetype.vim" )
+  source ~/.vim/basic_settings/def_filetype.vim
+endif
+
 "-------------------Key mapping-------------------------
 "-------------------------------------------------------
 "--- <F6>  タイムスタンプを挿入してinsertモードへ移行 ----
