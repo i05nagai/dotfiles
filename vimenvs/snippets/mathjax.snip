@@ -195,6 +195,24 @@ options		word
 	\right]
 	${3}
 
+snippet     conditional_expectation_with_filtration
+abbr        E_{t}[ ]
+options		word
+	\mathrm{E}_{${1}}
+	\left[
+		${2}
+	\right]
+	${3}
+
+snippet     conditional_expectation_with_filtration_and_measure
+abbr        E_{t}^{Q}[ ]
+options		word
+	\mathrm{E}_{${1}}^{${2}}
+	\left[
+		${3}
+	\right]
+	${4}
+
 snippet     variance
 abbr        mathrm{Var}^{}[ ]
 	\mathrm{Var}^{${1:measure}}
@@ -272,7 +290,7 @@ abbr        \nonumber \\ & = &
 options     word
 	\nonumber
 	\\
-	& = &
+		& = &
 
 snippet     eqnarray_newline
 abbr        \\ & = &
