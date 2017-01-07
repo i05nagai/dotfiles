@@ -34,11 +34,7 @@ abbr        matrix5
 	\right)
 	${0}
 
-snippet     derivative
-abbr        derivative
-options		word
-	\frac{d ${1}}{d ${2}}${0}
-
+#Spaces
 snippet     real_number_d
 abbr        \mathbb{R}^{?}
 options		word
@@ -58,6 +54,26 @@ snippet     natural_number
 abbr        Natural Number
 options		word
 	\mathbb{N}
+
+snippet     integer_d
+abbr        d-dim integer
+options		word
+	\mathbb{Z}^{${1}}${0}
+
+snippet     integer
+abbr        integer
+options		word
+	\mathbb{Z}
+
+snippet     projective_space_d
+abbr        d-dim projective space
+options     word
+	\mathbb{RP}^{${1}}${0}
+
+snippet     projective_space
+abbr        projective space
+options     word
+	\mathbb{RP}${0}
 
 #Symbols
 snippet     left(
@@ -132,6 +148,14 @@ options		word
 	}
 	${3:outer}
 
+#binary operator
+
+snippet     iff_def
+abbr        def over iff
+options     word
+	\overset{\mathrm{def}}{\iff}
+
+#unary operator
 snippet     summation
 abbr        summation 
 options		word
@@ -141,16 +165,6 @@ snippet     product
 abbr        prod_{}^{}
 options		word
 	\prod_{${1}}^{${2}}${3}
-
-snippet     integer
-abbr        integer
-options		word
-	\mathbb{Z}
-
-snippet     real_number
-abbr        real number
-options		word
-	\mathbb{R}
 
 snippet     integral
 abbr        interal with interval
