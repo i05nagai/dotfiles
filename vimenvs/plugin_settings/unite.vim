@@ -26,6 +26,16 @@ nnoremap [SHORTCUT]ub :Unite bookmark<CR>
 nnoremap [SHORTCUT]uB :<C-u>Unite buffer<CR>
 nnoremap [SHORTCUT]ut :<C-u>Unite tab<CR>
 
+" :Unite menu:shortcut
+let g:unite_source_menu_menus = {
+			\   "shortcut" : {
+			\       "description" : "shortcuts",
+			\       "command_candidates" : [
+			\           ["edit vimrc", "edit $MYVIMRC"],
+			\           ["edit gvimrc", "edit $MYGVIMRC"],
+			\       ],
+			\   },
+			\}
 
 "data_directory 
 if has('win32')
