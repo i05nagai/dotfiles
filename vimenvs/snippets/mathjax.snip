@@ -100,6 +100,14 @@ options		word
 	\right]
 	${2:outer}
 
+snippet     left.
+abbr        left. right?
+options		word
+	\left.
+	    ${1:inner}
+	\right${2}
+	${3:outer}
+
 snippet     left_norm
 abbr        left| right|
 options		word
@@ -181,7 +189,14 @@ abbr        frac{d }{ d}
 
 snippet     partial_derivative
 abbr        frac{partial }{partial }
-	\frac{\partial${1:numerator}}{\partial${2:denominator}} ${0:outer}
+	\frac{\partial${1:numerator}}{\partial${2:denominator}} ${0}
+
+snippet     partial_derivative_with_substitute
+abbr        \left. frac{partial }{partial } \right|
+	\left.
+		\frac{\partial${1:numerator}}{\partial${2:denominator}} 
+	\right|_{${3}}
+	${0}
 
 snippet     expectation
 abbr        E[ ]
@@ -283,21 +298,24 @@ abbr        \begin{equation} \end{equation}
 	\begin{equation}
 		${1}
 	\end{equation}
-	${0}
 
 snippet     equation*
 abbr        \begin{equation*} \end{equation*}
 	\begin{equation*}
 		${1}
 	\end{equation*}
-	${0}
 
 snippet     eqnarray
 abbr        \begin{eqnarray} \end{eqnarray}
 	\begin{eqnarray}
 		${1}
 	\end{eqnarray}
-	${0}
+
+snippet     eqnarray*
+abbr        \begin{eqnarray*} \end{eqnarray*}
+	\begin{eqnarray*}
+		${1}
+	\end{eqnarray*}
 
 snippet     eqnarray_newline_with_nonumber
 abbr        \nonumber \\ & = &
@@ -305,12 +323,43 @@ options     word
 	\nonumber
 	\\
 		& = &
+			${0}
 
 snippet     eqnarray_newline
 abbr        \\ & = &
 options     word
 	\\
 	& = &
+		${0}
+
+snippet     eqnarray_new_statement_with_nonumber
+abbr        \nonumber \\ & = &
+options     word
+	\nonumber
+	\\
+		${1}
+		& = &
+			${0}
+
+snippet     eqnarray_new_equation
+abbr        \\ & = &
+options     word
+	\\
+	${1}
+	& = &
+		${0}
+
+snippet     eqnarray_seperator_=
+abbr        & = &
+options     word
+	& = &
+		${0}
+
+snippet     eqnarray_seperator
+abbr        & ? &
+options     word
+	& ${1} &
+		${0}
 
 snippet     cases
 abbr        cases
@@ -318,13 +367,6 @@ abbr        cases
 		${1} & ${2} \\
 		${3} & ${4} 
 	\end{cases}
-
-snippet     eqnarray*
-abbr        \begin{eqnarray*} \end{eqnarray*}
-	\begin{eqnarray*}
-		${1}
-	\end{eqnarray*}
-	${0}
 
 snippet     array
 abbr        begin{array}{} \end{array}
