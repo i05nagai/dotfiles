@@ -114,6 +114,14 @@ options     head
 snippet gtestf
 abbr    TEST_F
 	TEST_F(${1:test class}, ${2:test name})
-	 {
-		 ${0}
-	 }
+	{
+	    ${0}
+	}
+
+snippet gtestf
+abbr    TEST_F
+	TEST(${1:test_case_name}, ${2:test_name})
+	{
+	    ${0}
+	}
+
