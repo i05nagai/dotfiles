@@ -1,6 +1,16 @@
 include sphinx.snip
 include python_pytest.snip
 
+snippet     debug
+abbr        import pdb;
+options     word
+   import pdb; pdb.set_trace() 
+
+snippet     debug_pudb
+abbr        from pudb import set_trace; set_trace()
+options     word
+    from pudb import set_trace; set_trace()
+
 snippet shebang
     #!/usr/bin/env python
     # -*- coding: utf-8 -*-
@@ -173,3 +183,8 @@ snippet log_critical
 snippet log_info
     logger.info(${0:msg})
 
+snippet     future
+abbr        future
+options     head
+    from __future__ import division, print_function, absolute_import
+    
