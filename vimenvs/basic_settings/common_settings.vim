@@ -206,6 +206,10 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundle 'vim-latex/vim-latex'
 	"markdown
 	NeoBundle 'i05nagai/previm'
+	NeoBundleLazy "plasticboy/vim-markdown", {
+	      \ "autoload": {
+	      \   "filetypes": ["markdown", "md"],
+	      \ }}
 	NeoBundle 'mzlogin/vim-markdown-toc'
 	"restructuredText
 	NeoBundle 'Rykka/riv.vim'
@@ -380,6 +384,13 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/previm.vim" )
   source ~/.vim/plugin_settings/previm.vim
+endif
+
+"---------------------------------------------------------
+" vim-markdonw
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/vim-markdown.vim" )
+  source ~/.vim/plugin_settings/vim-markdown.vim
 endif
 
 "---------------------------------------------------------
