@@ -91,7 +91,6 @@ nnoremap [SHORTCUT]ve :tabedit ~/.vim/envs.vim<CR>
 
 "-------------------register mapping----------------------
 "---------------------------------------------------------
-nmap <Leader>sp "sp<CR>
 nnoremap [SHORTCUT]rp :let @* = getcwd()<CR>
 
 "directory shortcut
@@ -108,3 +107,13 @@ nmap <esc><esc> :<C-u>nohlsearch<CR>
 " tag jamp
 "nnoremap <F4> :stj <C-R>=expand('<cword>')<CR><CR> <C-w><S-j><CR>
 
+"-------------------leader mapping------------------------
+"---------------------------------------------------------
+nnoremap [MY-SWITCH] <Nop>
+nmap <Leader>s [MY-SWITCH]
+nnoremap <silent> [MY-SWITCH]s :<C-u>setl spell! spell?<CR>
+nnoremap <silent> [MY-SWITCH]l :<C-u>setl list! list?<CR>
+nnoremap <silent> [MY-SWITCH]t :<C-u>setl expandtab! expandtab?<CR>
+nnoremap <silent> [MY-SWITCH]w :<C-u>setl wrap! wrap?<CR>
+nnoremap <silent> [MY-SWITCH]p :<C-u>setl paste! paste?<CR>
+nnoremap <silent> [MY-SWITCH]b :<C-u>setl scrollbind! scrollbind?<CR>
