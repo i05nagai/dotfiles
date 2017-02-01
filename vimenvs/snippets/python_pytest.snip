@@ -38,3 +38,13 @@ options     word
     @pytest.mark.parametrize("${1:params}, expect", [
         (${2:param_value}, ${3:expect}),${0:end}
     ])
+
+snippet     pytest_approx
+abbr        from pytest import approx
+options     head
+    from pytest import approx
+
+snippet     pytest_assert_equal_float
+abbr        assert expect == approx(actual)
+options     word
+    assert expect == approx(actual)
