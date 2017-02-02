@@ -177,7 +177,9 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	  \ },
 	\ }
 	NeoBundle 'Shougo/vimfiler.vim'
+	" quickrun
 	NeoBundle 'thinca/vim-quickrun'
+	NeoBundle 'osyo-manga/shabadou.vim'
 	NeoBundle 'tpope/vim-surround'
 	NeoBundle 'mopp/next-alter.vim'
 	NeoBundle 'tyru/open-browser.vim'
