@@ -12,6 +12,25 @@ noremap   <Down>   <Nop>
 noremap   <Left>   <Nop>
 noremap   <Right>  <Nop>
 
+" dispable Q
+noremap Q <Nop>
+
+" disable mouse middle click paste
+map <MiddleMouse>   <Nop>
+map <2-MiddleMouse> <Nop>
+map <3-MiddleMouse> <Nop>
+map <4-MiddleMouse> <Nop>
+imap <MiddleMouse>   <Nop>
+imap <2-MiddleMouse> <Nop>
+imap <3-MiddleMouse> <Nop>
+imap <4-MiddleMouse> <Nop>
+
+"delete default mapping to s key
+nnoremap s <NOP>
+vnoremap s <NOP>
+nnoremap S <NOP>
+vnoremap S <NOP>
+
 "insert mode emacs like keybind
 inoremap [INSERT_EMACS] <Nop>
 inoremap [INSERT_EMACS]<C-a> <C-o>^
@@ -27,8 +46,6 @@ inoremap [INSERT_EMACS]<C-l> <C-o>l
 "inverse tab
 inoremap <S-Tab> <C-d>
 
-"toggle settings
-
 "reload vimrc and gvirc
 if has('vim_starting')
   function s:reload_vimrc() abort
@@ -42,16 +59,6 @@ if has('vim_starting')
 endif
 nmap <silent> <Plug>(my-reload-vimrc) :<C-u>call <SID>reload_vimrc()<CR>
 nmap <Leader><Leader>r <Plug>(my-reload-vimrc)
-
-" disable mouse middle click paste
-map <MiddleMouse>   <Nop>
-map <2-MiddleMouse> <Nop>
-map <3-MiddleMouse> <Nop>
-map <4-MiddleMouse> <Nop>
-imap <MiddleMouse>   <Nop>
-imap <2-MiddleMouse> <Nop>
-imap <3-MiddleMouse> <Nop>
-imap <4-MiddleMouse> <Nop>
 
 " next window
 nnoremap <Tab> <Nop>
@@ -70,12 +77,6 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
-
-"delete default mapping to s key
-nnoremap s <NOP>
-vnoremap s <NOP>
-nnoremap S <NOP>
-vnoremap S <NOP>
 
 "add keybind to  key
 nnoremap [SHORTCUT] <NOP>
