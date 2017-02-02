@@ -163,9 +163,11 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
 	NeoBundle 'Shougo/neosnippet'
 	NeoBundle 'Shougo/neosnippet-snippets'
+	" unite
 	NeoBundle 'Shougo/unite.vim'
 	NeoBundle 'tsukkee/unite-tag'
 	NeoBundle 'hewes/unite-gtags'
+	NeoBundle 'osyo-manga/unite-quickrun_config'
 	NeoBundle 'Shougo/vimproc', {
 	  \ 'build' : {
 		\ 'windows' : 'make -f make_mingw64.mak',
@@ -272,6 +274,13 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/unite-gtags.vim" )
   source ~/.vim/plugin_settings/unite-gtags.vim
+endif
+
+"---------------------------------------------------------
+"unite-quickrun_config
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/unite-quickrun_config.vim" )
+  source ~/.vim/plugin_settings/unite-quickrun_config.vim
 endif
 
 "---------------------------------------------------------
