@@ -15,6 +15,7 @@ function! s:python()
 	"scope indent
 	setlocal cino+=g0
 	setlocal indentkeys+=0#
+	setlocal nosmartindent
 endfunction
 
 " filetype=python が設定された場合に関数を呼ぶ
