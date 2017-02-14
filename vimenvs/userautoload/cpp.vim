@@ -43,6 +43,45 @@ function! s:cpp()
     highlight link boost_pp cppStatement
 endfunction
 
+function! s:is_header(extension)
+	let header_extensions = ["h", ".hpp"]
+	for header_extension in header_extensions
+		if header_extension ==? a:extension
+			return 1
+		endif
+	endfor
+	return 0
+endfunction
+
+function! s:is_source(extension)
+	let source_extensions = ["cc", ".cpp"]
+	for source_extension in source_extensions
+		if source_extension ==? a:extension
+			return 1
+		endif
+	endfor
+	return 0
+endfunction
+
+function! s:switch_header_source()
+	let extension = expand("%:e")
+	let filename_without_extension = expand("%:r")
+	if s:is_header(extension)
+		let filepath = filename_without_extension . ".cc"
+		execute 'vsplit ' . filepath
+	elseif s:is_source(extension)
+		let filepath = filename_without_extension . ".h"
+		execute 'vsplit ' . filepath
+	else
+		" do nothing
+		return
+	endif
+endfunction
+
+command! CppSwitchHeaderSource call s:switch_header_source()
+inoremap <F1> <C-o>:CppSwitchHeaderSource<CR>
+nnoremap <F1> :CppSwitchHeaderSource <CR>
+
 " filetype=cpp が設定された場合に関数を呼ぶ
 autocmd FileType cpp call s:cpp()
 
