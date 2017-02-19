@@ -1,4 +1,5 @@
 include mathjax_symbols.snip
+include mathjax_optimization.snip
 
 snippet     vector
 abbr        vector
@@ -35,16 +36,26 @@ abbr        matrix5
 	\right)
 	${0}
 
-#Spaces
+## Spaces
 snippet     real_number_d
 abbr        \mathbb{R}^{?}
 options		word
 	\mathbb{R}^{${1}}${0}
 
 snippet     real_number
-abbr        real Number
+abbr        non negative real number
 options		word
 	\mathbb{R}
+
+snippet     non_negative_real_number_d
+abbr        \mathbb{R}^{?}
+options		word
+	\mathbb{R}_{\ge 0}^{${1}}${0}
+
+snippet     non_negative_real_number
+abbr        non negative real number
+options		word
+	\mathbb{R}_{\ge 0}
 
 snippet     natural_number_d
 abbr        mathbb{N}^{?}
@@ -65,6 +76,16 @@ snippet     integer
 abbr        integer
 options		word
 	\mathbb{Z}
+
+snippet     probability_space
+abbr        probability triplet
+options     word
+	(\Omega, \mathcal{F}, P)
+
+snippet     probability_space_with_filtlation
+abbr        probability space with filtralation
+options     word
+	(\Omega, \mathcal{F}, P, \{\mathcal{F}_{t}\}_{0 \le t})
 
 snippet     projective_space_d
 abbr        d-dim projective space
