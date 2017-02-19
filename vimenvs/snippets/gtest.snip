@@ -3,7 +3,7 @@ abbr        #include <gtest/gtest.h>
 options     head
 	#include <gtest/gtest.h>
 
-snippet     gtestmain
+snippet     gtest_main
 abbr        gtest main
 options     head
 	#include "pre_compiled_header.h"
@@ -16,7 +16,7 @@ options     head
 		return RUN_ALL_TESTS();
 	}
 
-snippet     gtestheader
+snippet     gtest_header
 abbr        namespace test interface header
 options     head
 	#pragma once
@@ -37,7 +37,7 @@ options     head
 		}; // class $2 : public ::testing::Test {
 	} // namespace $1
 
-snippet     gtestheader2
+snippet     gtest_header2
 abbr        namespace test interface header
 options     head
 	#pragma once
@@ -58,7 +58,7 @@ options     head
 		}; // class $3 : public ::testing::Test {
 	} } // namespace $1 { namespace $2 {
 
-snippet     gtestsource
+snippet     gtest_source
 abbr        namespace test interface header
 options     head
 	#include "${1:target}/pre_compiled_header.h"
@@ -87,7 +87,7 @@ options     head
 		}
 	} // namespace $4
 
-snippet     gtestsource2
+snippet     gtest_source2
 abbr        gtest source2
 options     head
 	#include "${1:target}/pre_compiled_header.h"
