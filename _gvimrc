@@ -38,6 +38,11 @@ set listchars=tab:>.,trail:_
 set transparency=235
 colorscheme wombat
 
+" highlight cursol when multibyte IME is on
+if has('multi_byte_ime') || has('xim')
+    highlight CursorIM guibg=Orange guifg=NONE
+endif
+
 "”¼Šp•¶š‚Ìİ’è
 set guifont=Ricty\ Discord:h12
 "‘SŠp•¶š‚Ìİ’è
