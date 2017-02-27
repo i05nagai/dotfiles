@@ -169,6 +169,16 @@ abbr        qed
 options     word
 	<div class="QED" style="text-align: right">$\Box$</div>
 
+snippet     family_from_to
+abbr        \{ \}
+options     word
+    \{ ${1} \}_{${2}}^{${3}}${0}
+
+snippet     family
+abbr        \{ \}
+options     word
+    \{ ${1} \}_{${2}}
+
 snippet     eqref
 abbr        $eqref{}$
 options		word
@@ -188,6 +198,12 @@ options		word
 		${2:denominator}
 	}
 	${3:outer}
+
+## map
+snippet     map
+abbr        ?: ? -> ?
+options     word
+    ${1}: ${2} \rightarrow ${3}
 
 #binary operator
 
@@ -305,7 +321,7 @@ abbr        ^{-1}
 options		word
 	^{-1}
 
-##### Set
+## Set
 snippet     set_limit_superior
 abbr        limit superior
 	\bigcap_{n = 1}^{\infty}\bigcup_{m = n}^{\infty} ${0}
@@ -321,6 +337,11 @@ abbr        set intersection
 snippet     set_union
 abbr        set union
 	\bigcup_{${1}}^{${2}} ${0}
+
+snippet     set_from_to
+abbr        \{1, \ldots, N\}
+options     word
+    \{${1}, \ldots, ${2}\}${0}
 
 snippet     set
 abbr        set
@@ -355,7 +376,7 @@ abbr        \nonumber \\ & = &
 options     word
 	\nonumber
 	\\
-		& = &
+    & = &
 			${0}
 
 snippet     eqnarray_newline
@@ -363,15 +384,15 @@ abbr        \\ & = &
 options     word
 	\\
 	& = &
-		${0}
+        ${0}
 
 snippet     eqnarray_new_statement_with_nonumber
 abbr        \nonumber \\ & = &
 options     word
 	\nonumber
 	\\
-		${1}
-		& = &
+    ${1}
+    & = &
 			${0}
 
 snippet     eqnarray_new_equation
