@@ -1,4 +1,4 @@
-source ~/.zplug/init.zsh
+source $ZPLUG_HOME/init.zsh
 
 # define plugins
 # It suggests commands as you type, based on command history.
