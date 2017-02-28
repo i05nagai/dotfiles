@@ -1,3 +1,19 @@
+################################################################################
+# Shell builtin
+################################################################################
+# fd - cd to selected directory
+fzf_cd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+}
+
+
+################################################################################
+# Git
+################################################################################
+
 # fbr - checkout git branch
 fzf_git_checkout_branch() {
   local branches branch
@@ -60,7 +76,7 @@ fzf_git_get_git_commit_sha() {
   echo -n $(echo "$commit" | sed "s/ .*//")
 }
 
-sier way to deal with stashes
+# sier way to deal with stashes
 # type fstash to get a list of your stashes
 # enter shows you the contents of the stash
 # ctrl-d shows a diff of the stash against your current HEAD
