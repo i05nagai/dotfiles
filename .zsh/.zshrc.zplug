@@ -1,0 +1,17 @@
+source ~/.zplug/init.zsh
+
+# define plugins
+# It suggests commands as you type, based on command history.
+zplug 'zsh-users/zsh-autosuggestions'
+zplug 'zsh-users/zsh-completions'
+zplug 'zsh-users/zsh-syntax-highlighting'
+
+# install if it is not installed
+if ! zplug check --verbose; then
+  printf 'Install? [y/N]: '
+  if read -q; then
+    echo; zplug install
+  fi
+fi
+
+zplug load --verbose
