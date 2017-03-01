@@ -250,14 +250,29 @@ abbr        \left. frac{partial }{partial } \right|
 snippet     expectation
 abbr        E[ ]
 options		word
+	\mathrm{E}
+	\left[
+		${1}
+	\right]
+	${0}
+
+snippet     expectation_without_parenthesis
+abbr        E^{?}
+options		word
+	\mathrm{E}${0}
+
+
+snippet     expectation_with_measure
+abbr        E^{?}[ ]
+options		word
 	\mathrm{E}^{${1:measure}}
 	\left[
 		${2}
 	\right]
 	${3}
 
-snippet     expectation_without_parenthesis
-abbr        E
+snippet     expectation_with_measure_without_parenthesis
+abbr        E^{?}
 options		word
 	\mathrm{E}^{${1:measure}}${2}
 
@@ -292,12 +307,28 @@ options		word
 	${4}
 
 snippet     variance
+abbr        mathrm{Var}[ ]
+	\mathrm{Var}
+	\left[
+		${1}
+	\right]
+	${0}
+
+snippet     variance_with_measure
 abbr        mathrm{Var}^{}[ ]
 	\mathrm{Var}^{${1:measure}}
 	\left[
 		${2}
 	\right]
 	${3}
+
+snippet     variance_without_parenthesis
+abbr        mathrm{Var}
+	\mathrm{Var}${0}
+
+snippet     variance_with_measure_without_parenthesis
+abbr        mathrm{Var}^{}
+	\mathrm{Var}^{${1:measure}}${0}
 
 snippet     limit
 abbr        limit superior
