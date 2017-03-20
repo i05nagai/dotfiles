@@ -115,7 +115,7 @@ options		word
 	\left(
 	    ${1:inner}
 	\right)
-	${2:outer}
+	${2}
 	
 snippet     left{
 abbr        left{ right}
@@ -123,7 +123,7 @@ options		word
 	\left\{
 	    ${1:inner}
 	\right\}
-	${2:outer}
+	${2}
 	
 snippet     left[
 abbr        left[ right]
@@ -131,7 +131,7 @@ options		word
 	\left[
 	    ${1:inner}
 	\right]
-	${2:outer}
+	${2}
 
 snippet     left.
 abbr        left. right?
@@ -139,7 +139,7 @@ options		word
 	\left.
 	    ${1:inner}
 	\right${2}
-	${3:outer}
+	${3}
 
 snippet     left_norm
 abbr        left| right|
@@ -147,7 +147,23 @@ options		word
 	\left\|
 	    ${1:inner}
 	\right\|
-	${2:outer}
+	${2}
+
+snippet     ceil
+abbr        \lceil \rceil
+options     word
+    \lceil
+    ${1}
+    \rceil
+    ${0}
+
+snippet     floor
+abbr        \lfloor \rfloor
+options     word
+    \lfloor
+    ${1}
+    \rfloor
+    ${0}
 
 snippet     ()
 abbr        ( )
@@ -187,7 +203,7 @@ options		word
 snippet     frac_inline
 abbr        frac{}{}
 options		word
-	\frac{${1:numerator}}{${2:denominator}}${3:outer}
+	\frac{${1:numerator}}{${2:denominator}}${3}
 
 snippet     frac
 abbr        frac{ }{ }
@@ -197,7 +213,7 @@ options		word
 	}{
 		${2:denominator}
 	}
-	${3:outer}
+	${3}
 
 ## map
 snippet     map
@@ -212,16 +228,34 @@ abbr        def over iff
 options     word
 	\overset{\mathrm{def}}{\iff}
 
-#unary operator
+# unary operator
 snippet     summation
-abbr        summation 
+abbr        \sum_{}^{}
 options		word
-	\sum_{${1:init}}^{${2:cond}} ${3:summand}
+	\sum_{${1:init}}^{${2:cond}}
+        ${3:summand}
+
+snippet     summation_without_upper
+abbr        \sum_{}
+options		word
+	\sum_{${1:init}}
+        ${3}
+
+snippet     summation_without_upper_lower
+abbr        \sum
+options		word
+	\sum
+        ${3}
 	
 snippet     product
 abbr        prod_{}^{}
 options		word
 	\prod_{${1}}^{${2}}${3}
+
+snippet     cardinality
+abbr        card()
+options     word
+     \mathrm{card}(${1})${0}
 
 snippet     integral
 abbr        interal with interval
@@ -234,7 +268,7 @@ abbr        interal with interval
 
 snippet     derivative
 abbr        frac{d }{ d}
-	\frac{d${1:numerator}}{d${2:denominator}} ${0:outer}
+	\frac{d${1:numerator}}{d${2:denominator}} ${0}
 
 snippet     partial_derivative
 abbr        frac{partial }{partial }
@@ -330,6 +364,46 @@ snippet     variance_with_measure_without_parenthesis
 abbr        mathrm{Var}^{}
 	\mathrm{Var}^{${1:measure}}${0}
 
+snippet     normal_distribution
+abbr        N(?, ?)
+options     word
+    \mathrm{N}(${1}, ${2})${0}
+
+snippet     standard_normal_distribution
+abbr        N(0, 1)
+options     word
+    \mathrm{N}(0, 1)${0}
+
+snippet     sequence
+abbr        ?, ..., ?
+options     word
+    ${1}, \ldots, ${2}
+
+snippet     sequence_from_1
+abbr        1, ..., ?
+options     word
+    1, \ldots, ${1}
+
+snippet     sequence_from_1_to_N
+abbr        1, ..., N
+options     word
+    1, \ldots, N
+    
+snippet     sequence_symbols
+abbr        ?_{?}, ..., ?_{?}
+options     word
+    ${1}_{${2}}, \ldots, $1_{${3}}${0}
+
+snippet     sequence_symbols_from_1
+abbr        ?_{1}, ..., ?_{?}
+options     word
+    ${1}_{1}, \ldots, $1_{${2}}${0}
+
+snippet     sequence_symbols_from_1_to_N
+abbr        ?_{1}, ..., ?_{N}
+options     word
+    ${1}_{1}, \ldots, $1_{N}${0}
+
 snippet     limit
 abbr        limit superior
 	\lim_{${1} \rightarrow \infty} ${0}
@@ -402,13 +476,22 @@ abbr        \begin{eqnarray*} \end{eqnarray*}
 		${1}
 	\end{eqnarray*}
 
+snippet     eqnarray_newline_def_with_nonumber
+abbr        \nonumber \\ & = &
+options     word
+	\nonumber
+	\\
+    ${1}
+    & := &
+        ${0}
+
 snippet     eqnarray_newline_with_nonumber
 abbr        \nonumber \\ & = &
 options     word
 	\nonumber
 	\\
     & = &
-			${0}
+        ${0}
 
 snippet     eqnarray_newline
 abbr        \\ & = &
@@ -424,7 +507,7 @@ options     word
 	\\
     ${1}
     & = &
-			${0}
+        ${0}
 
 snippet     eqnarray_new_equation
 abbr        \\ & = &
