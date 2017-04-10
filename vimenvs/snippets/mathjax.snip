@@ -196,9 +196,9 @@ options     word
     \{ ${1} \}_{${2}}
 
 snippet     eqref
-abbr        $eqref{}$
+abbr        $$eqref{}$$
 options		word
-	$\eqref{${1}}$${0}
+	$$\eqref{${1}}$$${0}
 	
 snippet     frac_inline
 abbr        frac{}{}
@@ -340,6 +340,7 @@ options		word
 	\right]
 	${4}
 
+# variance
 snippet     variance
 abbr        mathrm{Var}[ ]
 	\mathrm{Var}
@@ -363,6 +364,31 @@ abbr        mathrm{Var}
 snippet     variance_with_measure_without_parenthesis
 abbr        mathrm{Var}^{}
 	\mathrm{Var}^{${1:measure}}${0}
+
+# covariance
+snippet     covariance
+abbr        mathrm{Cov}[ ]
+	\mathrm{Cov}
+	\left[
+		${1}
+	\right]
+	${0}
+
+snippet     covariance_with_measure
+abbr        mathrm{Cov}^{}[ ]
+	\mathrm{Cov}^{${1:measure}}
+	\left[
+		${2}
+	\right]
+	${3}
+
+snippet     covariance_without_parenthesis
+abbr        mathrm{Cov}
+	\mathrm{Cov}${0}
+
+snippet     covariance_with_measure_without_parenthesis
+abbr        mathrm{Cov}^{}
+	\mathrm{Cov}^{${1:measure}}${0}
 
 snippet     normal_distribution
 abbr        N(?, ?)
@@ -425,6 +451,27 @@ snippet     \inverse
 abbr        ^{-1}
 options		word
 	^{-1}
+
+## Congruence
+snippet     congruence
+abbr        ? \equiv ? (mod ?)
+options     word
+    ${1} \equiv ${2}\ (\mathrm{mod}\ ${3})${0}
+
+snippet     congruence_modulo_N
+abbr        ? \equiv ? (mod N)
+options     word
+    ${1} \equiv ${2}\ (\mathrm{mod}\ N)${0}
+
+snippet     modulo
+abbr        (mod ?)
+options     word
+    (\mathrm{mod}\ ${1})${0}
+
+snippet     modulo_N
+abbr        (mod N)
+options     word
+    (\mathrm{mod}\ N)${0}
 
 ## Set
 snippet     set_limit_superior
