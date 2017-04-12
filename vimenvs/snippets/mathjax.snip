@@ -1,40 +1,9 @@
-include mathjax_symbols.snip
+include mathjax_congruence.snip
+include mathjax_matrix.snip
 include mathjax_optimization.snip
-
-snippet     vector
-abbr        vector
-	\left(
-		\begin{array}{c}
-			${1:first} \\
-			\vdots \\
-			${2:last}
-		\end{array}
-	\right)
-	${0}
-
-snippet     matrix3
-abbr        matrix3
-	\left(
-		\begin{array}{ccc}
-			${1} & ${2} & ${3} \\
-			${4} & ${5} & ${6} \\
-			${7} & ${8} & ${9}
-		\end{array}
-	\right)
-	${0}
-
-snippet     matrix5
-abbr        matrix5
-	\left(
-		\begin{array}{ccccc}
-			${1}   & ${2}   & \cdots &        & ${3} \\
-			${4}   & ${5}   & ${6}   & \cdots & \vdots \\
-			\vdots & ${7}   & ${8}   & \ddots & \\
-				   & \vdots & \ddots & \ddots & ${9} \\
-			${10}  & \cdots &        & ${11}  & ${12}
-		\end{array}
-	\right)
-	${0}
+include mathjax_set.snip
+include mathjax_symbols.snip
+include mathjax_vector.snip
 
 ## Spaces
 snippet     real_number_d
@@ -452,53 +421,6 @@ abbr        ^{-1}
 options		word
 	^{-1}
 
-## Congruence
-snippet     congruence
-abbr        ? \equiv ? (mod ?)
-options     word
-    ${1} \equiv ${2}\ (\mathrm{mod}\ ${3})${0}
-
-snippet     congruence_modulo_N
-abbr        ? \equiv ? (mod N)
-options     word
-    ${1} \equiv ${2}\ (\mathrm{mod}\ N)${0}
-
-snippet     modulo
-abbr        (mod ?)
-options     word
-    (\mathrm{mod}\ ${1})${0}
-
-snippet     modulo_N
-abbr        (mod N)
-options     word
-    (\mathrm{mod}\ N)${0}
-
-## Set
-snippet     set_limit_superior
-abbr        limit superior
-	\bigcap_{n = 1}^{\infty}\bigcup_{m = n}^{\infty} ${0}
-
-snippet     set_limit_inferior
-abbr        limit inferior
-	\bigcup_{n = 1}^{\infty}\bigcap_{m = n}^{\infty} ${0}
-
-snippet     set_intersection
-abbr        set intersection
-	\bigcap_{${1}}^{${2}} ${0}
-
-snippet     set_union
-abbr        set union
-	\bigcup_{${1}}^{${2}} ${0}
-
-snippet     set_from_to
-abbr        \{1, \ldots, N\}
-options     word
-    \{${1}, \ldots, ${2}\}${0}
-
-snippet     set
-abbr        set
-	\left\{ ${1} \mid ${2} \right\} ${0}
-
 snippet     equation
 abbr        \begin{equation} \end{equation}
 	\begin{equation}
@@ -589,20 +511,6 @@ options     word
 	\begin{array}{${1}}
 		${2} & ${3}
 	\end{array}
-
-snippet     matrix
-abbr        (begin{array}{} \end{array})
-options     word
-	\left(
-		\begin{array}{${1}}
-			${2} & ${3}
-		\end{array}
-	\right)
-
-snippet     rank
-abbr        \mathrm{rank}(${1})
-options     word
-	\mathrm{rank}(${1})${0}
 
 snippet     tilde
 abbr        tilde{}
