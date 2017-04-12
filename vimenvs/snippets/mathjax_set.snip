@@ -1,0 +1,24 @@
+snippet     set_limit_superior
+abbr        limit superior
+	\bigcap_{n = 1}^{\infty}\bigcup_{m = n}^{\infty} ${0}
+
+snippet     set_limit_inferior
+abbr        limit inferior
+	\bigcup_{n = 1}^{\infty}\bigcap_{m = n}^{\infty} ${0}
+
+snippet     set_intersection
+abbr        set intersection
+	\bigcap_{${1}}^{${2}} ${0}
+
+snippet     set_union
+abbr        set union
+	\bigcup_{${1}}^{${2}} ${0}
+
+snippet     set_from_to
+abbr        \{1, \ldots, N\}
+options     word
+    \{${1}, \ldots, ${2}\}${0}
+
+snippet     set
+abbr        set
+	\left\{ ${1} \mid ${2} \right\} ${0}
