@@ -2,16 +2,6 @@ export LANG=ja_JP.UTF-8
 export LANG_ALL=ja_JP.UTF-8
 export TERM=xterm-256color
 
-### zsh Plugins
-if [ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-	source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
-
-#add completion directory
-fpath=(~/.zsh/completion/docker/ $fpath)
-fpath=(~/.zsh/completion/zsh-completions/src/ $fpath)
-fpath=(~/.zsh/completion/ $fpath)
-
 #autoload
 autoload -Uz compinit
 compinit 
