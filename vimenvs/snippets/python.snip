@@ -187,5 +187,34 @@ snippet log_info
 snippet     future
 abbr        future
 options     head
-    from __future__ import division, print_function, absolute_import
+    from __future__ import division
+    from __future__ import print_function
+    from __future__ import absolute_import
+
+## re
+snippet     match_with_group
+abbr        re.match
+options     word
+    match_object = re.match(${1:pattern}, ${2:text})
+    if match_object:
+        ${3:match_object.group(1)}${0}
+
     
+## csv
+snippet     csv_write
+abbr        csv_write
+options     head
+    with open("${1:filename}", "w") as f:
+        writer = csv.writer(f, lineterminator='\n')
+        writer.writerow(list)
+        writer.writerows(array2d)
+
+snippet     csv_read
+abbr        csv_read
+options     head
+    with open("${1:filename}", "r") as f:
+        reader = csv.reader(f)
+        # skip header
+        header = next(reader)
+        for row in reader:
+            row
