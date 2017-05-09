@@ -1,18 +1,29 @@
 include mathjax_congruence.snip
 include mathjax_matrix.snip
 include mathjax_optimization.snip
+include mathjax_probability.snip
 include mathjax_set.snip
 include mathjax_symbols.snip
 include mathjax_vector.snip
 
 ## Spaces
+snippet     finite_field_d
+abbr        \mathbb{F}_{?}^{?}
+options		word
+	\mathbb{F}_{${1}}^{${2}}${0}
+
+snippet     finite_filed
+abbr        finite_filed
+options		word
+	\mathbb{F}_{${1}}${0}
+
 snippet     real_number_d
 abbr        \mathbb{R}^{?}
 options		word
 	\mathbb{R}^{${1}}${0}
 
 snippet     real_number
-abbr        non negative real number
+abbr        real number
 options		word
 	\mathbb{R}
 
@@ -237,14 +248,43 @@ abbr        card()
 options     word
      \mathrm{card}(${1})${0}
 
-snippet     integral
-abbr        interal with interval
+## Integral
+
+snippet     integral_inline_with_lower
+abbr        inline interal with interval
+options		word
+	\int_{${1:lower}} ${2:integrand}\ d${3:variable}${0}
+
+snippet     integral_inline_with_lower_upper
+abbr        inline interal with interval
 options		word
 	\int_{${1:lower}}^{${2:upper}} ${3:integrand}\ d${4:variable}
 
+snippet     integral_without_interval_inline
+abbr        inline interal with interval
+	\int ${1:integrand}\ d${2:variable}
+
+snippet     integral_with_lower_upper
+abbr        interal with interval
+options		word
+	\int_{${1:lower}}^{${2:upper}}
+        ${3:integrand}
+    \ d${4:variable}
+
+snippet     integral_with_lower
+abbr        interal with interval
+options		word
+	\int_{${1:lower}}
+        ${3:integrand}
+    \ d${4:variable}
+
 snippet     integral_without_interval
 abbr        interal with interval
-	\int ${1:integrand}\ d${2:variable}
+	\int
+        ${1:integrand}
+    \ d${2:variable}
+
+## Derivative
 
 snippet     derivative
 abbr        frac{d }{ d}
