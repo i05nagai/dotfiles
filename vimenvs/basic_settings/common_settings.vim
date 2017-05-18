@@ -1,12 +1,11 @@
 
+"draw line
+set colorcolumn=80
+" backup and swap settings
 set nowritebackup
 set nobackup
 set noswapfile
-"draw line
-set colorcolumn=80
-"スワップファイル用のディレクトリ
 set directory=$HOME/.vim/vimbackup
-"バックアップファイルを作るディレクトリ
 set backupdir=$HOME/.vim/vimbackup
 "新しい行のインデントを現在行と同じにする
 set autoindent
