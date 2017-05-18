@@ -48,7 +48,8 @@ set spelllang=en,cjk
 " commandline completion
 " this settings may be influenced by lightline.vim
 set wildmenu wildmode=list:longest,full
-
+" yank to clipboard
+set clipboard+=unnamed
 
 "---------------------------------------------------------
 "key bind
