@@ -27,6 +27,16 @@ abbr        real number
 options		word
 	\mathbb{R}
 
+snippet     complex_d
+abbr        \mathbb{C}^{?}
+options		word
+	\mathbb{C}^{${1}}${0}
+
+snippet     complex 
+abbr        complex
+options		word
+	\mathbb{C}
+
 snippet     non_negative_real_number_d
 abbr        \mathbb{R}^{?}
 options		word
@@ -57,8 +67,8 @@ abbr        integer
 options		word
 	\mathbb{Z}
 
-snippet     integer_nonnegative
-abbr        nonnegative integer
+snippet     non_negative_integer
+abbr        non negative integer
 options		word
 	\mathbb{Z}_{\ge}
 
@@ -97,6 +107,11 @@ abbr        (?, O_{?})
 options     word
 	(${1}, \mathcal{O}_{$1})${0}
 
+## 
+snippet     upper_notation
+abbr        upper notation
+options     word
+    \stackrel{${1}}{\stackrel{\vee}{${2}}}${0}
 
 #Symbols
 snippet     left(
