@@ -8,3 +8,10 @@ abbr        vector
 		\end{array}
 	\right)
 	${0}
+
+snippet     def_unit_vector
+abbr        unit vector
+options     head
+    \mathbf{e}_{${1}}
+    :=
+    (0, \ldots, 0, \stackrel{$1}{\stackrel{\vee}{1}}, 0, 0)${0}

@@ -1,4 +1,7 @@
-.vim/bundle/
+.vim/bundle/*
+!.vim/bundle/neobundle.vim
+vimenvs/bundle/*
+!vimenvs/bundle/neobundle.vim
 .vim/.netrwhist
 .vim/.yankround/
 .vim/.vimfiler/

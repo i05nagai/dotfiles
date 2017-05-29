@@ -159,6 +159,11 @@ function vim_env_install() {
   if [ ! -d $HOME/.vim/userautoload ]; then
 	ln_file_from_to vimenvs/userautoload .vim/userautoload
   fi
+
+  #bundle/neobundle.vim
+  if [ ! -d $HOME/.vim/bundle ]; then
+	ln_file_from_to vimenvs/bundle .vim/bundle
+  fi
 }
 
 function add_install() {
