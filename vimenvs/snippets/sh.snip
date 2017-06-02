@@ -119,7 +119,7 @@ options     head
 snippet     string_contain
 abbr        exit if error
 options     head
-    if `echo ${1:string} | grep '${2}'`
+    if \`echo ${1:string} | grep '${2:match}'\`
     then
 		${0}
     fi
