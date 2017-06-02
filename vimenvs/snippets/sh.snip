@@ -84,7 +84,6 @@ options     head
 	  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@" >&2
 	}
 
-
 snippet     for_array
 abbr        for array
 options     head
@@ -115,4 +114,12 @@ options     head
     then
         echo oops!
         exit 1
+    fi
+
+snippet     string_contain
+abbr        exit if error
+options     head
+    if `echo ${1:string} | grep '${2}'`
+    then
+		${0}
     fi
