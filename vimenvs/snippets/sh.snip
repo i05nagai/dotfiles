@@ -77,3 +77,42 @@ abbr        option
 		shift
 	done	
 
+snippet     error_func
+abbr        error function
+options     head
+	function err() {
+	  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@" >&2
+	}
+
+
+snippet     for_array
+abbr        for array
+options     head
+    for ${1} in \${${2:array}[@]}
+    do
+        ${3}
+    done
+
+snippet     array_append
+abbr        array append
+options     word
+    ${1:array}=("\${$1[@]}" ${2})
+
+snippet     array_insert_front
+abbr        array insert to front
+options     word
+    ${1:array}=(${2} "\${$1[@]}")
+
+snippet     array_length
+abbr        array length
+options     word
+    ${#array[@]} 
+
+snippet     exit_if_error
+abbr        exit if error
+options     head
+    if [ $? -ne 0 ]
+    then
+        echo oops!
+        exit 1
+    fi
