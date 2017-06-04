@@ -171,9 +171,13 @@ snippet     floor
 abbr        \\lfloor \\rfloor
 options     word
 	\\lfloor
-	${1}
-	\\rfloor
-	${0}
+	    ${1}
+	\\rfloor ${0}
+
+snippet     floor_inline
+abbr        \\lfloor \\rfloor
+options     word
+	\\lfloor ${1} \\rfloor ${0}
 
 snippet     ()
 abbr        ( )
