@@ -1,0 +1,41 @@
+snippet     def_normal_pdf
+abbr        definition of normal p.d.f.
+options     word
+	\\frac{
+	    1
+	}{
+	    \\sqrt{2\\pi}
+	    ${1:\\\\sigma}
+	}
+	\\exp
+	\\left(
+	    -
+	    \\frac{
+	        1
+	    }{
+	        2$1^{2}
+	    }
+	    (${2:x} - ${3:\\\\mu})^{2}
+	\\right)
+	
+snippet     def_normal_cdf
+abbr        definition of normal c.d.f.
+options     word
+	\\int_{-\\infty}^{${1:x}} 
+		\\frac{
+			1
+		}{
+			\\sqrt{2\\pi}
+			${2:\\\\sigma}
+		}
+		\\exp
+		\\left(
+			-
+			\\frac{
+				1
+			}{
+				2$2^{2}
+			}
+			(${3:y} - ${4:\\\\mu})^{2}
+		\\right)
+	\\ d $3

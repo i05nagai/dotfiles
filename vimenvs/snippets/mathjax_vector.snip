@@ -1,17 +1,19 @@
 snippet     vector
 abbr        vector
-	\left(
-		\begin{array}{c}
-			${1:first} \\
-			\vdots \\
+	\\left(
+		\\begin{array}{c}
+			${1:first}
+			\\\\
+			\\vdots 
+		    \\\\
 			${2:last}
-		\end{array}
-	\right)
+		\\end{array}
+	\\right)
 	${0}
 
 snippet     def_unit_vector
 abbr        unit vector
 options     head
-    \mathbf{e}_{${1}}
-    :=
-    (0, \ldots, 0, \stackrel{$1}{\stackrel{\vee}{1}}, 0, 0)${0}
+	\\mathbf{e}_{${1}}
+	:=
+	(0, \\ldots, 0, \\stackrel{$1}{\\stackrel{\\vee}{1}}, 0, 0)${0}

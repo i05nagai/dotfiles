@@ -1,37 +1,43 @@
 snippet     matrix
-abbr        (begin{array}{} \end{array})
+abbr        (begin{array}{} \\end{array})
 options     word
-	\left(
-		\begin{array}{${1}}
+	\\left(
+		\\begin{array}{${1}}
 			${2} & ${3}
-		\end{array}
-	\right)
+		\\end{array}
+	\\right)
 
 snippet     matrix3
 abbr        matrix3
-	\left(
-		\begin{array}{ccc}
-			${1} & ${2} & ${3} \\
-			${4} & ${5} & ${6} \\
+	\\left(
+		\\begin{array}{ccc}
+			${1} & ${2} & ${3}
+			\\\\
+			${4} & ${5} & ${6}
+			\\\\
 			${7} & ${8} & ${9}
-		\end{array}
-	\right)
+		\\end{array}
+	\\right)
 	${0}
 
 snippet     matrix5
 abbr        matrix5
-	\left(
-		\begin{array}{ccccc}
-			${1}   & ${2}   & \cdots &        & ${3} \\
-			${4}   & ${5}   & ${6}   & \cdots & \vdots \\
-			\vdots & ${7}   & ${8}   & \ddots & \\
-				   & \vdots & \ddots & \ddots & ${9} \\
-			${10}  & \cdots &        & ${11}  & ${12}
-		\end{array}
-	\right)
+	\\left(
+		\\begin{array}{ccccc}
+			${1}   & ${2}   & \\cdots &        & ${3}
+			\\\\
+			${4}   & ${5}   & ${6}   & \\cdots & \\vdots
+			\\\\
+			\\vdots & ${7}   & ${8}   & \\ddots &
+			\\\\
+				& \\vdots & \\ddots & \\ddots & ${9}
+			\\\\
+			${10}  & \\cdots &        & ${11}  & ${12}
+		\\end{array}
+	\\right)
 	${0}
 
 snippet     rank
-abbr        \mathrm{rank}(${1})
+abbr        \\mathrm{rank}(${1})
 options     word
-	\mathrm{rank}(${1})${0}
+	\\mathrm{rank}(${1})${0}

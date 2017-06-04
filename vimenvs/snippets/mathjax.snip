@@ -8,172 +8,172 @@ include mathjax_vector.snip
 
 ## Spaces
 snippet     finite_field_d
-abbr        \mathbb{F}_{?}^{?}
+abbr        \\mathbb{F}_{?}^{?}
 options		word
-	\mathbb{F}_{${1}}^{${2}}${0}
+	\\mathbb{F}_{${1}}^{${2}}${0}
 
 snippet     finite_filed
 abbr        finite_filed
 options		word
-	\mathbb{F}_{${1}}${0}
+	\\mathbb{F}_{${1}}${0}
 
 snippet     real_number_d
-abbr        \mathbb{R}^{?}
+abbr        \\mathbb{R}^{?}
 options		word
-	\mathbb{R}^{${1}}${0}
+	\\mathbb{R}^{${1}}${0}
 
 snippet     real_number
 abbr        real number
 options		word
-	\mathbb{R}
+	\\mathbb{R}
 
 snippet     complex_d
-abbr        \mathbb{C}^{?}
+abbr        \\mathbb{C}^{?}
 options		word
-	\mathbb{C}^{${1}}${0}
+	\\mathbb{C}^{${1}}${0}
 
 snippet     complex 
 abbr        complex
 options		word
-	\mathbb{C}
+	\\mathbb{C}
 
 snippet     non_negative_real_number_d
-abbr        \mathbb{R}^{?}
+abbr        \\mathbb{R}^{?}
 options		word
-	\mathbb{R}_{\ge 0}^{${1}}${0}
+	\\mathbb{R}_{\\ge 0}^{${1}}${0}
 
 snippet     non_negative_real_number
 abbr        non negative real number
 options		word
-	\mathbb{R}_{\ge 0}
+	\\mathbb{R}_{\\ge 0}
 
 snippet     natural_number_d
 abbr        mathbb{N}^{?}
 options		word
-	\mathbb{N}^{${1}}${0}
+	\\mathbb{N}^{${1}}${0}
 
 snippet     natural_number
 abbr        Natural Number
 options		word
-	\mathbb{N}
+	\\mathbb{N}
 
 snippet     integer_d
 abbr        d-dim integer
 options		word
-	\mathbb{Z}^{${1}}${0}
+	\\mathbb{Z}^{${1}}${0}
 
 snippet     integer
 abbr        integer
 options		word
-	\mathbb{Z}
+	\\mathbb{Z}
 
 snippet     non_negative_integer
 abbr        non negative integer
 options		word
-	\mathbb{Z}_{\ge 0}
+	\\mathbb{Z}_{\\ge 0}
 
 snippet     non_negative_integer_d
 abbr        non negative integer
 options		word
-	\mathbb{Z}_{\ge 0}^{${1}}${0}
+	\\mathbb{Z}_{\\ge 0}^{${1}}${0}
 
 snippet     quotient_ring
 abbr        quotient ring
 options		word
-	\mathbb{Z}_{${1}}${0}
+	\\mathbb{Z}_{${1}}${0}
 
 snippet     probability_space
 abbr        probability triplet
 options     word
-	(\Omega, \mathcal{F}, P)
+	(\\Omega, \\mathcal{F}, P)
 
 snippet     probability_space_with_filtlation
 abbr        probability space with filtralation
 options     word
-	(\Omega, \mathcal{F}, P, \{\mathcal{F}_{t}\}_{0 \le t})
+	(\\Omega, \\mathcal{F}, P, \\{\\mathcal{F}_{t}\\}_{0 \\le t})
 
 snippet     projective_space_d
 abbr        d-dim projective space
 options     word
-	\mathbb{RP}^{${1}}${0}
+	\\mathbb{RP}^{${1}}${0}
 
 snippet     projective_space
 abbr        projective space
 options     word
-	\mathbb{RP}${0}
+	\\mathbb{RP}${0}
 
 snippet     topological_space
 abbr        (X, O)
 options     word
-	(X, \mathcal{O}_{X})
+	(X, \\mathcal{O}_{X})
 
 snippet     topological_space_?
 abbr        (?, O_{?})
 options     word
-	(${1}, \mathcal{O}_{$1})${0}
+	(${1}, \\mathcal{O}_{$1})${0}
 
 ## 
 snippet     upper_notation
 abbr        upper notation
 options     word
-    \stackrel{${1}}{\stackrel{\vee}{${2}}}${0}
+	\\stackrel{${1}}{\\stackrel{\\vee}{${2}}}${0}
 
 #Symbols
 snippet     left(
 abbr        left( right)
 options		word
-	\left(
+	\\left(
 	    ${1:inner}
-	\right)
+	\\right)
 	${2}
 	
 snippet     left{
 abbr        left{ right}
 options		word
-	\left\{
+	\\left\\{
 	    ${1:inner}
-	\right\}
+	\\right\\}
 	${2}
 	
 snippet     left[
 abbr        left[ right]
 options		word
-	\left[
+	\\left[
 	    ${1:inner}
-	\right]
+	\\right]
 	${2}
 
 snippet     left.
 abbr        left. right?
 options		word
-	\left.
+	\\left.
 	    ${1:inner}
-	\right${2}
+	\\right${2}
 	${3}
 
 snippet     left_norm
 abbr        left| right|
 options		word
-	\left\|
+	\\left\\|
 	    ${1:inner}
-	\right\|
+	\\right\\|
 	${2}
 
 snippet     ceil
-abbr        \lceil \rceil
+abbr        \\lceil \\rceil
 options     word
-    \lceil
-    ${1}
-    \rceil
-    ${0}
+	\\lceil
+	${1}
+	\\rceil
+	${0}
 
 snippet     floor
-abbr        \lfloor \rfloor
+abbr        \\lfloor \\rfloor
 options     word
-    \lfloor
-    ${1}
-    \rfloor
-    ${0}
+	\\lfloor
+	${1}
+	\\rfloor
+	${0}
 
 snippet     ()
 abbr        ( )
@@ -193,7 +193,7 @@ options		word
 snippet     qed
 abbr        qed
 options     word
-	<div class="QED" style="text-align: right">$\Box$</div>
+	<div class="QED" style="text-align: right">$\\Box$</div>
 
 snippet     end_of_statement
 abbr        end of statement
@@ -201,29 +201,29 @@ options     word
 	<div class="end-of-statement" style="text-align: right">■</div>
 
 snippet     family_from_to
-abbr        \{ \}
+abbr        \\{ \\}
 options     word
-    \{ ${1} \}_{${2}}^{${3}}${0}
+	\\{ ${1} \\}_{${2}}^{${3}}${0}
 
 snippet     family
-abbr        \{ \}
+abbr        \\{ \\}
 options     word
-    \{ ${1} \}_{${2}}
+	\\{ ${1} \\}_{${2}}
 
 snippet     eqref
 abbr        $$eqref{}$$
 options		word
-	$$\eqref{${1}}$$${0}
+	$$\\eqref{${1}}$$${0}
 	
 snippet     frac_inline
 abbr        frac{}{}
 options		word
-	\frac{${1:numerator}}{${2:denominator}}${3}
+	\\frac{${1:numerator}}{${2:denominator}}${3}
 
 snippet     frac
 abbr        frac{ }{ }
 options		word
-	\frac{
+	\\frac{
 		${1:numerator}
 	}{
 		${2:denominator}
@@ -234,340 +234,340 @@ options		word
 snippet     combination
 abbr        ()
 options     word
-	\left(
-		\begin{array}{c}
-			${1} \\
+	\\left(
+		\\begin{array}{c}
+			${1} \\\\
 			${2}
-		\end{array}
-	\right)${0}
+		\\end{array}
+	\\right)${0}
 
 ## map
 snippet     map
 abbr        ?: ? -> ?
 options     word
-    ${1}: ${2} \rightarrow ${3}
+	${1}: ${2} \\rightarrow ${3}
 
 #binary operator
 
 snippet     iff_def
 abbr        def over iff
 options     word
-	\overset{\mathrm{def}}{\iff}
+	\\overset{\\mathrm{def}}{\\iff}
 
 # unary operator
 snippet     summation
-abbr        \sum_{}^{}
+abbr        \\sum_{}^{}
 options		word
-	\sum_{${1:init}}^{${2:cond}}
-        ${3:summand}
+	\\sum_{${1:init}}^{${2:cond}}
+	    ${3:summand}
 
 snippet     summation_without_upper
-abbr        \sum_{}
+abbr        \\sum_{}
 options		word
-	\sum_{${1:init}}
-        ${3}
+	\\sum_{${1:init}}
+	    ${3}
 
 snippet     summation_without_upper_lower
-abbr        \sum
+abbr        \\sum
 options		word
-	\sum
-        ${3}
+	\\sum
+	    ${3}
 	
 snippet     product
 abbr        prod_{}^{}
 options		word
-	\prod_{${1}}^{${2}}${3}
+	\\prod_{${1}}^{${2}}${3}
 
 snippet     cardinality
 abbr        card()
 options     word
-     \mathrm{card}(${1})${0}
+	 \\mathrm{card}(${1})${0}
 
 ## Integral
 
 snippet     integral_inline_with_lower
 abbr        inline interal with interval
 options		word
-	\int_{${1:lower}} ${2:integrand}\ d${3:variable}${0}
+	\\int_{${1:lower}} ${2:integrand}\\ d${3:variable}${0}
 
 snippet     integral_inline_with_lower_upper
 abbr        inline interal with interval
 options		word
-	\int_{${1:lower}}^{${2:upper}} ${3:integrand}\ d${4:variable}
+	\\int_{${1:lower}}^{${2:upper}} ${3:integrand}\\ d${4:variable}
 
 snippet     integral_without_interval_inline
 abbr        inline interal with interval
-	\int ${1:integrand}\ d${2:variable}
+	\\int ${1:integrand}\\ d${2:variable}
 
 snippet     integral_with_lower_upper
 abbr        interal with interval
 options		word
-	\int_{${1:lower}}^{${2:upper}}
-        ${3:integrand}
-    \ d${4:variable}
+	\\int_{${1:lower}}^{${2:upper}}
+	    ${3:integrand}
+	\\ d${4:variable}
 
 snippet     integral_with_lower
 abbr        interal with interval
 options		word
-	\int_{${1:lower}}
-        ${3:integrand}
-    \ d${4:variable}
+	\\int_{${1:lower}}
+	    ${3:integrand}
+	\\ d${4:variable}
 
 snippet     integral_without_interval
 abbr        interal with interval
-	\int
-        ${1:integrand}
-    \ d${2:variable}
+	\\int
+	    ${1:integrand}
+	\\ d${2:variable}
 
 ## Derivative
 
 snippet     derivative
 abbr        frac{d }{ d}
-	\frac{d${1:numerator}}{d${2:denominator}} ${0}
+	\\frac{d${1:numerator}}{d${2:denominator}} ${0}
 
 snippet     partial_derivative
 abbr        frac{partial }{partial }
-	\frac{\partial${1:numerator}}{\partial${2:denominator}} ${0}
+	\\frac{\\partial${1:numerator}}{\\partial${2:denominator}} ${0}
 
 snippet     partial_derivative_with_substitute
-abbr        \left. frac{partial }{partial } \right|
-	\left.
-		\frac{\partial${1:numerator}}{\partial${2:denominator}} 
-	\right|_{${3}}
+abbr        \\left. frac{partial }{partial } \\right|
+	\\left.
+		\\frac{\\partial${1:numerator}}{\\partial${2:denominator}} 
+	\\right|_{${3}}
 	${0}
 
 snippet     expectation
 abbr        E[ ]
 options		word
-	\mathrm{E}
-	\left[
+	\\mathrm{E}
+	\\left[
 		${1}
-	\right]
+	\\right]
 	${0}
 
 snippet     expectation_without_parenthesis
 abbr        E^{?}
 options		word
-	\mathrm{E}${0}
+	\\mathrm{E}${0}
 
 
 snippet     expectation_with_measure
 abbr        E^{?}[ ]
 options		word
-	\mathrm{E}^{${1:measure}}
-	\left[
+	\\mathrm{E}^{${1:measure}}
+	\\left[
 		${2}
-	\right]
+	\\right]
 	${3}
 
 snippet     expectation_with_measure_without_parenthesis
 abbr        E^{?}
 options		word
-	\mathrm{E}^{${1:measure}}${2}
+	\\mathrm{E}^{${1:measure}}${2}
 
 snippet     conditional_expectation
 abbr        E[ | ]
 options		word
-	\mathrm{E}
-	\left[
-	\left.
+	\\mathrm{E}
+	\\left[
+	\\left.
 		${1}
-	\right|
+	\\right|
 		${2:condition}
-	\right]
+	\\right]
 	${3}
 
 snippet     conditional_expectation_with_filtration
 abbr        E_{t}[ ]
 options		word
-	\mathrm{E}_{${1}}
-	\left[
+	\\mathrm{E}_{${1}}
+	\\left[
 		${2}
-	\right]
+	\\right]
 	${3}
 
 snippet     conditional_expectation_with_filtration_and_measure
 abbr        E_{t}^{Q}[ ]
 options		word
-	\mathrm{E}_{${1}}^{${2}}
-	\left[
+	\\mathrm{E}_{${1}}^{${2}}
+	\\left[
 		${3}
-	\right]
+	\\right]
 	${4}
 
 # variance
 snippet     variance
 abbr        mathrm{Var}[ ]
-	\mathrm{Var}
-	\left[
+	\\mathrm{Var}
+	\\left[
 		${1}
-	\right]
+	\\right]
 	${0}
 
 snippet     variance_with_measure
 abbr        mathrm{Var}^{}[ ]
-	\mathrm{Var}^{${1:measure}}
-	\left[
+	\\mathrm{Var}^{${1:measure}}
+	\\left[
 		${2}
-	\right]
+	\\right]
 	${3}
 
 snippet     variance_without_parenthesis
 abbr        mathrm{Var}
-	\mathrm{Var}${0}
+	\\mathrm{Var}${0}
 
 snippet     variance_with_measure_without_parenthesis
 abbr        mathrm{Var}^{}
-	\mathrm{Var}^{${1:measure}}${0}
+	\\mathrm{Var}^{${1:measure}}${0}
 
 # covariance
 snippet     covariance
 abbr        mathrm{Cov}[ ]
-	\mathrm{Cov}
-	\left[
+	\\mathrm{Cov}
+	\\left[
 		${1}
-	\right]
+	\\right]
 	${0}
 
 snippet     covariance_with_measure
 abbr        mathrm{Cov}^{}[ ]
-	\mathrm{Cov}^{${1:measure}}
-	\left[
+	\\mathrm{Cov}^{${1:measure}}
+	\\left[
 		${2}
-	\right]
+	\\right]
 	${3}
 
 snippet     covariance_without_parenthesis
 abbr        mathrm{Cov}
-	\mathrm{Cov}${0}
+	\\mathrm{Cov}${0}
 
 snippet     covariance_with_measure_without_parenthesis
 abbr        mathrm{Cov}^{}
-	\mathrm{Cov}^{${1:measure}}${0}
+	\\mathrm{Cov}^{${1:measure}}${0}
 
 snippet     normal_distribution
 abbr        N(?, ?)
 options     word
-    \mathrm{N}(${1}, ${2})${0}
+	\\mathrm{N}(${1}, ${2})${0}
 
 snippet     standard_normal_distribution
 abbr        N(0, 1)
 options     word
-    \mathrm{N}(0, 1)${0}
+	\\mathrm{N}(0, 1)${0}
 
 snippet     sequence
 abbr        ?, ..., ?
 options     word
-    ${1}, \ldots, ${2}
+	${1}, \\ldots, ${2}
 
 snippet     sequence_from_1
 abbr        1, ..., ?
 options     word
-    1, \ldots, ${1}
+	1, \\ldots, ${1}
 
 snippet     sequence_from_1_to_N
 abbr        1, ..., N
 options     word
-    1, \ldots, N
-    
+	1, \\ldots, N
+	
 snippet     sequence_symbols
 abbr        ?_{?}, ..., ?_{?}
 options     word
-    ${1}_{${2}}, \ldots, $1_{${3}}${0}
+	${1}_{${2}}, \\ldots, $1_{${3}}${0}
 
 snippet     sequence_symbols_from_1
 abbr        ?_{1}, ..., ?_{?}
 options     word
-    ${1}_{1}, \ldots, $1_{${2}}${0}
+	${1}_{1}, \\ldots, $1_{${2}}${0}
 
 snippet     sequence_symbols_from_1_to_N
 abbr        ?_{1}, ..., ?_{N}
 options     word
-    ${1}_{1}, \ldots, $1_{N}${0}
+	${1}_{1}, \\ldots, $1_{N}${0}
 
 snippet     limit
 abbr        limit superior
-	\lim_{${1} \rightarrow \infty} ${0}
+	\\lim_{${1} \\rightarrow \\infty} ${0}
 
 snippet     limit_superior
 abbr        limit superior
-	\limsup_{${1} \rightarrow \infty} ${0}
+	\\limsup_{${1} \\rightarrow \\infty} ${0}
 
 snippet     limit_inferior
 abbr        limit inferior
-	\liminf_{${1} \rightarrow \infty} ${0}
+	\\liminf_{${1} \\rightarrow \\infty} ${0}
 
-snippet     \transpose
+snippet     \\transpose
 abbr        ^{mathrm{T}}
 options		word
-	^{\mathrm{T}}
+	^{\\mathrm{T}}
 
-snippet     \inverse
+snippet     \\inverse
 abbr        ^{-1}
 options		word
 	^{-1}
 
 snippet     equation
-abbr        \begin{equation} \end{equation}
-	\begin{equation}
+abbr        \\begin{equation} \\end{equation}
+	\\begin{equation}
 		${1}
-	\end{equation}
+	\\end{equation}
 
 snippet     equation*
-abbr        \begin{equation*} \end{equation*}
-	\begin{equation*}
+abbr        \\begin{equation*} \\end{equation*}
+	\\begin{equation*}
 		${1}
-	\end{equation*}
+	\\end{equation*}
 
 snippet     eqnarray
-abbr        \begin{eqnarray} \end{eqnarray}
-	\begin{eqnarray}
+abbr        \\begin{eqnarray} \\end{eqnarray}
+	\\begin{eqnarray}
 		${1}
-	\end{eqnarray}
+	\\end{eqnarray}
 
 snippet     eqnarray*
-abbr        \begin{eqnarray*} \end{eqnarray*}
-	\begin{eqnarray*}
+abbr        \\begin{eqnarray*} \\end{eqnarray*}
+	\\begin{eqnarray*}
 		${1}
-	\end{eqnarray*}
+	\\end{eqnarray*}
 
 snippet     eqnarray_newline_def_with_nonumber
-abbr        \nonumber \\ & = &
+abbr        \\nonumber \\\\\ & = &
 options     word
-	\nonumber
-	\\
-    ${1}
-    & := &
-        ${0}
+	\\nonumber
+	\\\\
+	${1}
+	& := &
+	    ${0}
 
 snippet     eqnarray_newline_with_nonumber
-abbr        \nonumber \\ & = &
+abbr        \\nonumber \\\\\ & = &
 options     word
-	\nonumber
-	\\
-    & = &
-        ${0}
+	\\nonumber
+	\\\\
+	& = &
+	    ${0}
 
 snippet     eqnarray_newline
-abbr        \\ & = &
+abbr        \\\\\ & = &
 options     word
-	\\
+	\\\\
 	& = &
-        ${0}
+	    ${0}
 
 snippet     eqnarray_new_statement_with_nonumber
-abbr        \nonumber \\ & = &
+abbr        \\nonumber \\\\\ & = &
 options     word
-	\nonumber
-	\\
-    ${1}
-    & = &
-        ${0}
+	\\nonumber
+	\\\\
+	${1}
+	& = &
+	    ${0}
 
 snippet     eqnarray_new_equation
-abbr        \\ & = &
+abbr        \\\\\ & = &
 options     word
-	\\
+	\\\\
 	${1}
 	& = &
 		${0}
@@ -586,218 +586,218 @@ options     word
 
 snippet     cases
 abbr        cases
-	\begin{cases}	
-		${1} & ${2} \\
+	\\begin{cases}	
+		${1} & ${2} \\\\
 		${3} & ${4} 
-	\end{cases}
+	\\end{cases}
 
 snippet     array
-abbr        begin{array}{} \end{array}
+abbr        begin{array}{} \\end{array}
 options     word
-	\begin{array}{${1}}
+	\\begin{array}{${1}}
 		${2} & ${3}
-	\end{array}
+	\\end{array}
 
 snippet     tilde
 abbr        tilde{}
 options     word
-	\tilde{${1}}${0}
+	\\tilde{${1}}${0}
 
 snippet     bar
 abbr        bar{}
 options     word
-	\bar{${1}}${0}
+	\\bar{${1}}${0}
 
 snippet     mathrm
 abbr        mathrm{}
 options     word
-	\mathrm{${1}}${0}
+	\\mathrm{${1}}${0}
 
 snippet     label
 abbr        label{}
 options     word
-	\label{${1}}${0}
+	\\label{${1}}${0}
 
 ##### definition
 
 snippet     def_jacobian_matrix
 abbr        definition of jacobian matrix
-	\left(
-		\begin{array}{ccc}
-			\frac{\partial f_{1}(x)}{\partial x_{1}} & \ldots & \frac{\partial f_{1}(x)}{\partial x_{N}} \\
-			\vdots & \ddots & \vdots \\
-			\frac{\partial f_{N}(x)}{\partial x_{1}} & \ldots & \frac{\partial f_{N}(x)}{\partial x_{N}} \\
-		\end{array}
-	\right)
+	\\left(
+		\\begin{array}{ccc}
+			\\frac{\\partial f_{1}(x)}{\\partial x_{1}} & \\ldots & \\frac{\\partial f_{1}(x)}{\\partial x_{N}} \\\\
+			\\vdots & \\ddots & \\vdots \\\\
+			\\frac{\\partial f_{N}(x)}{\\partial x_{1}} & \\ldots & \\frac{\\partial f_{N}(x)}{\\partial x_{N}} \\\\
+		\\end{array}
+	\\right)
 	${0}
 
 snippet     def_euclid_norm
 abbr        defnition of vector norm
-	\|x - y\|^{2}
-		= \sum_{i}^{N} |x^{i} - y^{i}|
+	\\|x - y\\|^{2}
+		= \\sum_{i}^{N} |x^{i} - y^{i}|
 
 snippet     def_lower_matrix
 abbr        defnition of lower matrix
 	L = 
-		\left(
-			\begin{array}{ccccc}
-				l_{1}^{1} & 0         & \ldots    &        & 0 \\
-				l_{1}^{2} & l_{2}^{2} & 0         & \ldots & 0 \\
-				l_{1}^{3} & l_{2}^{3} & l_{3}^{3} & \ldots & 0 \\
-				\vdots    & \vdots    & \ddots    & \ddots & \vdots \\
-				l_{1}^{M} & l_{2}^{M} & \ldots    &        & l_{M}^{M}
-			\end{array}
-		\right)
+		\\left(
+			\\begin{array}{ccccc}
+				l_{1}^{1} & 0         & \\ldots    &        & 0 \\\\
+				l_{1}^{2} & l_{2}^{2} & 0         & \\ldots & 0 \\\\
+				l_{1}^{3} & l_{2}^{3} & l_{3}^{3} & \\ldots & 0 \\\\
+				\\vdots    & \\vdots    & \\ddots    & \\ddots & \\vdots \\\\
+				l_{1}^{M} & l_{2}^{M} & \\ldots    &        & l_{M}^{M}
+			\\end{array}
+		\\right)
 
 snippet     def_upper_matrix
 abbr        defnition of upper matrix
 	U = 
-		\left(
-			\begin{array}{ccccc}
-			u_{1}^{1} & u_{2}^{1} & u_{3}^{2} & \ldots & u_{N}^{1} \\
-			0         & u_{2}^{2} & u_{3}^{2} & \ldots & u_{N}^{2} \\
-			\vdots    & 0         & u_{3}^{3} & \ldots & 0 \\
-					  & \vdots    & \ddots    & \ddots & \vdots \\
-			0         & 0         & \ldots    &        & u_{N}^{M}
-			\end{array}
-		\right)
+		\\left(
+			\\begin{array}{ccccc}
+			u_{1}^{1} & u_{2}^{1} & u_{3}^{2} & \\ldots & u_{N}^{1} \\\\
+			0         & u_{2}^{2} & u_{3}^{2} & \\ldots & u_{N}^{2} \\\\
+			\\vdots    & 0         & u_{3}^{3} & \\ldots & 0 \\\\
+					  & \\vdots    & \\ddots    & \\ddots & \\vdots \\\\
+			0         & 0         & \\ldots    &        & u_{N}^{M}
+			\\end{array}
+		\\right)
 
 ## finance
 snippet     def_libar_market_model_stochastic_volatility
 abbr        defnition of Libor Market Model with stochastic volatility
-	\begin{eqnarray}
+	\\begin{eqnarray}
 		dL_{n}(t) 
-			& = & \sqrt{z(t)}\phi(L_{n}(t)) \lambda_{n}(t) ^{\mathrm{T}} dW^{T_{n+1}}(t),
-			\\
+			& = & \\sqrt{z(t)}\\phi(L_{n}(t)) \\lambda_{n}(t) ^{\\mathrm{T}} dW^{T_{n+1}}(t),
+			\\\\
 		d z(t)
-			& = & \theta(z_{0} - z(t)) dt + \eta(t) \sqrt{z(t)} dZ(t), z(0) = z_{0} = 1,
-			\\
-		\langle dW^{T_{n+1}}(t), dZ(t) \rangle
+			& = & \\theta(z_{0} - z(t)) dt + \\eta(t) \\sqrt{z(t)} dZ(t), z(0) = z_{0} = 1,
+			\\\\
+		\\langle dW^{T_{n+1}}(t), dZ(t) \\rangle
 			& = & 0
-	\end{eqnarray}
+	\\end{eqnarray}
 
 snippet     def_black_call_formula
 abbr        definition of black formula for call option
 options     word
-	\begin{eqnarray}
-		c(S, r, T, \sigma; K)
-			& := & S\Phi(d_{1}) - e^{-rT}K\Phi(d_{2}),
-		\\
+	\\begin{eqnarray}
+		c(S, r, T, \\sigma; K)
+			& := & S\\Phi(d_{1}) - e^{-rT}K\\Phi(d_{2}),
+		\\\\
 		d_{1} 
 			& := &
-				\frac{
-					\ln\left(\frac{S}{K} \right) + (r + \frac{1}{2}\sigma^{2})T
+				\\frac{
+					\\ln\\left(\\frac{S}{K} \\right) + (r + \\frac{1}{2}\\sigma^{2})T
 				}{
-					\sigma \sqrt{T}
+					\\sigma \\sqrt{T}
 				},
-		\\
+		\\\\
 		d_{2}
 			& := & 
-				\frac{
-					\ln\left(\frac{S}{K} \right) + (r - \frac{1}{2}\sigma^{2})T
+				\\frac{
+					\\ln\\left(\\frac{S}{K} \\right) + (r - \\frac{1}{2}\\sigma^{2})T
 				}{
-					\sigma \sqrt{T}
+					\\sigma \\sqrt{T}
 				}
-	\end{eqnarray}
+	\\end{eqnarray}
 
 snippet     def_sabr_model
 abbr        definition of SABR model in integral form
 options     word
-	\begin{eqnarray}
+	\\begin{eqnarray}
 		S(t) 
-			& = & S(0) + \int_{0}^{t} \alpha(s) S(s)^{\beta} dW_{1}(s),
-		\\
-		\alpha(t) 
-			& = & \alpha(0) + \int_{0}^{t} \nu\alpha(s) dW_{2}(s),
-		\\
-		\langle W_{1}(\cdot), W_{2}(\cdot) \rangle(t)
-			& = & \rho t
-	\end{eqnarray}
+			& = & S(0) + \\int_{0}^{t} \\alpha(s) S(s)^{\\beta} dW_{1}(s),
+		\\\\
+		\\alpha(t) 
+			& = & \\alpha(0) + \\int_{0}^{t} \\nu\\alpha(s) dW_{2}(s),
+		\\\\
+		\\langle W_{1}(\\cdot), W_{2}(\\cdot) \\rangle(t)
+			& = & \\rho t
+	\\end{eqnarray}
 
 snippet     def_sabr_model_diff
 abbr        definition of SABR model in differential form
 options     word
-	\begin{eqnarray}
+	\\begin{eqnarray}
 		d S(t) 
-			& = & \alpha(t)S(t)^{\beta} dW_{1}(t),
-		\quad
+			& = & \\alpha(t)S(t)^{\\beta} dW_{1}(t),
+		\\quad
 		S(0) = S,
-		\\
-		d\alpha(t) 
-			& = & \nu \alpha(t) dW_{2}(t),
-		\quad
-		\alpha(0) = \alpha,
-		\\
+		\\\\
+		d\\alpha(t) 
+			& = & \\nu \\alpha(t) dW_{2}(t),
+		\\quad
+		\\alpha(0) = \\alpha,
+		\\\\
 		dW_{1}(t)dW_{2}(t) 
-			& = & \rho dt,
-	\end{eqnarray}
+			& = & \\rho dt,
+	\\end{eqnarray}
 
 snippet     def_sabr_model_implied_vol
 abbr        definition of implied volatility under SABR model
 options     word
-	\begin{eqnarray}
-		\sigma_{B}(K, S; T)
-			& \approx &
-			\frac{
-				\alpha
+	\\begin{eqnarray}
+		\\sigma_{B}(K, S; T)
+			& \\approx &
+			\\frac{
+				\\alpha
 			}{
-				(SK)^{(1-\beta)/2}
-				\left(
+				(SK)^{(1-\\beta)/2}
+				\\left(
 					1
-					+ \frac{(1 - \beta)^{2}}{24}
-						\log^{2}\frac{S}{K}
-					+ \frac{(1 - \beta)^{4}}{1920}
-						\log^{4}\frac{S}{K}
-				\right)
+					+ \\frac{(1 - \\beta)^{2}}{24}
+						\\log^{2}\\frac{S}{K}
+					+ \\frac{(1 - \\beta)^{4}}{1920}
+						\\log^{4}\\frac{S}{K}
+				\\right)
 			}
-			\left(
-				\frac{z}{x(z)}
-			\right)
-			\left[
+			\\left(
+				\\frac{z}{x(z)}
+			\\right)
+			\\left[
 				1
 				+
-				\left(
-					\frac{(1 - \beta)^{2}}{24}
-						\frac{\alpha^{2}}{(SK)^{1-\beta}}
-					+ \frac{1}{4}
-						\frac{\rho\beta\nu\alpha}{(SK)^{(1-\beta)/2}}
-					+ \frac{2 - 3\rho^{2}}{24}\nu^{2}
-				\right) T
-			\right],
-		\\
+				\\left(
+					\\frac{(1 - \\beta)^{2}}{24}
+						\\frac{\\alpha^{2}}{(SK)^{1-\\beta}}
+					+ \\frac{1}{4}
+						\\frac{\\rho\\beta\\nu\\alpha}{(SK)^{(1-\\beta)/2}}
+					+ \\frac{2 - 3\\rho^{2}}{24}\\nu^{2}
+				\\right) T
+			\\right],
+		\\\\
 		z 
 			& := &
-			\frac{\nu}{\alpha}
-				(SK)^{(1-\beta)/2}
-				\log\left( \frac{S}{K} \right),
-		\\
+			\\frac{\\nu}{\\alpha}
+				(SK)^{(1-\\beta)/2}
+				\\log\\left( \\frac{S}{K} \\right),
+		\\\\
 		x(z) 
 			& := &
-				\log
-				\left(
-					\frac{
-						\sqrt{1 - 2\rho z + z^{2}} + z - \rho
+				\\log
+				\\left(
+					\\frac{
+						\\sqrt{1 - 2\\rho z + z^{2}} + z - \\rho
 					}{
-						1 - \rho
+						1 - \\rho
 					}
-				\right)
-	\end{eqnarray}
+				\\right)
+	\\end{eqnarray}
 
 snippet     def_sabr_model_atm_implied_vol
 abbr        definition of atm implied volatility under SABR model
 options     word
-	\sigma_{ATM}(S; T)
-		:= \sigma_{B}(S, S; T)
-        \approx
-        \frac{\alpha}{S^{(1-\beta)}}
-        \left[
-            1
-            + 
-            \left(
-                \frac{(1-\beta)^{2}}{24}
-                    \frac{\alpha^{2}}{S^{2 - 2\beta}}
-                + \frac{1}{4}
-                    \frac{\rho \beta \alpha \nu}{S^{1-\beta}}
-                + \frac{2 - 3\rho^{2}}{24} \nu^{2}
-            \right) T
-        \right]
+	\\sigma_{ATM}(S; T)
+		:= \\sigma_{B}(S, S; T)
+	    \\approx
+	    \\frac{\\alpha}{S^{(1-\\beta)}}
+	    \\left[
+	        1
+	        + 
+	        \\left(
+	            \\frac{(1-\\beta)^{2}}{24}
+	                \\frac{\\alpha^{2}}{S^{2 - 2\\beta}}
+	            + \\frac{1}{4}
+	                \\frac{\\rho \\beta \\alpha \\nu}{S^{1-\\beta}}
+	            + \\frac{2 - 3\\rho^{2}}{24} \\nu^{2}
+	        \\right) T
+	    \\right]
