@@ -123,3 +123,16 @@ options     head
     then
 		${0}
     fi
+
+snippet     comment_function
+abbr        comment to function
+options     head
+	################################################################################
+	# ${1:Description}
+	# Globals:
+	#   ${2:None}
+	# Arguments:
+	#   ${3:None}
+	# Returns:
+	#   ${4:None}
+	################################################################################
