@@ -136,3 +136,12 @@ options     head
 	# Returns:
 	#   ${4:None}
 	################################################################################
+
+snippet     substitute_with_here_document
+abbr        substitute string with here document
+options     word
+	${1:VARIABLE_NAME}=$(cat << EOS
+	${2}
+	EOS
+	)
+
