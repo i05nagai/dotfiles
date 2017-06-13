@@ -14,5 +14,6 @@
 	make-patch = diff --no-prefix
 	rebase-fixup = rebase --autosquash -i
 	find = "!git ls-files | grep -i"
+	local-me = !git config --local user.name "i05nagai" && git config --local user.email "i05nagai@gmail.com"
 [color]
 	ui = auto
