@@ -209,7 +209,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	"latex
 	NeoBundle 'vim-latex/vim-latex'
 	"markdown
-	NeoBundle 'i05nagai/previm'
+	NeoBundle 'kannokanno/previm'
 	NeoBundleLazy "plasticboy/vim-markdown", {
 	      \ "autoload": {
 	      \   "filetypes": ["markdown", "md"],
