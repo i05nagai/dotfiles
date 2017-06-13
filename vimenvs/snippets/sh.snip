@@ -107,7 +107,7 @@ abbr        array length
 options     word
     ${#array[@]} 
 
-snippet     exit_if_error
+snippet     if_exit_if_error
 abbr        exit if error
 options     head
     if [ $? -ne 0 ]
@@ -116,10 +116,34 @@ options     head
         exit 1
     fi
 
-snippet     string_contain
+snippet     if_string_contain
 abbr        exit if error
 options     head
     if \`echo ${1:string} | grep '${2:match}'\`
+    then
+		${0}
+    fi
+
+snippet     if_file_exist
+abbr        if file exist
+options     head
+    if [ -e ${1:path} ]
+    then
+		${0}
+    fi
+
+snippet     if_is_file
+abbr        if path is file
+options     head
+    if [ -f ${1:path} ]
+    then
+		${0}
+    fi
+
+snippet     if_is_directory
+abbr        if path is directory
+options     head
+    if [ -d ${1:path} ]
     then
 		${0}
     fi
