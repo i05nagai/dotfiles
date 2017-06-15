@@ -231,3 +231,14 @@ abbr        datetime_from_datetime_to_string
 options     head
     # https://docs.python.org/2.7/library/datetime.html#strftime-and-strptime-behavior
     ${2:date_string} = ${1:date}.strftime('%Y/%m/%d')
+
+## json
+snippet     json_pretty_print
+abbr        json pretty print
+options     word
+    json.dumps(${1}, indent=4, sort_keys=True)${0}
+
+snippet     json_read_from_file
+abbr        json read from file
+options     word
+    json.load(${1:f})${0}

@@ -68,6 +68,5 @@ endif
 "TABで保管候補の選択
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-"スニペットファイルの置き場所
-let g:neocomplcache_snippets_dir = '~/.vim/bundle/neosnippet-snippets/neosnippets'
-
+" path to snippet
+let g:neocomplcache_snippets_dir = '~/.vim/snippets/'
