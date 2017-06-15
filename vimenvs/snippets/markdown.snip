@@ -81,3 +81,10 @@ abbr        ![alt text]()
 options     word
 	![${1:alt text}](${2:url})${3}
 
+snippet     image_html_center
+abbr        image at center by html
+options     word
+    <div style="text-align: center">
+        <img src="${1:path/to/image}">
+    </div>${0}
+
