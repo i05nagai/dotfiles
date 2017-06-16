@@ -156,6 +156,18 @@ options     head
 		${0}
 	fi
 
+snippet     return_true
+abbr        return true
+options     word
+	# true
+	return 0
+
+snippet     return_false
+abbr        return false
+options     word
+	# false 
+	return 1
+
 snippet     comment_function
 abbr        comment to function
 options     head
