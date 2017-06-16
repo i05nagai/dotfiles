@@ -1,0 +1,39 @@
+snippet     from
+abbr        from
+options     head
+	FROM ${1:ubuntu:latest}
+
+snippet     maintainer
+abbr        MAINTAINER
+options     head
+	MAINTAINER ${1:email}
+
+snippet     run
+abbr        RUN
+options     head
+	RUN	${1:echo "hoge"}
+
+snippet     env
+abbr        ENV
+options     head
+	ENV ${1:variable} ${2:value}
+
+snippet     workdir
+abbr        WORKDIR
+options     head
+	WORKDIR ${1:dir}
+
+snippet     add
+abbr        ADD
+options     head
+	ADD ["${1:path/to/source}" "${2:path/to/destination}"]${0}
+
+snippet     copy
+abbr        COPY
+options     head
+	COPY ["${1:path/to/source}" "${2:path/to/destination}"]${0}
+
+snippet     volume
+abbr        VOLUME
+options     head
+	VOLUME ["${1:path/to/mountable_volume}"${2: path/to}]${0}

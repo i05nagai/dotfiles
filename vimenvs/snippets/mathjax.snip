@@ -47,6 +47,16 @@ abbr        non negative real number
 options		word
 	\\mathbb{R}_{\\ge 0}
 
+snippet     positive_real_number_d
+abbr        positive real number
+options		word
+	\\mathbb{R}_{> 0}^{${1}}${0}
+
+snippet     positive_real_number
+abbr        positive real number
+options		word
+	\\mathbb{R}_{> 0}
+
 snippet     natural_number_d
 abbr        mathbb{N}^{?}
 options		word
@@ -171,9 +181,13 @@ snippet     floor
 abbr        \\lfloor \\rfloor
 options     word
 	\\lfloor
-	${1}
-	\\rfloor
-	${0}
+	    ${1}
+	\\rfloor ${0}
+
+snippet     floor_inline
+abbr        \\lfloor \\rfloor
+options     word
+	\\lfloor ${1} \\rfloor ${0}
 
 snippet     ()
 abbr        ( )

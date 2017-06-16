@@ -192,9 +192,9 @@ options     word
 snippet     path_to_this_file
 abbr        path to this bash file
 options     word
-    ${1:SCRIPT_DIR}=$(cd $(dirname $0);pwd)${0}
+    ${1:SCRIPT_DIR}=$(cd $(dirname \${0});pwd)${0}
 
 snippet     path_to_parent_ofthis_file
 abbr        path to parent of this bash file
 options     word
-    ${1:PARENT_DIR}=$(cd $(dirname $0);cd ..;pwd)${0}
+    ${1:PARENT_DIR}=$(cd $(dirname \${0});cd ..;pwd)${0}
