@@ -11,9 +11,8 @@ autoload history-search-end
 # VCSの情報を取得するzshの便利関数 vcs_infoを使う
 autoload -Uz vcs_info
 
-###General
-#vi like keybind
-#bindkey -L
+# General
+# keybind
 #Ctrl-A	行頭へジャンプ
 #Ctrl-E	行末へジャンプ
 #Ctrl-Y	ヤンク
@@ -31,7 +30,13 @@ autoload -Uz vcs_info
 #Ctrl-H	BackSpaceキー
 #Ctrl-I	展開または補完
 #Ctrl-L	クリアスクリーン
+# delete current keybind
+bindkey -d
+# use emacs keybind
 bindkey -e
+bindkey "^J^J" push-line
+
+# options
 setopt auto_resume
 setopt no_beep
 setopt no_clobber
