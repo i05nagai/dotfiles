@@ -193,8 +193,10 @@ fi
 # docker exists
 if which docker >/dev/null 2>&1
 then
-  alias docker-kill-stopped-process='docker rm $(docker ps -a -q)'
-  alias docker-kill-running-process='docker kill $(docker ps -q)'
-  alias docker-delete-all-images='docker rmi $(docker images -q)'
+  alias docker-kill-stopped-process="docker rm $(docker ps -a -q)"
+  alias docker-kill-running-process="docker kill $(docker ps -q)"
+  alias docker-delete-all-image="docker rmi $(docker images -q)"
+  alias docker-get-container-ip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+	alias docker-get-last-container="docker ps -l -q"
 fi
 
