@@ -189,3 +189,12 @@ fi
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# docker exists
+if which docker >/dev/null 2>&1
+then
+  alias docker-kill-stopped-process='docker rm $(docker ps -a -q)'
+  alias docker-kill-running-process='docker kill $(docker ps -q)'
+  alias docker-delete-all-images='docker rmi $(docker images -q)'
+fi
+
