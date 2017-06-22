@@ -213,3 +213,9 @@ snippet     path_to_parent_ofthis_file
 abbr        path to parent of this bash file
 options     word
     ${1:PARENT_DIR}=$(cd $(dirname \${0});cd ..;pwd)${0}
+
+snippet     calculate
+abbr        calculate
+options     word
+	$((${1:1 + 1}))${0}
+
