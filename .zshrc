@@ -190,6 +190,8 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+alias shell-reload="exec ${SHELL} -l"
+
 # docker exists
 if which docker >/dev/null 2>&1
 then
@@ -200,3 +202,17 @@ then
 	alias docker-get-last-container="docker ps -l -q"
 fi
 
+if which bq >/dev/null 2>&1
+then
+  alias bq-get-table-schema="bq show --format=prettyjson"
+	bq-query-standard-sql-json()
+	{
+		cat $@ | bq query --nouse_legacy_sql --format prettyjson
+	}
+	bq-query-and-insert-standard-sql()
+	{
+		echo "$1: sql file path"
+		echo "$2: inserting table"
+		cat $1 | bq query --nouse_legacy_sql --format json | bq insert $2
+	}
+fi
