@@ -247,3 +247,41 @@ snippet     json_string_to_dict
 abbr        json read from file
 options     word
     json.loads(${1:string})${0}
+
+# subprocess
+snippet     execute_external_command
+abbr        execute external_command
+options     word
+	try:
+	    ${2:standard_output} = subprocess.check_output(
+	            ${1:command_string},
+	            stderr=subprocess.STDOUT,
+	            shell=True)
+	except subprocess.CalledProcessError as e:
+	    print("return code: {0}".format(e.returncode))
+	    print("command: {0}".format(e.cmd))
+	    print("output: {0}".format(e.output))
+	    raise
+
+
+snippet     execute_external_command_with_stdin
+abbr        execute external command with stdin
+options     word
+	try:
+	    p = subprocess.Popen(
+	        ${1:command},
+	        stdout=subprocess.PIPE,
+	        stdin=subprocess.PIPE,
+	        stderr=subprocess.PIPE)
+	    output, error = p.communicate(input=input_str)
+	    if p.returncode != 0:
+	        raise RuntimeError(
+	            "{0} failed, status code {1} stdout {2} stderr {3}".format(
+	                command, p.returncode, output, error))
+	    return output
+	except OSError as e:
+	    print("OSError: ", e.errno)
+	    print("OSError: ", e.strerror)
+	    print("OSError: ", e.filename)
+	    raise
+
