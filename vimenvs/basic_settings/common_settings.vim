@@ -28,10 +28,14 @@ set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp,utf-8
 "
 set cursorline
-"hilight search
+" hilight search
 set hlsearch
 set smartcase
-set wrapscan "検索をファイルの先頭へループする
+" 検索をファイルの先頭へループする
+set wrapscan
+" show invisible characters
+set list
+set listchars=tab:»-,trail:-,nbsp:%
 
 "C-vの矩形選択で行末より後ろもカーソルを置ける
 set virtualedit=block
