@@ -199,7 +199,8 @@ then
   alias docker-kill-running-process="docker kill $(docker ps -q)"
   alias docker-delete-all-image="docker rmi $(docker images -q)"
   alias docker-get-container-ip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
-	alias docker-get-last-container="docker ps -l -q"
+  alias docker-get-last-container="docker ps -l -q"
+  alias docker-delete-all-none-images='docker rmi $(docker images --filter dangling=true --quiet)'
 fi
 
 if which bq >/dev/null 2>&1
