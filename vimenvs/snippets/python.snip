@@ -308,3 +308,9 @@ abbr        path to this script
 options     word
 	import os
 	${1:var_name} = os.path.abspath(__file__)${0}
+
+snippet     path_to_this_dir
+abbr        path to directori of this script
+options     word
+	import os
+	${1:var_name} = os.path.abspath(os.path.dirname(__file__))${0}
