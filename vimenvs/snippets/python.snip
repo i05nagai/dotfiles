@@ -285,3 +285,26 @@ options     word
 	    print("OSError: ", e.filename)
 	    raise
 
+snippet     argument_parser_generate_parser
+abbr        generate argument parser
+options     word
+	import argparse
+	
+	parser = argparse.ArgumentParser(description="${1:description of program}")
+	
+	${2:args} = parser.parse_args()
+
+snippet     argument_parser_add_argument
+abbr        add argument
+options     word
+	parser.add_argument("${1:}",
+	                    metavar="${2:variable_name}",
+	                    type=${3:variable_type},
+	                    nargs="+",
+	                    help="${5:help message of this argument}")
+
+snippet     path_to_this_file
+abbr        path to this script
+options     word
+	import os
+	${1:var_name} = os.path.abspath(__file__)${0}
