@@ -1,0 +1,21 @@
+snippet     spark_read_from_textfile
+abbr        sc.textFile()
+options     word
+	${1:sparkContext}.textFile(${2:path_to_file}${3:, minPartitions=None}${4:, use_unicode=True})
+
+
+snippet     spark_configure_local
+abbr        pyspark.SparkConf
+options     word
+    ${4:conf} = ${1:pyspark.}SparkConf(
+    ).setMaster(
+        "${2:local}"
+    ).setAppName(
+        "${3:name_of_app}"
+    )${0}
+
+snippet     spark_make_spark_context
+abbr        pyspark.SparkContext
+options     word
+    ${2:sparkContext} = pyspark.SparkContext(${1:conf=conf})
+

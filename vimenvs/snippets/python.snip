@@ -1,6 +1,7 @@
 include sphinx.snip
 include python_pytest.snip
 include python_matplotlib.snip
+include python_pyspark.snip
 
 snippet     debug
 abbr        import pdb;
@@ -219,7 +220,7 @@ options     head
         for row in reader:
             row
 
-## date
+# date
 snippet     datetime_from_string_to_datetime
 abbr        datetime_from_string_to_datetime
 options     head
@@ -231,6 +232,29 @@ abbr        datetime_from_datetime_to_string
 options     head
     # https://docs.python.org/2.7/library/datetime.html#strftime-and-strptime-behavior
     ${2:date_string} = ${1:date}.strftime('%Y/%m/%d')
+
+snippet     datetime_now
+abbr        date now
+options     head
+    datetime.datetime.now()
+
+snippet     datetime_to_date
+abbr        datetime to date
+options     word
+    ${1:datetime_var}.date()${0}
+
+snippet     date_now
+abbr        date now
+options     head
+    datetime.datetime.now().date()
+
+snippet     date_to_datetime
+abbr        date to datetime
+options     word
+    ${3:datetime_var} = datetime.datetime.combine(
+        ${1:date_var},
+        datetime.time().replace(tzinfo=${2:pytz.utc})
+    )
 
 # json
 snippet     json_pretty_print
@@ -308,3 +332,9 @@ abbr        path to this script
 options     word
 	import os
 	${1:var_name} = os.path.abspath(__file__)${0}
+
+snippet     path_to_this_dir
+abbr        path to directori of this script
+options     word
+	import os
+	${1:var_name} = os.path.abspath(os.path.dirname(__file__))${0}
