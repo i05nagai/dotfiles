@@ -469,6 +469,12 @@ abbr        N(0, 1)
 options     word
 	\\mathrm{N}(0, 1)${0}
 
+# polynomial
+snippet     degree
+abbr        degree
+options     word
+    \\mathrm{deg}(${1})${0}
+
 snippet     sequence
 abbr        ?, ..., ?
 options     word
@@ -632,7 +638,7 @@ abbr        label{}
 options     word
 	\\label{${1}}${0}
 
-##### definition
+# definition
 
 snippet     def_jacobian_matrix
 abbr        definition of jacobian matrix
