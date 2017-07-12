@@ -1,0 +1,25 @@
+snippet     random_mersenne_twister
+abbr        
+options     head
+	std::mt19937 ${1:varName}(${2:seed}); 
+
+snippet     random_uniform_int_from_to
+abbr        uniform integer from to
+options     head
+	std::mt19937 ${1:varName}(${2:seed}); 
+	std::uniform_int_distribution<> ${3:varName}(${4:from}, ${5:to});  
+	$3($1);
+
+snippet     random_uniform_double_from_to
+abbr        uniform double from to
+options     head
+	std::mt19937 ${1:varName}(${2:seed}); 
+	std::uniform_real_distribution<double> ${3:varName}(${4:from}, ${5:to});  
+	$3($1);
+
+snippet     random_normal_with_mean_variance
+abbr        uniform normal with mean and variance
+options     head
+	std::mt19937 ${1:varName}(${2:seed}); 
+	std::normal_distribution<> ${3:varName}(${4:mean}, ${5:variance});  
+	$3($1);
