@@ -1,5 +1,25 @@
 include mathjax.snip
 
+snippet     tempalte_docs
+abbr        template docs
+options     word
+    ## ${1:title}
+    ${2}
+
+    ## Reference
+
+snippet     tempalte_docs_with_jekyll_header
+abbr        template docs
+options     word
+    ---
+    title: ${1:title}
+    ---
+
+    ## $1
+    ${2}
+
+    ## Reference
+
 snippet template_readme
 abbr git README.md
     ${1:Name}
