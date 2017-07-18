@@ -9,8 +9,8 @@ function! s:cpp()
 	
 
     "タブ文字の長さ
-    setlocal tabstop=4
-    setlocal shiftwidth=4
+    setlocal tabstop=2
+    setlocal shiftwidth=2
 
     " 空白文字ではなくてタブ文字を使用する
     "setlocal noexpandtab

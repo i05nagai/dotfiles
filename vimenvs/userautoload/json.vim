@@ -1,8 +1,8 @@
-function! s:javascript()
+function! s:json()
     setlocal tabstop=2
     setlocal shiftwidth=2
     setlocal expandtab
 endfunction
 
-autocmd FileType javascript call s:javascript()
+autocmd FileType json call s:json()
 

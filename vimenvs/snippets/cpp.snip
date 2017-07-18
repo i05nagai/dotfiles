@@ -4,6 +4,8 @@ include gmock.snip
 include gtest.snip
 include doxygen.snip
 include mathjax.snip
+include cpp_random.snip
+include cpp_algorithm.snip
 
 # pre processors
 snippet pragma_once
@@ -272,3 +274,69 @@ abbr namespace2 target interface source
 	} } // namespace $2 { namespace $3 {
 
 
+snippet     test_random_number_generator_source
+abbr        random number generator for test
+options     head
+	#include "test_util/RandomNumber.h"
+
+	namespace test_util {
+	  RandomNumber::RandomNumber(const std::size_t seed = 3252352)
+	  : _engine(), _distribution()
+	  {
+	  }
+
+	  double RandomNumber::operator()()
+	  {
+		return _distribution(_engine);
+	  }
+
+	  double RandomNumber::operator()(const double min, const double max)
+	  {
+		const int diff = max - min;
+		return (*this)() * diff + min;
+	  }
+	} // namespace test_util
+
+snippet     test_random_number_generator_header
+abbr        random number generator for test
+options     head
+	#pragma once
+	#include <boost/random.hpp>
+
+	namespace test_util {
+	  class RandomNumber {
+	  //private typedef
+	  private:
+	  //public typedef
+	  public:
+	  //public function
+	  public:
+		RandomNumber(const std::size_t seed = 3252352);
+		/**
+		 * @brief random value in [0, 1). 
+		 *
+		 * @return random value in [0, 1).
+		 */
+		double operator()();
+		/**
+		 * @brief [min, max)
+		 *
+		 * @param min
+		 * @param max
+		 *
+		 * @return [min, max) 
+		 */
+		double operator()(const double min, const double max);
+	  //private function
+	  private:
+	  //private members
+	  private:
+		  boost::random::mt19937 _engine;
+		  boost::random::uniform_01<double> _distribution;
+	  }; // class RandomNumber {
+	} // namespace test_util
+
+snippet     lambda_capture
+abbr        lambda capturing outside variable
+options     
+	[&](${1:varDef}) { ${2} }${0:;}

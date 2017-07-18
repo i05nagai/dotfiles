@@ -252,6 +252,12 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 	      \ }
 	"powershell
 	NeoBundle 'PProvost/vim-ps1'
+	" javascript
+	NeoBundleLazy 'othree/yajs.vim', {
+				\'autoload': {
+				\	'filetypes':['javascript']
+				\	},
+				\	}
 	"coffee script
 	NeoBundle 'kchmck/vim-coffee-script'
 	"C#

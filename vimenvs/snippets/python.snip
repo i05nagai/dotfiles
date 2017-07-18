@@ -366,3 +366,11 @@ snippet     set_add_set
 abbr        set add set
 options     word
 	${1:set_var} |= ${2:set_var2}
+
+snippet     filename_recursively
+abbr        files in the directory
+options     word
+	import os
+	for root, subdirs, files in os.walk(${1:rootdir}):
+	    for file in files:
+	        path_to_file = os.path.join(root, file)

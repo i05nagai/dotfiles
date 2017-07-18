@@ -469,6 +469,17 @@ abbr        N(0, 1)
 options     word
 	\\mathrm{N}(0, 1)${0}
 
+# word
+snippet     degree
+abbr        degree
+options     word
+    \\mathrm{deg}(${1})${0}
+
+snippet     subject_to
+abbr        s.t.
+options     word
+    \\mathrm{ s.t. }
+
 snippet     sequence
 abbr        ?, ..., ?
 options     word
@@ -632,7 +643,7 @@ abbr        label{}
 options     word
 	\\label{${1}}${0}
 
-##### definition
+# definition
 
 snippet     def_jacobian_matrix
 abbr        definition of jacobian matrix
