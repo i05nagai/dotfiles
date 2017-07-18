@@ -12,4 +12,6 @@ vimenvs/bundle/*
 .vim/undo/
 .vim/basic_settings
 
+# for osx
+.DS_Store
 
