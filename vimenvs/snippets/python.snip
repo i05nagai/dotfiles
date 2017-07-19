@@ -357,6 +357,18 @@ options     word
 	import os
 	${1:var_name} = os.path.abspath(os.path.dirname(__file__))${0}
 
+snippet     environment_variable_get
+abbr        environment variable
+options     head
+	import os
+	${2:get_var} = os.environ["${1:var_name}"]
+
+snippet     environment_variable_set
+abbr        environment variable
+options     head
+	import os
+	os.environ["${1:var_name}"] = ${2:set_var}
+
 snippet     set_add_element
 abbr        set add set
 options     word
