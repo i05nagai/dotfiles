@@ -167,6 +167,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
   NeoBundle 'Shougo/neosnippet'
   NeoBundle 'Shougo/neosnippet-snippets'
+  NeoBundle 'shinespark/vim-list2tree'
   " unite
   NeoBundle 'Shougo/unite.vim'
   NeoBundle 'tsukkee/unite-tag'
