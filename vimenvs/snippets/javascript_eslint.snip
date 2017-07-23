@@ -2,3 +2,14 @@ snippet     no_unused_vars_ignore
 abbr        no unused vars
 options     word
 	/* eslint no-unused-vars: ["error", {"varsIgnorePattern": "${1:ignorepattern}"}] */${0}
+
+snippet     global_var
+abbr        global
+options     word
+	/* global ${1:var1}${2:, var2} */${0}
+
+snippet     no_underscore_dangle
+abbr        no underscore dangling
+options     word
+	/* eslint no-underscore-dangle: ["error", { "allow": ["${1:_var}"] }] */${0}
+
