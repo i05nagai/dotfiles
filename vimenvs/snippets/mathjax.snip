@@ -122,6 +122,21 @@ abbr        (?, O_{?})
 options     word
 	(${1}, \\mathcal{O}_{$1})${0}
 
+snippet     hom
+abbr        Hom
+options     head
+	\mathrm{Hom}(${1:S}, ${2:R})${0}
+
+snippet     alg
+abbr        ?-alg
+options     word
+	${1}\mathrm{-alg}${0}
+
+snippet     span
+abbr        span
+options     word
+	\mathrm{span}\\{${1}\\}${0}
+
 ## 
 snippet     upper_notation
 abbr        upper notation
@@ -261,7 +276,7 @@ abbr        ?: ? -> ?
 options     word
 	${1}: ${2} \\rightarrow ${3}
 
-#binary operator
+# binary operator
 
 snippet     iff_def
 abbr        def over iff
@@ -269,6 +284,11 @@ options     word
 	\\overset{\\mathrm{def}}{\\iff}
 
 # unary operator
+snippet     log_capital
+abbr        Log
+options     word
+    \mathrm{Log}
+
 snippet     summation
 abbr        \\sum_{}^{}
 options		word
