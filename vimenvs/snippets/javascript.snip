@@ -1,6 +1,56 @@
 include javascript_eslint.snip
+include html.snip
 
 snippet     use_strict
 abbr        use strict
 options     head
 	"use strict";
+
+snippet     try_catch
+abbr        try catch(e)
+options     word
+	try {
+		${2}
+	} catch (${1:error}) {
+
+	}
+
+snippet     for_length
+abbr        for with length
+options     word
+	for (var ${1:i} = 0; $1 < ${2:array}.length; $1++) {
+	  ${0}
+	}
+
+snippet     for_foreach_object_keys
+abbr        Object.keys(array)
+options     word
+	Object.keys(${1:array}).forEach((${2:elem}) => {
+	  ${0}
+	});
+
+snippet     function_unnamed
+abbr        function () {}
+options     word
+	function (${1:arg}) {
+	  ${0}
+	}
+
+snippet     function_arrow
+abbr        () => {}
+options     word
+	(${1:arg}) => {
+	  ${0}
+	}
+
+snippet     function_unnamed_between_braces
+abbr        (function () { }());
+options     word
+	(function (${1:arg}) {
+	  ${0}
+	}());
+
+snippet     has_own_property_by_object
+abbr        Object.hasOwnProperty.call
+options     word
+	Object.hasOwnProperty.call(${1:object}, ${2:key})${0}
