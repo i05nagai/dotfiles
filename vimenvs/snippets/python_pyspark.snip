@@ -1,8 +1,22 @@
 snippet     spark_read_from_textfile
 abbr        sc.textFile()
 options     word
-	${1:sparkContext}.textFile(${2:path_to_file}${3:, minPartitions=None}${4:, use_unicode=True})
+	${1:spark_context}.textFile(${2:path_to_file}${3:, minPartitions=None}${4:, use_unicode=True})
 
+snippet     spark_session_read_json_as_df
+abbr        spark.read.json()
+options     word
+	${3:df} = ${1:spark_session}.read.json(${2:path_to_file})${0}
+
+snippet     spark_session_with_config
+abbr        
+options     word
+	${2:spark_session} = pyspark.sql.SparkSession.builder.config(conf=${1:spark_conf}).getOrCreate()
+
+snippet     spark_session_sql
+abbr        
+options     word
+	${3:df} = ${1:spark_session}.sql("${2:sql}")${0}
 
 snippet     spark_configure_local
 abbr        pyspark.SparkConf
@@ -17,5 +31,5 @@ options     word
 snippet     spark_make_spark_context
 abbr        pyspark.SparkContext
 options     word
-    ${2:sparkContext} = pyspark.SparkContext(${1:conf=conf})
+    ${2:spark_context} = pyspark.SparkContext(${1:conf=conf})
 
