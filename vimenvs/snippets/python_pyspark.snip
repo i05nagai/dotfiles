@@ -18,6 +18,16 @@ abbr
 options     word
 	${3:df} = ${1:spark_session}.sql("${2:sql}")${0}
 
+snippet     spark_df_describe_all
+abbr        spark_df_describe
+options     word
+	${1:df}.describe().show()${0}
+
+snippet     spark_df_to_csv
+abbr        spark df to csv
+options     head
+    ${2:df}.write.format('com.databricks.spark.csv').save('${1:path_to_csv}')${0}
+
 snippet     spark_configure_local
 abbr        pyspark.SparkConf
 options     word
