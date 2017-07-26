@@ -37,6 +37,15 @@ options     head
         "${2:overwrite}"
     ).save("${3:path_to_csv}")${0}
 
+snippet     spark_df_to_csv_with_header
+abbr        spark df to csv with mode
+options     head
+    ${1:df}.write.format(
+        "com.databricks.spark.csv"
+    ).mode(
+        "${2:overwrite}"
+    ).save("${3:path_to_csv}", header=True)${0}
+
 snippet     spark_df_column_list
 abbr        spark df column list
 options     word
