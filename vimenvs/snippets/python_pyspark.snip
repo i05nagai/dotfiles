@@ -26,7 +26,21 @@ options     word
 snippet     spark_df_to_csv
 abbr        spark df to csv
 options     head
-    ${2:df}.write.format('com.databricks.spark.csv').save('${1:path_to_csv}')${0}
+    ${1:df}.write.format('com.databricks.spark.csv').save('${2:path_to_csv}')${0}
+
+snippet     spark_df_to_csv_with_mode
+abbr        spark df to csv with mode
+options     head
+    ${1:df}.write.format(
+        "com.databricks.spark.csv"
+    ).mode(
+        "${2:overwrite}"
+    ).save("${3:path_to_csv}")${0}
+
+snippet     spark_df_column_list
+abbr        spark df column list
+options     word
+    ${1:df}.schema.names
 
 snippet     spark_configure_local
 abbr        pyspark.SparkConf
