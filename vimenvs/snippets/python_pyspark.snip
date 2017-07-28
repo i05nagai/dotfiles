@@ -44,7 +44,7 @@ options     head
         "com.databricks.spark.csv"
     ).mode(
         "${2:overwrite}"
-    ).save("${3:path_to_csv}", header=True)${0}
+    ).save("${3:path_to_csv}")${0}
 
 snippet     spark_df_column_list
 abbr        spark df column list
