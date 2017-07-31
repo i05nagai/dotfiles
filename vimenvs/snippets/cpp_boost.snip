@@ -1,0 +1,27 @@
+snippet     ublas
+abbr        namespace ublas =...
+    namespace ublas = boost::numeric::ublas;
+
+snippet     bs
+abbr        boost::shared_ptr
+    boost::shared_ptr<${1}>${2} ${0:TARGET}
+
+snippet     bv
+abbr        boost::numeric::ublas::vector
+    boost::numeric::ublas::vector<${1}>${2} ${0:TARGET}
+
+snippet     uv
+abbr        boost::numeric::ublas::vector
+    ublas::vector<${1}>${2} ${0:TARGET}
+
+snippet     sv
+abbr        std::vector
+    std::vector<${1}> ${0:TARGET}
+
+snippet     bm
+abbr        boost::numeric::ublas::matrix
+    boost::numeric::ublas::matrix<${1}>${2} ${0:TARGET}
+
+snippet     um
+abbr        boost::numeric::ublas::matrix
+    ublas::matrix<${1}>${2} ${0:TARGET}
