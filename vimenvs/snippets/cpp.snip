@@ -4,6 +4,7 @@ include gmock.snip
 include gtest.snip
 include doxygen.snip
 include mathjax.snip
+include cpp_boost.snip
 include cpp_random.snip
 include cpp_algorithm.snip
 
@@ -32,16 +33,16 @@ delete      namespace2
 snippet     namespace2
 abbr        namespace { namespace { } }
 options     head
-    namespace ${1:#:name} { namespace ${2:name} {
-        ${0:TARGET}
-    } } // namespace $1 { namespace $2 {
+	namespace ${1:#:name} { namespace ${2:name} {
+	  ${0:TARGET}
+	} } // namespace $1 { namespace $2 {
 
 delete      namespace3
 snippet     namespcae3
 abbr        namespace { namespace { namespace { } } }
 options     head
     namespace ${1:#:name} { namespace ${2:name} { namespace ${3:name} {
-        ${0:TARGET}
+      ${0:TARGET}
     } } } // namespace $1 { namespace $2 { namespace $3 {
 
 snippet     ifndef2
@@ -51,50 +52,23 @@ abbr        #ifndef HOGE...
     ${0:TARGET}
     #endif // #ifndef $1_H_INCLUDED
 
-snippet     ublas
-abbr        namespace ublas =...
-    namespace ublas = boost::numeric::ublas;
-
 snippet     ffunc
 abbr        void func(...
     ${1:void} ${2:func_name}(${3:attr})
     {
-        ${0}
+      ${0}
     }
 
 snippet     forstd
 abbr        for (std::size_t index) {}
-    for (std::size_t ${1:index} = 0; $1 < ${2:size}; ++$1) {
-        ${0:TARGET}
+    for (size_t ${1:index} = 0; $1 < ${2:size}; ++$1) {
+      ${0:TARGET}
     }
 
 snippet     p
 options     head
-  std::cout << ${0:TARGET} << std::endl;
+	std::cout << ${0:TARGET} << std::endl;
 
-snippet     bs
-abbr        boost::shared_ptr
-    boost::shared_ptr<${1}>${2} ${0:TARGET}
-
-snippet     bv
-abbr        boost::numeric::ublas::vector
-    boost::numeric::ublas::vector<${1}>${2} ${0:TARGET}
-
-snippet     uv
-abbr        boost::numeric::ublas::vector
-    ublas::vector<${1}>${2} ${0:TARGET}
-
-snippet     sv
-abbr        std::vector
-    std::vector<${1}> ${0:TARGET}
-
-snippet     bm
-abbr        boost::numeric::ublas::matrix
-    boost::numeric::ublas::matrix<${1}>${2} ${0:TARGET}
-
-snippet     um
-abbr        boost::numeric::ublas::matrix
-    ublas::matrix<${1}>${2} ${0:TARGET}
 
 snippet     mfunc
 abbr        void className::funcitonName() {}
@@ -164,19 +138,19 @@ abbr targetheader
 	#pragma once
 	
 	namespace ${1:namespace} {
-		class ${2:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}${3} {
-		//private typedef
-		private:
-		//public typedef
-		public:
-		//public function
-		public:
-			${4:end}
-		//private function
-		private:
-		//private members
-		private:
-		}; // class $2$3 {
+	class ${2:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}${3} {
+	  //private typedef
+	  private:
+	  //public typedef
+	  public:
+	  //public function
+	  public:
+	    ${4:end}
+	  //private function
+	  private:
+	  //private members
+	  private:
+	}; // class $2$3 {
 	} // namespace $1 {
 
 snippet targetsource
@@ -184,7 +158,7 @@ abbr target source
 	#include "${1:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`.h}"
 
 	namespace ${2:namespace} {
-		${0:mfunc}
+	  ${0:mfunc}
 	} // namespace $2 {
 
 snippet targetheader2
@@ -221,19 +195,19 @@ options     head
 	#pragma once
 	
 	namespace ${1:namespace} {
-		class ${2:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}${3} {
-		//private typedef
-		private:
-		//public typedef
-		public:
-		//public function
-		public:
-			${0:end}
-		//private function
-		private:
-		//private members
-		private:
-		}; // class $2$3 {
+	  class ${2:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}${3} {
+	  //private typedef
+	  private:
+	  //public typedef
+	  public:
+	  //public function
+	  public:
+	  	${0:end}
+	  //private function
+	  private:
+	  //private members
+	  private:
+	  }; // class $2$3 {
 	} // namespace $1 { 
 
 snippet targetisource
@@ -241,7 +215,7 @@ abbr namespace target interface source
 	#include "${1:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`.h}"
 
 	namespace ${2:namespace} {
-		${0:mfunc}
+	  ${0:mfunc}
 	} // namespace $2 {
 
 snippet     targetiheader2
@@ -270,7 +244,7 @@ abbr namespace2 target interface source
 	#include "${1:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`.h}"
 
 	namespace ${2:namespace} { namespace ${3:namespace} {
-		${0:mfunc}
+	  ${0:mfunc}
 	} } // namespace $2 { namespace $3 {
 
 
@@ -287,13 +261,13 @@ options     head
 
 	  double RandomNumber::operator()()
 	  {
-		return _distribution(_engine);
+	    return _distribution(_engine);
 	  }
 
 	  double RandomNumber::operator()(const double min, const double max)
 	  {
-		const int diff = max - min;
-		return (*this)() * diff + min;
+	    const int diff = max - min;
+	    return (*this)() * diff + min;
 	  }
 	} // namespace test_util
 
@@ -311,32 +285,32 @@ options     head
 	  public:
 	  //public function
 	  public:
-		RandomNumber(const std::size_t seed = 3252352);
-		/**
-		 * @brief random value in [0, 1). 
-		 *
-		 * @return random value in [0, 1).
-		 */
-		double operator()();
-		/**
-		 * @brief [min, max)
-		 *
-		 * @param min
-		 * @param max
-		 *
-		 * @return [min, max) 
-		 */
-		double operator()(const double min, const double max);
+	    RandomNumber(const std::size_t seed = 3252352);
+	    /**
+	     * @brief random value in [0, 1). 
+	     *
+	     * @return random value in [0, 1).
+	     */
+	    double operator()();
+	    /**
+	     * @brief [min, max)
+	     *
+	     * @param min
+	     * @param max
+	     *
+	     * @return [min, max) 
+	     */
+	    double operator()(const double min, const double max);
 	  //private function
 	  private:
 	  //private members
 	  private:
-		  boost::random::mt19937 _engine;
-		  boost::random::uniform_01<double> _distribution;
+	    boost::random::mt19937 _engine;
+	    boost::random::uniform_01<double> _distribution;
 	  }; // class RandomNumber {
 	} // namespace test_util
 
 snippet     lambda_capture
 abbr        lambda capturing outside variable
-options     
+options     word
 	[&](${1:varDef}) { ${2} }${0:;}
