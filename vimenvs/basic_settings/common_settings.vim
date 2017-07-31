@@ -80,20 +80,20 @@ endif
 "-------------------------------------------------------
 "--- <F6>  タイムスタンプを挿入してinsertモードへ移行 ----
 function! GetTimeStampInEnglish(type)
-	let wday = strftime("%w")
-	let mday = strftime("%m")
-	let months = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Non", "Dec" ]
-	let weeks = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ]
-	"Japanese
-	if a:type == 1
-		return strftime("%Y/%m/%d (". weeks[wday] .") %H:%M")
-	"Amarican
-	elseif a:type == 2
-		return strftime(months[mday]."/%d/%Y (". weeks[wday] .") %H:%M")
-	"Blighty
-	else
-		return strftime("%d/". months[mday] ."/%Y (". weeks[wday] .") %H:%M")
-	endif
+  let wday = strftime("%w")
+  let mday = strftime("%m")
+  let months = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Non", "Dec" ]
+  let weeks = [ "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" ]
+  "Japanese
+  if a:type == 1
+    return strftime("%Y/%m/%d (". weeks[wday] .") %H:%M")
+  "Amarican
+  elseif a:type == 2
+    return strftime(months[mday]."/%d/%Y (". weeks[wday] .") %H:%M")
+  "Blighty
+  else
+    return strftime("%d/". months[mday] ."/%Y (". weeks[wday] .") %H:%M")
+  endif
 endfunction
 nmap <F6> <ESC>i<C-R>=GetTimeStampInEnglish(3)<CR>
 
@@ -121,27 +121,27 @@ nnoremap <silent> [TABCMD]g :<C-u>tabnext
 "タブの番号を表示する
 set tabline=%!MyTabLine()
 function! MyTabLine()
-	let s = ''
-	for i in range(tabpagenr('$'))
-		if i + 1 == tabpagenr()
-			let s .= '%#TabLineSel#'
-		else
-			let s .= '%#TabLine#'
-		endif
-		let s .= '%' . (i+1) . 'T' 
-		let s .= ' ' . (i+1) . (1==getwinvar(i+1,'&modified')?'[+]':'') . ' %{MyTabLabel(' . (i+1) . ')} '
-	endfor
-	let s .= '%#TabLineFill#%T'
-	if tabpagenr('$') > 1 
-		let s .= '%=%#TabLine#%999Xclose'
-	endif
-	return s
+  let s = ''
+  for i in range(tabpagenr('$'))
+    if i + 1 == tabpagenr()
+      let s .= '%#TabLineSel#'
+    else
+      let s .= '%#TabLine#'
+    endif
+    let s .= '%' . (i+1) . 'T' 
+    let s .= ' ' . (i+1) . (1==getwinvar(i+1,'&modified')?'[+]':'') . ' %{MyTabLabel(' . (i+1) . ')} '
+  endfor
+  let s .= '%#TabLineFill#%T'
+  if tabpagenr('$') > 1 
+    let s .= '%=%#TabLine#%999Xclose'
+  endif
+  return s
 endfunction
 
 function! MyTabLabel(n)
-	let buflist = tabpagebuflist(a:n)
-	let winnr = tabpagewinnr(a:n)
-	return bufname(buflist[winnr - 1]) 
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  return bufname(buflist[winnr - 1]) 
 endfunction
 
 ""---------------------------------------------------------
@@ -158,117 +158,118 @@ let g:netrw_alto = 1
 "NeoBundle
 "---------------------------------------------------------
 if has('vim_starting')
-	set runtimepath+=~/.vim/bundle/neobundle.vim
-	"call neobundle#rc(expand('~/.vim/bundle/'))
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+  "call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
-	"utilities
-	NeoBundle 'Shougo/neobundle.vim'
-	NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
-	NeoBundle 'Shougo/neosnippet'
-	NeoBundle 'Shougo/neosnippet-snippets'
-	" unite
-	NeoBundle 'Shougo/unite.vim'
-	NeoBundle 'tsukkee/unite-tag'
-	NeoBundle 'hewes/unite-gtags'
-	NeoBundle 'osyo-manga/unite-quickrun_config'
-	NeoBundle 'Shougo/vimproc', {
-	  \ 'build' : {
-		\ 'windows' : 'make -f make_mingw64.mak',
-		\ 'cygwin' : 'make -f make_cygwin.mak',
-		\ 'mac' : 'make -f make_mac.mak',
-		\ 'unix' : 'make -f make_unix.mak',
-	  \ },
-	\ }
-	NeoBundle 'Shougo/vimfiler.vim'
-	" quickrun
-	NeoBundle 'thinca/vim-quickrun'
-	NeoBundle 'osyo-manga/shabadou.vim'
-	NeoBundle 'tpope/vim-surround'
-	NeoBundle 'mopp/next-alter.vim'
-	NeoBundle 'tyru/open-browser.vim'
-	NeoBundle 'h1mesuke/vim-alignta'
-	NeoBundle 'LeafCage/yankround.vim'
-	NeoBundle 'vim-scripts/taglist.vim'
-	NeoBundle 'itchyny/lightline.vim'
-	"text-object
-	NeoBundle 'kana/vim-textobj-user'
-	NeoBundle "bps/vim-textobj-python"
-	"cmake
-	"NeoBundleLazy 'jalcine/cmake.vim', {
-	"	\ "autoload": {
-	"	\	"filetypes": ["cmake"],
-	"	\ },
-	"	\ "build": {
-	"	\	"mac": "rake",
-	"	\	"unix": "rake",
-	"	\ }}
-	"git
-	NeoBundle 'tpope/vim-fugitive'
-	NeoBundle 'gregsexton/gitv'
-	"github
-	NeoBundle 'rhysd/github-complete.vim'
-	"doxygen
-	NeoBundle 'vim-scripts/DoxygenToolkit.vim'
-	"latex
-	NeoBundle 'vim-latex/vim-latex'
-	"markdown
-	NeoBundle 'kannokanno/previm'
-	NeoBundleLazy "plasticboy/vim-markdown", {
-	      \ "autoload": {
-	      \   "filetypes": ["markdown", "md"],
-	      \ }}
-	NeoBundle 'mzlogin/vim-markdown-toc'
-	"restructuredText
-	NeoBundle 'Rykka/riv.vim'
-	"C++
-	NeoBundleLazy 'rhysd/unite-n3337', {
-				\ 'depends' : 'Shougo/unite.vim',
-				\ 'autoload' : {'filetypes' : 'cpp'}
-				\ }
-	"python
-	NeoBundleLazy "davidhalter/jedi-vim", {
-	      \ "autoload": {
-	      \   "filetypes": ["python", "python3", "djangohtml"],
-	      \ },
-	      \ "build": {
-	      \   "mac": "",
-	      \   "unix": "",
-	      \ }}
-	NeoBundleLazy "andviro/flake8-vim", {
-	      \ "autoload": {
-	      \   "filetypes": ["python", "python3", "djangohtml"],
-	      \ },
-	      \ }
-	NeoBundleLazy "hynek/vim-python-pep8-indent", {
-	      \ "autoload": {
-	      \   "filetypes": ["python", "python3", "djangohtml"],
-	      \ },
-	      \ }
-	NeoBundleLazy "heavenshell/vim-pydocstring", {
-	      \ "autoload": {
-	      \   "filetypes": ["python", "python3", "djangohtml"],
-	      \ },
-	      \ }
-	"powershell
-	NeoBundle 'PProvost/vim-ps1'
-	" javascript
-	NeoBundleLazy 'othree/yajs.vim', {
-				\'autoload': {
-				\	'filetypes':['javascript']
-				\	},
-				\	}
-	"coffee script
-	NeoBundle 'kchmck/vim-coffee-script'
-	"C#
-	"NeoBundleLazy 'nosami/Omnisharp', {
-	"\   'autoload': {'filetypes': ['cs']},
-	"\   'build': {
-	"\     'windows': 'MSBuild.exe server/OmniSharp.sln /p:Platform="Any CPU"',
-	"\     'mac': 'xbuild server/OmniSharp.sln',
-	"\     'unix': 'xbuild server/OmniSharp.sln',
-	"\   }
-	"\ }
+  "utilities
+  NeoBundle 'Shougo/neobundle.vim'
+  NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
+  NeoBundle 'Shougo/neosnippet'
+  NeoBundle 'Shougo/neosnippet-snippets'
+  NeoBundle 'shinespark/vim-list2tree'
+  " unite
+  NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'tsukkee/unite-tag'
+  NeoBundle 'hewes/unite-gtags'
+  NeoBundle 'osyo-manga/unite-quickrun_config'
+  NeoBundle 'Shougo/vimproc', {
+    \ 'build' : {
+    \ 'windows' : 'make -f make_mingw64.mak',
+    \ 'cygwin' : 'make -f make_cygwin.mak',
+    \ 'mac' : 'make -f make_mac.mak',
+    \ 'unix' : 'make -f make_unix.mak',
+    \ },
+  \ }
+  NeoBundle 'Shougo/vimfiler.vim'
+  " quickrun
+  NeoBundle 'thinca/vim-quickrun'
+  NeoBundle 'osyo-manga/shabadou.vim'
+  NeoBundle 'tpope/vim-surround'
+  NeoBundle 'mopp/next-alter.vim'
+  NeoBundle 'tyru/open-browser.vim'
+  NeoBundle 'h1mesuke/vim-alignta'
+  NeoBundle 'LeafCage/yankround.vim'
+  NeoBundle 'vim-scripts/taglist.vim'
+  NeoBundle 'itchyny/lightline.vim'
+  "text-object
+  NeoBundle 'kana/vim-textobj-user'
+  NeoBundle "bps/vim-textobj-python"
+  "cmake
+  "NeoBundleLazy 'jalcine/cmake.vim', {
+  "  \ "autoload": {
+  "  \  "filetypes": ["cmake"],
+  "  \ },
+  "  \ "build": {
+  "  \  "mac": "rake",
+  "  \  "unix": "rake",
+  "  \ }}
+  "git
+  NeoBundle 'tpope/vim-fugitive'
+  NeoBundle 'gregsexton/gitv'
+  "github
+  NeoBundle 'rhysd/github-complete.vim'
+  "doxygen
+  NeoBundle 'vim-scripts/DoxygenToolkit.vim'
+  "latex
+  NeoBundle 'vim-latex/vim-latex'
+  "markdown
+  NeoBundle 'kannokanno/previm'
+  NeoBundleLazy "plasticboy/vim-markdown", {
+        \ "autoload": {
+        \   "filetypes": ["markdown", "md"],
+        \ }}
+  NeoBundle 'mzlogin/vim-markdown-toc'
+  "restructuredText
+  NeoBundle 'Rykka/riv.vim'
+  "C++
+  NeoBundleLazy 'rhysd/unite-n3337', {
+        \ 'depends' : 'Shougo/unite.vim',
+        \ 'autoload' : {'filetypes' : 'cpp'}
+        \ }
+  "python
+  NeoBundleLazy "davidhalter/jedi-vim", {
+        \ "autoload": {
+        \   "filetypes": ["python", "python3", "djangohtml"],
+        \ },
+        \ "build": {
+        \   "mac": "",
+        \   "unix": "",
+        \ }}
+  NeoBundleLazy "andviro/flake8-vim", {
+        \ "autoload": {
+        \   "filetypes": ["python", "python3", "djangohtml"],
+        \ },
+        \ }
+  NeoBundleLazy "hynek/vim-python-pep8-indent", {
+        \ "autoload": {
+        \   "filetypes": ["python", "python3", "djangohtml"],
+        \ },
+        \ }
+  NeoBundleLazy "heavenshell/vim-pydocstring", {
+        \ "autoload": {
+        \   "filetypes": ["python", "python3", "djangohtml"],
+        \ },
+        \ }
+  "powershell
+  NeoBundle 'PProvost/vim-ps1'
+  " javascript
+  NeoBundleLazy 'othree/yajs.vim', {
+        \'autoload': {
+        \  'filetypes':['javascript']
+        \  },
+        \  }
+  "coffee script
+  NeoBundle 'kchmck/vim-coffee-script'
+  "C#
+  "NeoBundleLazy 'nosami/Omnisharp', {
+  "\   'autoload': {'filetypes': ['cs']},
+  "\   'build': {
+  "\     'windows': 'MSBuild.exe server/OmniSharp.sln /p:Platform="Any CPU"',
+  "\     'mac': 'xbuild server/OmniSharp.sln',
+  "\     'unix': 'xbuild server/OmniSharp.sln',
+  "\   }
+  "\ }
 call neobundle#end()
 
 "vi上から、:NeoBundleInstallで.vmrcのNeoBundleで指定されているリポジトリのプラグインをインストールできる。

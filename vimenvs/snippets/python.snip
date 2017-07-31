@@ -55,6 +55,24 @@ snippet with
     with ${1:expr} as ${2:var}:
         ${0}
 
+delete with_open
+snippet with_open
+    with open(${1:filename}, "${2:rwb}") as ${3:f}:
+        ${4:pass}
+
+snippet     print_to_file
+abbr        print to file
+options     word
+    def print_to_file(filename, data):
+        """print_to_file
+
+        :param filename: 
+        :param data:
+        """
+        with open(filename, "w") as f:
+            string = json.dumps(data, indent=4, sort_keys=True)
+            f.write(string)
+
 # New Class
 snippet cl
     class ${1:ClassName}(${2:object}):
@@ -338,6 +356,28 @@ abbr        path to directori of this script
 options     word
 	import os
 	${1:var_name} = os.path.abspath(os.path.dirname(__file__))${0}
+
+snippet     environment_variable_get
+abbr        environment variable
+options     head
+	import os
+	${2:get_var} = os.environ["${1:var_name}"]
+
+snippet     environment_variable_set
+abbr        environment variable
+options     head
+	import os
+	os.environ["${1:var_name}"] = ${2:set_var}
+
+snippet     set_add_element
+abbr        set add set
+options     word
+	${1:set_var}.add(${1:list or array}
+
+snippet     set_add_set
+abbr        set add set
+options     word
+	${1:set_var} |= ${2:set_var2}
 
 snippet     filename_recursively
 abbr        files in the directory
