@@ -2,6 +2,7 @@ include sphinx.snip
 include python_pytest.snip
 include python_matplotlib.snip
 include python_pyspark.snip
+include python_boto3.snip
 
 snippet     debug
 abbr        import pdb;
@@ -273,6 +274,13 @@ options     word
         ${1:date_var},
         datetime.time().replace(tzinfo=${2:pytz.utc})
     )
+
+# pprint
+snippet     pretty_print_dict
+abbr        pretty printer
+options     word
+    import pprint
+    pprint.pprint(${2:dict})${0}
 
 # json
 snippet     json_pretty_print
