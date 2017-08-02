@@ -1,0 +1,14 @@
+snippet     regexp_inner_word
+abbr        regexp inner word
+options     word
+	${1:surroundee}[^$1]\\+$1
+
+snippet     regexp_inner_word_with_group
+abbr        regexp inner word
+options     word
+	${1:surroundee}\\([^$1]\\)\\+$1
+
+snippet     regexp_numbers
+abbr        regexp inner word
+options     word
+	\\([0-9]\\)${0}
