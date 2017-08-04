@@ -7,7 +7,6 @@ PATTERN_OSX="^o(|sx)$"            # osx
 PATTERN_WIN="^w(|indows)$"        # windows
 #copying files
 CP_GROUP=(
-".zshrc"
 )
 #making link files
 LN_GROUP=(
@@ -18,6 +17,7 @@ LN_GROUP=(
 "_gvimrc"
 ".tmux.conf"
 ".zsh"
+".zshrc"
 )
 
 ### Functions
