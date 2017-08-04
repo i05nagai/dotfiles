@@ -182,47 +182,11 @@ export LESSHISTFILE=-
 
 ### Environments senttings
 source ~/.zshrc.env
+source ~/.zsh/zshrc.alias
 
 if [ ! -d $HOME/.vimbackup ]; then
-	mkdir $HOME/.vimbackup
+  mkdir $HOME/.vimbackup
 fi
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-alias shell-reload="exec ${SHELL} -l"
-
-# docker exists
-if which docker >/dev/null 2>&1
-then
-  alias docker-kill-stopped-process="docker rm $(docker ps -a -q)"
-  alias docker-kill-running-process="docker kill $(docker ps -q)"
-  alias docker-delete-all-image="docker rmi $(docker images -q)"
-  alias docker-get-container-ip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
-  alias docker-get-last-container="docker ps -l -q"
-  alias docker-delete-all-none-images='docker rmi $(docker images --filter dangling=true --quiet)'
-fi
-
-if which bq >/dev/null 2>&1
-then
-  alias bq-get-table-schema="bq show --format=prettyjson"
-  bq-query-standard-sql-json()
-  {
-    cat $@ | bq query --nouse_legacy_sql --format prettyjson
-  }
-  bq-query-and-insert-standard-sql()
-  {
-    echo "$1: sql file path"
-    echo "$2: inserting table"
-    cat $1 | bq query --nouse_legacy_sql --format json | bq insert $2
-  }
-fi
-
-# command exists
-if which jq >/dev/null 2>&1
-then
-  jq-pretty-print()
-  {
-    echo $1 | jq -M "."
-  }
-fi

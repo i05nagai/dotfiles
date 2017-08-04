@@ -1,0 +1,50 @@
+alias shell-reload="exec ${SHELL} -l"
+
+if which docker >/dev/null 2>&1
+then
+  alias docker-kill-stopped-process='docker rm $(docker ps -a -q)'
+  alias docker-kill-running-process='docker kill $(docker ps -q)'
+  alias docker-delete-all-images='docker rmi $(docker images -q)'
+  alias docker-get-container-ip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+  alias docker-get-last-container="docker ps -l -q"
+  alias docker-delete-all-none-images='docker rmi $(docker images --filter dangling=true --quiet)'
+  docker-attach-with-bash()
+  {
+    # $1 container_id
+    docker exec -it $1 /bin/bash
+  }
+fi
+
+if which bq >/dev/null 2>&1
+then
+  alias bq-get-table-schema="bq show --format=prettyjson"
+  alias bq-query-standard-sql="bq query --nouse_legacy_sql"
+  bq-query-standard-sqls()
+  {
+    cat $@ | bq query --nouse_legacy_sql
+  }
+  bq-query-and-insert-standard-sql()
+  {
+    echo "$1: sql file path"
+    echo "$2: inserting table"
+    cat $1 | bq query --nouse_legacy_sql --format json | bq insert $2
+  }
+fi
+
+# command exists
+if which jq >/dev/null 2>&1
+then
+  jq-pretty-print()
+  {
+    echo $1 | jq -M "."
+  }
+fi
+
+# command exists
+if which grep >/dev/null 2>&1
+then
+  grep-recursive-without-git()
+  {
+    grep -r $1 --exclude-dir .git $2
+  }
+fi
