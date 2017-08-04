@@ -153,4 +153,4 @@ if [ ! -d $HOME/.vimbackup ]; then
   mkdir $HOME/.vimbackup
 fi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.zsh/.fzf.zsh ] && source ~/.zsh/.fzf.zsh
