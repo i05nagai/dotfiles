@@ -3,6 +3,7 @@ include python_pytest.snip
 include python_matplotlib.snip
 include python_pyspark.snip
 include python_boto3.snip
+include python_faker.snip
 
 snippet     debug
 abbr        import pdb;
@@ -394,3 +395,53 @@ options     word
 	for root, subdirs, files in os.walk(${1:rootdir}):
 	    for file in files:
 	        path_to_file = os.path.join(root, file)
+
+snippet     make_directory_if_not_exists
+abbr        make directory
+options     head
+    # import os
+    # import errno
+    try:
+        os.makedirs(${1:path_to_directory})
+    except OSError as e:
+        if e.errno != errno.EEXIST:
+            raise${0}
+
+snippet     path_file_list
+abbr        file list
+options     word
+    files = os.listdir(${1:path_to_dir})${0}
+
+snippet     path_list_glob
+abbr        file list with glob
+options     word
+    # import glob
+    files = glob.glob(${1:path_to_dir})${0}
+
+snippet     path_move
+abbr        file rename
+options     word
+    os.rename(${1:from}, ${2:to})${0}
+
+snippet     path_rename
+abbr        replace filename keeping basepath
+options     word
+    basepath = os.path.basename(${1:path})
+    ${2:path}_new = '{0}/${3:new_filename}'.format(basepath)
+    os.rename($1, $2)${0}
+
+snippet     path_basename
+abbr        file rename
+options     word
+    os.path.basename(${1:path})${0}
+
+snippet     path_dirname
+abbr        dirname of path
+options     word
+    os.path.dirname(${1:path})${0}
+
+snippet     path_replace_filename
+abbr        replace filename keeping basepath
+options     word
+    basepath = os.path.basename(${1:path})
+    ${2:path}_new = '{0}/${3:new_filename}'.format(basepath)
