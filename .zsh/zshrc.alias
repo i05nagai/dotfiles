@@ -1,3 +1,7 @@
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
 alias shell-reload="exec ${SHELL} -l"
 
 if which docker >/dev/null 2>&1

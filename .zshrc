@@ -155,8 +155,7 @@ precmd () {
 # バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
 RPROMPT="%1(v|%F{green}%1v%f|)"
 
-
-### Prompt
+# Prompt
 local p_cdir="%B%{[35m%}[%~]%{[1;37m%}%b"$'\n'
 local p_info="${USER}"
 #直前のコマンドがエラーなら赤色
@@ -167,12 +166,6 @@ PROMPT="$p_cdir$p_info $p_mark "
 PROMPT2="%B(%_) %(!#,>)%b "
 #入力ミス
 SPROMPT="%B%{[31m%}%r is correct? [n,y,a,e]:%{[m%}%b "
-
-
-### alias/export/PATH/
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
 
 # Editor
 export EDITOR="vim"
