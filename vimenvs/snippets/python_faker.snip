@@ -1,0 +1,16 @@
+snippet     faker_factory
+abbr        create fake factory
+options     word
+    from faker import Factory
+    fake = Factory.create()
+
+snippet     faker_factory_jp
+abbr        create fake factory
+options     word
+    from faker import Factory
+    fake = Factory.create('jp_JP')
+
+snippet     faker_seed
+abbr        set seed
+options     word
+    ${1:fake}.seed(${2:seed_num})${0}
