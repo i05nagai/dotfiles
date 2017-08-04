@@ -53,3 +53,9 @@ snippet     pytest_assert_equal
 abbr        assert expect == actual
 options     word
     assert expect == actual
+
+snippet     pytest_assert_exception
+abbr        assert expect == actual
+options     word
+    with pytest.raises(${1:Exception}):
+        ${2:target_function}
