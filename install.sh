@@ -71,7 +71,7 @@ function ln_vim_env_file() {
   if [[ ! $1 =~ $pattern ]]; then
     filename=`echo $1 | awk -F'/' '{print $NF}'`
     #ln -fsv `pwd`/$1 $HOME/.vim/$filename
-	ln_file_from_to $1 .vim/$filename
+    ln_file_from_to $1 .vim/$filename
   fi
   #vim plugin settings.
   
@@ -142,27 +142,27 @@ function vim_env_install() {
 
   #basic settings
   if [ ! -d $HOME/.vim/basic_settings ]; then
-	ln_file_from_to vimenvs/basic_settings .vim/basic_settings 
+    ln_file_from_to vimenvs/basic_settings .vim/basic_settings 
   fi
 
   #plugin settings
   if [ ! -d $HOME/.vim/plugin_settings ]; then
-	ln_file_from_to vimenvs/plugin_settings .vim/plugin_settings 
+    ln_file_from_to vimenvs/plugin_settings .vim/plugin_settings 
   fi
 
   #snippets
   if [ ! -d $HOME/.vim/snippets ]; then
-	ln_file_from_to vimenvs/snippets .vim/snippets
+    ln_file_from_to vimenvs/snippets .vim/snippets
   fi
 
   #user_autoload
   if [ ! -d $HOME/.vim/userautoload ]; then
-	ln_file_from_to vimenvs/userautoload .vim/userautoload
+    ln_file_from_to vimenvs/userautoload .vim/userautoload
   fi
 
   #bundle/neobundle.vim
   if [ ! -d $HOME/.vim/bundle ]; then
-	ln_file_from_to vimenvs/bundle .vim/bundle
+    ln_file_from_to vimenvs/bundle .vim/bundle
   fi
 }
 
@@ -196,6 +196,6 @@ vim_env_install $env_type
 add_install $@
 
 if [ ! -d $HOME/.vim/vimbackup ]; then
-	mkdir $HOME/.vim/vimbackup
+    mkdir $HOME/.vim/vimbackup
 fi
 
