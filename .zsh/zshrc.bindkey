@@ -1,0 +1,30 @@
+# General
+# keybind
+#Ctrl-A	行頭へジャンプ
+#Ctrl-E	行末へジャンプ
+#Ctrl-Y	ヤンク
+#Ctrl-X U	アンドゥ
+#Ctrl-@	マークセット
+#Ctrl-K	カーソルから行末までを削除
+#Ctrl-W	カーソルから行頭までを削除
+#Ctrl-U	一行削除
+#Ctrl-G	コマンド入力を実行せずに無視して次の行へ
+#Ctrl-B	←キー
+#Ctrl-F	→キー
+#Ctrl-P	↑キー
+#Ctrl-N	↓キー
+#Ctrl-D	Deleteキー
+#Ctrl-H	BackSpaceキー
+#Ctrl-I	展開または補完
+#Ctrl-L	クリアスクリーン
+# delete current keybind
+bindkey -d
+# use emacs keybind
+bindkey -e
+bindkey "^J^J" push-line
+
+# historical backward/forward search with linehead string binded to ^P/^N
+zle -N history-beginning-search-backward-end history-search-end
+zle -N history-beginning-search-forward-end history-search-end
+bindkey "" history-beginning-search-backward-end
+bindkey "" history-beginning-search-forward-end 

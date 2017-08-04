@@ -11,31 +11,6 @@ autoload history-search-end
 # VCSの情報を取得するzshの便利関数 vcs_infoを使う
 autoload -Uz vcs_info
 
-# General
-# keybind
-#Ctrl-A	行頭へジャンプ
-#Ctrl-E	行末へジャンプ
-#Ctrl-Y	ヤンク
-#Ctrl-X U	アンドゥ
-#Ctrl-@	マークセット
-#Ctrl-K	カーソルから行末までを削除
-#Ctrl-W	カーソルから行頭までを削除
-#Ctrl-U	一行削除
-#Ctrl-G	コマンド入力を実行せずに無視して次の行へ
-#Ctrl-B	←キー
-#Ctrl-F	→キー
-#Ctrl-P	↑キー
-#Ctrl-N	↓キー
-#Ctrl-D	Deleteキー
-#Ctrl-H	BackSpaceキー
-#Ctrl-I	展開または補完
-#Ctrl-L	クリアスクリーン
-# delete current keybind
-bindkey -d
-# use emacs keybind
-bindkey -e
-bindkey "^J^J" push-line
-
 # options
 setopt auto_resume
 setopt no_beep
@@ -47,7 +22,7 @@ setopt notify
 setopt numeric_glob_sort
 setopt print_eight_bit
 
-###Completion
+# Completion
 #di: ディレクトリ
 #ln: シンボリックリンク
 #so: ソケットファイル
@@ -117,7 +92,7 @@ setopt mark_dirs
 #
 setopt no_menu_complete
 
-###Directory
+# Directory
 setopt auto_cd
 # auto directory pushd that you can get dirs list by cd -[tab]
 setopt auto_pushd
@@ -125,23 +100,19 @@ setopt pushd_ignore_dups
 setopt pushd_to_home
 
 
-###History
+# History
 # Command history configuration
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-setopt hist_ignore_all_dups     # ignore duplication command history list
+# ignore duplication command history list
+setopt hist_ignore_all_dups
 setopt hist_no_store
 setopt hist_reduce_blanks
 setopt share_history
-# historical backward/forward search with linehead string binded to ^P/^N
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "" history-beginning-search-backward-end
-bindkey "" history-beginning-search-forward-end 
 
 
-### vcs's settings
+# vcs's settings
 # 表示フォーマットの指定
 # %b ブランチ情報
 # %a アクション名(mergeなど)
@@ -175,11 +146,11 @@ export LESSHISTFILE=-
 
 ### Environments senttings
 source ~/.zshrc.env
+source ~/.zsh/zshrc.bindkey
 source ~/.zsh/zshrc.alias
 
 if [ ! -d $HOME/.vimbackup ]; then
   mkdir $HOME/.vimbackup
 fi
-
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
