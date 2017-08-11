@@ -180,7 +180,12 @@ abbr        ASSERT_GE
 options     word
 	ASSERT_GE(${1:expected}, ${2:actual});
 	${0}
-	
+
+snippet     gtest_assert_death
+abbr        ASSERT_DEATH
+options     word
+	ASSERT_DEATH(${1:statement}, ${2:error_regex});${0}
+
 ###############################################################################
 # Expect
 ###############################################################################
@@ -231,6 +236,11 @@ abbr        EXPECT_GE
 options     word
 	EXPECT_GE(${1:expected}, ${2:actual});
 	${0}
+
+snippet     gtest_expect_death
+abbr        ASSERT_DEATH
+options     word
+	EXPECT_DEATH(${1:statement}, ${2:error_regex});${0}
 
 ###############################################################################
 # Assert string
