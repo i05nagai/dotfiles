@@ -122,6 +122,26 @@ abbr        (?, O_{?})
 options     word
 	(${1}, \\mathcal{O}_{$1})${0}
 
+snippet     Lp_space_with_space
+abbr        Lp
+options     word
+    L^{${1:p}}(${2})${0}
+
+snippet     Lp_space
+abbr        Lp
+options     word
+    L^{${1:p}}${0}
+
+snippet     lp_space_with_space
+abbr        Lp
+options     word
+    l^{${1:p}}(${2})${0}
+
+snippet     lp_space
+abbr        Lp
+options     word
+    l^{${1:p}}${0}
+
 snippet     hom
 abbr        Hom
 options     head
@@ -284,6 +304,11 @@ options     word
 	\\overset{\\mathrm{def}}{\\iff}
 
 # unary operator
+snippet     support
+abbr        supp(X)
+options     word
+    \\mathrm{supp}(${1})${0}
+
 snippet     log_capital
 abbr        Log
 options     word
@@ -576,6 +601,21 @@ abbr        \\begin{eqnarray*} \\end{eqnarray*}
 		${1}
 	\\end{eqnarray*}
 
+snippet     eqnarray_newline
+abbr        \\\\\ & = &
+options     word
+	\\\\
+	& ${1:=} &
+	    ${0}
+
+snippet     eqnarray_newline_with_nonumber
+abbr        \nonumber \\ & = &
+options     word
+	\\nonumber
+	\\\\
+	& ${1:=} &
+	    ${0}
+
 snippet     eqnarray_newline_def_with_nonumber
 abbr        \\nonumber \\\\\ & = &
 options     word
@@ -585,22 +625,7 @@ options     word
 	& := &
 	    ${0}
 
-snippet     eqnarray_newline_with_nonumber
-abbr        \\nonumber \\\\\ & = &
-options     word
-	\\nonumber
-	\\\\
-	& = &
-	    ${0}
-
-snippet     eqnarray_newline
-abbr        \\\\\ & = &
-options     word
-	\\\\
-	& = &
-	    ${0}
-
-snippet     eqnarray_new_statement_with_nonumber
+snippet     eqnarray_newline_statement_with_nonumber
 abbr        \\nonumber \\\\\ & = &
 options     word
 	\\nonumber
@@ -609,7 +634,7 @@ options     word
 	& = &
 	    ${0}
 
-snippet     eqnarray_new_equation
+snippet     eqnarray_newline_equation
 abbr        \\\\\ & = &
 options     word
 	\\\\
