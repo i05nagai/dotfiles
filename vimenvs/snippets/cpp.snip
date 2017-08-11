@@ -314,3 +314,13 @@ snippet     lambda_capture
 abbr        lambda capturing outside variable
 options     word
 	[&](${1:varDef}) { ${2} }${0:;}
+
+snippet     operator_output
+abbr        operator<<
+options     word
+	template<int Base>
+	std::ostream& operator<<(std::ostream& os, const ${1})
+	{
+		os << ${2};
+		return os;
+	}
