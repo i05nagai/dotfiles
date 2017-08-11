@@ -54,3 +54,10 @@ snippet     has_own_property_by_object
 abbr        Object.hasOwnProperty.call
 options     word
 	Object.hasOwnProperty.call(${1:object}, ${2:key})${0}
+
+snippet     array_foreach
+abbr        
+options     word
+	${1:array}.forEach((element, index, array) => {
+		${2}
+	});
