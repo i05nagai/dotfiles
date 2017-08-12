@@ -92,6 +92,25 @@ options     head
         ${3}
     done
 
+snippet     for_filelist
+abbr        for file
+options     word
+    for filename in $(ls ${1:path} ); do
+        ${0}
+    done
+
+snippet     for_filelist_filtered_by_ext
+abbr        for file
+options     word
+    for filename in $(ls ${1:path} | grep ${2:.txt}$ ); do
+        ${0}
+    done
+
+snippet     get_filelist
+abbr        get
+options     head
+    filelist=$(find ${1:path_to_dir} ${2:condition})
+
 snippet     array
 abbr        array=()
 options     word
