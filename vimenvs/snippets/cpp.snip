@@ -7,6 +7,7 @@ include mathjax.snip
 include cpp_boost.snip
 include cpp_random.snip
 include cpp_algorithm.snip
+include cpp_clang_foramt.snip
 
 # pre processors
 snippet pragma_once
@@ -318,7 +319,6 @@ options     word
 snippet     operator_output
 abbr        operator<<
 options     word
-	template<int Base>
 	std::ostream& operator<<(std::ostream& os, const ${1})
 	{
 		os << ${2};
