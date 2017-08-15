@@ -263,6 +263,16 @@ abbr        datetime to date
 options     word
     ${1:datetime_var}.date()${0}
 
+snippet     datetime_from_unixtime_to_datetime
+abbr        datetime to date
+options     word
+    datetime.datetime.fromtimestamp(${1:unixtime})${0}
+
+snippet     datetime_to_unixtime
+abbr        datetime to date
+options     word
+    int(time.mktime(${1:datetime_var}.timetuple()))${0}
+
 snippet     date_now
 abbr        date now
 options     head
@@ -445,3 +455,9 @@ abbr        replace filename keeping basepath
 options     word
     basepath = os.path.basename(${1:path})
     ${2:path}_new = '{0}/${3:new_filename}'.format(basepath)
+
+# list
+snippet     list_copy
+abbr        list copy
+options     word
+    ${1:var} = ${2:list}[:]
