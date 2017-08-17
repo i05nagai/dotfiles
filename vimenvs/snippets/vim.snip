@@ -12,3 +12,8 @@ snippet     regexp_numbers
 abbr        regexp inner word
 options     word
 	\\([0-9]\\)${0}
+
+snippet     delete_trailing_comma
+abbr        delete trailing comma
+options     word
+	s/,$//gc
