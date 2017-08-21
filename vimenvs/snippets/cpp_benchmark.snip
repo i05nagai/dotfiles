@@ -1,0 +1,37 @@
+snippet     benchmark_include
+abbr        include
+options     word
+	#include <benchmark/benchmark.h>
+
+snippet     benchmark_main
+abbr        main
+options     word
+	BENCHMARK_MAIN();
+
+snippet     benchmark_func
+abbr        function
+options     word
+	static void ${1:BenchmarkFunction}(benchmark::State& state)
+	{
+	  while(state.KeepRunning()) {
+	    // state.range(0)
+	    ${2}
+	  }
+	}
+	BENCHMARK($1);
+
+snippet     benchmark_call_with_arg
+abbr        BENCHMARK
+options     word
+	BENCHMARK(${1})->Arg(${2:arg});
+
+snippet     benchmark_call_with_arsg
+abbr        BENCHMARK
+options     word
+	BENCHMARK(${1})->Args({${2:arg}, });
+
+snippet     benchmark_do_not_optimize
+abbr        benchmark::DoNotOptimize()
+options     word
+	benchmark::DoNotOptimize(${1});
+
