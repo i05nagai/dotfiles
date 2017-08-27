@@ -334,3 +334,15 @@ abbr        EXPECT_NEAR
 options     word
 	EXPECT_NEAR(${1:val1}, ${2:val2}, ${3:abs_error});
 	${0}
+
+snippet     gtest_template_test
+abbr        template test
+options     word
+	template<typename T>
+	class TypedTest : public testing::Test {};
+	typedef ::testing::Types<${1:type1}> ${2:test_func}TestTypes;
+	TYPED_TEST_CASE(TypedTest , $2TestTypes);
+	TYPED_TEST(TypedTest, ${3:test_name})
+	{
+		// TypeParam refers the one of test type
+	}
