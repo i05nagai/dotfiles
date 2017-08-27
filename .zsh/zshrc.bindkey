@@ -29,6 +29,7 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "" history-beginning-search-backward-end
 bindkey "" history-beginning-search-forward-end 
 
+
 # command exists
 if which fzf >/dev/null 2>&1
 then
