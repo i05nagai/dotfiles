@@ -4,6 +4,7 @@ include gmock.snip
 include gtest.snip
 include doxygen.snip
 include mathjax.snip
+include cpp_benchmark.snip
 include cpp_boost.snip
 include cpp_random.snip
 include cpp_algorithm.snip
@@ -324,3 +325,13 @@ options     word
 		os << ${2};
 		return os;
 	}
+
+snippet     output_setprecision
+abbr        << precision
+options     word
+	// #include <iomanip>
+	std::cout
+	  << std::fixed
+	  << std::setprecision(${1:digit})
+	  << ${2:val}
+	  << std::endl;
