@@ -1,12 +1,14 @@
 include mathjax_congruence.snip
 include mathjax_matrix.snip
+include mathjax_measure.snip
 include mathjax_optimization.snip
 include mathjax_probability.snip
 include mathjax_set.snip
 include mathjax_symbols.snip
 include mathjax_vector.snip
+include mathjax_convex.snip
 
-## Spaces
+# Spaces
 snippet     finite_field_d
 abbr        \\mathbb{F}_{?}^{?}
 options		word
@@ -16,6 +18,16 @@ snippet     finite_filed
 abbr        finite_filed
 options		word
 	\\mathbb{F}_{${1}}${0}
+
+snippet     rational_number_d
+abbr        \\mathbb{Q}^{?}
+options		word
+	\\mathbb{Q}^{${1}}${0}
+
+snippet     rational_number
+abbr        rational number
+options		word
+	\\mathbb{Q}
 
 snippet     real_number_d
 abbr        \\mathbb{R}^{?}
@@ -157,11 +169,21 @@ abbr        span
 options     word
 	\mathrm{span}\\{${1}\\}${0}
 
-## 
+snippet     symmetric_group
+abbr        mathfrac{S}_{n}
+options     head
+    \\mathfrak{S}_{n}
+
+#
 snippet     upper_notation
 abbr        upper notation
 options     word
 	\\stackrel{${1}}{\\stackrel{\\vee}{${2}}}${0}
+
+snippet     define
+abbr        define
+options     word
+    \\overset{\mathrm{def}}{\Leftrightarrow}
 
 #Symbols
 snippet     left(
@@ -523,7 +545,22 @@ options     word
 snippet     subject_to
 abbr        s.t.
 options     word
-    \\mathrm{ s.t. }
+    \\text{ s.t. }
+
+snippet     such_that
+abbr        s.t.
+options     word
+    \\text{ s.t. }
+
+snippet     almost_everywhere
+abbr        a.e.
+options     word
+    \\text{-a.e.}
+
+snippet     almost_surely
+abbr        a.s.
+options     word
+    \\text{-a.s.}
 
 snippet     sequence
 abbr        ?, ..., ?
@@ -567,7 +604,7 @@ snippet     limit_inferior
 abbr        limit inferior
 	\\liminf_{${1} \\rightarrow \\infty} ${0}
 
-snippet     \\transpose
+snippet     \transpose
 abbr        ^{mathrm{T}}
 options		word
 	^{\\mathrm{T}}
