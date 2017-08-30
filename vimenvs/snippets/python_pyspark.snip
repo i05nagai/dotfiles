@@ -30,7 +30,6 @@ abbr        createDataFrame
 options     word
    ${1:df} = spark_session.createDataFrame(${2:input_list}, ${3:schema})${0}
 
-
 snippet     spark_df_describe_all
 abbr        spark_df_describe
 options     word
@@ -68,6 +67,16 @@ snippet     spark_df_explain
 abbr        spark df explain
 options     word
     ${2:explain} = ${1:df}._jdf.queryExecution().toString()${0}
+
+snippet     spark_df_show
+abbr        spark df show
+options     word
+    ${1:df}.show(n=${2:20} ,truncate=False)${0}
+
+snippet     spark_df_to_dict
+abbr        spark_df_to_dict
+options     word
+    ${1:var} = ${2:df}.rdd.map(lambda x: x.asdict()).collect()${0}
 
 snippet     spark_configure_local
 abbr        pyspark.SparkConf
