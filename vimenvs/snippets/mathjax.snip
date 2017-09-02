@@ -10,6 +10,7 @@ include mathjax_optimization.snip
 include mathjax_probability.snip
 include mathjax_set.snip
 include mathjax_symbols.snip
+include mathjax_topology.snip
 include mathjax_vector.snip
 
 # Spaces
@@ -117,16 +118,6 @@ snippet     projective_space
 abbr        projective space
 options     word
 	\\mathbb{RP}${0}
-
-snippet     topological_space
-abbr        (X, O)
-options     word
-	(X, \\mathcal{O}_{X})
-
-snippet     topological_space_?
-abbr        (?, O_{?})
-options     word
-	(${1}, \\mathcal{O}_{$1})${0}
 
 snippet     Lp_space_with_space
 abbr        Lp
