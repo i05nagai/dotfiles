@@ -1,3 +1,122 @@
+# expectation
+snippet     expectation
+abbr        E[ ]
+options		word
+	\\mathrm{E}
+	\\left[
+		${1}
+	\\right]
+	${0}
+
+snippet     expectation_without_parenthesis
+abbr        E^{?}
+options		word
+	\\mathrm{E}${0}
+
+snippet     expectation_with_measure
+abbr        E^{?}[ ]
+options		word
+	\\mathrm{E}^{${1:measure}}
+	\\left[
+		${2}
+	\\right]
+	${3}
+
+snippet     expectation_with_measure_without_parenthesis
+abbr        E^{?}
+options		word
+	\\mathrm{E}^{${1:measure}}${2}
+
+snippet     conditional_expectation
+abbr        E[ | ]
+options		word
+	\\mathrm{E}
+	\\left[
+	\\left.
+		${1}
+	\\right|
+		${2:condition}
+	\\right]
+	${3}
+
+snippet     conditional_expectation_with_filtration
+abbr        E_{t}[ ]
+options		word
+	\\mathrm{E}_{${1}}
+	\\left[
+		${2}
+	\\right]
+	${3}
+
+snippet     conditional_expectation_with_filtration_and_measure
+abbr        E_{t}^{Q}[ ]
+options		word
+	\\mathrm{E}_{${1}}^{${2}}
+	\\left[
+		${3}
+	\\right]
+	${4}
+
+# variance
+snippet     variance
+abbr        mathrm{Var}[ ]
+	\\mathrm{Var}
+	\\left[
+		${1}
+	\\right]
+	${0}
+
+snippet     variance_with_measure
+abbr        mathrm{Var}^{}[ ]
+	\\mathrm{Var}^{${1:measure}}
+	\\left[
+		${2}
+	\\right]
+	${3}
+
+snippet     variance_without_parenthesis
+abbr        mathrm{Var}
+	\\mathrm{Var}${0}
+
+snippet     variance_with_measure_without_parenthesis
+abbr        mathrm{Var}^{}
+	\\mathrm{Var}^{${1:measure}}${0}
+
+# covariance
+snippet     covariance
+abbr        mathrm{Cov}[ ]
+	\\mathrm{Cov}
+	\\left[
+		${1}
+	\\right]
+	${0}
+
+snippet     covariance_with_measure
+abbr        mathrm{Cov}^{}[ ]
+	\\mathrm{Cov}^{${1:measure}}
+	\\left[
+		${2}
+	\\right]
+	${3}
+
+snippet     covariance_without_parenthesis
+abbr        mathrm{Cov}
+	\\mathrm{Cov}${0}
+
+snippet     covariance_with_measure_without_parenthesis
+abbr        mathrm{Cov}^{}
+	\\mathrm{Cov}^{${1:measure}}${0}
+
+snippet     normal_distribution
+abbr        N(?, ?)
+options     word
+	\\mathrm{N}(${1}, ${2})${0}
+
+snippet     standard_normal_distribution
+abbr        N(0, 1)
+options     word
+	\\mathrm{N}(0, 1)${0}
+
 snippet     def_normal_pdf
 abbr        definition of normal p.d.f.
 options     word
