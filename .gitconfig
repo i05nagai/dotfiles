@@ -15,7 +15,8 @@
 	make-patch = diff --no-prefix
 	rebase-fixup = rebase --autosquash -i
 	find = "!git ls-files | grep -i"
-	local-me = !git config --local user.name "i05nagai" && git config --local user.email "i05nagai@gmail.com"
+	set-local-me = !git config --local user.name "i05nagai" && git config --local user.email "i05nagai@gmail.com"
+	set-local-user = "!f(){ git config --local user.name \"${1}\" && git config --local user.email \"${2}\"; };f"
 	change-commit-author = "!f(){ git commit --amend --author=\"${1} <${2}>\";};f"
 [color]
 	ui = auto
