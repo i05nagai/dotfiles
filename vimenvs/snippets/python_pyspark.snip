@@ -63,6 +63,12 @@ abbr        spark df column list
 options     word
     ${1:df}.schema.names
 
+snippet     spark_df_column_rename
+abbr        spark df rename columb
+options     word
+    ${1:df}.withColumnRenamed(${2:now}, ${3:new})${0}
+
+
 snippet     spark_df_explain
 abbr        spark df explain
 options     word
@@ -76,7 +82,7 @@ options     word
 snippet     spark_df_to_dict
 abbr        spark_df_to_dict
 options     word
-    ${1:var} = ${2:df}.rdd.map(lambda x: x.asdict()).collect()${0}
+    ${1:var} = ${2:df}.rdd.map(lambda x: x.asDict()).collect()${0}
 
 snippet     spark_configure_local
 abbr        pyspark.SparkConf
