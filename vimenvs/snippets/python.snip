@@ -170,23 +170,6 @@ snippet """
     """${0:doc}
     """
 
-snippet commandline_argument
-    try:
-        # Short option syntax: "hv:"
-        # Long option syntax: "help" or "verbose="
-        opts, args = getopt.getopt(sys.argv[1:], "${1:short_options}", [${2:long_options}])
-
-    except getopt.GetoptError, err:
-        # Print debug info
-        print str(err)
-        ${3:error_action}
-
-    for option, argument in opts:
-        if option in ("-h", "--help"):
-            ${0}
-        elif option in ("-v", "--verbose"):
-            verbose = argument
-
 snippet log
     import logging
     logger = logging.getLogger(${0:__name__})
@@ -364,6 +347,29 @@ options     word
 	                    type=${3:variable_type},
 	                    nargs="+",
 	                    help="${5:help message of this argument}")
+
+snippet     argument_sys
+abbr        sys.argv
+options     word
+    # sys.argv[0] is name of scripts
+    sys.argv[1]
+
+snippet commandline_argument
+    try:
+        # Short option syntax: "hv:"
+        # Long option syntax: "help" or "verbose="
+        opts, args = getopt.getopt(sys.argv[1:], "${1:short_options}", [${2:long_options}])
+
+    except getopt.GetoptError, err:
+        # Print debug info
+        print str(err)
+        ${3:error_action}
+
+    for option, argument in opts:
+        if option in ("-h", "--help"):
+            ${0}
+        elif option in ("-v", "--verbose"):
+            verbose = argument
 
 snippet     path_to_this_file
 abbr        path to this script
