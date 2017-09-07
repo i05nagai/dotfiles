@@ -59,3 +59,16 @@ abbr        assert expect == actual
 options     word
     with pytest.raises(${1:Exception}):
         ${2:target_function}
+
+snippet     pytest_make_datetime
+abbr        make datetime for testing
+options     word
+    def make_datetime(hour, minute, second):
+        return datetime.datetime(${1}, ${2}, {$3}, hour, minute, second)
+
+snippet     pytest_use_fixture_in_instance_method
+abbr        use fixture in instance method
+options     word
+    @pytest.mark.usefixtures('${1:fixture_name}')
+    def ${2:test_method}(self, $1):
+        pass

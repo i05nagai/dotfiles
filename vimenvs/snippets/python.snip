@@ -4,6 +4,7 @@ include python_matplotlib.snip
 include python_pyspark.snip
 include python_boto3.snip
 include python_faker.snip
+include python_mock.snip
 
 snippet     debug
 abbr        import pdb;
@@ -461,3 +462,9 @@ snippet     list_copy
 abbr        list copy
 options     word
     ${1:var} = ${2:list}[:]
+
+# sort
+snippet     sort_list_of_dict_by_elem
+abbr        sort list of dict
+options     head
+    sorted(${1:list}, key=${2:lambda x: x['key']})${0}

@@ -10,6 +10,13 @@ options     word
     from faker import Factory
     fake = Factory.create('jp_JP')
 
+snippet     faker_to_datetime
+abbr        faker.date_time to datetime.datetime
+options     word
+    def to_datetime(dt):
+        return datetime.datetime(
+            dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second)
+
 snippet     faker_seed
 abbr        set seed
 options     word

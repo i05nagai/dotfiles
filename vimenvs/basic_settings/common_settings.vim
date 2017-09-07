@@ -182,7 +182,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
     \ },
   \ }
   NeoBundle 'Shougo/vimfiler.vim'
-  " quickrun
   NeoBundle 'thinca/vim-quickrun'
   NeoBundle 'osyo-manga/shabadou.vim'
   NeoBundle 'tpope/vim-surround'
@@ -192,6 +191,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundle 'LeafCage/yankround.vim'
   NeoBundle 'vim-scripts/taglist.vim'
   NeoBundle 'itchyny/lightline.vim'
+  NeoBundle 'dhruvasagar/vim-table-mode'
   "text-object
   NeoBundle 'kana/vim-textobj-user'
   NeoBundle "bps/vim-textobj-python"
@@ -357,6 +357,13 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/lightline.vim" )
   source ~/.vim/plugin_settings/lightline.vim
+endif
+
+"---------------------------------------------------------
+" lightline
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/vim-table-mode.vim" )
+  source ~/.vim/plugin_settings/vim-table-mode.vim
 endif
 
 "---------------------------------------------------------
