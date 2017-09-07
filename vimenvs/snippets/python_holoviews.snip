@@ -3,3 +3,12 @@ abbr        abbr
 options     word
 	import holoviews as hs
 
+snippet     hv_scatter_plot
+abbr        abbr
+options     word
+	hs.Points(${1})
+
+snippet     hv_scatter_plot_with_label
+abbr        abbr
+options     word
+	hs.Points(${1}, label="${2:label}")
