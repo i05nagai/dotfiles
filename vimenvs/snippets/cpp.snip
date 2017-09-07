@@ -335,3 +335,12 @@ options     word
 	  << std::setprecision(${1:digit})
 	  << ${2:val}
 	  << std::endl;
+
+snippet     write_to_file
+abbr        write to file
+options     word
+	# #include <fstream>
+	std::ofstream ${1:file};
+	$1.open(${2:path_to_file});
+	$1 << "write something";
+	$1.close();
