@@ -1,0 +1,24 @@
+snippet     pd_import
+abbr        abbr
+options     word
+	import pandas as pd
+
+snippet     pd_read_tsv
+abbr        abbr
+options     word
+	pd.read_csv('${1:path_to_tsv}', delimiter='\t')
+
+snippet     pd_read_csv
+abbr        abbr
+options     word
+	pd.read_csv('${1:path_to_tsv}')
+
+snippet     pd_column_slice
+abbr        abbr
+options     word
+	${1:df}.loc[:, ${2:column}]
+
+snippet     pd_column_rename
+abbr        abbr
+options     word
+	${1:df}.columns = [${2:column_name,}]

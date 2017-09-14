@@ -1,24 +1,19 @@
 include mathjax_congruence.snip
+include mathjax_convex.snip
+include mathjax_distance.snip
+include mathjax_field.snip
+include mathjax_group.snip
+include mathjax_hilbert_space.snip
 include mathjax_matrix.snip
 include mathjax_measure.snip
 include mathjax_optimization.snip
 include mathjax_probability.snip
 include mathjax_set.snip
 include mathjax_symbols.snip
+include mathjax_topology.snip
 include mathjax_vector.snip
-include mathjax_convex.snip
 
 # Spaces
-snippet     finite_field_d
-abbr        \\mathbb{F}_{?}^{?}
-options		word
-	\\mathbb{F}_{${1}}^{${2}}${0}
-
-snippet     finite_filed
-abbr        finite_filed
-options		word
-	\\mathbb{F}_{${1}}${0}
-
 snippet     rational_number_d
 abbr        \\mathbb{Q}^{?}
 options		word
@@ -124,16 +119,6 @@ abbr        projective space
 options     word
 	\\mathbb{RP}${0}
 
-snippet     topological_space
-abbr        (X, O)
-options     word
-	(X, \\mathcal{O}_{X})
-
-snippet     topological_space_?
-abbr        (?, O_{?})
-options     word
-	(${1}, \\mathcal{O}_{$1})${0}
-
 snippet     Lp_space_with_space
 abbr        Lp
 options     word
@@ -168,11 +153,6 @@ snippet     span
 abbr        span
 options     word
 	\mathrm{span}\\{${1}\\}${0}
-
-snippet     symmetric_group
-abbr        mathfrac{S}_{n}
-options     head
-    \\mathfrak{S}_{n}
 
 #
 snippet     upper_notation
@@ -416,125 +396,6 @@ abbr        \\left. frac{partial }{partial } \\right|
 		\\frac{\\partial${1:numerator}}{\\partial${2:denominator}} 
 	\\right|_{${3}}
 	${0}
-
-snippet     expectation
-abbr        E[ ]
-options		word
-	\\mathrm{E}
-	\\left[
-		${1}
-	\\right]
-	${0}
-
-snippet     expectation_without_parenthesis
-abbr        E^{?}
-options		word
-	\\mathrm{E}${0}
-
-
-snippet     expectation_with_measure
-abbr        E^{?}[ ]
-options		word
-	\\mathrm{E}^{${1:measure}}
-	\\left[
-		${2}
-	\\right]
-	${3}
-
-snippet     expectation_with_measure_without_parenthesis
-abbr        E^{?}
-options		word
-	\\mathrm{E}^{${1:measure}}${2}
-
-snippet     conditional_expectation
-abbr        E[ | ]
-options		word
-	\\mathrm{E}
-	\\left[
-	\\left.
-		${1}
-	\\right|
-		${2:condition}
-	\\right]
-	${3}
-
-snippet     conditional_expectation_with_filtration
-abbr        E_{t}[ ]
-options		word
-	\\mathrm{E}_{${1}}
-	\\left[
-		${2}
-	\\right]
-	${3}
-
-snippet     conditional_expectation_with_filtration_and_measure
-abbr        E_{t}^{Q}[ ]
-options		word
-	\\mathrm{E}_{${1}}^{${2}}
-	\\left[
-		${3}
-	\\right]
-	${4}
-
-# variance
-snippet     variance
-abbr        mathrm{Var}[ ]
-	\\mathrm{Var}
-	\\left[
-		${1}
-	\\right]
-	${0}
-
-snippet     variance_with_measure
-abbr        mathrm{Var}^{}[ ]
-	\\mathrm{Var}^{${1:measure}}
-	\\left[
-		${2}
-	\\right]
-	${3}
-
-snippet     variance_without_parenthesis
-abbr        mathrm{Var}
-	\\mathrm{Var}${0}
-
-snippet     variance_with_measure_without_parenthesis
-abbr        mathrm{Var}^{}
-	\\mathrm{Var}^{${1:measure}}${0}
-
-# covariance
-snippet     covariance
-abbr        mathrm{Cov}[ ]
-	\\mathrm{Cov}
-	\\left[
-		${1}
-	\\right]
-	${0}
-
-snippet     covariance_with_measure
-abbr        mathrm{Cov}^{}[ ]
-	\\mathrm{Cov}^{${1:measure}}
-	\\left[
-		${2}
-	\\right]
-	${3}
-
-snippet     covariance_without_parenthesis
-abbr        mathrm{Cov}
-	\\mathrm{Cov}${0}
-
-snippet     covariance_with_measure_without_parenthesis
-abbr        mathrm{Cov}^{}
-	\\mathrm{Cov}^{${1:measure}}${0}
-
-snippet     normal_distribution
-abbr        N(?, ?)
-options     word
-	\\mathrm{N}(${1}, ${2})${0}
-
-snippet     standard_normal_distribution
-abbr        N(0, 1)
-options     word
-	\\mathrm{N}(0, 1)${0}
 
 # word
 snippet     degree

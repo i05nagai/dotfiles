@@ -1,0 +1,14 @@
+snippet     distance_func
+abbr        distance function
+options     word
+	\mathrm{dist}(${1:x}, ${2:y})${0}
+
+snippet     def_distance_between_point_and_set
+abbr        distance function
+options     word
+    \inf
+    \{
+        \|${1:x} - ${2:y}\|
+        \mid
+        $2 \in ${3:C}
+    \}
