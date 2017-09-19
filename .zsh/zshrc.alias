@@ -3,6 +3,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 alias shell-reload="exec ${SHELL} -l"
+alias group-show-list="cut -d: -f1 /etc/group"
 
 if which docker >/dev/null 2>&1
 then
