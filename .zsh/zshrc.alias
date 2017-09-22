@@ -13,6 +13,8 @@ then
   alias docker-get-container-ip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
   alias docker-get-last-container="docker ps -l -q"
   alias docker-delete-all-none-images='docker rmi $(docker images --filter dangling=true --quiet)'
+  alias docker-show-full-command='docker inspect  -f "{{.Name}} {{.Config.Cmd}}" $(docker ps -a -q)'
+
   docker-attach-with-bash()
   {
     # $1 container_id
@@ -51,5 +53,17 @@ then
   grep-recursive-without-git()
   {
     grep -r $1 --exclude-dir .git $2
+  }
+fi
+
+# command exists
+if which git >/dev/null 2>&1
+then
+  git-delete-and-checkout-current-branch()
+  {
+    git fetch
+    git branch $1
+    git branch -d $2
+    git checkout origin/$2 -b $2
   }
 fi
