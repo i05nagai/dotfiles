@@ -1,0 +1,7 @@
+snippet     partition_time
+abbr        partition time
+options     word
+    _PARTITIONTIME BETWEEN
+        TIMESTAMP("${1}-${2}-${3}")
+        AND
+        TIMESTAMP("${4}-${5}-${6}")
