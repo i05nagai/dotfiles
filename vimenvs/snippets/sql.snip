@@ -1,4 +1,6 @@
 include sql_sqlite.snip
+include sql_standard_sql.snip
+include sql_mysql.snip
 
 snippet     create_table_if_not_exists
 abbr        create_table_if_not_exists
@@ -45,3 +47,29 @@ options     word
 	GROUP BY ${1:group by}
 	HAVING
 	    ${2:having}
+
+snippet     case_when_simple
+abbr        case var when
+options     word
+    CASE ${1:var}
+        WHEN ${2:value} THEN ${3:return}
+        ELSE ${4:return}
+    END
+
+snippet     case_when_simple_inline
+abbr        case var when
+options     word
+    CASE ${1:var} WHEN ${2:value} THEN ${3:return} ELSE ${4:return} END
+
+snippet     case_when_searched
+abbr        case when condition
+options     word
+     CASE
+        WHEN ${1:condition} THEN ${2:val}
+        ELSE ${3:value}
+     END
+
+snippet     case_when_searched_inline
+abbr        case when condition
+options     word
+     CASE WHEN ${1:condition} THEN ${2:val} ELSE ${3:value} END
