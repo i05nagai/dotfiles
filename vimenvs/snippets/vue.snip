@@ -1,0 +1,48 @@
+snippet     vue_template_from_source
+abbr        template
+options     word
+    <template>
+      <div id="${1:id}">
+      </div>
+    </template>
+    <script src="${2:path_to_js}"></script>
+    <style lang="${3:css_or_scss}" src="${4:path_to_css}"></style>
+
+snippet     vue_html_base
+abbr        template
+options     word
+    <template>
+      <div id="${1:id}">
+      </div>
+    </template>
+
+snippet     vue_js_src
+abbr        js from src
+options     word
+    <script src="${1:path_to_js}"></script>
+
+snippet     vue_js_base
+abbr        js from src
+options     word
+    <script>
+      export default {
+        name: '${1:component_name}',
+        data () {
+          return {
+              ${2:var}
+          };
+        },
+      }
+    </script>
+
+snippet     vue_css_base
+abbr        css
+options     word
+    <style lang="scss">
+    ${1}
+    </style>
+
+snippet     vue_css_src
+abbr        css from src
+options     word
+    <style lang="${2:css_or_scss}" src="${2:path_to_css}"></style>

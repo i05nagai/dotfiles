@@ -6,4 +6,3 @@ endfunction
 
 " filetype=vue
 autocmd FileType vue call s:vue()
-

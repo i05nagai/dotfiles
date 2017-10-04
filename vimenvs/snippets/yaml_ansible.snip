@@ -1,0 +1,5 @@
+snippet     ansible_output_with_neline
+abbr        debug
+options     word
+	debug:
+	  msg={{ ${1:result}.stdout.split('\n')[:-1] }}

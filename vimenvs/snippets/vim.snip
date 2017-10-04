@@ -17,3 +17,13 @@ snippet     delete_trailing_comma
 abbr        delete trailing comma
 options     word
 	s/,$//gc
+
+snippet     delete_trailing_spaces
+abbr        delete trailing comma
+options     word
+	s/\s\+$//gc
+
+snippet     replace_comma_with_newline
+abbr        replace_comma_with_newline
+options     word
+	s/,\s\+/${1:\r}/gc

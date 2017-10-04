@@ -13,12 +13,56 @@ abbr        abbr
 options     word
 	pd.read_csv('${1:path_to_tsv}')
 
-snippet     pd_column_slice
+snippet     pd_read_gbq
+abbr        abbr
+options     word
+	# pip install pandas-gbq
+	df = pd.read_gbq(${1:query},
+                     project_id=project_id,
+                     verbose=True,
+                     dialect='standard')
+
+snippet     pd_df_column_slice
 abbr        abbr
 options     word
 	${1:df}.loc[:, ${2:column}]
 
-snippet     pd_column_rename
+snippet     pd_df_column_rename
 abbr        abbr
 options     word
 	${1:df}.columns = [${2:column_name,}]
+
+snippet     pd_df_show
+abbr        abbr
+options     word
+	print(${1:df}.head(${2:10}))
+
+snippet     pd_df_show_columns
+abbr        abbr
+options     word
+	print(${1:df}.columns)
+
+snippet     pd_df_groupby
+abbr        abbr
+options     word
+	${1:df}.groupby([${2:columun_name}])
+
+snippet     pd_df_sort
+abbr        abbr
+options     word
+	${1:df}.sort_values(by=(${2:columun_names}), ascending=${3:False})
+
+snippet     pd_df_write_tsv
+abbr        abbr
+options     word
+	${1:df}.to_csv('${2:path_to_tsv}', sep='\t', index=False, header=True)
+
+snippet     pd_df_write_csv
+abbr        csv
+options     word
+	${1:df}.to_csv('${2:path_to_tsv}', index=False, header=True)
+
+snippet     pd_df_select_column
+abbr        select column
+options     word
+	${1:df}.ix[:, ${1:from}:${2:to}]

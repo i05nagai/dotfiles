@@ -259,6 +259,11 @@ call neobundle#begin(expand('~/.vim/bundle/'))
         \  'filetypes':['javascript']
         \  },
         \  }
+  NeoBundleLazy 'posva/vim-vue', {
+        \'autoload': {
+        \  'filetypes':['vue']
+        \  },
+        \  }
   "coffee script
   NeoBundle 'kchmck/vim-coffee-script'
   "C#
@@ -462,6 +467,13 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/vim-pydocstring.vim" )
   source ~/.vim/plugin_settings/vim-pydocstring.vim
+endif
+
+"---------------------------------------------------------
+" vim-vue
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/vim-vue.vim" )
+  source ~/.vim/plugin_settings/vim-vue.vim
 endif
 
 "---------------------------------------------------------

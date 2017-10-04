@@ -1,0 +1,52 @@
+snippet     partition_time
+abbr        partition time
+options     word
+    _PARTITIONTIME BETWEEN
+        TIMESTAMP("${1}-${2}-${3}")
+        AND
+        TIMESTAMP("${4}-${5}-${6}")
+
+snippet     timestamp_add_hour
+abbr        timestamp add by hour
+options     word
+    TIMESTAMP_ADD(${1:time_stamp} INTERVAL ${2:num} HOUR)
+
+snippet     timestamp_add_minute
+abbr        timestamp add by minute
+options     word
+    TIMESTAMP_ADD(${1:time_stamp} INTERVAL ${2:num} MINUTE)
+
+snippet     timestamp_diff_hour
+abbr        timestamp diff by hour
+options     word
+    TIMESTAMP_DIFF(${1:base}, ${2:minus}, HOUR)
+
+snippet     timestamp_diff_minute
+abbr        timestamp diff by minute
+options     word
+    TIMESTAMP_DIFF(${1:base}, ${2:minus}, MINUTE)
+
+snippet     timestamp_format
+abbr        format timestamp
+options     word
+    FORMAT_TIMESTAMP('${1:type}', ${2:timestamp})
+
+snippet     timestamp_format_hour
+abbr        format timestamp
+options     word
+    FORMAT_TIMESTAMP('%H', ${1:timestamp})
+
+snippet     timestamp_format_year_month
+abbr        format timestamp
+options     word
+    FORMAT_TIMESTAMP('%Y/%m', ${1:timestamp})
+
+snippet     timestamp_format_year
+abbr        format timestamp
+options     word
+    FORMAT_TIMESTAMP('%Y', ${1:timestamp})
+
+snippet     timestamp_format_weekday
+abbr        format timestamp
+options     word
+    FORMAT_TIMESTAMP('%a', ${1:timestamp})
