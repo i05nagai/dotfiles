@@ -1,14 +1,15 @@
 include c.snip
-include cppunit.snip
-include gmock.snip
-include gtest.snip
-include doxygen.snip
-include mathjax.snip
+include cpp_algorithm.snip
 include cpp_benchmark.snip
 include cpp_boost.snip
-include cpp_random.snip
-include cpp_algorithm.snip
 include cpp_clang_foramt.snip
+include cpp_cmath.snip
+include cpp_random.snip
+include cppunit.snip
+include doxygen.snip
+include gmock.snip
+include gtest.snip
+include mathjax.snip
 
 # pre processors
 snippet pragma_once
@@ -339,8 +340,44 @@ options     word
 snippet     write_to_file
 abbr        write to file
 options     word
-	# #include <fstream>
+	// #include <fstream>
 	std::ofstream ${1:file};
 	$1.open(${2:path_to_file});
 	$1 << "write something";
 	$1.close();
+
+snippet     read_from_file
+abbr        read from file
+options     word
+	// #include <fstream>
+	std::ifstream ${1:var}(${2:file_name});
+
+snippet     normal_distribution_cdf
+abbr        normal distribution cdf
+options     head
+	double normal_distribution_cdf(double x)
+	{
+	  // https://www.johndcook.com/blog/cpp_phi/
+	  // #include <cmath>
+	  // constants
+	  const double a1 =  0.254829592;
+	  const double a2 = -0.284496736;
+	  const double a3 =  1.421413741;
+	  const double a4 = -1.453152027;
+	  const double a5 =  1.061405429;
+	  const double p  =  0.3275911;
+	
+	  // Save the sign of x
+	  int sign = 1;
+	  if (x < 0) {
+	    sign = -1;
+	  }
+	  x = std::fabs(x) / std::sqrt(2.0);
+	
+	  // A&S formula 7.1.26
+	  const double t = 1.0 / (1.0 + p * x);
+	  const double y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1)
+	    * t * std::exp(-x * x);
+	
+	  return 0.5 * (1.0 + sign * y);
+	}
