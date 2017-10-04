@@ -41,3 +41,28 @@ snippet     rank
 abbr        \\mathrm{rank}(${1})
 options     word
 	\\mathrm{rank}(${1})${0}
+
+snippet     positive_definite
+abbr        p.d.
+options     word
+	\\mathcal{S}_{${1:dim}}^{+}${2}
+
+snippet     positive_semidefinite
+abbr        p.s.d.
+options     word
+	\\mathcal{S}_{${1:dim}}${2}
+
+snippet     nonnegative_definite
+abbr        nonnegatve definite
+options     word
+	\\mathcal{S}_{${1:dim}}^{\\ge 0}
+
+snippet     real_matrix
+abbr        set of real matrix
+options     word
+	\\mathbb{R}^{${1:n} \times ${2:n}}
+
+snippet     complex_matrix
+abbr        set of real matrix
+options     word
+	\\mathbb{C}^{${1:n} \times ${2:n}}
