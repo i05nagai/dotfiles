@@ -519,3 +519,9 @@ snippet     log_set_output_file
 abbr        logging set output file
 options     word
     logging.basicConfig(filename=${1:'example.log'}, level=logging.DEBUG)
+
+
+snippet     func_name
+abbr        get function name
+options     word
+    ${1:function}.__name__
