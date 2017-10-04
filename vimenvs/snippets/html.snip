@@ -13,6 +13,11 @@ abbr        <script>
 options     word
 	<script type="text/javascript" src="${1}"></script>
 
+snippet     javascript_vuejs
+abbr        <script>
+options     word
+	<script src="https://unpkg.com/vue"></script>
+
 # special chars
 snippet     special_char_&
 abbr        &
@@ -38,3 +43,22 @@ snippet     special_char_<
 abbr        <
 options     word
 	&#60
+
+snippet     h2
+abbr        h2
+options     word
+	<h2>
+		${1:}
+	</h2>
+
+snippet     h3
+abbr        h3
+options     word
+	<h3>
+		${1:}
+	</h3>
+
+snippet     span_class_inline
+abbr        span
+options     word
+	<span>${1:}</span>
