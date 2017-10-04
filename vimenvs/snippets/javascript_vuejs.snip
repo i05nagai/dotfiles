@@ -1,0 +1,17 @@
+snippet     vue_export_default
+abbr        export default
+options     word
+    export default {
+      data() {
+        return {
+          ${1}
+        };
+      },
+    };
+
+snippet     vue_components
+abbr        export default
+options     word
+    components: {
+        '${1:some-component}': ${2:component_name},
+    },
