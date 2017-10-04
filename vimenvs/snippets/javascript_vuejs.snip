@@ -1,0 +1,21 @@
+snippet     vue_directive
+abbr        vue directive
+options     vue directive
+	Vue.directive('${1:directive_name}', ${2});
+
+snippet     vue_extend
+abbr        vue extend
+options     vue exnted
+	const ${1:} = Vue.exted({
+		data() {
+			return data;
+		},
+		methods: {
+		},
+		template: '',
+	});
+
+snippet     vue_add_component
+abbr        vue component
+options     vue component
+	Vue.component('${1:component_name}', ${2:component_var});
