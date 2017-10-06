@@ -1,0 +1,5 @@
+snippet     flask_get_param
+abbr        flask get param
+options     word
+	# from flask import request
+	${1:var} = request.args.get('${2:query}')
