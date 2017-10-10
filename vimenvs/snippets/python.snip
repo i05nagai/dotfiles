@@ -6,6 +6,9 @@ include python_boto3.snip
 include python_faker.snip
 include python_mock.snip
 include python_pandas.snip
+include python_holoviews.snip
+include python_keras.snip
+include python_urllib.snip
 
 snippet     debug
 abbr        import pdb;
@@ -61,8 +64,18 @@ snippet with
 
 delete with_open
 snippet with_open
-    with open(${1:filename}, "${2:rwb}") as ${3:f}:
-        ${4:pass}
+    try:
+        with open(${1:filename}, '${2:rwb}') as ${3:f}:
+            ${4:pass}
+    except IOError as e:
+        print(e)
+
+snippet with_open_newline
+    try:
+        with open(${1:filename}, '${2:rwb}', newline='\n') as ${3:f}:
+            ${4:pass}
+    except IOError as e:
+        print(e)
 
 snippet     print_to_file
 abbr        print to file
@@ -349,6 +362,39 @@ options     word
 	                    nargs="+",
 	                    help="${5:help message of this argument}")
 
+snippet     argument_parser_make_parser_supporintg_subcommand
+abbr        subcomand
+options     word
+	def make_argparser():
+	    # create the top-level parser
+	    parser = argparse.ArgumentParser(
+	        prog='${1:PROG}',
+	        description='${2}')
+	    parser.add_argument(
+	        '${3:--foo}',
+	        help='${4:foo help}')
+	    # subpersers
+	    subparsers = parser.add_subparsers(
+	        help='${5:sub-command help}')
+	    # create the subcommand parser
+	    ${6:subparser_a} = subparsers.add_parser(
+	        '${5:subcommand_a}',
+	        help='${7:help}')
+	    $6.add_argument(
+	        '${8:bar}',
+	        type=${9:int},
+	        help='${10:bar}')
+	    # create the parser for the "subcommand_b" command
+	    ${11:parser_b} = subparsers.add_parser(
+	        '${12:subcommand_b}',
+	        help='${13:b help}')
+	    $11.add_argument(
+	        '${14:--baz}',
+	        type=${15:int},
+	        help='${16:baz help}')
+	
+	    return parser
+
 snippet     argument_sys
 abbr        sys.argv
 options     word
@@ -470,6 +516,27 @@ options     word
     basepath = os.path.basename(${1:path})
     ${2:path}_new = '{0}/${3:new_filename}'.format(basepath)
 
+snippet     path_delete_file
+abbr        delete file
+options     word
+    os.remove(${1:path})
+
+snippet     path_delete_directory
+abbr        delete directory
+options     word
+    os.rmdir(${1:path})
+
+snippet     path_delete_directory_recursively
+abbr        delete directory recursively
+options     word
+    os.removedirs(${1:path})
+
+snippet     path_delete_directory_force
+abbr        delete directory recursively
+options     word
+    # import shutil
+    shutil.rmtree(${1:path})
+
 # list
 snippet     list_copy
 abbr        list copy
@@ -520,8 +587,18 @@ abbr        logging set output file
 options     word
     logging.basicConfig(filename=${1:'example.log'}, level=logging.DEBUG)
 
-
 snippet     func_name
 abbr        get function name
 options     word
     ${1:function}.__name__
+
+#
+snippet     bytestring_to_str
+abbr        get function name
+options     word
+	${1:var}.decode('${2:utf-8}')
+
+snippet     str_to_bytestring
+abbr        get function name
+options     word
+	${1:var}.encode('${2:utf-8}')
