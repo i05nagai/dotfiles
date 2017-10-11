@@ -1,0 +1,6 @@
+snippet     aws_emr_add_tags
+abbr        aws emr add tags
+options     word
+	aws emr add-tags \
+		--resource-id ${1:cluster_id} \
+		--tags ${2:Name}="${3:val}" ${4:age=29}
