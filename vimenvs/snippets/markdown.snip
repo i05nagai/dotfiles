@@ -68,19 +68,23 @@ options     head
 	## Reference
 
 snippet table
+options     word
 abbr table cell
     | ${1:start} | ${2:next} |
     | ----- | ----- |
 
 snippet tcell
+options     word
 abbr table cell
     | ${1:cell} | ${0:tcell2}
 
 snippet tcell2
+options     word
 abbr table component after cell
     ${1:cell} | ${0:tcell2}
 
 snippet tcell3
+options     word
 abbr table component after cell
     ${1:cell} | 
     | ${0:tcell2}
@@ -88,13 +92,13 @@ abbr table component after cell
 delete link
 snippet     link
 abbr [${2:title}](${1})${0}
-options     head
+options     word
     [${2:title}](${1})${0}
 
 delete linkurl
 snippet     linkurl
 abbr [${2:title}](${1})${0}
-options     head
+options     word
     [${2:title}](${1})${0}
 
 snippet     image
@@ -106,6 +110,15 @@ snippet     image_html_center
 abbr        image at center by html
 options     word
     <div style="text-align: center">
-        <img src="${1:path/to/image}">
+           <img src="${1:path/to/image}">
     </div>${0}
 
+snippet     link_to_section
+abbr        link to section
+options     word
+    <a href="#${1:anchor}">${2}</a>
+
+snippet     link_to_another_doc
+abbr        link to another doc
+options     word
+    <a href="{{ site.baseurl }}/${1:url}">${2}</a>
