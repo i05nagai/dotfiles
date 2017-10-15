@@ -3,5 +3,6 @@ function! s:snippet()
     setlocal noexpandtab
 endfunction
 
-" filetype=cpp が設定された場合に関数を呼ぶ
-autocmd FileType snippet,neosnippet call s:snippet()
+" filetype=neosnippet
+autocmd FileType snippet call s:snippet()
+autocmd FileType neosnippet call s:snippet()
