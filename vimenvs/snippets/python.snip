@@ -291,21 +291,34 @@ options     word
     import pprint
     pprint.pprint(${2:dict})${0}
 
+# print
+snippet     print_variable
+abbr        print variable
+options     word
+    print('${1}: {0}'.format($1))
+
 # json
 snippet     json_pretty_print
 abbr        json pretty print
 options     word
-    json.dumps(${1}, indent=4, sort_keys=True)${0}
+    json.dumps(${1}, indent=2, sort_keys=True)${0}
 
 snippet     json_read_from_file
 abbr        json read from file
 options     word
-    json.load(${1:f})${0}
+    with open('${1:path}', 'r') as f:
+        json.load(${2:f})${0}
 
 snippet     json_string_to_dict
 abbr        json read from file
 options     word
     json.loads(${1:string})${0}
+
+snippet     json_write_to_file_pretty_print
+abbr        json write to file pretty print
+options     word
+    with open('${1:path}', 'w') as f:
+        json.dump(${2:json_dict}, f, indent=2, sort_keys=True)${0}
 
 # subprocess
 snippet     execute_external_command
@@ -418,6 +431,12 @@ snippet commandline_argument
         elif option in ("-v", "--verbose"):
             verbose = argument
 
+snippet     file_copy
+abbr        copy file
+options     word
+	import shutil
+	shutil.copy2(${1:from}, ${2:to})
+
 snippet     path_to_this_file
 abbr        path to this script
 options     word
@@ -519,7 +538,10 @@ options     word
 snippet     path_delete_file
 abbr        delete file
 options     word
-    os.remove(${1:path})
+    try:
+        os.remove(${1:path})
+    except OSError:
+        pass
 
 snippet     path_delete_directory
 abbr        delete directory
