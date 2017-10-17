@@ -9,6 +9,7 @@ include python_pandas.snip
 include python_holoviews.snip
 include python_keras.snip
 include python_urllib.snip
+include python_pillow.snip
 
 snippet     debug
 abbr        import pdb;
@@ -210,7 +211,7 @@ options     head
     from __future__ import print_function
     from __future__ import absolute_import
 
-## re
+# re
 snippet     match_with_group
 abbr        re.match
 options     word
@@ -218,8 +219,12 @@ options     word
     if match_object:
         ${3:match_object.group(1)}${0}
 
-    
-## csv
+snippet     re_replace
+abbr        re.sub
+options     word
+    ${1:replaced} = re.sub(r'${2:replacee}', '${3:replacer}', ${4:text})
+
+# csv
 snippet     csv_write
 abbr        csv_write
 options     head
@@ -519,6 +524,13 @@ options     word
     ${2:path}_new = '{0}/${3:new_filename}'.format(basepath)
     os.rename($1, $2)${0}
 
+snippet     path_rename_extension
+abbr        replace filename keeping basepath
+options     word
+    basepath, extension = os.path.splitext(path)
+    path_new = '{0}.{1}'.format(basepath, extension_new)
+    os.rename(path, path_new)
+
 snippet     path_basename
 abbr        file rename
 options     word
@@ -528,6 +540,11 @@ snippet     path_dirname
 abbr        dirname of path
 options     word
     os.path.dirname(${1:path})${0}
+
+snippet     path_extension
+abbr        extension of filename
+options     word
+    ${1:extension} = os.path.splitext(${2:filename})[1]
 
 snippet     path_replace_filename
 abbr        replace filename keeping basepath
