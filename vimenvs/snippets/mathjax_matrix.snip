@@ -34,8 +34,7 @@ abbr        matrix5
 			\\\\
 			${10}  & \\cdots &        & ${11}  & ${12}
 		\\end{array}
-	\\right)
-	${0}
+	\\right)${0}
 
 snippet     rank
 abbr        \\mathrm{rank}(${1})
@@ -66,3 +65,9 @@ snippet     complex_matrix
 abbr        set of real matrix
 options     word
 	\\mathbb{C}^{${1:n} \times ${2:n}}
+
+snippet     similar_matrix
+abbr        similar matrix
+options     word
+    ${1}\mathrm{T}${2}$1
+

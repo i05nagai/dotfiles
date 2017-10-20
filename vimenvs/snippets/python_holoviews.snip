@@ -3,12 +3,50 @@ abbr        abbr
 options     word
 	import holoviews as hs
 
+snippet     hv_extension_matplotlib
+abbr        abbr
+options     word
+	hv.extension('matplotlib')
+
+snippet     hv_extension_bokeh
+abbr        abbr
+options     word
+	hv.extension('bokeh')
+
 snippet     hv_scatter_plot
 abbr        abbr
 options     word
 	hs.Points(${1})
 
+snippet     hv_scatter_plot_with_histogram
+abbr        abbr
+options     word
+	hs.Points(${1}).hist()
+
 snippet     hv_scatter_plot_with_label
 abbr        abbr
 options     word
 	hs.Points(${1}, label="${2:label}")
+
+snippet     hv_curve
+abbr        abbr
+options     word
+	hs.Curve((${1:x, y}), label="${2:label}")
+
+snippet     hv_curve
+abbr        abbr
+options     word
+	hs.Bars((${1:label_1}, ${2:label_2}), (${3:val_1}, ${4:val_2}))
+
+snippet     hv_histogram
+abbr        abbr
+options     word
+	# import numpy as np
+	frequencies, edge = np.histogram(${1:array_of_data}, ${2:num_bars})
+	hv.Histogram(frequencies, edge)
+
+snippet     hv_load_image
+abbr        abbr
+options     word
+	# import numpy as np
+	hv.RGB.load_image(${1:path_to_image})

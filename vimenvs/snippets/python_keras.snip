@@ -1,0 +1,147 @@
+# import
+snippet     keras_import
+abbr        import keras
+options     word
+    import keras
+
+snippet     keras_import_backend
+abbr        import keras backend
+options     word
+    from keras import backend as K
+
+# preprocessing
+snippet     keras_load_image
+abbr        keras_load_image
+options     word
+    # import keras.preprocessing.image as image
+    ${1:img} = image.load_img(${2:path_to_img})
+
+snippet     keras_load_image_and_set_data
+abbr        keras_load_image
+options     word
+    img = image.load_img(filename, target_size=(224, 224))
+    # （rows, cols, channels) 
+    x = image.img_to_array(img)
+    # (samples, rows, cols, channels)
+    x = np.expand_dims(x, axis=0)
+
+snippet     keras_np_array_to_image
+abbr        keras np array to image
+options     word
+    # import keras.preprocessing.image as image
+    ${1:np_array} = image.array_to_image(${2:pil_img})
+
+snippet     keras_image_to_np_array
+abbr        keras pil image to np array
+options     word
+    # import keras.preprocessing.image as image
+    ${1:pil_img} = image.image_to_array(${2:np_array})
+
+snippet     keras_draw_image
+abbr        keras pil image to np array
+options     word
+    # import keras.preprocessing.image as image
+    ${1:pil_img} = image.image_to_array(${2:np_array})
+
+snippet     keras_image_data_generator
+abbr        keras datagen
+options     word
+    # from keras import backend as K
+    ${1:img_datagen} = image.ImageDataGenerator(
+        featurewise_center=${2:False},
+        samplewise_center=${3:False},
+        featurewise_std_normalization=${4:False},
+        samplewise_std_normalization=${5:False},
+        zca_whitening=${6:False},
+        zca_epsilon=${7:1e-6},
+        rotation_range=${8:0.0},
+        width_shift_range=${9:0.0},
+        height_shift_range=${10:0.0},
+        shear_range=${11:0.0},
+        zoom_range=${12:0.0},
+        channel_shift_range=${13:0.0},
+        fill_mode='${14:nearest}',
+        cval=${15:0.0},
+        horizontal_flip=${16:False},
+        vertical_flip=${17:False},
+        rescale=${18:None})
+
+snippet     keras_img_data_gen
+abbr        keras datagen
+options     word
+    # import keras.preprocessing.image as image
+    ${1:g} = img_datagen.flow(${2:tensor_4dim},
+                     batch_size=${3:num_sample},
+                     save_to_dir=${4:path_to_output},
+                     save_prefix='${5:file_prefix}',
+                     save_format='${6:jpg}')
+
+snippet     keras_image_data_augumentation
+abbr        keras datagen
+options     word
+    # import keras.preprocessing.image as image
+    # from keras import backend as K
+    ${1:img_datagen} = image.ImageDataGenerator(
+        featurewise_center=${2:False},
+        samplewise_center=${3:False},
+        featurewise_std_normalization=${4:False},
+        samplewise_std_normalization=${5:False},
+        zca_whitening=${6:False},
+        zca_epsilon=${7:1e-6},
+        rotation_range=${8:0.0},
+        width_shift_range=${9:0.0},
+        height_shift_range=${10:0.0},
+        shear_range=${11:0.0},
+        zoom_range=${12:0.0},
+        channel_shift_range=${13:0.0},
+        fill_mode='${14:nearest}',
+        cval=${15:0.0},
+        horizontal_flip=${16:False},
+        vertical_flip=${17:False},
+        rescale=${18:None})
+    ${19:gen} = $1.flow(${20:tensor_4dim},
+                     batch_size=${21:num_sample},
+                     save_to_dir=${22:path_to_output},
+                     save_prefix='${23:file_prefix}',
+                     save_format='${24:jpg}')
+    for g in $19:
+        g.next()
+
+
+snippet     keras_datagen_
+abbr        keras datagen
+options     word
+
+
+# vgg16
+snippet     keras_vgg16_model
+abbr        keras datagen
+options     word
+    # import keras.applications.vgg16 as vgg16
+    ${1:model} = vgg16.VGG16(
+        include_top=True,
+        weights='imagenet',
+        input_tensor=None,
+        input_shape=None)
+
+snippet     keras_model_predict
+abbr        keras model predict
+options     word
+    # import keras.applications.vgg16 as vgg16
+    input_img = vgg16.preprocess_input(input_img)
+    ${1:predictions} = ${2:model}.predict(input_img)
+    ${3:results} = vgg16.decode_predictions(predictions, top=${4:1})
+
+snippet     keras_model_summary
+abbr        keras model summary
+options     word
+    ${1:model}.summary()
+
+snippet     keras_draw_image_from_array
+abbr        draw image
+options     word
+    # import matplotlib.pyplot as plt
+    def draw_image_from_array(x):
+        img = image.array_to_img(x)
+        plt.imshow(img)
+        plt.show()

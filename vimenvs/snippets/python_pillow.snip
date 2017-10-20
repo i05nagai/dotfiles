@@ -1,0 +1,10 @@
+snippet     pil_import
+abbr        pil import
+options     word
+    import PIL
+
+snippet     pil_get_extension
+abbr        pillow get extension
+options     word
+    image = PIL.Image.open(${1:filename})
+    extension = image.format
