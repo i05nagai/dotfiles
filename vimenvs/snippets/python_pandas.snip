@@ -77,11 +77,6 @@ abbr        df plot bar
 options     word
 	${1:df}.plot.bar()
 
-snippet     pd_df_plot_bar
-abbr        df plot bar
-options     word
-	${1:df}.plot.bar()
-
 snippet     pd_df_plot_bar_stacked
 abbr        df plot bar stacked
 options     word
@@ -179,3 +174,9 @@ options     word
 	print(${1:df}.head(10))
 	print($1.tail(10))
 	print($1.describe())
+
+snippet     pd_df_iterate_rows
+abbr        df preview
+options     word
+	for index, row in ${1:df}:
+		${2}
