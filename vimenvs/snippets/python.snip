@@ -1,4 +1,5 @@
 include sphinx.snip
+include python_beautifulsoup.snip
 include python_boto3.snip
 include python_faker.snip
 include python_flask.snip
@@ -10,6 +11,7 @@ include python_pandas.snip
 include python_pillow.snip
 include python_pyspark.snip
 include python_pytest.snip
+include python_requests.snip
 include python_urllib.snip
 
 snippet     debug
@@ -387,6 +389,20 @@ options     word
 	                    nargs="+",
 	                    help="${5:help message of this argument}")
 
+snippet     argument_add_subcommand_parser
+abbr        subcomand
+options     word
+	subparsers = parser.add_subparsers(
+	    help='${5:sub-command help}')
+	# create the subcommand parser
+	${6:subparser_a} = subparsers.add_parser(
+	    '${5:subcommand_a}',
+	    help='${7:help}')
+	$6.add_argument(
+	    '${8:bar}',
+	    type=${9:int},
+	    help='${10:bar}')
+
 snippet     argument_parser_make_parser_supporintg_subcommand
 abbr        subcomand
 options     word
@@ -648,3 +664,9 @@ snippet     str_to_bytestring
 abbr        get function name
 options     word
 	${1:var}.encode('${2:utf-8}')
+
+snippet     if_is_list
+abbr        if is list
+options     word
+	if isinstance(${1:var}, list):
+		${1}
