@@ -601,7 +601,7 @@ options     word
 		filename_new = '{0}{1}{2}'.format(prefix, separator, filename)
 		dirpath = os.path.dirname(path)
 		path_new = os.path.join(dirpath, filename_new)
-		return path_nw
+		return path_new
 
 snippet     path_add_suffix
 abbr        add suffix
@@ -611,7 +611,7 @@ options     word
 		filename_new = '{0}{1}{2}.{3}'.format(filename, separator, suffix, ext)
 		dirpath = os.path.dirname(path)
 		path_new = os.path.join(dirpath, filename_new)
-		return path_nw
+		return path_new
 
 snippet     path_replace_filename
 abbr        replace filename keeping basepath
