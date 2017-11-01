@@ -178,5 +178,12 @@ options     word
 snippet     pd_df_iterate_rows
 abbr        df preview
 options     word
-	for index, row in ${1:df}:
+	for index, row in ${1:df}.iterrows():
 		${2}
+
+snippet     pd_df_iterate_row_and_col
+abbr        df preview
+options     word
+	for row_index, row in ${1:df}.iterrows():
+		for col_index, col in enumrate(row):
+			${2}
