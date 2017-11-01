@@ -1,0 +1,100 @@
+snippet     sqlalchemy_model_template
+abbr        model template
+options     word
+	from sqlalchemy.ext.declarative import declarative_base
+	import sqlalchemy.types as types
+	
+	
+	Base = declarative_base()
+	
+	
+	class ${1:TableName}(Base):
+		__tablename__ = '${2:table_name}'
+		column1 = types.Column(types.Integer, primary_key=True)
+		column2 = types.Column(types.String(50))
+
+snippet     sqlalchemy_model_table
+abbr        model template
+options     word
+	from sqlalchemy import Column
+	import sqlalchemy
+	import sqlalchemy.types as types
+	
+	
+	db_url = 'sqlite:////absolute/path/to/db'
+	engine = sqlalchemy.create_engine(db_url, echo=True)
+	metadata = sqlalchemy.MetaData()
+	metadata.bind = engine
+	
+	restaurant = sqlalchemy.Table(
+		'restaurant',
+		metadata,
+		Column('restaurant_id', types.Integer, primary_key=True),
+		Column('restaurant_name', types.String(50)),
+		Column('restaurant_status', types.Integer)
+	)
+
+snippet     sqlalchemy_create_engine_sqlite_memory
+abbr        create engine
+options     word
+	engine = sqlalchemy.create_engine('sqlite:///:memory:', echo=True)
+	conn = engine.connect()
+
+snippet     sqlalchemy_create_engine_sqlite
+abbr        create engine
+options     word
+	engine = sqlalchemy.create_engine('sqlite:///${2::path/to/db}', echo=True)
+	conn = engine.connect()
+
+snippet     sqlalchemy_type_integer
+abbr        Integer
+options     word
+	${1:types.}Integer
+
+snippet     sqlalchemy_type_string
+abbr        string
+options     word
+	${1:types.}String(${2:length})
+
+snippet     sqlalchemy_type_boolean
+abbr        boolean
+options     word
+	${1:types.}Boolean()
+
+snippet     sqlalchemy_type_datetime
+abbr        datetime
+options     word
+	${1:types.}DateTime()
+
+snippet     sqlalchemy_column
+abbr        column
+options     word
+	${1:types.}Column(${2:type})
+
+snippet     sqlalchemy_column_primary_key
+abbr        column
+options     word
+	${1:types.}Column(${2:type}, primary_key=True)
+
+snippet     sqlalchemy_column_label
+abbr        column cast
+options     head
+	${1:column.}label(${2:col_name})
+
+snippet     sqlalchemy_select_column
+abbr        select only column
+options     head
+	${1:sql_expression.}with_only_columns(${2:columns})
+
+snippet     sqlalchemy_select_groupby
+abbr        select only column
+options     head
+	${1:sql_expression.}group_by(${2:columns})
+
+snippet     sqlalchemy_session
+abbr        create session
+options     word
+	${1:sql_expression.}group_by(${2:columns})
+	import sqlalchemy.orm as orm
+	Session = orm.sessionmaker(bind=${1:engine})
+	session = Session()
