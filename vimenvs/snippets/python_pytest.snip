@@ -72,3 +72,12 @@ options     word
     @pytest.mark.usefixtures('${1:fixture_name}')
     def ${2:test_method}(self, $1):
         pass
+
+snippet     pytest_fixture
+abbr        pytest fixture
+options     word
+	@pytest.fixture(scope='${1:session,module,class}')
+	def ${2:fixture_name}():
+		fixture
+		return fixture
+
