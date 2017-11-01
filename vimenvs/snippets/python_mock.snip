@@ -33,3 +33,12 @@ snippet     mock_set_return_value
 abbr        set return value
 options     word
 	${1:mock}.return_value = ${2}
+
+snippet     mock_file_open
+abbr        mock file open
+options     word
+	read_data = ${1:'str'}
+	${3:mock} = ${2:mocker}.mock_open(read_data=read_data)
+	$2.patch.object(${4:target}, 'open', $3)
+	# $3().write.assert_called_once_with(expected_text)
+	# $3().read.assert_called_once()
