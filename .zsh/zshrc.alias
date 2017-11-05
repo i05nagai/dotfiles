@@ -30,6 +30,10 @@ then
   {
     cat $@ | bq query --nouse_legacy_sql
   }
+  bq-query-standard-sqls-dry-run()
+  {
+    cat $@ | bq query --nouse_legacy_sql --dry_run
+  }
   bq-query-and-insert-standard-sql()
   {
     echo "$1: sql file path"

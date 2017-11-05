@@ -1,0 +1,21 @@
+snippet     bs_import
+abbr        import
+options     word
+    import bs4
+
+snippet     bs_read_from_file
+abbr        read html file
+options     word
+    with open('${1:path}') as fp:
+        soup = bs4.BeautifulSoup(fp)
+
+snippet     bs_read_from_str
+abbr        read str
+options     word
+    bs4.BeautifulSoup(${1:string})
+
+
+snippet     bs_find_all_tag
+abbr        find all tag
+options     word
+    ${1:soup}.findall('${2:tag_name}')

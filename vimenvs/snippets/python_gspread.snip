@@ -1,0 +1,37 @@
+snippet     gspread_authorize
+abbr        gspread authorize
+options     word
+	from oauth2client.service_account import ServiceAccountCredentials
+	import gspread
+	
+	
+	def get_credentials():
+		scope = ['https://spreadsheets.google.com/feeds']
+		path_to_json_key = '${1:path_to_sa_josn_key}'
+		credentials = ServiceAccountCredentials.from_json_keyfile_name(
+		    path_to_json_key, scope)
+		return credentials
+		
+		
+		credentials = get_credentials()
+		gc = gspread.authorize(credentials)
+
+snippet     gspread_open_by_url
+abbr        gspread get credentials
+options     word
+	${1:gc.}open_by_url(${2:url})
+
+snippet     gspread_open_by_title
+abbr        gspread get credentials
+options     word
+	${1:gc.}open(${2:title})
+
+snippet     gspread_worksheets
+abbr        gspread get credentials
+options     word
+	${1:spreadsheet.}worksheets()
+
+snippet     gspread_worksheet_cell
+abbr        gspread get credentials
+options     word
+	${1:spreadsheet.}update_cell(${2:row}, ${3:col}, ${4:val})

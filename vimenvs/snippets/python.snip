@@ -1,15 +1,20 @@
 include sphinx.snip
-include python_pytest.snip
-include python_matplotlib.snip
-include python_pyspark.snip
+include python_beautifulsoup.snip
 include python_boto3.snip
 include python_faker.snip
-include python_mock.snip
-include python_pandas.snip
+include python_flask.snip
 include python_holoviews.snip
 include python_keras.snip
-include python_urllib.snip
+include python_matplotlib.snip
+include python_mock.snip
+include python_pandas.snip
 include python_pillow.snip
+include python_pyspark.snip
+include python_pytest.snip
+include python_requests.snip
+include python_sqlalchemy.snip
+include python_urllib.snip
+include python_gspread.snip
 
 snippet     debug
 abbr        import pdb;
@@ -207,9 +212,10 @@ snippet log_info
 snippet     future
 abbr        future
 options     head
+    from __future__ import absolute_import
     from __future__ import division
     from __future__ import print_function
-    from __future__ import absolute_import
+    from __future__ import unicode_literals
 
 # re
 snippet     match_with_group
@@ -289,6 +295,12 @@ options     word
         datetime.time().replace(tzinfo=${2:pytz.utc})
     )
 
+snippet     datetime_from_datetime_to_unixtime
+abbr        datetime to unixtime
+options     word
+    # import time
+    int(time.mktime(${1:datetime}.timetuple()))
+
 # pprint
 snippet     pretty_print_dict
 abbr        pretty printer
@@ -340,7 +352,6 @@ options     word
 	    print("output: {0}".format(e.output))
 	    raise
 
-
 snippet     execute_external_command_with_stdin
 abbr        execute external command with stdin
 options     word
@@ -379,6 +390,20 @@ options     word
 	                    type=${3:variable_type},
 	                    nargs="+",
 	                    help="${5:help message of this argument}")
+
+snippet     argument_add_subcommand_parser
+abbr        subcomand
+options     word
+	subparsers = parser.add_subparsers(
+	    help='${5:sub-command help}')
+	# create the subcommand parser
+	${6:subparser_a} = subparsers.add_parser(
+	    '${5:subcommand_a}',
+	    help='${7:help}')
+	$6.add_argument(
+	    '${8:bar}',
+	    type=${9:int},
+	    help='${10:bar}')
 
 snippet     argument_parser_make_parser_supporintg_subcommand
 abbr        subcomand
@@ -442,18 +467,6 @@ options     word
 	import shutil
 	shutil.copy2(${1:from}, ${2:to})
 
-snippet     path_to_this_file
-abbr        path to this script
-options     word
-	import os
-	${1:var_name} = os.path.abspath(__file__)${0}
-
-snippet     path_to_this_dir
-abbr        path to directori of this script
-options     word
-	import os
-	${1:var_name} = os.path.abspath(os.path.dirname(__file__))${0}
-
 snippet     environment_variable_get
 abbr        environment variable
 options     head
@@ -501,10 +514,39 @@ options     head
         if e.errno != errno.EEXIST:
             raise${0}
 
+snippet     path_to_this_file
+abbr        path to this script
+options     word
+	import os
+	${1:var_name} = os.path.abspath(__file__)${0}
+
+snippet     path_to_this_dir
+abbr        path to directori of this script
+options     word
+	import os
+	${1:var_name} = os.path.abspath(os.path.dirname(__file__))${0}
+
 snippet     path_file_list
 abbr        file list
 options     word
+    # return only file name
     files = os.listdir(${1:path_to_dir})${0}
+
+snippet     path_file_list_iterate
+abbr        file list
+options     word
+    files = os.listdir(${1:path_to_dir})${0}
+    for fname in files:
+        abspath = os.path.join($1, fname)
+
+snippet     path_move_in_dir
+abbr        file list
+options     word
+    files = os.listdir(${1:path_to_dir})${0}
+    for fname in files:
+        from_abspath = os.path.join($1, fname)
+        to_abspath = os.path.join(${2:path_to_dir}, fname)
+        os.rename(from_abspath, to_abspath)
 
 snippet     path_list_glob
 abbr        file list with glob
@@ -527,30 +569,55 @@ options     word
 snippet     path_rename_extension
 abbr        replace filename keeping basepath
 options     word
-    basepath, extension = os.path.splitext(path)
-    path_new = '{0}.{1}'.format(basepath, extension_new)
-    os.rename(path, path_new)
+	basepath, extension = os.path.splitext(path)
+	path_new = '{0}.{1}'.format(basepath, extension_new)
+	os.rename(path, path_new)
 
-snippet     path_basename
-abbr        file rename
+snippet     path_filename
+abbr        filename
 options     word
-    os.path.basename(${1:path})${0}
+	os.path.basename(${1:path})${0}
+
+snippet     path_filename_without_extension
+abbr        filename without extension
+options     word
+	os.path.splitext(os.path.basename(${1:path}))[0]${0}
 
 snippet     path_dirname
 abbr        dirname of path
 options     word
-    os.path.dirname(${1:path})${0}
+	os.path.dirname(${1:path})${0}
 
 snippet     path_extension
 abbr        extension of filename
 options     word
-    ${1:extension} = os.path.splitext(${2:filename})[1]
+	${1:extension} = os.path.splitext(${2:filename})[1]
+
+snippet     path_add_prefix
+abbr        add prefix
+options     word
+	def add_prefix(path, prefix, separator='_'):
+		filename = os.path.basename(path)
+		filename_new = '{0}{1}{2}'.format(prefix, separator, filename)
+		dirpath = os.path.dirname(path)
+		path_new = os.path.join(dirpath, filename_new)
+		return path_new
+
+snippet     path_add_suffix
+abbr        add suffix
+options     word
+	def add_suffix(path, suffix, separator='_'):
+		filename, ext = os.path.splitext(os.path.basename(path))
+		filename_new = '{0}{1}{2}.{3}'.format(filename, separator, suffix, ext)
+		dirpath = os.path.dirname(path)
+		path_new = os.path.join(dirpath, filename_new)
+		return path_new
 
 snippet     path_replace_filename
 abbr        replace filename keeping basepath
 options     word
-    basepath = os.path.basename(${1:path})
-    ${2:path}_new = '{0}/${3:new_filename}'.format(basepath)
+	dirpath = os.path.dirname(${1:path})
+	${2:path}_new = os.path.join(dirpath, ${3:new_filename})
 
 snippet     path_delete_file
 abbr        delete file
@@ -657,3 +724,9 @@ options     word
 			return wrapped_f
 		
 		return wrap
+
+snippet     if_is_list
+abbr        if is list
+options     word
+	if isinstance(${1:var}, list):
+		${1}

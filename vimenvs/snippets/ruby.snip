@@ -3,3 +3,7 @@ abbr        gem "package", "version"
 options     word
     gem "${1:package}", "${2:version}"${0}
 
+snippet     assign_if_nil
+abbr        v = a || if_a_is_nil
+options     head
+	${1:var} = ${2:a} || ${3:if_a_is_nil}

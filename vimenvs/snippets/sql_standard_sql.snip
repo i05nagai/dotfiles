@@ -50,3 +50,37 @@ snippet     timestamp_format_weekday
 abbr        format timestamp
 options     word
     FORMAT_TIMESTAMP('%a', ${1:timestamp})
+
+snippet     standard_sql_create_udf_js
+abbr        format timestamp
+options     word
+    CREATE TEMPORARY FUNCTION ${1:func_name}(${2:x FLOAT64})
+    RETURNS ${3:FLOAT64}
+    LANGUAGE js AS """
+        // do something here
+        return x;
+    """
+    ;
+
+snippet     standard_sql_create_udf_sql
+abbr        format timestamp
+options     word
+    CREATE TEMPORARY FUNCTION ${1:func_name}(${2:x FLOAT64}) AS (
+        /* do something here */
+    )
+    ;
+
+snippet     standard_sql_type_boolean
+abbr        bool
+options     word
+    BOOL
+
+snippet     standard_sql_type_integer
+abbr        integer
+options     word
+    INT64
+
+snippet     standard_sql_type_float
+abbr        float 
+options     word
+    FLOAT64
