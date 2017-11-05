@@ -379,17 +379,44 @@ options     word
 	import argparse
 	
 	parser = argparse.ArgumentParser(description="${1:description of program}")
-	
 	${2:args} = parser.parse_args()
 
-snippet     argument_parser_add_argument
+snippet     argument_parser_add_argument_true
 abbr        add argument
 options     word
-	parser.add_argument("${1:}",
-	                    metavar="${2:variable_name}",
-	                    type=${3:variable_type},
-	                    nargs="+",
-	                    help="${5:help message of this argument}")
+	parser.add_argument(
+		'${1:--option}',
+		metavar='${2:variable_name}',
+		action='store_true',
+		help='${5:help message of this argument}')
+
+snippet     argument_parser_add_argument_more_than_zero
+abbr        add argument
+options     word
+	parser.add_argument(
+		'${1:--option}',
+		metavar="${2:variable_name}",
+		type=${3:variable_type},
+		nargs='+',
+		help='${5:help message of this argument}')
+
+snippet     argument_parser_add_argument_choice_str
+abbr        add argument
+options     word
+	parser.add_argument(
+		'${1:--option}',
+		type=${2:str},
+		choices=[${3:'variable_type', }],
+		help='${4:help message of this argument}')
+
+snippet     argument_parser_add_argument_choice_range
+abbr        add argument
+options     word
+	parser.add_argument(
+		'${1:--option}',
+		type=${3:int},
+		choices=range(${4:0, 2}),
+		help='${5:help message of this argument}')
 
 snippet     argument_add_subcommand_parser
 abbr        subcomand
@@ -730,3 +757,21 @@ abbr        if is list
 options     word
 	if isinstance(${1:var}, list):
 		${1}
+
+
+snippet     download_file
+abbr        if is list
+options     word
+	try:
+		import urllib.request as request
+	except Exception:
+		import urllib2 as request
+	
+	
+	def retrieve_file(url):
+		response = request.urlopen(url)
+		return response.read().decode('utf-8')
+	
+	
+	def download_file(url, filename):
+		request.urlretrieve(url, filename)
