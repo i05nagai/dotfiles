@@ -1,25 +1,37 @@
-snippet     reqests_download_image
+snippet     requests_import
+abbr        import
+options     word
+	import requests
+
+snippet     requests_download_image
 abbr        download image
 options     word
-    # import os
-    # import errno
-    def make_directory(path):
-        try:
-            os.makedirs(path)
-        except OSError as e:
-            if e.errno != errno.EEXIST:
-                raise
+	# import os
+	# import errno
+	# import requests
+	
+	
+	def make_directory(path):
+		try:
+			os.makedirs(path)
+		except OSError as e:
+			if e.errno != errno.EEXIST:
+				raise
+	
+	
+	def _gen_filepath(url, dirpath):
+		name = url.split('/')[-1]
+		return os.path.join(dirpath, name)
+	
+	
+	def download_img(url, dirpath):
+		r = requests.get(url)
+		
+		if r.status_code == 200:
+			dirpath = os.path.dirname(dirpath)
+			make_directory(dirpath)
+			filepath = _gen_filepath(url, dirpath)
+			with open(filepath, 'wb') as f:
+				f.write(r.content)
 
-    def _gen_filepath(url, dirpath):
-        name = url.split('/')[-1]
-        return os.path.join(dirpath, name)
 
-    def download_img(url, dirpath):
-        r = requests.get(url)
-
-        if r.status_code == 200:
-            dirpath = os.path.dirname(dirpath)
-            make_directory(dirpath)
-            filepath = _gen_filepath(url, dirpath)
-            with open(filepath, 'wb') as f:
-                f.write(r.content)
