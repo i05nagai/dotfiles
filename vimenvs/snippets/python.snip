@@ -641,3 +641,19 @@ snippet     str_to_bytestring
 abbr        get function name
 options     word
 	${1:var}.encode('${2:utf-8}')
+
+snippet     decorator
+abbr        get function name
+options     word
+	def ${1:recurse}(${2:variable}):
+		"""Function decorator
+		
+		:return: function
+		"""
+		def wrap(f):
+			def wrapped_f(tlist):
+				f(tlist)
+		
+			return wrapped_f
+		
+		return wrap
