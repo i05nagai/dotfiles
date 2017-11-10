@@ -1,0 +1,6 @@
+snippet     bash_if_string_contain
+abbr        if string
+options     word
+    if [[ ${1:string} == *"${2:search_word}"* ]]; then
+      ${2}
+    fi
