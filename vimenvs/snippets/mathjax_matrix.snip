@@ -71,3 +71,15 @@ abbr        similar matrix
 options     word
     ${1}\mathrm{T}${2}$1
 
+snippet     trace
+abbr        tr()
+options     word
+	\\mathrm{tr}
+	\\left(
+		${1}
+	\\right)
+
+snippet     trace_inline
+abbr        tr()
+options     word
+	\\mathrm{tr}(${1})

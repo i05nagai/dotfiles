@@ -646,8 +646,42 @@ abbr        get function name
 options     word
 	${1:var}.encode('${2:utf-8}')
 
+snippet     decorator
+abbr        get function name
+options     word
+	def ${1:recurse}(${2:variable}):
+		"""Function decorator
+		
+		:return: function
+		"""
+		def wrap(f):
+			def wrapped_f(tlist):
+				f(tlist)
+		
+			return wrapped_f
+		
+		return wrap
+
 snippet     if_is_list
 abbr        if is list
 options     word
 	if isinstance(${1:var}, list):
 		${1}
+
+
+snippet     download_file
+abbr        if is list
+options     word
+	try:
+		import urllib.request as request
+	except Exception:
+		import urllib2 as request
+	
+	
+	def retrieve_file(url):
+		response = request.urlopen(url)
+		return response.read().decode('utf-8')
+	
+	
+	def download_file(url, filename):
+		request.urlretrieve(url, filename)

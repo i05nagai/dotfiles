@@ -5,7 +5,7 @@ options     word
 	parser = argparse.ArgumentParser(description="${1:description of program}")
 	${2:args} = parser.parse_args()
 
-snippet     argparse_add_argument_with_type_
+snippet     argparse_add_argument_with_type
 abbr        add argument
 options     word
 	parser.add_argument("${1:}",
@@ -14,6 +14,25 @@ options     word
 	                    nargs="+",
 	                    help="${5:help message of this argument}")
 
+snippet     argparse_add_argument_true
+abbr        add argument
+options     word
+	parser.add_argument(
+		'${1:--option}',
+		metavar='${2:variable_name}',
+		action='store_true',
+		help='${5:help message of this argument}')
+
+snippet     argparse_add_argument_more_than_zero
+abbr        add argument
+options     word
+	parser.add_argument(
+		'${1:--option}',
+		metavar="${2:variable_name}",
+		type=${3:variable_type},
+		nargs='+',
+		help='${5:help message of this argument}')
+
 snippet     argparse_add_argument_with_default_and_type
 abbr        add argument
 options     word
@@ -21,6 +40,15 @@ options     word
 	                    type=${2:variable_type},
 	                    default=${3:default_value}
 	                    help="${5:help message of this argument}")
+
+snippet     argparse_add_argument_choice_str
+abbr        add argument
+options     word
+	parser.add_argument(
+		'${1:--option}',
+		type=${2:str},
+		choices=[${3:'variable_type', }],
+		help='${4:help message of this argument}')
 
 snippet     argparse_add_subcommand_parser
 abbr        subcomand
@@ -35,6 +63,15 @@ options     word
 	    '${8:bar}',
 	    type=${9:int},
 	    help='${10:bar}')
+
+snippet     argparse_add_argument_choice_range
+abbr        add argument
+options     word
+	parser.add_argument(
+		'${1:--option}',
+		type=${3:int},
+		choices=range(${4:0, 2}),
+		help='${5:help message of this argument}')
 
 snippet     argparse_parser_make_parser_supporintg_subcommand
 abbr        subcomand

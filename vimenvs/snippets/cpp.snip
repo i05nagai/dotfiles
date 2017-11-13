@@ -4,6 +4,7 @@ include cpp_benchmark.snip
 include cpp_boost.snip
 include cpp_clang_foramt.snip
 include cpp_cmath.snip
+include cpp_limits.snip
 include cpp_random.snip
 include cppunit.snip
 include doxygen.snip
@@ -60,12 +61,6 @@ abbr        void func(...
     ${1:void} ${2:func_name}(${3:attr})
     {
       ${0}
-    }
-
-snippet     forstd
-abbr        for (std::size_t index) {}
-    for (size_t ${1:index} = 0; $1 < ${2:size}; ++$1) {
-      ${0:TARGET}
     }
 
 snippet     p
@@ -381,3 +376,41 @@ options     head
 	
 	  return 0.5 * (1.0 + sign * y);
 	}
+
+snippet     cpp_vector
+abbr        vector
+options     word
+	std::vector<${1:}> ${2:var}
+
+snippet     cpp_vector_of_vector
+abbr        vector
+options     word
+	std::vector<std::vector<${1:}>> ${2:var}
+
+snippet     for_increment_start_with_0_with_size_t
+abbr       for (std::size_t index) {}
+	for (size_t ${1:index} = 0; $1 < ${2:size}; ++$1) {
+		${0}
+	}
+
+snippet     for_increment_start_with_0
+abbr        for ()
+	for (${1:size_t} ${1:index} = 0; $1 < ${2:size}; ++$1) {
+		${0}
+	}
+
+delete for
+snippet     for
+abbr        for ()
+	for (${1:initil}; ${2:compare}; ${3:post}) {
+		${0}
+	}
+
+
+snippet     show_vector
+abbr        for ()
+	for (int vi = 0; vi < ${1:vector}.size(); ++vi) {
+		std::cout << $1[vi] << ", ";
+	}
+	std::cout << std::endl;
+
