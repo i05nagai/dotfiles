@@ -1,0 +1,64 @@
+snippet     execute_external_command
+abbr        execute external_command
+options     word
+	try:
+	    ${2:standard_output} = subprocess.check_output(
+	            ${1:command_string},
+	            stderr=subprocess.STDOUT,
+	            shell=True)
+	except subprocess.CalledProcessError as e:
+	    print("return code: {0}".format(e.returncode))
+	    print("command: {0}".format(e.cmd))
+	    print("output: {0}".format(e.output))
+	    raise
+
+snippet     execute_external_command_with_stdin
+abbr        execute external command with stdin
+options     word
+	try:
+	    p = subprocess.Popen( ${1:command},
+	        stdout=subprocess.PIPE,
+	        stdin=subprocess.PIPE,
+	        stderr=subprocess.PIPE)
+	    output, error = p.communicate(input=input_str)
+	    if p.returncode != 0:
+	        raise RuntimeError(
+	            "{0} failed, status code {1} stdout {2} stderr {3}".format(
+	                command, p.returncode, output, error))
+	    return output
+	except OSError as e:
+	    print("OSError: ", e.errno)
+	    print("OSError: ", e.strerror)
+	    print("OSError: ", e.filename)
+	    raise
+
+snippet     subprocess_shell_without_output
+abbr        python3
+options     word
+	try:
+	    # only work for python3
+	    subprocess.run(["ls", "-l"])
+	except subprocess.CalledProcessError as e:
+	    print("return code: {0}".format(e.returncode))
+	    print("command: {0}".format(e.cmd))
+	    print("output: {0}".format(e.output))
+	    raise
+
+snippet     subprocess_shell
+abbr        execute external_command
+options     word
+	try:
+	    subprocess.run(["ls", "-l", "/dev/null"], stdout=subprocess.PIPE)
+	except subprocess.CalledProcessError as e:
+	    print("return code: {0}".format(e.returncode))
+	    print("command: {0}".format(e.cmd))
+	    print("output: {0}".format(e.output))
+	    raise
+
+snippet     subprocess_shell_with_return_code
+abbr        execute external_command
+options     word
+	try:
+		retcode = subprocess.call(["ls", "-l"], shell=False)
+	except OSError as e:
+		print("Execution failed:", e, file=sys.stderr)
