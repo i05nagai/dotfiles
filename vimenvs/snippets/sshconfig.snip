@@ -1,0 +1,14 @@
+snippet     ssh_config_template
+abbr        ssh config template
+options     word
+	Host ${1:name}
+		HostName ${2:ip_or_host}
+		User ${3:user}
+		Port 22
+		IdentityFile ${4:path_to_private_key}
+		ServerAliveInterval 60
+		ForwardAgent    yes
+		StrictHostKeyChecking no
+		UserKnownHostsFile /dev/null
+		ServerAliveInterval 300
+		TCPKeepAlive yes
