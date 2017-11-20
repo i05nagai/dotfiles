@@ -1,0 +1,20 @@
+snippet     click_import
+abbr        import click
+options     word
+	import click
+
+snippet     click_template
+abbr        click base template
+options     word
+	@click.group()
+	@click.option('--debug/--no-debug', default=False)
+	def cli(debug):
+		click.echo('Debug mode is %s' % ('on' if debug else 'off'))
+	
+	
+	@cli.command()
+	def some_subcommad():
+		pass
+	
+	if __name__ == '__main__':
+		cli()
