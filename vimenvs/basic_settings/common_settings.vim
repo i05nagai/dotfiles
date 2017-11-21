@@ -189,7 +189,9 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundle 'tyru/open-browser.vim'
   NeoBundle 'h1mesuke/vim-alignta'
   NeoBundle 'LeafCage/yankround.vim'
-  NeoBundle 'vim-scripts/taglist.vim'
+  NeoBundleLazy 'vim-scripts/taglist.vim', {
+        \ 'autoload' : {'filetypes' : 'cpp'}
+        \ }
   NeoBundle 'itchyny/lightline.vim'
   NeoBundle 'dhruvasagar/vim-table-mode'
   "text-object
