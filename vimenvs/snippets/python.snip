@@ -20,6 +20,7 @@ include python_urllib.snip
 include python_subprocess.snip
 include python_path.snip
 include python_click.snip
+include python_csv.snip
 
 snippet     debug
 abbr        import pdb;
@@ -169,27 +170,31 @@ snippet try_except_else
         ${0}
 
 snippet try_except_finally
-    try:
-        ${1}
-    except ${2:Exception}, ${3:e}:
-        ${4:raise $3}
-    finally:
-        ${0}
+	try:
+		${1}
+	except ${2:Exception}, ${3:e}:
+		${4:raise $3}
+	finally:
+		${0}
 
 snippet try_except_else_finally
-    try:
-        ${1}
-    except ${2:Exception}, ${3:e}:
-        ${4:raise $3}
-    else:
-        ${5}
-    finally:
-        ${0}
+	try:
+		${1}
+	except ${2:Exception}, ${3:e}:
+		${4:raise $3}
+	else:
+		${5}
+	finally:
+		${0}
 
 # if __name__ == '__main__':
 snippet main
-    if __name__ == '__main__':
-        ${0:main()}
+	def main():
+		pass
+
+
+	if __name__ == '__main__':
+		${0:main()}
 
 snippet """
     """${0:doc}
@@ -235,24 +240,6 @@ abbr        re.sub
 options     word
     ${1:replaced} = re.sub(r'${2:replacee}', '${3:replacer}', ${4:text})
 
-# csv
-snippet     csv_write
-abbr        csv_write
-options     head
-    with open("${1:filename}", "w") as f:
-        writer = csv.writer(f, lineterminator='\n')
-        writer.writerow(list)
-        writer.writerows(array2d)
-
-snippet     csv_read
-abbr        csv_read
-options     head
-    with open("${1:filename}", "r") as f:
-        reader = csv.reader(f)
-        # skip header
-        header = next(reader)
-        for row in reader:
-            row
 
 # date
 snippet     datetime_from_string_to_datetime
