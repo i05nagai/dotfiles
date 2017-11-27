@@ -4,3 +4,48 @@ options     word
     if [[ ${1:string} == *"${2:search_word}"* ]]; then
       ${2}
     fi
+
+snippet     bash_variable_with_default_value_without_substitution
+abbr        calculate
+options     word
+	${${1:parameter}:-${2:default}}
+
+snippet     bash_variable_with_default_value_with_substitution
+abbr        calculate
+options     word
+	${${1:parameter}:=${2:default}}
+
+snippet     bash_variable_error_when_undefined
+abbr        calculate
+options     word
+	${${1:parameter}:?${2:error_message}}
+
+snippet     bash_variable_substitute_when_defined
+abbr        calculate
+options     word
+	${${1:parameter}:+${2:substitution}}
+
+snippet     bash_variable_length_str
+abbr        variable
+options     word
+	${#${1:parameter}}
+
+snippet     bash_variable_length_array
+abbr        variable
+options     word
+	${#${1:parameter}[*]}
+
+snippet     bash_variable_replace
+abbr        variable
+options     word
+	${${1:parameter}/${2:pattern}/${3:replacee}}
+
+snippet     bash_variable_capitalize_first_letter
+abbr        variable
+options     word
+	${${1:parameter}^}
+
+snippet     bash_variable_capitalize_all
+abbr        variable
+options     word
+	${${1:parameter}^^}
