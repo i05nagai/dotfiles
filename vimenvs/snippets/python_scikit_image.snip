@@ -1,0 +1,14 @@
+snippet     skimage_read_from_file
+abbr        read from file
+options     word
+    skimage.io.imread(${1:path_to_image})
+
+snippet     skimage_write_to_file
+abbr        read from file
+options     word
+    skimage.io.imsave(${1:fname}, ${2:img_array})
+
+snippet     skimage_show_image
+abbr        read from file
+options     word
+    skimage.io.imshow(${1:img_array})
