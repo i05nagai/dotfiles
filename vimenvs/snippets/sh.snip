@@ -52,7 +52,7 @@ abbr        subcommand
 	  ;;
 	esac
 	
-snippet     option
+snippet     argument
 abbr        option
 	while [ $# -gt 0 ];
 	do
@@ -64,6 +64,11 @@ abbr        option
 	    --help|-h)
 	      usage
 	      exit 0
+	    ;;
+
+	    --some-command|-s)
+	      shift
+	      var=$1
 	    ;;
 
 	    --version|-v)
@@ -248,4 +253,3 @@ snippet     calculate
 abbr        calculate
 options     word
 	$((${1:1 + 1}))${0}
-
