@@ -272,6 +272,15 @@ options     word
 	)
 	;
 
+snippet     standard_sql_nearly_equal
+abbr        nearly equal
+options     word
+	CREATE TEMPORARY FUNCTION NearlyEqual(val1 FLOAT64, val2 FLOAT64) AS (
+		# conventional equality for floating point
+		ABS(val2 - val1) < 1e-7
+	)
+	;
+
 snippet     standard_sql_timestamp_los_angeles
 abbr        divide but undef to null
 options     word
