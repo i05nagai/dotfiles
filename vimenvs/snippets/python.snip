@@ -1,26 +1,29 @@
-include sphinx.snip
 include python_argparse.snip
 include python_beautifulsoup.snip
 include python_boto3.snip
+include python_click.snip
+include python_csv.snip
 include python_faker.snip
 include python_flask.snip
+include python_google_cloud_bigquery.snip
 include python_gspread.snip
 include python_holoviews.snip
 include python_keras.snip
 include python_matplotlib.snip
 include python_mock.snip
+include python_numpy.snip
 include python_pandas.snip
+include python_path.snip
 include python_pillow.snip
 include python_pyspark.snip
 include python_pystache.snip
 include python_pytest.snip
 include python_requests.snip
+include python_scikit_image.snip
 include python_sqlalchemy.snip
-include python_urllib.snip
 include python_subprocess.snip
-include python_path.snip
-include python_click.snip
-include python_csv.snip
+include python_urllib.snip
+include sphinx.snip
 
 snippet     debug
 abbr        import pdb;
@@ -240,6 +243,11 @@ abbr        re.sub
 options     word
     ${1:replaced} = re.sub(r'${2:replacee}', '${3:replacer}', ${4:text})
 
+snippet     sleep
+abbr        sleep
+options     word
+	# import time
+	time.sleep(${1:sec})
 
 # date
 snippet     datetime_from_string_to_datetime
