@@ -1,0 +1,35 @@
+snippet     bigquery_import
+abbr        create dataset
+options     word
+	from google.cloud import bigquery
+
+snippet     bigquery_client
+abbr        create dataset
+options     word
+	client = bigquery.Client(project_id=project_id)
+
+snippet     bigquery_dataset_get
+abbr        create dataset
+options     word
+	dataset_ref = bigquery_client.dataset(dataset_id)
+	dataset = bigquery.Dataset(dataset_ref)
+
+snippet     bigquery_dataset_create_with_description
+abbr        create dataset
+options     word
+	dataset_ref = bigquery_client.dataset(dataset_id)
+	dataset = bigquery.Dataset(dataset_ref)
+	dataset.description = description
+	dataset = bigquery_client.create_dataset(dataset)
+
+snippet     bigquery_dataset_update
+abbr        update dataset
+options     word
+    dataset.description = description
+    dataset = client.update_dataset(dataset, ['description'])
+    return dataset
+
+snippet     bigquery_dataset_delete
+abbr        delete dataset
+options     word
+    dataset = client.delete_dataset(dataset)
