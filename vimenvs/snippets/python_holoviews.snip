@@ -39,14 +39,35 @@ options     word
 	hs.Bars((${1:label_1}, ${2:label_2}), (${3:val_1}, ${4:val_2}))
 
 snippet     hv_histogram
-abbr        abbr
+abbr        histogram
 options     word
 	# import numpy as np
 	frequencies, edge = np.histogram(${1:array_of_data}, ${2:num_bars})
 	hv.Histogram(frequencies, edge)
+
+snippet     hv_histogram_each_channel
+abbr        histogram
+options     word
+	def draw_histogram(image, each_channel=True):
+		if each_channel:
+			hist, nbins = skimage.exposure.histogram(image[:, :, 0])
+			values = list(zip(nbins, hist))
+			chart = hv.Histogram(values, kdims='channel 0')
+			for c in range(1, 3):
+				hist, nbins = skimage.exposure.histogram(image[:, :, c])
+				values = list(zip(nbins, hist))
+				chart += hv.Histogram(values, kdims='channel ' + c)
+		else:
+			hist, nbins = skimage.exposure.histogram(image)
+			chart = hv.Histogram(hist, nbins)
+		return chart
 
 snippet     hv_load_image
 abbr        abbr
 options     word
 	# import numpy as np
 	hv.RGB.load_image(${1:path_to_image})
+
+
+
+
