@@ -108,11 +108,6 @@ options     word
         g.next()
 
 
-snippet     keras_datagen_
-abbr        keras datagen
-options     word
-
-
 # vgg16
 snippet     keras_vgg16_model
 abbr        keras datagen
@@ -140,8 +135,21 @@ options     word
 snippet     keras_draw_image_from_array
 abbr        draw image
 options     word
-    # import matplotlib.pyplot as plt
-    def draw_image_from_array(x):
-        img = image.array_to_img(x)
-        plt.imshow(img)
-        plt.show()
+	# import matplotlib.pyplot as plt
+	def draw_image_from_array(x):
+		img = image.array_to_img(x)
+		plt.imshow(img)
+		plt.show()
+
+snippet     keras_model_compile
+abbr        model.compile
+options     word
+	model.compile(
+		loss='${1:categorical_crossentropy}',
+		optimizer=${2:keras.optimizers.SGD(lr=1e-4, momentum=0.9)},
+		metrics=['${3:accuracy}'])
+
+snippet     keras_to_categorical
+abbr        model.compile
+options     word
+	$1 = keras.utils.to_categorical(${1:ys}, ${2:num_class})
