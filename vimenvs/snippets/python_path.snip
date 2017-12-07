@@ -146,3 +146,15 @@ abbr        copy file
 options     word
 	import shutil
 	shutil.copy2(${1:from}, ${2:to})
+
+snippet     read_file
+abbr        copy file
+options     word
+	with open(${1:path}, '${2:r}') as ${3:f}:
+		line = $3.readline()
+
+snippet     write_to_file
+abbr        copy file
+options     word
+	with open(${1:path}, '${2:w}') as ${3:f}:
+		$3.write(${4})
