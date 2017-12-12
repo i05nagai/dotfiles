@@ -274,3 +274,17 @@ snippet     calculate
 abbr        calculate
 options     word
 	$((${1:1 + 1}))${0}
+
+snippet     wait_until_ip_is_accessible
+abbr        wait
+options     word
+	try_loop=20
+	while ! nc -z ${1:${HOST}} ${2:${PORT}} >/dev/null 2>&1 < /dev/null; do
+		j=$((j+1))
+		if [ $j -ge $try_loop ]; then
+			echo "$(date) - $1 still not reachable, giving up"
+			exit 1
+		fi
+			echo "$(date) - waiting ... $j/$try_loop"
+		sleep 5
+	done
