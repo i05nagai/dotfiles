@@ -1,86 +1,292 @@
-snippet     partition_time
+snippet     standard_sql_partition_time
 abbr        partition time
 options     word
-    _PARTITIONTIME BETWEEN
-        TIMESTAMP("${1}-${2}-${3}")
-        AND
-        TIMESTAMP("${4}-${5}-${6}")
+	_PARTITIONTIME BETWEEN
+		TIMESTAMP("${1}-${2}-${3}")
+		AND
+		TIMESTAMP("${4}-${5}-${6}")
 
-snippet     timestamp_add_hour
+snippet     standard_sql_timestamp_add_hour
 abbr        timestamp add by hour
 options     word
-    TIMESTAMP_ADD(${1:time_stamp} INTERVAL ${2:num} HOUR)
+	TIMESTAMP_ADD(${1:time_stamp} INTERVAL ${2:num} HOUR)
 
-snippet     timestamp_add_minute
+snippet     standard_sql_timestamp_add_minute
 abbr        timestamp add by minute
 options     word
-    TIMESTAMP_ADD(${1:time_stamp} INTERVAL ${2:num} MINUTE)
+	TIMESTAMP_ADD(${1:time_stamp} INTERVAL ${2:num} MINUTE)
 
-snippet     timestamp_diff_hour
+snippet     standard_sql_timestamp_sub_hour
+abbr        timestamp sub by hour
+options     word
+	TIMESTAMP_SUB(${1:time_stamp} INTERVAL ${2:num} HOUR)
+
+snippet     standard_sql_timestamp_sub_minute
+abbr        timestamp sub by minute
+options     word
+	TIMESTAMP_SUB(${1:time_stamp} INTERVAL ${2:num} MINUTE)
+
+snippet     standard_sql_timestamp_diff_hour
 abbr        timestamp diff by hour
 options     word
     TIMESTAMP_DIFF(${1:base}, ${2:minus}, HOUR)
 
-snippet     timestamp_diff_minute
+snippet     standard_sql_timestamp_diff_minute
 abbr        timestamp diff by minute
 options     word
     TIMESTAMP_DIFF(${1:base}, ${2:minus}, MINUTE)
 
-snippet     timestamp_format
+snippet     standard_sql_timestamp_format
 abbr        format timestamp
 options     word
     FORMAT_TIMESTAMP('${1:type}', ${2:timestamp})
 
-snippet     timestamp_format_hour
+snippet     standard_sql_timestamp_format_hour
 abbr        format timestamp
 options     word
     FORMAT_TIMESTAMP('%H', ${1:timestamp})
 
-snippet     timestamp_format_year_month
+snippet     standard_sql_timestamp_format_year_month
 abbr        format timestamp
 options     word
     FORMAT_TIMESTAMP('%Y/%m', ${1:timestamp})
 
-snippet     timestamp_format_year
+snippet     standard_sql_timestamp_format_year
 abbr        format timestamp
 options     word
     FORMAT_TIMESTAMP('%Y', ${1:timestamp})
 
-snippet     timestamp_format_weekday
+snippet     standard_sql_timestamp_format_weekday
 abbr        format timestamp
 options     word
     FORMAT_TIMESTAMP('%a', ${1:timestamp})
 
+snippet     standard_sql_datetime_current
+abbr        current datetime
+options     word
+	CURRENT_DATETIME(${1:timezone})
+
+snippet     standard_sql_date_current
+abbr        current date
+options     word
+	CURRENT_DATE(${1:timezone})
+
+snippet     standard_sql_time_current
+abbr        current time
+options     word
+	CURRENT_TIME()
+
+snippet     standard_sql_timestamp_current
+abbr        current timestamp
+options     word
+	CURRENT_TIMESTAMP()
+
 snippet     standard_sql_create_udf_js
 abbr        format timestamp
 options     word
-    CREATE TEMPORARY FUNCTION ${1:func_name}(${2:x FLOAT64})
-    RETURNS ${3:FLOAT64}
-    LANGUAGE js AS """
-        // do something here
-        return x;
-    """
-    ;
+	CREATE TEMPORARY FUNCTION ${1:func_name}(${2:x FLOAT64})
+	RETURNS ${3:FLOAT64}
+	LANGUAGE js AS """
+		// do something here
+		return x;
+	"""
+	;
 
 snippet     standard_sql_create_udf_sql
 abbr        format timestamp
 options     word
-    CREATE TEMPORARY FUNCTION ${1:func_name}(${2:x FLOAT64}) AS (
-        /* do something here */
-    )
-    ;
+	CREATE TEMPORARY FUNCTION ${1:func_name}(${2:x FLOAT64}) AS (
+		/* do something here */
+	)
+	;
 
 snippet     standard_sql_type_boolean
 abbr        bool
 options     word
-    BOOL
+	BOOL
 
 snippet     standard_sql_type_integer
 abbr        integer
 options     word
-    INT64
+	INT64
 
 snippet     standard_sql_type_float
 abbr        float 
 options     word
-    FLOAT64
+	FLOAT64
+
+snippet     standard_sql_cast_to_integer
+abbr        cast to int64
+options     word
+	CAST(${1:var} AS INT64)
+
+snippet     standard_sql_cast_to_float
+abbr        cast to float
+options     word
+	CAST(${1:var} AS FLOAT64)
+
+snippet     standard_sql_from_unixtime_to_date
+abbr        from unixtime second since 1970-01-01 00:00:00 UTC
+options     word
+	CAST(TIMESTAMP_SECONDS(CAST(${1:unix_time} AS INT64)) AS DATE)
+
+snippet     standard_sql_from_unixtime_to_timestamp
+abbr        from unixtime second since 1970-01-01 00:00:00 UTC
+options     word
+	TIMESTAMP_SECONDS(${1:int64_seconds})
+
+snippet     standard_sql_from_unixtime_milliseconds_to_timestamp
+abbr        from unixtime milli second 1970-01-01 00:00:00 UTC
+options     word
+	TIMESTAMP_MILLIS(${1:int64_milli_seconds})
+
+snippet     standard_sql_from_timestamp_to_unixtime_second
+abbr        to unixtime second 1970-01-01 00:00:00 UTC
+options     word
+	UNIX_SECONDS(${1:timestamp})
+
+snippet     standard_sql_from_timestamp_to_unixtime_milli_second
+abbr        to unixtime milli second 1970-01-01 00:00:00 UTC
+options     word
+	UNIX_MILLIS(${1:timestamp})
+
+snippet     standard_sql_regexp_contain
+abbr        contain or not
+options     word
+	REGEXP_CONTAINS(${1:var}, ${2:r'regexp'})
+
+snippet     standard_sql_regexp_extract
+abbr        extract matched string
+options     word
+	REGEXP_EXTRACT(${1:var}, ${2:r'regexp'})
+
+snippet     standard_sql_if_null
+abbr        if null otherwise return expr
+options     word
+	IFNULL(${1:expr}, ${2:if_expr_is_null_return_this})
+
+snippet     standard_sql_median_window_ignoring_null_with_linear_interpolation
+abbr        median ignoring null with linear interpolation
+options     word
+	PERCENTILE_CONT(${1:expr}, 0.5) OVER()
+
+snippet     standard_sql_median_window_ignoring_null
+abbr        median ignoring null
+options     word
+	PERCENTILE_DISC(${1:expr}, 0.5) OVER()
+
+snippet     standard_sql_median_ignoring_null
+abbr        median ignoring null
+options     word
+	APPROX_QUANTILES(${1:col}, 2)[OFFSET(1)]
+
+snippet     standard_sql_with
+abbr        with clause
+options     word
+	WITH ${1:name} AS (
+		${3}
+	)
+
+snippet     standard_sql_with2
+abbr        with clause
+options     word
+	WITH ${1:name} AS (
+		${3}
+	)
+	, ${2:name} AS (
+	)
+
+snippet     standard_sql_next
+abbr        with clause
+options     word
+	, LEAD(${1:col1}, 1)
+		OVER(PARTITION BY ${2:col2} ORDER BY ${3:col_time})
+
+snippet     standard_sql_window_diff_date_next
+abbr        with clause
+options     word
+	, LEAD(${1:col1}, 1)
+		OVER(PARTITION BY ${2:col2} ORDER BY ${3:col_time})
+
+snippet     standard_sql_window_moving_averag_week
+abbr        with clause
+options     word
+	, AVG(${1:value_will_be_averaged})
+		OVER (
+			ORDER BY ${2:date}
+			ROWS BETWEEN 6 PRECEDING AND CURRENT ROW
+		) AS moving_average
+
+snippet     standard_sql_window_clause
+abbr        with clause
+options     word
+	WINDOW
+		window_name AS (
+		ORDER BY ${1}
+		ROWS BETWEEN 3 PRECEDING AND CURRENT ROW
+	)
+
+snippet     comment_function
+abbr        comment to function
+options     head
+	################################################################################
+	# ${1:Description}
+	# Arguments:
+	#   ${2:None}
+	# Returns:
+	#   ${3:None}
+	################################################################################
+
+snippet     standard_sql_between_date
+abbr        between timestamp
+options     word
+	CREATE TEMPORARY FUNCTION BetweenAggregationDate(PARTITIONTIME TIMESTAMP) AS (
+	  PARTITIONTIME BETWEEN
+		TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 24 * 2 HOUR)
+		AND
+		CURRENT_TIMESTAMP()
+	)
+	;
+
+snippet     standard_sql_func_unix_time_to_date
+abbr        between timestamp
+options     word
+	CREATE TEMPORARY FUNCTION UnixTimeToDate(unix_time FLOAT64) AS (
+		CAST(TIMESTAMP_SECONDS(CAST(unix_time AS INT64)) AS DATE)
+	)
+	;
+
+snippet     standard_sql_func_null_to_zero
+abbr        null to zero
+options     word
+	CREATE TEMPORARY FUNCTION NullToZero(val INT64) AS (
+		IF(val IS NULL, 0, val)
+	)
+	;
+
+snippet     standard_sql_func_divide_undef_to_null
+abbr        divide but undef to null
+options     word
+	CREATE TEMPORARY FUNCTION DivisionUndefToNull(dividend INT64, divisor INT64) AS (
+		IF(divisor = 0, NULL, dividend / divisor)
+	)
+	;
+
+snippet     standard_sql_nearly_equal
+abbr        nearly equal
+options     word
+	CREATE TEMPORARY FUNCTION NearlyEqual(val1 FLOAT64, val2 FLOAT64) AS (
+		# conventional equality for floating point
+		ABS(val2 - val1) < 1e-7
+	)
+	;
+
+snippet     standard_sql_timestamp_los_angeles
+abbr        divide but undef to null
+options     word
+	${1:2014}-${2:09}-${3:27} ${4:12:30:00.45} ${5:America/Los_Angeles}
+
+snippet     standard_sql_timestamp_tokyo
+abbr        divide but undef to null
+options     word
+	${1:2014}-${2:09}-${3:27} ${4:12:30:00.45} ${5:Asia/Tokyo}

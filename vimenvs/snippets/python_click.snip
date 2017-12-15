@@ -1,0 +1,72 @@
+snippet     click_import
+abbr        import click
+options     word
+	import click
+
+snippet     click_template
+abbr        click base template
+options     word
+	@click.group()
+	@click.option('--debug/--no-debug', default=False)
+	def cli(debug):
+		click.echo('Debug mode is %s' % ('on' if debug else 'off'))
+	
+	
+	@cli.command()
+	def some_subcommad():
+		pass
+	
+	if __name__ == '__main__':
+		cli()
+
+snippet     click_option_type
+abbr        option
+options     word
+	@click.option('--${1}', type=${2})
+snippet     click_option_boolean
+abbr        option num arguments
+options     word
+	@click.option('--${1:shout}/--no-$1', default=${2:False})
+
+snippet     click_option_num
+abbr        option num arguments
+options     word
+	@click.option('--${1}', nargs=${2})
+
+snippet     click_option_choice
+abbr        option choide
+options     word
+	@click.option('--${1}', type=click.Choice([${2:'md5', 'sha1'}]))
+
+snippet     click_option_default
+abbr        option
+options     word
+	@click.option('--${1}', default=${2})
+
+snippet     click_argument
+abbr        argument
+options     word
+	@click.argument('${1:var_name}')
+	def ${2}($1):
+		pass
+
+snippet     click_argument_tuple
+abbr        argument
+options     word
+	@click.argument('${1:var_name}', nargs=-1)
+	def ${2}($1):
+		pass
+
+snippet     click_argument_num
+abbr        argument
+options     word
+	@click.argument('${1:var_name}', nargs=${2})
+	def ${3}($1):
+		pass
+
+snippet     click_argument_filename
+abbr        argument filename
+options     word
+	@click.argument('${1:var_name}', type=click.Path(exists=True))
+	def ${3}($1):
+		pass

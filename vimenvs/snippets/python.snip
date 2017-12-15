@@ -1,21 +1,31 @@
-include sphinx.snip
+include python_argparse.snip
 include python_beautifulsoup.snip
 include python_boto3.snip
+include python_click.snip
+include python_csv.snip
 include python_faker.snip
 include python_flask.snip
+include python_google_cloud_bigquery.snip
+include python_gspread.snip
+include python_gspread.snip
 include python_holoviews.snip
 include python_keras.snip
 include python_matplotlib.snip
 include python_mock.snip
+include python_numpy.snip
+include python_numpy.snip
 include python_pandas.snip
+include python_path.snip
 include python_pillow.snip
 include python_pyspark.snip
+include python_pystache.snip
 include python_pytest.snip
 include python_requests.snip
+include python_scikit_image.snip
 include python_sqlalchemy.snip
+include python_subprocess.snip
 include python_urllib.snip
-include python_gspread.snip
-include python_numpy.snip
+include sphinx.snip
 
 snippet     debug
 abbr        import pdb;
@@ -165,27 +175,31 @@ snippet try_except_else
         ${0}
 
 snippet try_except_finally
-    try:
-        ${1}
-    except ${2:Exception}, ${3:e}:
-        ${4:raise $3}
-    finally:
-        ${0}
+	try:
+		${1}
+	except ${2:Exception}, ${3:e}:
+		${4:raise $3}
+	finally:
+		${0}
 
 snippet try_except_else_finally
-    try:
-        ${1}
-    except ${2:Exception}, ${3:e}:
-        ${4:raise $3}
-    else:
-        ${5}
-    finally:
-        ${0}
+	try:
+		${1}
+	except ${2:Exception}, ${3:e}:
+		${4:raise $3}
+	else:
+		${5}
+	finally:
+		${0}
 
 # if __name__ == '__main__':
 snippet main
-    if __name__ == '__main__':
-        ${0:main()}
+	def main():
+		pass
+
+
+	if __name__ == '__main__':
+		${0:main()}
 
 snippet """
     """${0:doc}
@@ -231,24 +245,11 @@ abbr        re.sub
 options     word
     ${1:replaced} = re.sub(r'${2:replacee}', '${3:replacer}', ${4:text})
 
-# csv
-snippet     csv_write
-abbr        csv_write
-options     head
-    with open("${1:filename}", "w") as f:
-        writer = csv.writer(f, lineterminator='\n')
-        writer.writerow(list)
-        writer.writerows(array2d)
-
-snippet     csv_read
-abbr        csv_read
-options     head
-    with open("${1:filename}", "r") as f:
-        reader = csv.reader(f)
-        # skip header
-        header = next(reader)
-        for row in reader:
-            row
+snippet     sleep
+abbr        sleep
+options     word
+	# import time
+	time.sleep(${1:sec})
 
 # date
 snippet     datetime_from_string_to_datetime
@@ -338,133 +339,6 @@ options     word
     with open('${1:path}', 'w') as f:
         json.dump(${2:json_dict}, f, indent=2, sort_keys=True)${0}
 
-# subprocess
-snippet     execute_external_command
-abbr        execute external_command
-options     word
-	try:
-	    ${2:standard_output} = subprocess.check_output(
-	            ${1:command_string},
-	            stderr=subprocess.STDOUT,
-	            shell=True)
-	except subprocess.CalledProcessError as e:
-	    print("return code: {0}".format(e.returncode))
-	    print("command: {0}".format(e.cmd))
-	    print("output: {0}".format(e.output))
-	    raise
-
-snippet     execute_external_command_with_stdin
-abbr        execute external command with stdin
-options     word
-	try:
-	    p = subprocess.Popen(
-	        ${1:command},
-	        stdout=subprocess.PIPE,
-	        stdin=subprocess.PIPE,
-	        stderr=subprocess.PIPE)
-	    output, error = p.communicate(input=input_str)
-	    if p.returncode != 0:
-	        raise RuntimeError(
-	            "{0} failed, status code {1} stdout {2} stderr {3}".format(
-	                command, p.returncode, output, error))
-	    return output
-	except OSError as e:
-	    print("OSError: ", e.errno)
-	    print("OSError: ", e.strerror)
-	    print("OSError: ", e.filename)
-	    raise
-
-snippet     argument_parser_generate_parser
-abbr        generate argument parser
-options     word
-	import argparse
-	
-	parser = argparse.ArgumentParser(description="${1:description of program}")
-	${2:args} = parser.parse_args()
-
-snippet     argument_parser_add_argument_true
-abbr        add argument
-options     word
-	parser.add_argument(
-		'${1:--option}',
-		metavar='${2:variable_name}',
-		action='store_true',
-		help='${5:help message of this argument}')
-
-snippet     argument_parser_add_argument_more_than_zero
-abbr        add argument
-options     word
-	parser.add_argument(
-		'${1:--option}',
-		metavar="${2:variable_name}",
-		type=${3:variable_type},
-		nargs='+',
-		help='${5:help message of this argument}')
-
-snippet     argument_parser_add_argument_choice_str
-abbr        add argument
-options     word
-	parser.add_argument(
-		'${1:--option}',
-		type=${2:str},
-		choices=[${3:'variable_type', }],
-		help='${4:help message of this argument}')
-
-snippet     argument_parser_add_argument_choice_range
-abbr        add argument
-options     word
-	parser.add_argument(
-		'${1:--option}',
-		type=${3:int},
-		choices=range(${4:0, 2}),
-		help='${5:help message of this argument}')
-
-snippet     argument_add_subcommand_parser
-abbr        subcomand
-options     word
-	subparsers = parser.add_subparsers(
-	    help='${5:sub-command help}')
-	# create the subcommand parser
-	${6:subparser_a} = subparsers.add_parser(
-	    '${5:subcommand_a}',
-	    help='${7:help}')
-	$6.add_argument(
-	    '${8:bar}',
-	    type=${9:int},
-	    help='${10:bar}')
-
-snippet     argument_parser_make_parser_supporintg_subcommand
-abbr        subcomand
-options     word
-	def make_argparser():
-	    # create the top-level parser
-	    parser = argparse.ArgumentParser(
-	        prog='${1:PROG}',
-	        description='${2}')
-	    parser.add_argument(
-	        '${3:--foo}',
-	        help='${4:foo help}')
-	    # subpersers
-	    subparsers = parser.add_subparsers(
-	        help='${5:sub-command help}')
-	    # create the subcommand parser
-	    ${6:subparser_a} = subparsers.add_parser(
-	        '${5:subcommand_a}',
-	        help='${7:help}')
-	    $6.add_argument(
-	        '${8:bar}',
-	        type=${9:int},
-	        help='${10:bar}')
-	    # create the parser for the "subcommand_b" command
-	    ${11:parser_b} = subparsers.add_parser(
-	        '${12:subcommand_b}',
-	        help='${13:b help}')
-	    $11.add_argument(
-	        '${14:--baz}',
-	        type=${15:int},
-	        help='${16:baz help}')
-	
-	    return parser
 
 snippet     argument_sys
 abbr        sys.argv
@@ -489,12 +363,6 @@ snippet commandline_argument
         elif option in ("-v", "--verbose"):
             verbose = argument
 
-snippet     file_copy
-abbr        copy file
-options     word
-	import shutil
-	shutil.copy2(${1:from}, ${2:to})
-
 snippet     environment_variable_get
 abbr        environment variable
 options     head
@@ -517,20 +385,6 @@ abbr        set add set
 options     word
 	${1:set_var} |= ${2:set_var2}
 
-snippet     if_file_exist
-abbr        if file exist
-options     word
-    import os.path
-    os.path.isfile(fname)
-
-snippet     filename_recursively
-abbr        files in the directory
-options     word
-	import os
-	for root, subdirs, files in os.walk(${1:rootdir}):
-	    for file in files:
-	        path_to_file = os.path.join(root, file)
-
 snippet     make_directory_if_not_exists
 abbr        make directory
 options     head
@@ -542,135 +396,6 @@ options     head
         if e.errno != errno.EEXIST:
             raise${0}
 
-snippet     path_to_this_file
-abbr        path to this script
-options     word
-	import os
-	${1:var_name} = os.path.abspath(__file__)${0}
-
-snippet     path_to_this_dir
-abbr        path to directori of this script
-options     word
-	import os
-	${1:var_name} = os.path.abspath(os.path.dirname(__file__))${0}
-
-snippet     path_file_list
-abbr        file list
-options     word
-    # return only file name
-    files = os.listdir(${1:path_to_dir})${0}
-
-snippet     path_file_list_iterate
-abbr        file list
-options     word
-    files = os.listdir(${1:path_to_dir})${0}
-    for fname in files:
-        abspath = os.path.join($1, fname)
-
-snippet     path_move_in_dir
-abbr        file list
-options     word
-    files = os.listdir(${1:path_to_dir})${0}
-    for fname in files:
-        from_abspath = os.path.join($1, fname)
-        to_abspath = os.path.join(${2:path_to_dir}, fname)
-        os.rename(from_abspath, to_abspath)
-
-snippet     path_list_glob
-abbr        file list with glob
-options     word
-    # import glob
-    files = glob.glob(${1:path_to_dir})${0}
-
-snippet     path_move
-abbr        file rename
-options     word
-    os.rename(${1:from}, ${2:to})${0}
-
-snippet     path_rename
-abbr        replace filename keeping basepath
-options     word
-    basepath = os.path.basename(${1:path})
-    ${2:path}_new = '{0}/${3:new_filename}'.format(basepath)
-    os.rename($1, $2)${0}
-
-snippet     path_rename_extension
-abbr        replace filename keeping basepath
-options     word
-	basepath, extension = os.path.splitext(path)
-	path_new = '{0}.{1}'.format(basepath, extension_new)
-	os.rename(path, path_new)
-
-snippet     path_filename
-abbr        filename
-options     word
-	os.path.basename(${1:path})${0}
-
-snippet     path_filename_without_extension
-abbr        filename without extension
-options     word
-	os.path.splitext(os.path.basename(${1:path}))[0]${0}
-
-snippet     path_dirname
-abbr        dirname of path
-options     word
-	os.path.dirname(${1:path})${0}
-
-snippet     path_extension
-abbr        extension of filename
-options     word
-	${1:extension} = os.path.splitext(${2:filename})[1]
-
-snippet     path_add_prefix
-abbr        add prefix
-options     word
-	def add_prefix(path, prefix, separator='_'):
-		filename = os.path.basename(path)
-		filename_new = '{0}{1}{2}'.format(prefix, separator, filename)
-		dirpath = os.path.dirname(path)
-		path_new = os.path.join(dirpath, filename_new)
-		return path_new
-
-snippet     path_add_suffix
-abbr        add suffix
-options     word
-	def add_suffix(path, suffix, separator='_'):
-		filename, ext = os.path.splitext(os.path.basename(path))
-		filename_new = '{0}{1}{2}.{3}'.format(filename, separator, suffix, ext)
-		dirpath = os.path.dirname(path)
-		path_new = os.path.join(dirpath, filename_new)
-		return path_new
-
-snippet     path_replace_filename
-abbr        replace filename keeping basepath
-options     word
-	dirpath = os.path.dirname(${1:path})
-	${2:path}_new = os.path.join(dirpath, ${3:new_filename})
-
-snippet     path_delete_file
-abbr        delete file
-options     word
-    try:
-        os.remove(${1:path})
-    except OSError:
-        pass
-
-snippet     path_delete_directory
-abbr        delete directory
-options     word
-    os.rmdir(${1:path})
-
-snippet     path_delete_directory_recursively
-abbr        delete directory recursively
-options     word
-    os.removedirs(${1:path})
-
-snippet     path_delete_directory_force
-abbr        delete directory recursively
-options     word
-    # import shutil
-    shutil.rmtree(${1:path})
-
 # list
 snippet     list_copy
 abbr        list copy
@@ -681,21 +406,37 @@ options     word
 snippet     sort_list_of_dict_by_elem
 abbr        sort list of dict
 options     head
-    sorted(${1:list}, key=${2:lambda x: x['key']})${0}
+	sorted(${1:list}, key=${2:lambda x: x['key']})${0}
 
+snippet     sort_list_of_tuple_by_val
+abbr        sort list of dict
+options     head
+	sorted(${1:list}, key=${2:lambda x: x[0]})${0}
+
+snippet     sort_dict_by_value
+abbr        sort list of dict
+options     head
+	sorted(${1:x}.items(), key=operator.itemgetter(1))${0}
+
+snippet     sort_dict_by_key
+abbr        sort list of dict
+options     head
+	sorted(${1:x}.items(), key=operator.itemgetter(0))${0}
+
+# abs class
 snippet     abc_class
 abbr        abs class
 options     head
-    class ${1:class_name}(object):
-
-        __metaclass__ = abc.ABCMeta
-
-        def __init__(self):
-            pass
-
-        @abc.abstractmethod
-        def ${2:method}(self${3:, attr}):
-            raise NotImplemented()
+	class ${1:class_name}(object):
+	
+		__metaclass__ = abc.ABCMeta
+	
+		def __init__(self):
+			pass
+	
+		@abc.abstractmethod
+		def ${2:method}(self${3:, attr}):
+			raise NotImplemented()
 
 snippet     abc_method
 abbr        abs mehod
@@ -759,9 +500,8 @@ options     word
 	if isinstance(${1:var}, list):
 		${1}
 
-
 snippet     download_file
-abbr        if is list
+abbr        download_file
 options     word
 	try:
 		import urllib.request as request
@@ -776,3 +516,8 @@ options     word
 	
 	def download_file(url, filename):
 		request.urlretrieve(url, filename)
+
+snippet     module_this
+abbr        this module
+options     word
+	this_module = sys.modules[__name__]

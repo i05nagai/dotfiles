@@ -1,0 +1,27 @@
+snippet     csv_write
+abbr        csv_write
+options     head
+	with open("${1:filename}", "w") as f:
+		writer = csv.writer(f, lineterminator='\n')
+		writer.writerow(list)
+		writer.writerows(array2d)
+
+snippet     csv_read
+abbr        csv_read
+options     head
+	with open("${1:filename}", "r") as f:
+		reader = csv.reader(f)
+		# skip header
+		header = next(reader)
+		for row in reader:
+			row
+
+snippet     csv_read_as_dict
+abbr        csv_read
+options     word
+	with open("${1:filename}", "r") as f:
+		reader = csv.reader(f)
+		# skip header
+		header = next(reader)
+		for row in reader:
+			row_dict = dict(zip(header, row))

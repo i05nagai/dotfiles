@@ -1,0 +1,160 @@
+snippet     path_to_this_file
+abbr        path to this script
+options     word
+	import os
+	${1:var_name} = os.path.abspath(__file__)${0}
+
+snippet     path_to_this_dir
+abbr        path to directori of this script
+options     word
+	import os
+	${1:var_name} = os.path.abspath(os.path.dirname(__file__))${0}
+
+snippet     path_file_list
+abbr        file list
+options     word
+    # return only file name
+    files = os.listdir(${1:path_to_dir})${0}
+
+snippet     path_file_list_iterate
+abbr        file list
+options     word
+    files = os.listdir(${1:path_to_dir})${0}
+    for fname in files:
+        abspath = os.path.join($1, fname)
+
+snippet     path_move_in_dir
+abbr        file list
+options     word
+    files = os.listdir(${1:path_to_dir})${0}
+    for fname in files:
+        from_abspath = os.path.join($1, fname)
+        to_abspath = os.path.join(${2:path_to_dir}, fname)
+        os.rename(from_abspath, to_abspath)
+
+snippet     path_list_glob
+abbr        file list with glob
+options     word
+    # import glob
+    files = glob.glob(${1:path_to_dir})${0}
+
+snippet     path_move
+abbr        file rename
+options     word
+    os.rename(${1:from}, ${2:to})${0}
+
+snippet     path_rename
+abbr        replace filename keeping basepath
+options     word
+    basepath = os.path.basename(${1:path})
+    ${2:path}_new = '{0}/${3:new_filename}'.format(basepath)
+    os.rename($1, $2)${0}
+
+snippet     path_rename_extension
+abbr        replace filename keeping basepath
+options     word
+	basepath, extension = os.path.splitext(path)
+	path_new = '{0}.{1}'.format(basepath, extension_new)
+	os.rename(path, path_new)
+
+snippet     path_filename
+abbr        filename
+options     word
+	os.path.basename(${1:path})${0}
+
+snippet     path_filename_without_extension
+abbr        filename without extension
+options     word
+	os.path.splitext(os.path.basename(${1:path}))[0]${0}
+
+snippet     path_dirname
+abbr        dirname of path
+options     word
+	os.path.dirname(${1:path})${0}
+
+snippet     path_extension
+abbr        extension of filename
+options     word
+	${1:extension} = os.path.splitext(${2:filename})[1]
+
+snippet     path_add_prefix
+abbr        add prefix
+options     word
+	def add_prefix(path, prefix, separator='_'):
+		filename = os.path.basename(path)
+		filename_new = '{0}{1}{2}'.format(prefix, separator, filename)
+		dirpath = os.path.dirname(path)
+		path_new = os.path.join(dirpath, filename_new)
+		return path_new
+
+snippet     path_add_suffix
+abbr        add suffix
+options     word
+	def add_suffix(path, suffix, separator='_'):
+		filename, ext = os.path.splitext(os.path.basename(path))
+		filename_new = '{0}{1}{2}.{3}'.format(filename, separator, suffix, ext)
+		dirpath = os.path.dirname(path)
+		path_new = os.path.join(dirpath, filename_new)
+		return path_new
+
+snippet     path_replace_filename
+abbr        replace filename keeping basepath
+options     word
+	dirpath = os.path.dirname(${1:path})
+	${2:path}_new = os.path.join(dirpath, ${3:new_filename})
+
+snippet     path_delete_file
+abbr        delete file
+options     word
+    try:
+        os.remove(${1:path})
+    except OSError:
+        pass
+
+snippet     path_delete_directory
+abbr        delete directory
+options     word
+    os.rmdir(${1:path})
+
+snippet     path_delete_directory_recursively
+abbr        delete directory recursively
+options     word
+    os.removedirs(${1:path})
+
+snippet     path_delete_directory_force
+abbr        delete directory recursively
+options     word
+    # import shutil
+    shutil.rmtree(${1:path})
+
+snippet     if_file_exist
+abbr        if file exist
+options     word
+    import os.path
+    os.path.isfile(fname)
+
+snippet     filename_recursively
+abbr        files in the directory
+options     word
+	import os
+	for root, subdirs, files in os.walk(${1:rootdir}):
+	    for file in files:
+	        path_to_file = os.path.join(root, file)
+
+snippet     file_copy
+abbr        copy file
+options     word
+	import shutil
+	shutil.copy2(${1:from}, ${2:to})
+
+snippet     read_file
+abbr        copy file
+options     word
+	with open(${1:path}, '${2:r}') as ${3:f}:
+		line = $3.readline()
+
+snippet     write_to_file
+abbr        copy file
+options     word
+	with open(${1:path}, '${2:w}') as ${3:f}:
+		$3.write(${4})

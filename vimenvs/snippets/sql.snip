@@ -5,39 +5,39 @@ include sql_mysql.snip
 snippet     create_table_if_not_exists
 abbr        create_table_if_not_exists
 options     word
-    CREATE TABLE IF NOT EXISTS ${1:table_name}(
-      ${2:col} ${3:type} primary key,
-    );
+	CREATE TABLE IF NOT EXISTS ${1:table_name}(
+		${2:col} ${3:type} primary key,
+	);
 
 snippet     insert_into
 abbr        insert into
-options     select 
-    INSERT INTO ${1:table}
-    VALUES
-        ()
+options     word
+	INSERT INTO ${1:table}
+	VALUES
+		()
 
 snippet     insert_into_by_select
 abbr        insert into
-options     select 
-    INSERT INTO ${1:table}
-    SELECT
-        ${2:col}
-    FROM
-        ${3:table}
+options     word
+	INSERT INTO ${1:table}
+	SELECT
+		${2:col}
+	FROM
+		${3:table}
 
 snippet     select_where_orderby
 abbr        select
 options     word
-    SELECT
-        ${1:col}
-    FROM
-        ${2:table}
-    WHERE
-        ${3:where}
-    ORDER BY ${4:col} DESC
+	SELECT
+		${1:col}
+	FROM
+		${2:table}
+	WHERE
+		${3:where}
+	ORDER BY ${4:col} DESC
 
 snippet     groupby
-abbr        select
+abbr        group by
 options     word
 	GROUP BY ${2:group by}
 
@@ -46,30 +46,50 @@ abbr        select
 options     word
 	GROUP BY ${1:group by}
 	HAVING
-	    ${2:having}
+		${2:having}
 
 snippet     case_when_simple
 abbr        case var when
 options     word
-    CASE ${1:var}
-        WHEN ${2:value} THEN ${3:return}
-        ELSE ${4:return}
-    END
+	CASE ${1:var}
+		WHEN
+			${2:value}
+		THEN
+			${3:return}
+		ELSE
+			${4:return}
+	END
+
+snippet     case_when_simple_when_then
+abbr        case var when
+options     word
+		WHEN
+			${1:value}
+		THEN
+			${2:return}
+
+snippet     case_when_simple_oneline
+abbr        case var when
+options     word
+	CASE ${1:var}
+		WHEN ${2:value} THEN ${3:return}
+		ELSE ${4:return}
+	END
 
 snippet     case_when_simple_inline
 abbr        case var when
 options     word
-    CASE ${1:var} WHEN ${2:value} THEN ${3:return} ELSE ${4:return} END
+	CASE ${1:var} WHEN ${2:value} THEN ${3:return} ELSE ${4:return} END
 
 snippet     case_when_searched
 abbr        case when condition
 options     word
-     CASE
-        WHEN ${1:condition} THEN ${2:val}
-        ELSE ${3:value}
-     END
+	CASE
+		WHEN ${1:condition} THEN ${2:val}
+		ELSE ${3:value}
+	END
 
 snippet     case_when_searched_inline
 abbr        case when condition
 options     word
-     CASE WHEN ${1:condition} THEN ${2:val} ELSE ${3:value} END
+	CASE WHEN ${1:condition} THEN ${2:val} ELSE ${3:value} END

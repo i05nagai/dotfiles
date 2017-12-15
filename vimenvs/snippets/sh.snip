@@ -1,4 +1,5 @@
 include shell_aws.snip
+include bash.snip
 
 snippet     usage
 abbr        usage
@@ -51,7 +52,7 @@ abbr        subcommand
 	  ;;
 	esac
 	
-snippet     option
+snippet     argument
 abbr        option
 	while [ $# -gt 0 ];
 	do
@@ -63,6 +64,11 @@ abbr        option
 	    --help|-h)
 	      usage
 	      exit 0
+	    ;;
+
+	    --some-command|-s)
+	      shift
+	      var=$1
 	    ;;
 
 	    --version|-v)
@@ -150,6 +156,14 @@ options     head
 	  ${0}
     fi
 
+snippet     if_string_equal
+abbr        string equal
+options     word
+	if [ "${1:${var}}" = "${2:text}" ]
+	then
+	  ${0}
+	fi
+
 snippet     if_file_exist
 abbr        if file exist
 options     head
@@ -186,6 +200,14 @@ snippet     if_variable_empty
 abbr        if variable is empty
 options     head
 	if [ -z \${${1:variable}+x} ]
+	then
+	  ${0}
+	fi
+
+snippet     if_variable_not_empty
+abbr        if variable is empty
+options     head
+	if [ ! -z \${${1:variable}+x} ]
 	then
 	  ${0}
 	fi
@@ -238,6 +260,11 @@ abbr        path to this bash file
 options     word
     ${1:SCRIPT_DIR}=$(cd $(dirname \${0});pwd)${0}
 
+snippet     path_to_this_dir
+abbr        path to this dir
+options     word
+    ${1:SCRIPT_DIR}=$(cd $(dirname \${0});pwd)${0}
+
 snippet     path_to_parent_of_this_file
 abbr        path to parent of this bash file
 options     word
@@ -247,4 +274,3 @@ snippet     calculate
 abbr        calculate
 options     word
 	$((${1:1 + 1}))${0}
-

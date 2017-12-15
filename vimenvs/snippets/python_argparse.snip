@@ -1,0 +1,107 @@
+snippet     argparse_generate_parser
+abbr        generate argument parser
+options     word
+	import argparse
+	parser = argparse.ArgumentParser(description="${1:description of program}")
+	${2:args} = parser.parse_args()
+
+snippet     argparse_add_argument_with_type
+abbr        add argument
+options     word
+	parser.add_argument("${1:}",
+	                    metavar="${2:variable_name}",
+	                    type=${3:variable_type},
+	                    nargs="+",
+	                    help="${5:help message of this argument}")
+
+snippet     argparse_add_argument_true
+abbr        add argument
+options     word
+	parser.add_argument(
+		'${1:--option}',
+		metavar='${2:variable_name}',
+		action='store_true',
+		help='${5:help message of this argument}')
+
+snippet     argparse_add_argument_more_than_zero
+abbr        add argument
+options     word
+	parser.add_argument(
+		'${1:--option}',
+		metavar="${2:variable_name}",
+		type=${3:variable_type},
+		nargs='+',
+		help='${5:help message of this argument}')
+
+snippet     argparse_add_argument_with_default_and_type
+abbr        add argument
+options     word
+	parser.add_argument("${1:--option}",
+	                    type=${2:variable_type},
+	                    default=${3:default_value}
+	                    help="${5:help message of this argument}")
+
+snippet     argparse_add_argument_choice_str
+abbr        add argument
+options     word
+	parser.add_argument(
+		'${1:--option}',
+		type=${2:str},
+		choices=[${3:'variable_type', }],
+		help='${4:help message of this argument}')
+
+snippet     argparse_add_subcommand_parser
+abbr        subcomand
+options     word
+	subparsers = parser.add_subparsers(
+	    help='${5:sub-command help}')
+	# create the subcommand parser
+	${6:subparser_a} = subparsers.add_parser(
+	    '${5:subcommand_a}',
+	    help='${7:help}')
+	$6.add_argument(
+	    '${8:bar}',
+	    type=${9:int},
+	    help='${10:bar}')
+
+snippet     argparse_add_argument_choice_range
+abbr        add argument
+options     word
+	parser.add_argument(
+		'${1:--option}',
+		type=${3:int},
+		choices=range(${4:0, 2}),
+		help='${5:help message of this argument}')
+
+snippet     argparse_parser_make_parser_supporintg_subcommand
+abbr        subcomand
+options     word
+	def make_argparser():
+	    # create the top-level parser
+	    parser = argparse.ArgumentParser(
+	        prog='${1:PROG}',
+	        description='${2}')
+	    parser.add_argument(
+	        '${3:--foo}',
+	        help='${4:foo help}')
+	    # subpersers
+	    subparsers = parser.add_subparsers(
+	        help='${5:sub-command help}')
+	    # create the subcommand parser
+	    ${6:subparser_a} = subparsers.add_parser(
+	        '${5:subcommand_a}',
+	        help='${7:help}')
+	    $6.add_argument(
+	        '${8:bar}',
+	        type=${9:int},
+	        help='${10:bar}')
+	    # create the parser for the "subcommand_b" command
+	    ${11:parser_b} = subparsers.add_parser(
+	        '${12:subcommand_b}',
+	        help='${13:b help}')
+	    $11.add_argument(
+	        '${14:--baz}',
+	        type=${15:int},
+	        help='${16:baz help}')
+	
+	    return parser

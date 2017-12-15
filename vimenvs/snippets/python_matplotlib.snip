@@ -1,30 +1,35 @@
-## Scatter plot
-snippet     scatter_with_color_marker_label
+snippet     plt_import
+abbr        plt
+options     word
+    import matplotlib.pyplot as plt
+
+# Scatter plot
+snippet     plt_scatter_with_color_marker_label
 abbr        plt.scatter(
 options     word
     ${1:plt}.scatter(${2:x}, ${3:y}, c="${4:red,blue,green,lightgreen}", marker="${5:o,s}", label="${5}")${0}
 
-## labels
-snippet     labels_with_position
+# labels
+snippet     plt_labels_with_position
 abbr        plt.xlabel() plt.ylabel() plt.legend(loc=)
 options     word
     ${1:plt}.xlabel("${2}")
     $1.ylabel("${3}")
     $1.legend(loc="${4:upper left,upper right,lower left,lower right,center}")${0}
 
-## lines
-snippet     lines
+# lines
+snippet     plt_lines
 abbr        plt.xlim([]) plt.ylim([])
 options     word
     ${1:plt}.xlim([${2}])${0}
     $1.ylim([${3}])
 
-snippet     line_x
+snippet     plt_line_x
 abbr        plt.xlim([])
 options     word
     ${1:plt}.xlim([${2}])${0}
 
-snippet     line_y
+snippet     plt_line_y
 abbr        plt.ylim([])
 options     word
     ${1:plt}.ylim([${2}])${0}
