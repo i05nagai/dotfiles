@@ -16,6 +16,16 @@ options     head
 		for row in reader:
 			row
 
+snippet     csv_read_tsv
+abbr        csv_read
+options     head
+	with open('${1:filename}', 'r') as f:
+		reader = csv.reader(f, delimiter='\t')
+		# skip header
+		header = next(reader)
+		for row in reader:
+			row
+
 snippet     csv_read_as_dict
 abbr        csv_read
 options     word
