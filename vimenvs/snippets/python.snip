@@ -22,6 +22,7 @@ include python_requests.snip
 include python_scikit_image.snip
 include python_sqlalchemy.snip
 include python_subprocess.snip
+include python_typing.snip
 include python_urllib.snip
 include sphinx.snip
 
@@ -248,6 +249,18 @@ abbr        sleep
 options     word
 	# import time
 	time.sleep(${1:sec})
+
+snippet     time_start
+abbr        sleep
+options     word
+	import time
+	time.sleep(${1:sec})
+
+snippet     time_end
+abbr        sleep
+options     word
+	elapsed_time = time.time() - start
+	print("elapsed_time:{0} [sec]".format(elapsed_time))
 
 # date
 snippet     datetime_from_string_to_datetime
