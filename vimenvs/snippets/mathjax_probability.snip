@@ -6,21 +6,55 @@ options		word
 	\\left[
 		${1}
 	\\right]
-	${0}
 
-snippet     expectation_without_parenthesis
-abbr        E^{?}
+snippet     expectation_lower
+abbr        E[ ]
 options		word
-	\\mathrm{E}${0}
+	\\mathrm{E}_{${1}}
+	\\left[
+		${2}
+	\\right]
 
-snippet     expectation_with_measure
+snippet     expectation_upper
 abbr        E^{?}[ ]
 options		word
 	\\mathrm{E}^{${1:measure}}
 	\\left[
 		${2}
 	\\right]
-	${3}
+
+snippet     expectation_lower_upper
+abbr        E_{t}^{Q}[ ]
+options		word
+	\\mathrm{E}_{${1}}^{${2}}
+	\\left[
+		${3}
+	\\right]
+
+snippet     expectation_inline
+abbr        E[ ]
+options		word
+	\\mathrm{E}[${1}]${0}
+
+snippet     expectation_lower_inline
+abbr        E[ ]
+options		word
+	\\mathrm{E}_{${1}}[${2}]
+
+snippet     expectation_upper_inline
+abbr        E^{?}[ ]
+options		word
+	\\mathrm{E}^{${1}}[${2}]
+
+snippet     expectation_lower_upper_inline
+abbr        E_{t}^{Q}[ ]
+options		word
+	\\mathrm{E}_{${1}}^{${2}}[${3}]
+
+snippet     expectation_without_parenthesis
+abbr        E^{?}
+options		word
+	\\mathrm{E}${0}
 
 snippet     expectation_with_measure_without_parenthesis
 abbr        E^{?}
@@ -39,24 +73,6 @@ options		word
 	\\right]
 	${3}
 
-snippet     conditional_expectation_with_filtration
-abbr        E_{t}[ ]
-options		word
-	\\mathrm{E}_{${1}}
-	\\left[
-		${2}
-	\\right]
-	${3}
-
-snippet     conditional_expectation_with_filtration_and_measure
-abbr        E_{t}^{Q}[ ]
-options		word
-	\\mathrm{E}_{${1}}^{${2}}
-	\\left[
-		${3}
-	\\right]
-	${4}
-
 # variance
 snippet     variance
 abbr        mathrm{Var}[ ]
@@ -64,21 +80,49 @@ abbr        mathrm{Var}[ ]
 	\\left[
 		${1}
 	\\right]
-	${0}
 
-snippet     variance_with_measure
-abbr        mathrm{Var}^{}[ ]
-	\\mathrm{Var}^{${1:measure}}
+snippet     variance_lower
+abbr        mathrm{Var}[ ]
+	\\mathrm{Var}_{${1}}
 	\\left[
 		${2}
 	\\right]
-	${3}
+
+snippet     variance_upper
+abbr        mathrm{Var}[ ]
+	\\mathrm{Var}^{${1}}
+	\\left[
+		${2}
+	\\right]
+
+snippet     variance_lower_upper
+abbr        mathrm{Var}[ ]
+	\\mathrm{Var}_{${1}}^{${2}}
+	\\left[
+		${3}
+	\\right]
+
+snippet     variance_inline
+abbr        mathrm{Var}[ ]
+	\\mathrm{Var}[${1}]
+
+snippet     variance_lower_inline
+abbr        mathrm{Var}[ ]
+	\\mathrm{Var}_{${1}}[${2}]
+
+snippet     variance_upper_inline
+abbr        mathrm{Var}[ ]
+	\\mathrm{Var}^{${1}}[${2}]
+
+snippet     variance_lower_upper_inline
+abbr        mathrm{Var}[ ]
+	\\mathrm{Var}_{${1}}^{${2}}[${3}]
 
 snippet     variance_without_parenthesis
 abbr        mathrm{Var}
 	\\mathrm{Var}${0}
 
-snippet     variance_with_measure_without_parenthesis
+snippet     variance_upper_without_parenthesis
 abbr        mathrm{Var}^{}
 	\\mathrm{Var}^{${1:measure}}${0}
 
@@ -89,21 +133,49 @@ abbr        mathrm{Cov}[ ]
 	\\left[
 		${1}
 	\\right]
-	${0}
 
-snippet     covariance_with_measure
-abbr        mathrm{Cov}^{}[ ]
-	\\mathrm{Cov}^{${1:measure}}
+snippet     covariance_lower
+abbr        mathrm{Cov}[ ]
+	\\mathrm{Cov}_{${1}}
 	\\left[
 		${2}
 	\\right]
-	${3}
+
+snippet     covariance_upper
+abbr        mathrm{Cov}[ ]
+	\\mathrm{Cov}^{${1}}
+	\\left[
+		${2}
+	\\right]
+
+snippet     covariance_lower_upper
+abbr        mathrm{Cov}[ ]
+	\\mathrm{Cov}_{${1}}^{${2}}
+	\\left[
+		${3}
+	\\right]
+
+snippet     covariance_inline
+abbr        mathrm{Cov}[ ]
+	\\mathrm{Cov}[${1}]
+
+snippet     covariance_lower_inline
+abbr        mathrm{Cov}[ ]
+	\\mathrm{Cov}_{${1}}[${2}]
+
+snippet     covariance_upper_inline
+abbr        mathrm{Cov}[ ]
+	\\mathrm{Cov}^{${1}}[${2}]
+
+snippet     covariance_lower_upper_inline
+abbr        mathrm{Cov}[ ]
+	\\mathrm{Cov}_{${1}}^{${2}}[${3}]
 
 snippet     covariance_without_parenthesis
 abbr        mathrm{Cov}
 	\\mathrm{Cov}${0}
 
-snippet     covariance_with_measure_without_parenthesis
+snippet     covariance_upper_without_parenthesis
 abbr        mathrm{Cov}^{}
 	\\mathrm{Cov}^{${1:measure}}${0}
 

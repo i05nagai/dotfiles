@@ -1,0 +1,14 @@
+snippet     np_import
+abbr        import
+options     word
+	import numpy as np
+
+snippet     np_make_array_from_shape
+abbr        make array
+options     word
+	np.empty(${1:shape})
+
+snippet     np_make_array_from_shape_with_type
+abbr        make array
+options     word
+	np.empty(${1:shape}, dtype=${2:float})
