@@ -4,7 +4,7 @@ export TERM=xterm-256color
 
 #autoload
 autoload -Uz compinit
-compinit 
+compinit
 autoload -Uz colors
 colors
 autoload history-search-end
@@ -153,4 +153,4 @@ if [ ! -d $HOME/.vimbackup ]; then
   mkdir $HOME/.vimbackup
 fi
 
-[ -f ~/.zsh/.fzf.zsh ] && source ~/.zsh/.fzf.zsh
+[ -f ~/.zsh/fzf.sh ] && source ~/.zsh/fzf.sh

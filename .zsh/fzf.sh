@@ -23,7 +23,6 @@ fzf_git_checkout_branch() {
 }
 
 # fbr - checkout git branch (including remote branches)
-
 fzf_git_checkout_branch_with_remote() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
