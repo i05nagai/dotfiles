@@ -29,25 +29,17 @@ zle -N history-beginning-search-forward-end history-search-end
 bindkey "" history-beginning-search-backward-end
 bindkey "" history-beginning-search-forward-end 
 
-
 # command exists
 if which fzf >/dev/null 2>&1
 then
-  function select-history() {
-    BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
-    CURSOR=$#BUFFER
-  }
-  zle -N select-history
-  bindkey '^r' select-history
-
-  complete-ssh-host() {
-    local host="$(egrep -i '^Host\s+.+' $HOME/.ssh/config $(find $HOME/.ssh/conf -type f 2>/dev/null) | egrep -v '[*?]' | awk '{print $2}' | sort | fzf)"
-
-    if [ ! -z "$host" ]; then
-      LBUFFER+="$host"
-    fi
-    zle reset-prompt
-  }
-  zle -N complete-ssh-host
-  bindkey '^Xx' complete-ssh-host
+  zle -N fzf_select_history
+  bindkey '^r' fzf_select_history
+  zle -N fzf_ssh_complete_host
+  bindkey '^Xsh' fzf_ssh_complete_host
+  # git
+  zle -N fzf_git_checkout_branch_with_remote
+  bindkey '^Xgcbr' fzf_git_checkout_branch_with_remote
+  # docker
+  zle -N fzf_docker_ps_all
+  bindkey '^Xdpa' fzf_docker_ps_all
 fi
