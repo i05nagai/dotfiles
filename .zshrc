@@ -152,5 +152,3 @@ source ~/.zsh/zshrc.alias
 if [ ! -d $HOME/.vimbackup ]; then
   mkdir $HOME/.vimbackup
 fi
-
-[ -f ~/.zsh/fzf.sh ] && source ~/.zsh/fzf.sh
