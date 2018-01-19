@@ -1,4 +1,19 @@
 snippet     phony
 abbr        PHONY
-options     head
+options     word
 	.PHONY: ${1:build clean}
+
+snippet     add_prefix
+abbr        add suffix
+options     word
+	$(addprefix ${1:prefix},${2:word})
+
+snippet     add_suffix
+abbr        add suffix
+options     word
+	$(addsuffix ${1:prefix},${2:word})
+
+snippet     version_from_date
+abbr        PHONY
+options     word
+	VERSION = $(shell date +"%Y%m%d-%s")
