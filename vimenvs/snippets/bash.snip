@@ -15,6 +15,11 @@ abbr        calculate
 options     word
 	${${1:parameter}:=${2:default}}
 
+snippet     bash_variable_substitute_if_not_defined
+abbr        substitute value if not defined. Colon is required
+options     word
+	: ${${1:parameter}:=${2:default}}
+
 snippet     bash_variable_error_when_undefined
 abbr        calculate
 options     word
