@@ -62,3 +62,23 @@ options     word
 	${1:array}.forEach((element, index, array) => {
 		${2}
 	});
+
+snippet     array_last
+abbr        
+options     word
+	${1:array}.[$1.length - 1];
+
+snippet     string_contain
+abbr        string contain (ES6)
+options     word
+	${1:str}.includes(${2:include})
+
+snippet     string_contain_fast
+abbr        string contain
+options     word
+	${1:str}.indexOf(${2:substring}) !== -1
+
+snippet     string_split
+abbr        string split
+options     word
+	${1:str}.split(${2:split_text})
