@@ -139,6 +139,16 @@ abbr        array length
 options     word
     ${#array[@]} 
 
+# if
+snippet     if_elif
+abbr        if then elif then else
+options     word
+	if [ ${1} ]
+	then
+	elif [ ${2} ]
+	then
+	fi
+
 snippet     if_exit_if_error
 abbr        exit if error
 options     head
@@ -151,7 +161,7 @@ options     head
 snippet     if_string_contain
 abbr        exit if error
 options     head
-    if \`echo ${1:string} | grep '${2:match}'\`
+    if [ \`echo ${1:string} | grep '${2:match}'\` ]
     then
 	  ${0}
     fi
@@ -288,3 +298,14 @@ options     word
 			echo "$(date) - waiting ... $j/$try_loop"
 		sleep 5
 	done
+
+# string
+snippet     string_replace
+abbr        string replace with sed
+options     word
+	echo ${1:string} | sed 's/${2:replacee}/${3:replacer}/'
+
+snippet     exec_arguments
+abbr        exec args
+options     word
+	exec "$@"
