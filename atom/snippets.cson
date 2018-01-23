@@ -19,4 +19,64 @@
 # If you are unfamiliar with CSON, you can read more about it in the
 # Atom Flight Manual:
 # http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
-
+'.source.markdown':
+  'template':
+    'prefix': 'template'
+    'body': """
+    ## Overviews
+    ## Reference
+    """
+# mermaid
+'.source.mermaid':
+  'mermaid sequence':
+    'prefix': 'mermaid_sequence_template'
+    'body': """
+    sequenceDiagram
+      participant $1
+      participant $2
+      $1->>$2: $3
+    """
+'.source.mermaid':
+  'mermaid sequence':
+    'prefix': 'mermaid_sequence_note_left'
+    'body': """
+      Note left of ${1:actor}: ${2:text}
+    """
+'.source.mermaid':
+  'mermaid sequence':
+    'prefix': 'mermaid_sequence_note_right'
+    'body': """
+      Note right of ${1:actor}: ${2:text}
+    """
+'.source.mermaid':
+  'mermaid sequence':
+    'prefix': 'mermaid_sequence_note_over'
+    'body': """
+      Note over of ${1:actor1,actor2}: ${2:text}
+    """
+'.source.mermaid':
+  'mermaid sequence':
+    'prefix': 'mermaid_sequence_loop'
+    'body': """
+      loop ${1:text}
+        ${2:actor}-->${3:actor}: ${4:text}
+      end
+    """
+'.source.mermaid':
+  'mermaid sequence':
+    'prefix': 'mermaid_sequence_alternative'
+    'body': """
+    alt ${1:text}
+      ${2:actor}->>${3:actor}: ${4:text}
+    else ${5:text}
+      ${6:actor}->>${7:actor}: ${8:text}
+    end
+    """
+'.source.mermaid':
+  'mermaid sequence':
+    'prefix': 'mermaid_sequence_option'
+    'body': """
+    opt ${1:option}
+      ${2:actor}->>${3:actor}: ${4:text}
+    end
+    """
