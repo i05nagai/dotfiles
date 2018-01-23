@@ -116,6 +116,10 @@ function vim_env_install() {
     mkdir $HOME/.vim
   fi
 
+  if [ ! -d $HOME/.vim/vimbackup ]; then
+      mkdir $HOME/.vim/vimbackup
+  fi
+
   env_path="vimenvs/$env_type/"
   case "$1" in
     "lic" )
@@ -166,6 +170,17 @@ function vim_env_install() {
   fi
 }
 
+function atom_install()
+{
+  if [ ! -d $HOME/.atom ]; then
+      mkdir -p $HOME/.atom
+  fi
+  for file in atom/*; do
+    filename=`basename $file`
+    ln_file_from_to $filename .atom/$filename
+  done
+}
+
 function add_install() {
   if [ $# -gt 0 ]; then
     echo "ADDITIONAL INSTALL"
@@ -185,15 +200,16 @@ do
   esac
 done
 shift `expr $OPTIND - 1`
-if [ -z $env_type ]; then echo "No option error"; goto_error; fi
+
+if [ -z $env_type ]; then
+  echo "No option error"
+  goto_error
+fi
 
 #the files must be installed
 must_install
+atom_install
 #the environment files.
 env_install $env_type
 vim_env_install $env_type
 add_install $@
-
-if [ ! -d $HOME/.vim/vimbackup ]; then
-    mkdir $HOME/.vim/vimbackup
-fi
