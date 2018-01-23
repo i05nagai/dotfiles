@@ -1,5 +1,8 @@
 "*":
   core:
+    disabledPackages: [
+      "markdown-preview"
+    ]
     openEmptyEditorOnStart: false
     telemetryConsent: "no"
     themes: [
@@ -9,6 +12,7 @@
   editor:
     fontFamily: "Ricty"
     fontSize: 17
+    scrollPastEnd: true
   "exception-reporting":
     userId: "a25cbb6a-a2df-48b0-bdc4-d41337ee86a3"
   "markdown-preview-enhanced":
@@ -16,4 +20,3 @@
     mathRenderingOption: "MathJax"
   welcome:
     showOnStartup: false
-
