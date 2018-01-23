@@ -1,0 +1,16 @@
+function preexec() {
+  timer=${timer:-$SECONDS}
+}
+
+function precmd () {
+  psvar=()
+  LANG=en_US.UTF-8 vcs_info
+  # show git branch
+  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+  # show elapsed time for command
+  if [ $timer ]; then
+    timer_show=$(($SECONDS - $timer))
+    psvar[2]=("${timer_show}s")
+    unset timer
+  fi
+}
