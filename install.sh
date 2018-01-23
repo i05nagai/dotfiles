@@ -177,7 +177,7 @@ function atom_install()
   fi
   for file in atom/*; do
     filename=`basename $file`
-    ln_file_from_to $filename .atom/$filename
+    ln_file_from_to atom/$filename .atom/$filename
   done
 }
 
