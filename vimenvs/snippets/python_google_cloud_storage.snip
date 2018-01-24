@@ -1,0 +1,14 @@
+snippet     gcs_import
+abbr        gcs import
+options     word
+	from google.cloud import storage
+
+snippet     gcs_create_client
+abbr        gcs import
+options     word
+	${1:client} = storage.Client(${2:project_id})
+
+snippet     gcs_get_file
+abbr        get blob
+options     word
+	buekct.get_blob(${1:project_id})
