@@ -17,3 +17,8 @@ snippet     version_from_date
 abbr        PHONY
 options     word
 	VERSION = $(shell date +"%Y%m%d-%s")
+
+snippet     assign_if_not_defined
+abbr        PHONY
+options     word
+	${1} ?= ${2}
