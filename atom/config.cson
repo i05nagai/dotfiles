@@ -16,7 +16,9 @@
   "exception-reporting":
     userId: "a25cbb6a-a2df-48b0-bdc4-d41337ee86a3"
   "markdown-preview-enhanced":
+    breakOnSingleNewLine: false
     exportPDFPageFormat: "A4"
     mathRenderingOption: "MathJax"
+    mermaidTheme: "mermaid.dark.css"
   welcome:
     showOnStartup: false
