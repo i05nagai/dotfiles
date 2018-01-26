@@ -1,0 +1,24 @@
+snippet     embulk_in_gcs_json_key
+abbr        in GCS
+options     word
+	in:
+		type: gcs
+		bucket: my-gcs-bucket
+		path_prefix: sample_
+		auth_method: json_key
+		json_keyfile: /path/to/json_key
+		decoders:
+		- {type: gzip}
+		parser:
+			charset: UTF-8
+			newline: CRLF
+			type: csv
+			delimiter: ','
+			quote: '"'
+			header_line: true
+			columns:
+			- {name: id, type: long}
+			- {name: account, type: long}
+			- {name: time, type: timestamp, format: '%Y-%m-%d %H:%M:%S'}
+			- {name: purchase, type: timestamp, format: '%Y%m%d'}
+			- {name: comment, type: string}
