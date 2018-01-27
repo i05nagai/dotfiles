@@ -1,10 +1,19 @@
 snippet     borrel_sigma_algebra_of_real_number
 abbr        B(R)
 options     word
-	\\mathcal{B}(\mathbb{R})
+	\\mathcal{B}(\\mathbb{R})
 
 snippet     borrel_sigma_algebra_of_real_number_d
 abbr        B(R^{n})
 options     word
-	\\mathcal{B}(\mathbb{R}^{${1:n}})${0}
+	\\mathcal{B}(\\mathbb{R}^{${1:n}})${0}
 
+snippet     measurable_space
+abbr        (S, A)
+options     word
+	(${1:S}, \\mathcal{${2:A}})
+
+snippet     measure_space
+abbr        (S, A, \mu)
+options     word
+	(${1:S}, \\mathcal{${2:A}}, ${3:\\mu})
