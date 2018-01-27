@@ -1,5 +1,6 @@
 include mathjax_congruence.snip
 include mathjax_convex.snip
+include mathjax_complex_analysis.snip
 include mathjax_distance.snip
 include mathjax_field.snip
 include mathjax_font.snip
@@ -155,6 +156,19 @@ snippet     span
 abbr        span
 options     word
 	\mathrm{span}\\{${1}\\}${0}
+
+snippet     exp
+abbr        span
+options     word
+	\\exp
+	\\left(
+		${1}
+	\\right)
+
+snippet     exp_inline
+abbr        span
+options     word
+	e^{${1}}
 
 #
 snippet     upper_notation
@@ -363,41 +377,40 @@ abbr        card()
 options     word
 	 \\mathrm{card}(${1})${0}
 
-## Integral
-
+# Integral
 snippet     integral_inline_with_lower
 abbr        inline interal with interval
-options		word
-	\\int_{${1:lower}} ${2:integrand}\\ d${3:variable}${0}
+options     word
+	\\int_{${1:lower}} ${2:integrand}\\ ${3:\mu(dx)}${0}
 
 snippet     integral_inline_with_lower_upper
 abbr        inline interal with interval
 options		word
-	\\int_{${1:lower}}^{${2:upper}} ${3:integrand}\\ d${4:variable}
+	\\int_{${1:lower}}^{${2:upper}} ${3:integrand}\\ ${4:\\mu(dx)}
 
 snippet     integral_without_interval_inline
 abbr        inline interal with interval
-	\\int ${1:integrand}\\ d${2:variable}
+	\\int ${1:integrand}\\ ${2:\mu(dx)}
 
 snippet     integral_with_lower_upper
 abbr        interal with interval
 options		word
 	\\int_{${1:lower}}^{${2:upper}}
-	    ${3:integrand}
-	\\ d${4:variable}
+		 ${3:integrand}
+	\\ d${4:\\mu(dx)}
 
 snippet     integral_with_lower
 abbr        interal with interval
 options		word
 	\\int_{${1:lower}}
-	    ${3:integrand}
-	\\ d${4:variable}
+		${3:integrand}
+	\\ ${4:\\mu(dx)}
 
 snippet     integral_without_interval
 abbr        interal with interval
 	\\int
-	    ${1:integrand}
-	\\ d${2:variable}
+		${1:integrand}
+	\\ ${4:\\mu(dx)}
 
 ## Derivative
 
