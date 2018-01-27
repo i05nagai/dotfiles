@@ -1,6 +1,17 @@
 include yaml_embulk.snip
+include embulk.snip
 
 snippet     liquid_string_concat
 abbr        concat
 options     word
     {{ "${1:base_string}" | append: "${2:concatee}" }}
+
+snippet     variable_assign
+abbr        concat
+options     word
+    {% assign ${1:variable} = ${2:"value"} %}
+
+snippet     variable_assign_expression
+abbr        concat
+options     word
+    {% capture ${1:variable} %}{{ ${2:env.ENV} }}{% endcapture %}

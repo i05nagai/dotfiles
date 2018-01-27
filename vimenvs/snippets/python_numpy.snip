@@ -12,3 +12,21 @@ snippet     np_make_array_from_shape_with_type
 abbr        make array
 options     word
 	np.empty(${1:shape}, dtype=${2:float})
+
+snippet     np_multiply_color_matrix
+abbr        multiply color matrix
+options     word
+	# img = (W, H, RGB channel)
+    # RGB_vector_new = color_matrix * RGBvector
+	color_matrix = np.asarray([
+		[0.213 + 0.787 * s, 0.715 - 0.715 * s, 0.072 - 0.072 * s],
+		[0.213 - 0.213 * s, 0.715 + 0.285 * s, 0.072 - 0.072 * s],
+		[0.213 - 0.213 * s, 0.715 - 0.715 * s, 0.072 + 0.928 * s],
+	])
+	np.tensordot(img, color_matrix.T, 1)
+
+snippet     np_make_array_from_range
+abbr        multiply color matrix
+options     word
+	${1:a} = np.array(range(${2:1, 9}))
+	$1.shape = (${3:2, 2, 2})

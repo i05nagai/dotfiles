@@ -2,6 +2,31 @@ include sql_sqlite.snip
 include sql_standard_sql.snip
 include sql_mysql.snip
 
+snippet     change_user_password
+abbr        change_user_password
+options     word
+	ALTER USER ${1:root}@${2:localhost} IDENTIFIED BY '${3:NewPass123?&!}';
+
+snippet     create_user
+abbr        create_user
+options     word
+	CREATE USER ${1:user_name}@'${2:%}' IDENTIFIED BY '${3:password}';
+
+snippet     grant_all
+abbr        grant_all
+options     word
+	GRANT ALL PRIVILEGES ON ${1:db_name}.${2:*} TO '${3:username}'@'${4:host}';
+
+snippet     grant_show
+abbr        grant_show
+options     word
+	SHOW GRANTS FOR ${1:user_name}@${2:host};
+
+snippet     revoke_all
+abbr        revoke_all
+options     word
+	REVOKE ALL PRIVILEGES ON ${1:db_name}.${2:*} FROM '${3:user_name}'@'${4:host}';
+
 snippet     create_table_if_not_exists
 abbr        create_table_if_not_exists
 options     word

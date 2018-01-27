@@ -6,13 +6,13 @@ include python_csv.snip
 include python_faker.snip
 include python_flask.snip
 include python_google_cloud_bigquery.snip
+include python_google_cloud_storage.snip
 include python_gspread.snip
 include python_gspread.snip
 include python_holoviews.snip
 include python_keras.snip
 include python_matplotlib.snip
 include python_mock.snip
-include python_numpy.snip
 include python_numpy.snip
 include python_pandas.snip
 include python_path.snip
@@ -24,6 +24,7 @@ include python_requests.snip
 include python_scikit_image.snip
 include python_sqlalchemy.snip
 include python_subprocess.snip
+include python_typing.snip
 include python_urllib.snip
 include sphinx.snip
 
@@ -36,6 +37,11 @@ snippet     debug_pudb
 abbr        from pudb import set_trace; set_trace()
 options     word
     from pudb import set_trace; set_trace()
+
+snippet     debug_ipdb
+abbr        from ipdb import set_trace; set_trace()
+options     word
+    import ipdb; ipdb.set_trace()
 
 snippet shebang
     #!/usr/bin/env python
@@ -250,6 +256,18 @@ abbr        sleep
 options     word
 	# import time
 	time.sleep(${1:sec})
+
+snippet     time_start
+abbr        sleep
+options     word
+	import time
+	time.sleep(${1:sec})
+
+snippet     time_end
+abbr        sleep
+options     word
+	elapsed_time = time.time() - start
+	print("elapsed_time:{0} [sec]".format(elapsed_time))
 
 # date
 snippet     datetime_from_string_to_datetime
@@ -521,3 +539,16 @@ snippet     module_this
 abbr        this module
 options     word
 	this_module = sys.modules[__name__]
+
+snippet     random_hash_uuid
+abbr        uuid
+options     word
+	import uuid
+	uuid.uuid4()
+
+snippet     random_hash_bits
+abbr        uuid
+options     word
+	import random
+	hashcode = random.getrandbits(128)
+	hex(hashcode)[2:-1]

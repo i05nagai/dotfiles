@@ -4,12 +4,19 @@ export TERM=xterm-256color
 
 #autoload
 autoload -Uz compinit
-compinit 
+compinit
 autoload -Uz colors
 colors
 autoload history-search-end
+
 # VCSの情報を取得するzshの便利関数 vcs_infoを使う
 autoload -Uz vcs_info
+# vcs's settings
+# 表示フォーマットの指定
+# %b ブランチ情報
+# %a アクション名(mergeなど)
+zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
 
 # options
 setopt auto_resume
@@ -99,7 +106,6 @@ setopt auto_pushd
 setopt pushd_ignore_dups
 setopt pushd_to_home
 
-
 # History
 # Command history configuration
 HISTFILE=~/.zsh_history
@@ -111,36 +117,8 @@ setopt hist_no_store
 setopt hist_reduce_blanks
 setopt share_history
 
-
-# vcs's settings
-# 表示フォーマットの指定
-# %b ブランチ情報
-# %a アクション名(mergeなど)
-zstyle ':vcs_info:*' formats '[%b]'
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
-precmd () {
-    psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
-}
-# バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
-RPROMPT="%1(v|%F{green}%1v%f|)"
-
-# Prompt
-local p_cdir="%B%{[35m%}[%~]%{[1;37m%}%b"$'\n'
-local p_info="${USER}"
-#直前のコマンドがエラーなら赤色
-local p_mark="%B%(?,%{[35m%},%{[31m%})%(!,#,%%)%{[1;37m%}%b"
-#通常
-PROMPT="$p_cdir$p_info $p_mark "
-#while,for
-PROMPT2="%B(%_) %(!#,>)%b "
-#入力ミス
-SPROMPT="%B%{[31m%}%r is correct? [n,y,a,e]:%{[m%}%b "
-
 # Editor
 export EDITOR="vim"
-
 # history file for less
 export LESSHISTFILE=-
 
@@ -148,9 +126,9 @@ export LESSHISTFILE=-
 source ~/.zshrc.env
 source ~/.zsh/zshrc.bindkey
 source ~/.zsh/zshrc.alias
+source ~/.zsh/zshrc.prompt
+source ~/.zsh/zshrc.hook
 
 if [ ! -d $HOME/.vimbackup ]; then
   mkdir $HOME/.vimbackup
 fi
-
-[ -f ~/.zsh/.fzf.zsh ] && source ~/.zsh/.fzf.zsh

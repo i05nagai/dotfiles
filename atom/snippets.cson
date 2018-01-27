@@ -1,0 +1,76 @@
+# Your snippets
+#
+# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
+# expand the prefix into a larger code block with templated values.
+#
+# You can create a new snippet in this file by typing "snip" and then hitting
+# tab.
+#
+# An example CoffeeScript snippet to expand log to console.log:
+#
+# '.source.coffee':
+#   'Console log':
+#     'prefix': 'log'
+#     'body': 'console.log $1'
+#
+# Each scope (e.g. '.source.coffee' above) can only be declared once.
+#
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it in the
+# Atom Flight Manual:
+# http://flight-manual.atom.io/using-atom/sections/basic-customization/#_cson
+'.source.markdown':
+  'template':
+    'prefix': 'template'
+    'body': """
+    ## Overviews
+    ## Reference
+    """
+# mermaid
+'.source.mermaid':
+  'mermaid_sequence_template':
+    'prefix': 'mermaid_sequence_template'
+    'body': """
+    sequenceDiagram
+      participant $1
+      participant $2
+      $1->>$2: $3
+    """
+  'mermaid_sequence_note_left':
+    'prefix': 'mermaid_sequence_note_left'
+    'body': """
+      Note left of ${1:actor}: ${2:text}
+    """
+  'mermaid_sequence_note_righ':
+    'prefix': 'mermaid_sequence_note_right'
+    'body': """
+      Note right of ${1:actor}: ${2:text}
+    """
+  'mermaid_sequence_note_over':
+    'prefix': 'mermaid_sequence_note_over'
+    'body': """
+      Note over of ${1:actor1,actor2}: ${2:text}
+    """
+  'mermaid_sequence_loop':
+    'prefix': 'mermaid_sequence_loop'
+    'body': """
+      loop ${1:text}
+        ${2:actor}-->${3:actor}: ${4:text}
+      end
+    """
+  'mermaid_sequence_alternative':
+    'prefix': 'mermaid_sequence_alternative'
+    'body': """
+    alt ${1:text}
+      ${2:actor}->>${3:actor}: ${4:text}
+    else ${5:text}
+      ${6:actor}->>${7:actor}: ${8:text}
+    end
+    """
+  'mermaid_sequence_option':
+    'prefix': 'mermaid_sequence_option'
+    'body': """
+    opt ${1:option}
+      ${2:actor}->>${3:actor}: ${4:text}
+    end
+    """

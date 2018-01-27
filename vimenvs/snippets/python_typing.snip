@@ -1,0 +1,44 @@
+snippet     typing_import
+abbr        python typing
+options     word
+	from typing import Callable
+	from typing import Dict
+	from typing import List
+	from typing import Set
+	from typing import Tuple
+	from typing import TypeVar
+
+snippet     typing_import_any
+abbr        python typing
+options     word
+	from typing import Any
+
+snippet     typing_callable
+abbr        typing callable
+options     word
+	Callable[[${1:Arg1Type, Arg2Type}], ${2:ReturnType}]
+
+snippet     typing_define_type
+abbr        typing 
+options     word
+	${1:type_name} = TypeVar('$1', ${2:type1, type2})
+
+snippet     typing_list
+abbr        typing list
+options     word
+	List[${1:type_name1, type_name2}]
+
+snippet     typing_tuple
+abbr        typing tuple
+options     word
+	Tuple[${1:type_name1, type_name2}]
+
+snippet     typing_set
+abbr        typing set
+options     word
+	Set[${1:type_name}]
+
+snippet     typing_dict
+abbr        typing dict
+options     word
+	Dict[${1:type_key}, ${2:type_value}]

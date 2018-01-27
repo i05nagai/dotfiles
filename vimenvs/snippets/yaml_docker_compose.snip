@@ -1,0 +1,18 @@
+snippet     docker_compose_template
+abbr        template
+options     word
+	version: '3'
+	services:
+		${1:container_name}:
+			image: ${2:image}
+			restart: always
+			ports:
+				- ${3:"80:80"}
+			depends_on:
+				- ${4:container_name}
+			environment:
+				- ${5:key=value}
+			env_file:
+				- ${6:file.env}
+			volumes:
+				- ${7:from:to}

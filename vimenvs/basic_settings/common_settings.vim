@@ -268,6 +268,10 @@ call neobundle#begin(expand('~/.vim/bundle/'))
         \  }
   "coffee script
   NeoBundle 'kchmck/vim-coffee-script'
+  "kotlin
+  NeoBundleLazy 'udalov/kotlin-vim', {
+        \ 'autoload' : {'filetypes' : 'kotlin'}
+        \ }
   "C#
   "NeoBundleLazy 'nosami/Omnisharp', {
   "\   'autoload': {'filetypes': ['cs']},
@@ -485,12 +489,16 @@ if filereadable( $HOME . "/.vim/plugin_settings/vim-coffee-script.vim" )
   source ~/.vim/plugin_settings/vim-coffee-script.vim
 endif
 
+"---------------------------------------------------------
+" kotlin-vim
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/kotlin-vim.vim" )
+  source ~/.vim/plugin_settings/kotlin-vim.vim
+endif
+
 if filereadable( $HOME . "/.vim/envs.vim" )
   source ~/.vim/envs.vim
 endif
 
 set runtimepath+=~/.vim/
 runtime! userautoload/*.vim
-
-
-

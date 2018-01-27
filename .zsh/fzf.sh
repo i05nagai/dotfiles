@@ -9,6 +9,10 @@ fzf_cd() {
   cd "$dir"
 }
 
+fzf_select_history() {
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  CURSOR=$#BUFFER
+}
 
 ################################################################################
 # Git
@@ -23,7 +27,6 @@ fzf_git_checkout_branch() {
 }
 
 # fbr - checkout git branch (including remote branches)
-
 fzf_git_checkout_branch_with_remote() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
@@ -103,4 +106,30 @@ fzf_git_show_stashes() {
       git stash show -p $sha
     fi
   done
+}
+
+################################################################################
+# SSH
+################################################################################
+
+fzf_ssh_complete_host() {
+  local host="$(egrep -i '^Host\s+.+' $HOME/.ssh/config $(find $HOME/.ssh/conf -type f 2>/dev/null) | egrep -v '[*?]' | awk '{print $2}' | sort | fzf)"
+
+  if [ ! -z "$host" ]; then
+    LBUFFER+="$host"
+  fi
+  zle reset-prompt
+}
+
+################################################################################
+# Docker
+################################################################################
+
+fzf_docker_ps_all() {
+  local name="$(docker ps -a --format "{{.Names}}"| awk '{print}' | sort | fzf)"
+
+  if [ ! -z "$name" ]; then
+    LBUFFER+="$name"
+  fi
+  zle reset-prompt
 }

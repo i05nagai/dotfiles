@@ -1,0 +1,14 @@
+# Prompt
+local p_cdir="%B%{[35m%}[%~]%{[1;37m%}%b"$'\n'
+local p_info="${USER}"
+#直前のコマンドがエラーなら赤色
+local p_mark="%B%(?,%{[35m%},%{[31m%})%(!,#,%%)%{[1;37m%}%b"
+
+#通常
+PROMPT="$p_cdir$p_info $p_mark "
+#while,for
+PROMPT2="%B(%_) %(!#,>)%b "
+#入力ミス
+SPROMPT="%B%{[31m%}%r is correct? [n,y,a,e]:%{[m%}%b "
+# バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
+RPROMPT="%1(v|%F{green}%1v%f|) %F{cyan}%2v%{$reset_color%}"
