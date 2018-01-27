@@ -1,0 +1,57 @@
+snippet     embulk_include
+abbr        include
+options     head
+	{% include '${1:path_relative}' %}
+
+snippet     embulk_exec_template
+abbr        mysql in template
+options     word
+	exec:
+		max_threads: ${1:8}
+		min_output_tasks: ${2:8}
+
+snippet     embulk_in_mysql_template
+abbr        mysql in template
+options     word
+	in:
+		type: mysql
+		host: ${1:mysql_host}
+		port: ${2:mysql_port}
+		user: ${3:mysql_user}
+		password: ${4:mysql_password}
+		database: ${5:mysql_databse}
+		query: ${6:table| select}
+		options:
+			useLegacyDatetimeCode: ${6: false}
+			serverTimezone: ${7:"UTC"}
+
+snippet     embulk_in_file_template
+abbr        mysql in template
+options     word
+	in:
+		type: file
+		path_prefix: ${1: path_and_prefix}
+
+snippet     embulk_out_bigquery_template
+abbr        mysql in template
+options     word
+	out:
+		auto_create_table: true
+		compression: GZIP
+		encoding: "UTF-8"
+		path_prefix:
+		file_ext: ".csv"
+		table:
+		field_delimiter: ","
+		source_format: "CSV"
+		auth_method: json_key
+		dataset: ${1: bigquery_dataset}
+		delete_from_local_when_job_end: ${2:true}
+		json_keyfile: ${3:path_to_json_key}
+		mode: ${4:replace|}
+		open_timeout_sec: ${5:3000}
+		project: ${6: bigquery_project}
+		read_timeout_sec: $5
+		retries: 1
+		send_timeout_sec: $5
+		type: bigquery
