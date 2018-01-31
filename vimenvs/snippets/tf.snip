@@ -1,4 +1,67 @@
 snippet     terraform_var_workspacek
-abbr        
+abbr        a
 options     word
-	$terraform.workspace}
+	${terraform.workspace}
+
+snippet     terraform_var_get
+abbr        a
+options     word
+	${var.${1:var_name}}
+
+snippet     terraform_var_get_map
+abbr        a
+options     word
+	"${lookup(var.${1:var_name}, ${2:key})}"
+
+snippet     terraform_var_map
+abbr        a
+options     word
+	variable "kubernetes" {
+		type = "map"
+		description = "${3:description}"
+		default = {
+			${1:key} = ${2:var}
+		}
+	}
+
+snippet     terraform_var_list
+abbr        variable list
+options     word
+	variable "${1:var_name}" {
+		type = "list"
+		description = "${3:description}"
+		default = [
+			${2:key} = ${3:var},
+		]
+	}
+
+snippet     terraform_var_list
+abbr        variable list
+options     word
+	variable "${1:var_name}" {
+		type = "list"
+		description = "${3:description}"
+		default = [
+			${2:key},
+		]
+	}
+
+snippet     terraform_var_string
+abbr        variable list
+options     word
+	variable "${1:var_name}" {
+		type = "string"
+		description = "${3:description}"
+		default = "${2:key}"
+	}
+
+snippet     terraform_var_string_multi_line
+abbr        variable list
+options     word
+	variable "${1:var_name}" {
+		type = "string"
+		description = "${3:description}"
+		default = <<EOF
+	${2:text}
+	EOF
+	}
