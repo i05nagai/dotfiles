@@ -294,10 +294,14 @@ options		word
 		${1:numerator}
 	}{
 		${2:denominator}
-	}
-	${3}
+	}${3}
 
-## combination
+snippet     epigraph
+abbr        Epi
+options     word
+	\\mathrm{Epi}(${1:f})
+
+# combination
 snippet     combination
 abbr        ()
 options     word
@@ -430,6 +434,11 @@ abbr        \\left. frac{partial }{partial } \\right|
 	${0}
 
 # word
+snippet     domain
+abbr        Dom
+options     word
+	\mathrm{Dom}
+
 snippet     degree
 abbr        degree
 options     word
