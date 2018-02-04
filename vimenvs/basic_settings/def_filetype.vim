@@ -6,3 +6,4 @@ autocmd BufRead,BufNewFile *.es6 setfiletype javascript
 autocmd BufRead,BufNewFile *.vue setfiletype vue
 autocmd BufRead,BufNewFile *.kt setfiletype kotlin
 autocmd BufRead,BufNewFile *.kts setfiletype kotlin
+autocmd BufRead,BufNewFile *.swift setfiletype swift
