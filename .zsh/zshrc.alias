@@ -20,6 +20,12 @@ then
     # $1 container_id
     docker exec -it $1 /bin/bash
   }
+
+  docker-save-as-gzip()
+  {
+    # $1 image_name
+    docker save $1 | gzip > ${1}.tar.gz
+  }
 fi
 
 if which bq >/dev/null 2>&1
