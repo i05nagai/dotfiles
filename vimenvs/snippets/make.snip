@@ -13,6 +13,21 @@ abbr        add suffix
 options     word
 	$(addsuffix ${1:prefix},${2:word})
 
+snippet     replace
+abbr        replace
+options     word
+	$(subst ${1:from},${2:to},${3:text})
+
+snippet     shell
+abbr        shell
+options     word
+	$(shell ${1})
+
+snippet     path_to_makefile
+abbr        path to makefile
+options     word
+	PATH_TO_MAKEFILE := $(shell pwd)
+
 snippet     version_from_date
 abbr        PHONY
 options     word
