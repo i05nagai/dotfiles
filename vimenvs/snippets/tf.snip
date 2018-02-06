@@ -16,11 +16,11 @@ options     word
 snippet     terraform_var_map
 abbr        a
 options     word
-	variable "kubernetes" {
+	variable "${1:var_name}" {
 		type = "map"
 		description = "${3:description}"
 		default = {
-			${1:key} = ${2:var}
+			${1:key} = ${2:val}
 		}
 	}
 
@@ -31,7 +31,7 @@ options     word
 		type = "list"
 		description = "${3:description}"
 		default = [
-			${2:key} = ${3:var},
+			${2:key} = ${3:val},
 		]
 	}
 
@@ -64,4 +64,11 @@ options     word
 		default = <<EOF
 	${2:text}
 	EOF
+	}
+
+snippet     terraform_output
+abbr        variable list
+options     word
+	output "${1:output_name}" {
+		value = "${1:value}"
 	}
