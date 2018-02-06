@@ -406,7 +406,6 @@ abbr        for ()
 		${0}
 	}
 
-
 snippet     show_vector
 abbr        for ()
 	for (int vi = 0; vi < ${1:vector}.size(); ++vi) {
@@ -414,3 +413,6 @@ abbr        for ()
 	}
 	std::cout << std::endl;
 
+snippet     show_variable
+abbr        for ()
+	std::cout << "$1: " << ${1} << std::endl;
