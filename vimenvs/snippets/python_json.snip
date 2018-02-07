@@ -1,0 +1,22 @@
+snippet     json_pretty_print
+abbr        json pretty print
+options     word
+    json.dumps(${1}, indent=2, sort_keys=True)${0}
+
+snippet     json_read_from_file
+abbr        json read from file
+options     word
+    with open('${1:path}', 'r') as f:
+        json.load(${2:f})${0}
+
+snippet     json_string_to_dict
+abbr        json read from file
+options     word
+    json.loads(${1:string})${0}
+
+snippet     json_write_to_file_pretty_print
+abbr        json write to file pretty print
+options     word
+    with open('${1:path}', 'w') as f:
+        json.dump(${2:json_dict}, f, indent=2, sort_keys=True)${0}
+
