@@ -14,6 +14,26 @@ options     word
 		AND
 		'30'
 
+snippet     standard_sql_truncate_date_week
+abbr        truncate date week
+options     word
+	DATE_TRUNC(date, WEEK(${1:SUNDAY}))
+
+snippet     standard_sql_truncate_date_month
+abbr        truncate date week
+options     word
+	DATE_TRUNC(date, MONTH)
+
+snippet     standard_sql_truncate_timestamp_week
+abbr        truncate date week
+options     word
+	TIMESTAMP_TRUNC(date, WEEK(${1:SUNDAY}))
+
+snippet     standard_sql_truncate_timestamp_week
+abbr        truncate date week
+options     word
+	TIMESTAMP_TRUNC(date, MONTH)
+
 snippet     standard_sql_timestamp_add_hour
 abbr        timestamp add by hour
 options     word
