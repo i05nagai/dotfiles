@@ -19,17 +19,17 @@ include mathjax_vector.snip
 # Spaces
 snippet     rational_number_d
 abbr        \\mathbb{Q}^{?}
-options		word
+options     word
 	\\mathbb{Q}^{${1}}${0}
 
 snippet     rational_number
 abbr        rational number
-options		word
+options     word
 	\\mathbb{Q}
 
 snippet     real_number_d
 abbr        \\mathbb{R}^{?}
-options		word
+options     word
 	\\mathbb{R}^{${1}}${0}
 
 snippet     real_number
@@ -425,7 +425,7 @@ abbr        interal with interval
 		${1:integrand}
 	\\ ${4:\\mu(dx)}
 
-## Derivative
+# Derivative
 
 snippet     derivative
 abbr        frac{d }{ d}
@@ -502,6 +502,33 @@ snippet     sequence_symbols_from_1_to_N
 abbr        ?_{1}, ..., ?_{N}
 options     word
 	${1}_{1}, \\ldots, $1_{N}${0}
+
+snippet     kernel
+abbr        kernel
+options     word
+	\\mathrm{Ker}${1}
+
+snippet     supremum
+abbr        sup
+options     word
+	\\sup_{${1}}
+		${2}
+
+snippet     supremum_inline
+abbr        sup
+options     word
+	\\sup_{${1}} ${2}
+
+snippet     infimum
+abbr        inf
+options     word
+	\\inf_{${1}}
+		${2}
+
+snippet     infimum_inline
+abbr        inf
+options     word
+	\\inf_{${1}} ${2}
 
 snippet     argmax
 abbr        argmax
