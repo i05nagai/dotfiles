@@ -37,3 +37,9 @@ snippet     volume
 abbr        VOLUME
 options     head
 	VOLUME ["${1:path/to/mountable_volume}"${2: path/to}]${0}
+
+snippet     ubuntu_clean
+abbr        VOLUME
+options     head
+	RUN apt-get autoclean
+	RUN apt-get autoremove
