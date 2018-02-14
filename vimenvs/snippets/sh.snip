@@ -309,3 +309,14 @@ snippet     exec_arguments
 abbr        exec args
 options     word
 	exec "$@"
+
+# var
+snippet     constant_declare
+abbr        exec args
+options     word
+	declare -r ${1:var}=${2:123}
+
+snippet     constant
+abbr        exec args
+options     word
+	readonly ${1:NAME}=${2:VALUE}
