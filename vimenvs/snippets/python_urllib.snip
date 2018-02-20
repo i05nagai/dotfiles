@@ -1,0 +1,11 @@
+snippet     url_join_python2
+abbr        url join
+options     word
+    # import urlparse
+    urlparse.urljoin(${1:url1}, ${2:url2})
+
+snippet     url_join
+abbr        url join python3
+options     word
+    # import urllib.parse
+    urllib.parse.urljoin(${1:url}, ${2:path})
