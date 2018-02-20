@@ -3,6 +3,11 @@ abbr        json pretty print
 options     word
     json.dumps(${1}, indent=2, sort_keys=True)${0}
 
+snippet     json_dict_to_string
+abbr        json pretty print
+options     word
+    json.dumps(${1}, sort_keys=True)${0}
+
 snippet     json_read_from_file
 abbr        json read from file
 options     word
