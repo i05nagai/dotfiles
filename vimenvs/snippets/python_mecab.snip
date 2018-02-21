@@ -1,0 +1,25 @@
+snippet     mecab_import
+abbr        mecab import
+options     word
+    import MeCab
+
+snippet     mecab_parser
+abbr        mecab parser
+options     word
+    mecab = MeCab.Tagger(options_str)
+    # warm up
+    # this is for fixing bug
+    # see https://qiita.com/piruty/items/ce218090eae53b775b79
+    mecab.parse('')
+
+snippet     mecab_parse
+abbr        mecab parse
+options     word
+    m = ${1:mecab}.parseToNode(text)
+    res = []
+    while m:
+        # 品詞,品詞細分類1,品詞細分類2,品詞細分類3,活用型,活用形,原形,読み,発音
+        f = m.feature.split(',')
+        res.append([m.surface] + f)
+        m = m.next
+    return res
