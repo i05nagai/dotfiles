@@ -272,6 +272,10 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundleLazy 'udalov/kotlin-vim', {
         \ 'autoload' : {'filetypes' : 'kotlin'}
         \ }
+  "swift
+  NeoBundleLazy 'keith/swift.vim', {
+        \ 'autoload' : {'filetypes' : 'swift'}
+        \ }
   "C#
   "NeoBundleLazy 'nosami/Omnisharp', {
   "\   'autoload': {'filetypes': ['cs']},

@@ -1,8 +1,8 @@
 snippet     csv_write
 abbr        csv_write
 options     head
-	with open("${1:filename}", "w") as f:
-		writer = csv.writer(f, lineterminator='\n')
+	with open('${1:filename}', 'w') as f:
+		writer = csv.writer(f, lineterminator='\n', quotechar='"', quoting=csv.QUOTE_NONNUMERIC)
 		writer.writerow(list)
 		writer.writerows(array2d)
 
@@ -29,9 +29,18 @@ options     head
 snippet     csv_read_as_dict
 abbr        csv_read
 options     word
-	with open("${1:filename}", "r") as f:
-		reader = csv.reader(f)
-		# skip header
-		header = next(reader)
+	with open('${1:filename}', 'r') as csvfile:
+		reader = csv.DictReader(csvfile)
 		for row in reader:
-			row_dict = dict(zip(header, row))
+			print(row['first_name'], row['last_name'])
+
+snippet     csv_write_dict
+abbr        csv_write
+options     word
+	with open('${1:filename}', 'w') as csvfile:
+		fieldnames = ['first_name', 'last_name']
+		writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+		writer.writeheader()
+		writer.writerow({'first_name': 'Baked', 'last_name': 'Beans'})
+		writer.writerow({'first_name': 'Lovely', 'last_name': 'Spam'})
+		writer.writerow({'first_name': 'Wonderful', 'last_name': 'Spam'})

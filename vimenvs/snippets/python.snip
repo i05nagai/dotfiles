@@ -10,6 +10,7 @@ include python_google_cloud_storage.snip
 include python_gspread.snip
 include python_holoviews.snip
 include python_keras.snip
+include python_logging.snip
 include python_matplotlib.snip
 include python_mecab.snip
 include python_mock.snip
@@ -211,25 +212,6 @@ snippet main
 snippet """
     """${0:doc}
     """
-
-snippet log
-    import logging
-    logger = logging.getLogger(${0:__name__})
-
-snippet log_error
-    logger.error(${0:msg})
-
-snippet log_debug
-    logger.debug(${0:msg})
-
-snippet log_warning
-    logger.warning(${0:msg})
-
-snippet log_critical
-    logger.critical(${0:msg})
-
-snippet log_info
-    logger.info(${0:msg})
 
 snippet     future
 abbr        future

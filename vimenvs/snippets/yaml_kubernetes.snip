@@ -1,0 +1,14 @@
+snippet     kubernetes_container
+abbr        container
+options     word
+	- name: ${1:container_name}
+		image: "${2:image_name}"
+		ports:
+			- name: ${3:port_name}
+				containerPort: ${4:3306}
+		env:
+			- name: ${5:KEY}
+				value: ${6:"VAL"}
+		volumeMounts:
+			- name: ${7:volume_name}
+			mountPath: ${8:path_in_container}

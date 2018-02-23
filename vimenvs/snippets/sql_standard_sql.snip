@@ -150,6 +150,16 @@ abbr        to unixtime milli second 1970-01-01 00:00:00 UTC
 options     word
 	UNIX_MILLIS(${1:timestamp})
 
+snippet     standard_sql_from_timestamp_to_date
+abbr        to date
+options     word
+	CAST(${1:timestamp} AS DATE)
+
+snippet     standard_sql_from_timestamp_to_datetime
+abbr        to date
+options     word
+	CAST(${1:timestamp} AS DATETIME)
+
 snippet     standard_sql_regexp_contain
 abbr        contain or not
 options     word
@@ -301,3 +311,24 @@ snippet     standard_sql_string_length
 abbr        char length
 options     word
 	CHAR_LENGTH(${1:val})
+
+# array
+snippet     standard_sql_array_index_from_zero
+abbr        array index from zero
+options     word
+	${1:array_name}[OFFSET(${2:index})]
+
+snippet     standard_sql_array_index_from_one
+abbr        array index from one
+options     word
+	${1:array_name}[ORDINAL(${2:index})]
+
+snippet     standard_sql_array_length
+abbr        array length
+options     word
+	ARRAY_LENGTH(${1:array_name})
+
+snippet     standard_sql_array_flatten
+abbr        array flatten
+options     word
+	UNNEST(${1:array_name})

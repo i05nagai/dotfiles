@@ -1,0 +1,55 @@
+snippet     logging_import
+abbr        logging import
+options     word
+    import logging
+
+snippet     logging_to_file
+abbr        logging to file
+options     word
+    logging.basicConfig(filename='${1:example.log}', level=${2:logging.DEBUG})
+
+snippet     logging_to_terminal
+abbr        logging to terminal
+options     word
+    logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
+
+snippet     logging_format
+abbr        logging format
+options     word
+    '%(asctime)s : %(levelname)s : %(message)s'
+
+snippet     logging
+abbr        logging
+options     word
+    import logging
+    logger = logging.getLogger(${0:__name__})
+
+snippet     logging_error
+abbr        logging error
+options     word
+    logger.error(${0:msg})
+
+snippet logging_debug
+abbr        logging debug
+options     word
+    logger.debug(${0:msg})
+
+snippet     logging_warning
+abbr        logging warning
+options     word
+    logger.warning(${0:msg})
+
+snippet     logging_warn
+abbr        logging warn
+options     word
+    logger.warn(${0:msg})
+
+snippet     logging_critical
+abbr        logging critical
+options     word
+    logger.critical(${0:msg})
+
+snippet     logging_info
+abbr        logging info
+options     word
+    logger.info(${0:msg})
