@@ -1,0 +1,25 @@
+snippet     soa_record
+abbr        SOA record
+options     word
+	$TTL    ${1:604800}
+	${2:@}       IN      SOA     ${3:localhost.} ${4:mail.localhost.} (
+	                              1         ; Serial
+	                         604800         ; Refresh
+	                          86400         ; Retry
+	                        2419200         ; Expire
+	                         604800 )       ; Negative Cache TTL
+
+snippet     ns_record
+abbr        a record
+options     word
+	${1:@}       IN      NS      ${2:localhost.}
+
+snippet     a_record
+abbr        a record
+options     word
+	${1:@}       IN      A       ${2:127.0.0.1}
+
+snippet     a_record_ip6
+abbr        a record
+options     word
+	${1:@}       IN      AAAA    ${2:::1}
