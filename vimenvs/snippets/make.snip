@@ -23,10 +23,40 @@ abbr        shell
 options     word
 	$(shell ${1})
 
+snippet     get_dirname
+abbr        dirname
+options     word
+	$(dir ${1})
+
+snippet     get_notdir
+abbr        notdir
+options     word
+	$(notdir ${1})
+
+snippet     get_suffix
+abbr        suffix
+options     word
+	$(suffix ${1})
+
+snippet     get_basename
+abbr        basename
+options     word
+	$(basename ${1})
+
+snippet     path_to_call
+abbr        path to makefile
+options     word
+	PATH_TO_CALL := $(shell pwd)
+
 snippet     path_to_makefile
 abbr        path to makefile
 options     word
-	PATH_TO_MAKEFILE := $(shell pwd)
+	PATH_TO_THIS_DIR = $(realpath $(lastword ${MAKEFILE_LIST}))
+
+snippet     path_to_makefile_dir
+abbr        path to makefile
+options     word
+	PATH_TO_THIS_DIR = $(dir $(realpath $(lastword ${MAKEFILE_LIST})))
 
 snippet     version_from_date
 abbr        PHONY
