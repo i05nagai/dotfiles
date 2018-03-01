@@ -415,6 +415,17 @@ abbr        divide but undef to null
 options     word
 	${1:2014}-${2:09}-${3:27} ${4:12:30:00.45} ${5:Asia/Tokyo}
 
+# string
+snippet     standard_sql_string_null_char
+abbr        null character
+options     word
+	CODE_POINTS_TO_STRING([0])
+
+snippet     standard_sql_string_length
+abbr        char length
+options     word
+	CHAR_LENGTH(${1:val})
+
 # array
 snippet     standard_sql_array_index_from_zero
 abbr        array index from zero
