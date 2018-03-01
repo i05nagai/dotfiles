@@ -14,6 +14,64 @@ options     word
 		AND
 		'30'
 
+snippet     standard_sql_table_suffix_function
+abbr        partition time
+options     word
+	/**
+	  betweenCalculationDate(_TABLE_SUFFIX)
+	*/
+	CREATE TEMPORARY FUNCTION betweenCalculationDate(table_suffix TIMESTAMP) AS (
+		table_suffix BETWEEN
+			'20'
+			AND
+			'30'
+	)
+	;
+
+snippet     standard_sql_table_suffix_latest_week
+abbr        partition time
+options     word
+	/**
+	  betweenCalculationDate(_TABLE_SUFFIX)
+	*/
+	CREATE TEMPORARY FUNCTION betweenLatestWeeks(table_suffix STRING) AS (
+		table_suffix BETWEEN
+			FORMAT_DATE('%E4Y%m%d', DATE_SUB(CURRENT_DATE('Asia/Tokyo'), INTERVAL 6 WEEK))
+		AND
+		FORMAT_DATE('%E4Y%m%d', CURRENT_DATE('Asia/Tokyo'))
+	)
+	;
+
+snippet     standard_sql_to_second
+abbr        to second
+options     word
+	EXTRACT(SECOND FROM ${1:timestamp_expression}${2:AT TIME ZONE "Asia/Tokyo"})
+
+snippet     standard_sql_to_minute
+abbr        to minute
+options     word
+	EXTRACT(MINUTE FROM ${1:timestamp_expression}${2:AT TIME ZONE "Asia/Tokyo"})
+
+snippet     standard_sql_to_hour
+abbr        to hour
+options     word
+	EXTRACT(HOUR FROM ${1:timestamp_expression}${2:AT TIME ZONE "Asia/Tokyo"})
+
+snippet     standard_sql_to_day
+abbr        to day
+options     word
+	EXTRACT(DAY FROM ${1:date_expression})
+
+snippet     standard_sql_to_year
+abbr        to day
+options     word
+	EXTRACT(YEAR FROM ${1:date_expression})
+
+snippet     standard_sql_to_month
+abbr        to month
+options     word
+	EXTRACT(MONTH FROM ${1:date_expression})
+
 snippet     standard_sql_truncate_date_week
 abbr        truncate date week
 options     word
@@ -23,6 +81,16 @@ snippet     standard_sql_truncate_date_month
 abbr        truncate date week
 options     word
 	DATE_TRUNC(date, MONTH)
+
+snippet     standard_sql_date_add_week
+abbr        truncate date week
+options     word
+	DATE_ADD(date, INTERVAL ${1} WEEK)
+
+snippet     standard_sql_date_sub_week
+abbr        truncate date week
+options     word
+	DATE_SUB(date, INTERVAL ${1} WEEK)
 
 snippet     standard_sql_truncate_timestamp_week
 abbr        truncate date week
@@ -168,6 +236,11 @@ abbr        from unixtime milli second 1970-01-01 00:00:00 UTC
 options     word
 	TIMESTAMP_MILLIS(${1:int64_milli_seconds})
 
+snippet     standard_sql_from_unixtime_microseconds_to_timestamp
+abbr        from unixtime micro second 1970-01-01 00:00:00 UTC
+options     word
+	TIMESTAMP_MICROS(${1:int64_milli_seconds})
+
 snippet     standard_sql_from_timestamp_to_unixtime_second
 abbr        to unixtime second 1970-01-01 00:00:00 UTC
 options     word
@@ -182,6 +255,11 @@ snippet     standard_sql_from_timestamp_to_date
 abbr        to date
 options     word
 	CAST(${1:timestamp} AS DATE)
+
+snippet     standard_sql_from_timestamp_to_date_timezone
+abbr        to date
+options     word
+	EXTRACT(DATE FROM ${1:timestamp} AT TIME ZONE "${1:Asia/Tokyo}")
 
 snippet     standard_sql_from_timestamp_to_datetime
 abbr        to date
@@ -275,7 +353,7 @@ options     head
 	#   ${3:None}
 	################################################################################
 
-snippet     standard_sql_between_date
+snippet     standard_sql_partition_time_function
 abbr        between timestamp
 options     word
 	CREATE TEMPORARY FUNCTION BetweenAggregationDate(PARTITIONTIME TIMESTAMP) AS (
@@ -291,6 +369,14 @@ abbr        between timestamp
 options     word
 	CREATE TEMPORARY FUNCTION UnixTimeToDate(unix_time FLOAT64) AS (
 		CAST(TIMESTAMP_SECONDS(CAST(unix_time AS INT64)) AS DATE)
+	)
+	;
+
+snippet     standard_sql_func_unix_time_to_date_in_jst
+abbr        between timestamp
+options     word
+	CREATE TEMPORARY FUNCTION castFromUnixTimeToDateJst(unix_time INT64) AS (
+		CAST(FORMAT_TIMESTAMP("%Y-%m-%d", TIMESTAMP_MICROS(unix_time), "Asia/Tokyo") AS DATE)
 	)
 	;
 
@@ -349,3 +435,15 @@ snippet     standard_sql_array_flatten
 abbr        array flatten
 options     word
 	UNNEST(${1:array_name})
+
+# struct
+
+snippet     standard_sql_struct_type_inline
+abbr        array flatten
+options     word
+	STRUCT<${1:var1} ${2:type1}, ${3:var2}, ${4:type2}>
+
+snippet     standard_sql_struct_inline
+abbr        array flatten
+options     word
+	STRUCT<${1:var1} ${2:type1}, ${3:var2}, ${4:type2}>(${5:val1}, ${6:val2})
