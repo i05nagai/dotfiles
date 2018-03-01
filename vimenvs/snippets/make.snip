@@ -67,3 +67,12 @@ snippet     assign_if_not_defined
 abbr        PHONY
 options     word
 	${1} ?= ${2}
+
+snippet     if_not_define
+abbr        if not defined
+options     word
+	ifndef ${1:value}
+	
+	else
+	
+	endif
