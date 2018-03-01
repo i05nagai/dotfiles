@@ -17,3 +17,65 @@ snippet     kubernetes_container_multiple_coomands
 abbr        multiple commands
 options     head
 	["/bin/bash", "-c", "${1:cmd1 args11 && cmd2 args21}"]
+
+snippet     kubernetes_template_config_map
+abbr        multiple commands
+options     head
+	apiVersion: v1
+	kind: ConfigMap
+	metadata:
+		name: ${1:name-config-map}
+	data:
+		${2:key}: ${3:value}
+
+snippet     kubernetes_template_deployment
+abbr        deployment
+options     word
+	apiVersion: extensions/v1beta1
+	kind: Deployment
+	metadata:
+		name: name
+	spec:
+		replicas: 1
+		template:
+		metadata:
+			labels:
+			app: web
+		spec:
+			containers:
+			- name: container-name
+			image: "docker-image"
+			imagePullPolicy: Always
+			args: []
+			ports:
+			- name: port-name
+				containerPort: 2375
+			envFrom:
+			- configMapRef:
+				name: web-environment-variable
+			- secretRef:
+				name: web-environment-variable
+			volumeMounts:
+				- name: web-volume
+				mountPath: /path/to/web
+			volumes:
+			- name: web-volume
+				gcePersistentDisk:
+				pdName: web-volume
+
+snippet     kubernetes_template_service
+abbr        service
+options     word
+	apiVersion: v1
+	kind: Service
+	metadata:
+		name: name
+	spec:
+		type: ClusterIP
+		selector:
+			app: name
+		ports:
+		- name: port-name
+			protocol: TCP
+			port: 2375
+			targetPort: target-port-name
