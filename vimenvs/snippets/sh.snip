@@ -1,6 +1,11 @@
 include shell_aws.snip
 include bash.snip
 
+snippet     echo_no_newline
+abbr        echo without newline
+options     head
+    printf "%s" ${1}
+
 snippet     usage
 abbr        usage
 	function usage {
