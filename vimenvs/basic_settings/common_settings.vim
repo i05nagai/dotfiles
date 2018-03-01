@@ -272,6 +272,10 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundleLazy 'udalov/kotlin-vim', {
         \ 'autoload' : {'filetypes' : 'kotlin'}
         \ }
+  "terraform
+  NeoBundleLazy 'hashivim/vim-terraform', {
+        \ 'autoload' : {'filetypes' : 'tf'}
+        \ }
   "swift
   NeoBundleLazy 'keith/swift.vim', {
         \ 'autoload' : {'filetypes' : 'swift'}
@@ -498,6 +502,13 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/kotlin-vim.vim" )
   source ~/.vim/plugin_settings/kotlin-vim.vim
+endif
+
+"---------------------------------------------------------
+" vim-terraform
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/vim-terraform.vim" )
+  source ~/.vim/plugin_settings/vim-terraform.vim
 endif
 
 if filereadable( $HOME . "/.vim/envs.vim" )
