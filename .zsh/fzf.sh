@@ -14,6 +14,10 @@ fzf_select_history() {
   CURSOR=$#BUFFER
 }
 
+fzf_bindkey() {
+  BUFFER=$(bindkey | fzf --no-sort +m --query "$LBUFFER" --prompt="Bindkey > ")
+}
+
 ################################################################################
 # Git
 ################################################################################
@@ -130,6 +134,19 @@ fzf_docker_ps_all() {
 
   if [ ! -z "$name" ]; then
     LBUFFER+="$name"
+  fi
+  zle reset-prompt
+}
+
+################################################################################
+# gcloud
+################################################################################
+
+fzf_gcloud_get_client_email() {
+  local client_mail="$(egrep -i '"client_email":\s+.+' $(find $HOME/.config/gcloud -type f 2>/dev/null) | egrep -o '[^"]+@[^"]+' | sort | fzf)"
+
+  if [ ! -z "$client_mail" ]; then
+    LBUFFER+="$client_mail"
   fi
   zle reset-prompt
 }
