@@ -79,3 +79,43 @@ options     word
 			protocol: TCP
 			port: 2375
 			targetPort: target-port-name
+
+snippet     kubernetes_probe_liveness_exec
+abbr        service
+options     word
+	livenessProbe:
+		exec:
+			command:
+				 - cat
+				 - /tmp/healthy
+		initialDelaySeconds: 5
+		periodSeconds: 10
+
+snippet     kubernetes_probe_liveness_tcp_socket
+abbr        service
+options     word
+	livenessProbe:
+		tcpSocket:
+			port: ${1:port}
+		initialDelaySeconds: 5
+		periodSeconds: 10
+
+snippet     kubernetes_probe_readiness_exec
+abbr        service
+options     word
+	readinessProbe:
+		exec:
+			command:
+				 - cat
+				 - /tmp/healthy
+		initialDelaySeconds: 5
+		periodSeconds: 10
+
+snippet     kubernetes_probe_readiness_tcp_socket
+abbr        service
+options     word
+	readinessProbe:
+		tcpSocket:
+			port: ${1:port}
+		initialDelaySeconds: 5
+		periodSeconds: 10
