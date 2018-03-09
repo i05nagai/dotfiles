@@ -28,6 +28,17 @@ options     head
 	data:
 		${2:key}: ${3:value}
 
+snippet     kubernetes_template_secret
+abbr        multiple commands
+options     word
+	apiVersion: v1
+	kind: Secret
+	metadata:
+		name: secret
+	type: Opaque
+	data:
+		KEY: VALUE
+
 snippet     kubernetes_template_deployment
 abbr        deployment
 options     word
