@@ -187,3 +187,8 @@ options     word
 	for row_index, row in ${1:df}.iterrows():
 		for col_index, col in enumrate(row):
 			${2}
+
+snippet     pd_pivot_table
+abbr        df preview
+options     word
+	pd.pivot_table(df, values='D', index=['row1', 'row2'], columns=['C'], aggfunc=np.sum)
