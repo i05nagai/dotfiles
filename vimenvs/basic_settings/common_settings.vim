@@ -280,6 +280,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundleLazy 'keith/swift.vim', {
         \ 'autoload' : {'filetypes' : 'swift'}
         \ }
+  "nginx
+  NeoBundle 'chr4/nginx.vim'
   "C#
   "NeoBundleLazy 'nosami/Omnisharp', {
   "\   'autoload': {'filetypes': ['cs']},
@@ -509,6 +511,13 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/vim-terraform.vim" )
   source ~/.vim/plugin_settings/vim-terraform.vim
+endif
+
+"---------------------------------------------------------
+" nginx.vim
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/nginx.vim" )
+  source ~/.vim/plugin_settings/nginx.vim
 endif
 
 if filereadable( $HOME . "/.vim/envs.vim" )
