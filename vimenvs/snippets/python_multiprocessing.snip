@@ -1,4 +1,19 @@
 snippet     multiprocessing_import
 abbr        import
 options     word
-    import multiprocessing
+	import multiprocessing
+
+snippet     multiprocessing_prallel_argument_single
+abbr        import
+options     word
+	p = multiprocessing.Pool(multiprocessing.cpu_count())
+	result = p.map(process, list(range(1000)))
+	p.close()
+
+snippet     multiprocessing_prallel_argument_multi
+abbr        import
+options     word
+	p = multiprocessing.Pool(multiprocessing.cpu_count())
+	# def process(i, s)
+	result = p.starmap(process, enumerate(strs * 1000))
+	p.close()
