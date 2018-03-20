@@ -12,7 +12,6 @@ snippet     terraform_var_get_map
 abbr        a
 options     word
 	"${lookup(var.${1:var_name}, ${2:key})}"
-
 snippet     terraform_var_map
 abbr        a
 options     word
@@ -76,6 +75,11 @@ options     word
 			"${6:key}" = "${7:val}"
 		}
 	}
+
+snippet     terraform_locals_get
+abbr        locals
+options     word
+	${local.${1:local_name}}
 
 snippet     terraform_output
 abbr        variable list
