@@ -66,6 +66,17 @@ options     word
 	EOF
 	}
 
+snippet     terraform_locals
+abbr        locals
+options     word
+	locals {
+		"${1:var_name}" = "${2:value}"
+		"${3:var_name}" = ["${4:value}"]
+		"${5:var_name}" = {
+			"${6:key}" = "${7:val}"
+		}
+	}
+
 snippet     terraform_output
 abbr        variable list
 options     word
@@ -96,4 +107,12 @@ options     word
 		lables {
 			key = value
 		}
+	}
+
+snippet     terraform_module_use
+abbr        variable list
+options     word
+	module "${1:resource_name}" {
+		source = "${2:path_to_module}"
+	
 	}
