@@ -1,0 +1,10 @@
+snippet     joblib_import
+abbr        import
+options     word
+	from joblib import Parallel
+	from joblib import delayed
+
+snippet     joblib_parallel
+abbr        import
+options     word
+	Parallel(n_jobs=-1)([delayed(${1:function})(i) for i in range(10000)])
