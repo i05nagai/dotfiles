@@ -54,3 +54,9 @@ snippet     bash_variable_capitalize_all
 abbr        variable
 options     word
 	${${1:parameter}^^}
+
+snippet     bash_if_sourced
+abbr        if script is sourced
+options     word
+	if [[ $_ != \$0 ]]; then
+	fi
