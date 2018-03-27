@@ -206,10 +206,14 @@ if [ -z $env_type ]; then
   goto_error
 fi
 
-#the files must be installed
+# the files must be installed
 must_install
 atom_install
-#the environment files.
+# the environment files.
 env_install $env_type
 vim_env_install $env_type
 add_install $@
+# git and vim
+git submodule init
+git submodule update
+vim -N -u NONE -i NONE -V1 -e -s --cmd "source .vimrc" --cmd NeoBundleInstall! --cmd qall!
