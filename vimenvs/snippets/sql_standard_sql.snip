@@ -147,6 +147,11 @@ abbr        format timestamp
 options     word
     FORMAT_TIMESTAMP('%Y/%m', ${1:timestamp})
 
+snippet     standard_sql_timestamp_format_year_month_day_hour
+abbr        format timestamp
+options     word
+    FORMAT_TIMESTAMP('%Y-%m-%d %H', ${1:timestamp})
+
 snippet     standard_sql_timestamp_format_year
 abbr        format timestamp
 options     word
