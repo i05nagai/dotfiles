@@ -1,0 +1,24 @@
+snippet     terraform_gcp_disk
+abbr        variable list
+options     word
+	resource "google_compute_disk" "${1:resource_name}" {
+		name  = "${2:disk-name}"
+		type  = "pd-standard"
+		zone  = "asia-northeast1-a"
+		# GB
+		size  = "${5:10}"
+		labels {
+			${3:key} = "${4:value}"
+		}
+	}
+
+snippet     terraform_gcp_storage
+abbr        variable list
+options     word
+	resource "google_storage_bucket" "${1:resource_name}" {
+		name     = "${2:image-store-bucket}"
+		location = "US"
+		lables {
+			key = value
+		}
+	}
