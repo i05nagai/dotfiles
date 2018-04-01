@@ -97,6 +97,9 @@ options     head
 	  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@" >&2
 	}
 
+#
+# for
+#
 snippet     for_array
 abbr        for array
 options     head
@@ -118,6 +121,14 @@ options     word
     for filename in $(ls ${1:path} | grep ${2:.txt}$ ); do
         ${0}
     done
+
+snippet     for_read_lines
+abbr        for file
+options     word
+	cat ${1:path_or_var} | while read line
+	do
+		# do something with $line here done
+	done
 
 snippet     get_filelist
 abbr        get
@@ -144,7 +155,9 @@ abbr        array length
 options     word
     ${#array[@]} 
 
+#j
 # if
+#
 snippet     if_elif
 abbr        if then elif then else
 options     word
@@ -236,7 +249,17 @@ options     word
 	  ${0}
 	fi
 
+snippet     if_empty_line
+abbr        if commands exists
+options     word
+	if echo ${line} | grep --quiet '^\s*$'
+	then
+		${0}
+	fi
 
+#
+# return
+#
 snippet     return_true
 abbr        return true
 options     word
