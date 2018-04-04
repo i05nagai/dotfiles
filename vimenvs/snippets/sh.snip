@@ -348,3 +348,10 @@ snippet     constant
 abbr        exec args
 options     word
 	readonly ${1:NAME}=${2:VALUE}
+
+# set
+snippet     set_error
+abbr        exec args
+options     word
+	set -o errexit # set -e
+	set -o pipefail
