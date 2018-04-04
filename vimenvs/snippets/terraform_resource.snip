@@ -1,0 +1,17 @@
+snippet     terraform_resource_lifecycle
+abbr        resource lifecycle
+options     word
+	lifecycle {
+		create_before_destroy = true|false
+		prevent_destroy = true|false
+		ignore_changes = [
+			ATTRIBUTE NAME,
+		]
+	}
+
+snippet     terraform_resource_depends_on
+abbr        resource lifecycle
+options     word
+	depends_on = [
+		RESOURDCE_ADDR
+	]
