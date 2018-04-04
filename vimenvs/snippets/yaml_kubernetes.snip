@@ -18,6 +18,27 @@ abbr        multiple commands
 options     head
 	["/bin/bash", "-c", "${1:cmd1 args11 && cmd2 args21}"]
 
+snippet     kubernetes_container_resource
+abbr        multiple commands
+options     head
+	resources:
+		limits:
+			cpu: 500m
+			memory: 500Mi
+		requests:
+			cpu: 300m
+			memory: 200Mi
+
+snippet     kubernetes_template_config_map
+abbr        multiple commands
+options     head
+	apiVersion: v1
+	kind: ConfigMap
+	metadata:
+		name: ${1:name-config-map}
+	data:
+		${2:key}: ${3:value}
+
 snippet     kubernetes_template_config_map
 abbr        multiple commands
 options     head
