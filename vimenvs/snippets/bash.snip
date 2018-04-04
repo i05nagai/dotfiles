@@ -5,6 +5,12 @@ options     word
       ${2}
     fi
 
+snippet     bash_if_comment
+abbr        if string
+options     word
+	# ignore comments
+	[[ "$line" =~ ^#.*$ ]] && continue
+
 snippet     bash_variable_with_default_value_without_substitution
 abbr        calculate
 options     word
