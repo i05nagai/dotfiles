@@ -1,0 +1,27 @@
+snippet     terraform_aws_s3
+abbr        aws s3
+options     word
+    resource "aws_s3_bucket" "b" {
+      bucket = "my-tf-test-bucket"
+      acl    = "private"
+
+      tags {
+        Name        = "My bucket"
+        Environment = "Dev"
+      }
+    }
+
+snippet     terraform_aws_route53_record_soa
+abbr        aws route53
+options     word
+    resource "aws_route53_record" "record" {
+      zone_id = "${aws_route53_zone.zone.zone_id}"
+      name    = "example.com."
+      type    = "SOA"
+      ttl     = "900"
+
+      records = [
+        "${1} ${2} 1 7200 900 1209600 86400"
+      ]
+    }
+
