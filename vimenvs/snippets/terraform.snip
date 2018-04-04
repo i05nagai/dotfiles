@@ -1,3 +1,10 @@
+include terraform_aws.snip
+include terraform_gcp.snip
+include terraform_provisioner.snip
+include terraform_resource.snip
+#
+# variables
+#
 snippet     terraform_var_workspacek
 abbr        a
 options     word
@@ -65,6 +72,9 @@ options     word
 	EOF
 	}
 
+#
+# locals
+#
 snippet     terraform_locals
 abbr        locals
 options     word
@@ -81,6 +91,9 @@ abbr        locals
 options     word
 	${local.${1:local_name}}
 
+#
+# output
+#
 snippet     terraform_output
 abbr        variable list
 options     word
@@ -88,31 +101,9 @@ options     word
 		value = "${1:value}"
 	}
 
-snippet     terraform_gcp_disk
-abbr        variable list
-options     word
-	resource "google_compute_disk" "${1:resource_name}" {
-		name  = "${2:disk-name}"
-		type  = "pd-standard"
-		zone  = "asia-northeast1-a"
-		# GB
-		size  = "${5:10}"
-		labels {
-			${3:key} = "${4:value}"
-		}
-	}
-
-snippet     terraform_gcp_storage
-abbr        variable list
-options     word
-	resource "google_storage_bucket" "${1:resource_name}" {
-		name     = "${2:image-store-bucket}"
-		location = "US"
-		lables {
-			key = value
-		}
-	}
-
+#
+# module
+#
 snippet     terraform_module_use
 abbr        variable list
 options     word
@@ -120,3 +111,104 @@ options     word
 		source = "${2:path_to_module}"
 	
 	}
+
+#
+# if
+#
+snippet     terraform_if_add_suffix
+abbr        variable list
+options     word
+	name_prefix = "${var.name_prefix}${var.name_prefix == "" ? "" : "-"}"
+
+snippet     terraform_if_data_template
+abbr        variable list
+options     word
+	data "template_file" "data1" {
+		count = "${var.flag}"
+		template = <<-EOF
+			EOF
+	}
+	data "template_file" "data2" {
+		count = "${1 - var.flag}"
+		template = <<-EOF
+			EOF
+	}
+	# if var.use_shell_script_user_data = true => user_data_cloud = empty
+	# if var.use_shell_script_user_data = false => user_data_shell = etpty
+	resource "${1:resource_name}" "${2:resource_id}" {
+		data = "${element(concat(data.template_file.data1.*.rendered, data.template_file.data2.*.rendered), 0)}"
+	}
+
+#
+# template
+#
+snippet     terraform_template
+abbr        variable list
+options     word
+	data "template_file" "resource_name" {
+		# refer ${data.template_file.d.rendred}
+		template = "$${variable}"
+		vars {
+			variable = "value"
+		}
+	}
+
+snippet     terraform_template_from_file
+abbr        variable list
+options     word
+	data "template_file" "resource_name" {
+		template = "${file("${path.module}/init.tpl")}"
+		# variables evaluated when file is loaded
+		vars {
+			variable = "value"
+		}
+	}
+
+snippet     terraform_template_count
+abbr        variable list
+options     word
+	data "template_file" "resource_name" {
+		# refer as ${data.template_file.web_init.*.rendered[count.index]}
+		count = 1
+		template = "${file("${path.module}/init.tpl")}"
+		# variables evaluated when file is loaded
+		vars {
+			variable = "value"
+		}
+	}
+
+#
+# map
+#
+snippet     terraform_map_merge
+abbr        variable list
+options     word
+	merge(map1, map2)
+
+snippet     terraform_zip
+abbr        variable list
+options     word
+	zipmap(list_of_key, list_of_values)
+
+snippet     terraform_map_values
+abbr        variable list
+options     word
+	values(map)
+
+snippet     terraform_map_keys
+abbr        variable list
+options     word
+	keys(map)
+
+snippet     terraform_map_make
+abbr        variable list
+options     word
+	map(key, value, key, value)
+
+#
+# list
+#
+snippet     terraform_list_concat
+abbr        concat to single list
+options     word
+	concat(list1, list2)
