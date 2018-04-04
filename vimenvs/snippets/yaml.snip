@@ -2,3 +2,11 @@ include yaml_ansible.snip
 include yaml_embulk.snip
 include yaml_docker_compose.snip
 include yaml_kubernetes.snip
+
+snippet     yaml_anchor
+abbr        anchor
+options     word
+    hoge2: &anchor
+        fuga1: 
+        fuga2: 
+    hoge2: *anchor
