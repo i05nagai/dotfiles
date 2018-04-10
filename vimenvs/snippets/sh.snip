@@ -355,3 +355,26 @@ abbr        exec args
 options     word
 	set -o errexit # set -e
 	set -o pipefail
+
+#
+# exit
+#
+snippet     exit_general_error
+abbr        exec args
+options     word
+	exit 1
+
+snippet     exit_command_result
+abbr        exec args
+options     word
+	exit $?
+
+snippet     exit_command_cannot_executed
+abbr        exec args
+options     word
+	exit 126
+
+snippet     exit_command_not_found
+abbr        exec args
+options     word
+	exit 127
