@@ -18,6 +18,13 @@ abbr        multiple commands
 options     head
 	["/bin/bash", "-c", "${1:cmd1 args11 && cmd2 args21}"]
 
+snippet     kubernetes_container_multiple_coomands_sh
+abbr        multiple commands
+options     head
+	- /bin/sh
+	- -c
+	- command 2>&1 >> /var/log/hoget.log
+
 snippet     kubernetes_container_resource
 abbr        multiple commands
 options     head
