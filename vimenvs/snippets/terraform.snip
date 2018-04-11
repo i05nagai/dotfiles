@@ -2,6 +2,15 @@ include terraform_aws.snip
 include terraform_gcp.snip
 include terraform_provisioner.snip
 include terraform_resource.snip
+
+snippet     terraform_merge_map
+abbr        a
+options     word
+	"${merge(${local.common_map["label"]},
+		map(
+		"disk", "owner"
+		)
+	)}"
 #
 # variables
 #
@@ -19,6 +28,12 @@ snippet     terraform_var_get_map
 abbr        a
 options     word
 	"${lookup(var.${1:var_name}, ${2:key})}"
+
+snippet     terraform_var_get_by_environment
+abbr        variable
+options     word
+	"${lookup(var.${1:varname}, "${terraform.workspace}.${2:key}", var.$1["default.$2"])}"
+
 snippet     terraform_var_map
 abbr        a
 options     word
@@ -52,6 +67,9 @@ options     word
 		]
 	}
 
+#
+# string
+#
 snippet     terraform_var_string
 abbr        variable list
 options     word
@@ -71,6 +89,11 @@ options     word
 	${2:text}
 	EOF
 	}
+
+snippet     terraform_var_string_concat
+abbr        variable list
+options     word
+	"${format("%s-%s", ${1:var.a["1"]}, ${2:var.b})}"
 
 #
 # locals
