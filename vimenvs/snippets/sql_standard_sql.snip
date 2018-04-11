@@ -463,3 +463,14 @@ snippet     standard_sql_struct_inline
 abbr        array flatten
 options     word
 	STRUCT<${1:var1} ${2:type1}, ${3:var2}, ${4:type2}>(${5:val1}, ${6:val2})
+
+# 
+snippet     standard_sql_date_add_weekday_full
+abbr        array
+options     word
+	FORMAT_DATE('%Y-%m-%d (%A)', ${1:date})
+
+snippet     standard_sql_date_add_weekday_abbreviated
+abbr        array
+options     word
+	FORMAT_DATE('%Y-%m-%d (%a)', ${1:date})
