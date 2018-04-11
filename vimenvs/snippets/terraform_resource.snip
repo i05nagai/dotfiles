@@ -5,7 +5,16 @@ options     word
 		create_before_destroy = true|false
 		prevent_destroy = true|false
 		ignore_changes = [
-			ATTRIBUTE NAME,
+			"ATTRIBUTE_NAME",
+		]
+	}
+
+snippet     terraform_resource_lifecycle_ignore_changes
+abbr        resource lifecycle
+options     word
+	lifecycle {
+		ignore_changes = [
+			"ATTRIBUTE_NAME",
 		]
 	}
 
@@ -13,5 +22,5 @@ snippet     terraform_resource_depends_on
 abbr        resource lifecycle
 options     word
 	depends_on = [
-		RESOURDCE_ADDR
+		"RESOURDCE_ADDR"
 	]
