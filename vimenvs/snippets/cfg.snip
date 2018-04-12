@@ -7,3 +7,11 @@ options     word
 	python_functions=test_*
 	# line break before binary operator
 	pep8ignore = W503
+	env =
+		${1:key}=${2:value}
+
+snippet     python_pytest_env
+abbr        pytest template
+options     word
+	env =
+		${1:key}=${2:value}
