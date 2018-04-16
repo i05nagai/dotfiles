@@ -1,0 +1,21 @@
+snippet     terrafomrm_backend_gcs
+abbr        backend gcs
+options     word
+    terraform {
+      backend "gcs" {
+        bucket = "${1:bucket}"
+        prefix = "${2:prefix}"
+      }
+    }
+
+snippet     terrafomrm_backend_gcs_reference
+abbr        backend gcs
+options     word
+    data "terraform_remote_state" "${1:data_name}" {
+      backend = "gcs"
+
+      config {
+        bucket = "${2:bucket}"
+        prefix = "${3:prefix}"
+      }
+    }
