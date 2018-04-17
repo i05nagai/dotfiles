@@ -188,6 +188,22 @@ function add_install() {
   fi
 }
 
+################################################################################
+# 
+# Arguments:
+#   env_type
+# Returns:
+#   None
+################################################################################
+function link_ide() {
+  local env_type=$1
+  if [ "${env_type}" = "osx" ]
+  then
+    # intellij
+    ln_file_from_to intellij_idea/templates Library/Preferences/IdeaIC2017.3/templates
+  fi
+}
+
 # Main
 while getopts ":cgow" opts
 do
@@ -213,6 +229,7 @@ atom_install
 env_install $env_type
 vim_env_install $env_type
 add_install $@
+link_ide $env_type
 # git and vim
 git submodule init
 git submodule update
