@@ -1,0 +1,29 @@
+snippet     main
+abbr        main
+options     word
+	package main
+	
+	import (
+		"fmt"
+	)
+	
+	func main() {
+		${1}
+	}
+
+#
+# fmt
+#
+snippet     main
+abbr        main
+options     word
+	fmt.Printf(${1}")
+
+#
+# if
+#
+snippet     if_ok
+abbr        main
+options     word
+	if ${1:ret}, ok := ${2:data}; ok {
+	}
