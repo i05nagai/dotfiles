@@ -50,6 +50,7 @@ function ln_file() {
 #v: verbose. print name of each file before linking.
   ln -fsv `pwd`/$1 $HOME/$1
 }
+
 function ln_file_from_to() {
 #f: remove existing destination files.
 #s: make symbolic links instead of hard links.
@@ -199,8 +200,13 @@ function link_ide() {
   local env_type=$1
   if [ "${env_type}" = "osx" ]
   then
-    # intellij
-    ln_file_from_to intellij_idea/templates Library/Preferences/IdeaIC2017.3/templates
+    if [ ! -d $HOME/Library/Preferences/IdeaIC2017.3/templates ]; then
+      mkdir -p ${HOME}/Library/Preferences/IdeaIC2017.3/templates
+    fi
+    for file in intellij_idea/templates/*; do
+      filename=`basename $file`
+      ln_file_from_to "intellij_idea/templates/$filename" "Library/Preferences/IdeaIC2017.3/templates/$filename" 
+    done
   fi
 }
 
