@@ -1,0 +1,63 @@
+snippet     fluentd_input_tail
+abbr        tail
+options     word
+	<source>
+		type tail
+		format json
+		time_key time
+		path ${1:/var/log/containers/*.log}
+		pos_file ${1}.pos
+		time_format %Y-%m-%dT%H:%M:%S.%N%Z
+		tag ${2:reform.*}
+		read_from_head true
+	</source>
+
+#
+# systemd
+#
+snippet     fluentd_input_systemd_docker
+abbr        docker
+options     word
+	<source>
+		type systemd
+		filters [{ "_SYSTEMD_UNIT": "docker.service" }]
+		read_from_head true
+		tag docker
+		<storage>
+			@type local
+			persistent false
+			path /var/log/journald-docker.pos
+		</storage>
+	</source>
+
+snippet     fluentd_input_systemd_kubelet
+abbr        docker
+options     word
+	<source>
+		type systemd
+		filters [{ "_SYSTEMD_UNIT": "kubelet.service" }]
+		pos_file /var/log/journald-kubelet.pos
+		read_from_head true
+		tag kubelet
+		<storage>
+			@type local
+			persistent false
+			path /var/log/journald-kubelet.pos
+		</storage>
+	</source>
+
+snippet     fluentd_input_systemd_kube_proxy
+abbr        docker
+options     word
+	<source>
+		type systemd
+		filters [{ "_SYSTEMD_UNIT": "kube-proxy.service" }]
+		pos_file /var/log/journald-kube-proxy.pos
+		read_from_head true
+		tag kube-proxy
+		<storage>
+			@type local
+			persistent false
+			path /var/log/journald-kube-proxy.pos
+		</storage>
+	</source>
