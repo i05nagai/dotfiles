@@ -13,7 +13,7 @@
 	pom = push origin master
 	po = push origin
 	s = status
-	initial-commit = commit --allow-empty -m 'Initial commit'
+	initial-commit = commit --allow-empty -m 'Root commit'
 	alias = !git config --get-regexp alias
 	make-patch = diff --no-prefix
 	rebase-fixup = rebase --autosquash -i
