@@ -1,0 +1,38 @@
+#
+# UTC
+#
+snippet     date_utc_YYYY-MM-DDTHH:MM:SSZ
+abbr        date
+options     word
+    date -u +'%Y-%m-%dT%H:%M:%S%z'
+
+snippet     date_utc_YYYYMMDDTHHMMSSZ
+abbr        date
+options     word
+    date -u +'%Y%m%dT%H%M%S%z'
+
+snippet     date_utc_YYYYMMDDTHHMMSS
+abbr        date
+options     word
+    date -u +'%Y%m%dT%H%M%S'
+
+#
+# JST
+#
+snippet     date_jst_YYYYMMDDTHHMMSSZ
+abbr        date
+options     word
+    TZ='Asia/Tokyo' date +'%Y%m%dT%H%M%S%z'
+
+snippet     date_jst_YYYYMMDDTHHMMSS
+abbr        date
+options     word
+    TZ='Asia/Tokyo' date +'%Y%m%dT%H%M%S'
+
+#
+# unix epoch time
+#
+snippet     date_unix_epoch
+abbr        date
+options     word
+    date +'%s'
