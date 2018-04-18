@@ -1,3 +1,6 @@
+include python_pandas_dataframe.snip
+include python_pandas_series.snip
+
 snippet     pd_import
 abbr        abbr
 options     word
@@ -116,22 +119,6 @@ snippet     pd_df_plot_histogram_horizontal
 abbr        df plot bar histogram cumulative
 options     word
 	${1:df}.plot.hist(orientation='horizontal')
-
-snippet     pd_df_filter_row_like
-abbr        df plot bar histogram cumulative
-options     word
-	${1:df}.filter(like='${2}', axis=0)
-
-snippet     pd_df_filter_row_regexp
-abbr        df plot bar histogram cumulative
-options     word
-	${1:df}.filter(regexp='${2}', axis=0)
-
-snippet     pd_df_filter_row_condition
-abbr        df plot bar histogram cumulative
-options     word
-	${1:df}.loc[df['${2:column_name}'] ${3:== value}]
-
 snippet     pd_df_type_datetime
 abbr        df type datetime
 options     word
@@ -192,3 +179,4 @@ snippet     pd_pivot_table
 abbr        df preview
 options     word
 	pd.pivot_table(df, values='D', index=['row1', 'row2'], columns=['C'], aggfunc=np.sum)
+
