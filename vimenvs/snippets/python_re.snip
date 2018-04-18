@@ -1,0 +1,5 @@
+snippet     re_match
+abbr        match
+options     word
+	regexp_obj = re.compile(${1:regex})
+	regexp_obj.match(${2:string})
