@@ -16,9 +16,15 @@ LN_GROUP=(
 "_vimrc"
 "_gvimrc"
 ".tmux.conf"
-".zsh"
-".zsh"
 ".zshrc"
+)
+
+LINK_FROM=(
+"shell"
+)
+
+LINK_TO=(
+".shell"
 )
 
 # Functions
@@ -41,7 +47,7 @@ function cp_file() {
 #a: archive files.
 #f: force copy by removing the destination file if needed
 #v: verbose - print informative messages.
-  \cp -afv `pwd`/$1 $HOME/$1
+  cp -afv `pwd`/$1 $HOME/$1
 }
 
 function ln_file() {
@@ -82,6 +88,9 @@ function must_install() {
   echo "MUST INSTALL"
   for file in ${CP_GROUP[@]}; do cp_file $file; done
   for file in ${LN_GROUP[@]}; do ln_file $file; done
+  for ((i=0;i<${#LINK_FROM[@]};++i)); do
+    ln_file_from_to ${LINK_FROM[i]} ${LINK_TO[i]}
+  done
 }
 
 #install fiels for settings which dpeend on environment.

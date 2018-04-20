@@ -15,3 +15,6 @@ vimenvs/bundle/*
 # for osx
 .DS_Store
 
+# for shell log
+/shell/log/*
+!/shell/log/.gitkeep

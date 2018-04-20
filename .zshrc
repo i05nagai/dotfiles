@@ -108,7 +108,7 @@ setopt pushd_to_home
 
 # History
 # Command history configuration
-HISTFILE=~/.zsh_history
+HISTFILE=~/.shell/log/zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 # ignore duplication command history list
@@ -122,12 +122,14 @@ export EDITOR="vim"
 # history file for less
 export LESSHISTFILE=-
 
-### Environments senttings
+#
+# Environments senttings
+#
 source ~/.zshrc.env
-source ~/.zsh/zshrc.bindkey
-source ~/.zsh/zshrc.alias
-source ~/.zsh/zshrc.prompt
-source ~/.zsh/zshrc.hook
+source ~/.shell/zsh/zshrc.bindkey
+source ~/.shell/zsh/zshrc.alias
+source ~/.shell/zsh/zshrc.prompt
+source ~/.shell/zsh/zshrc.hook
 
 if [ ! -d $HOME/.vimbackup ]; then
   mkdir $HOME/.vimbackup

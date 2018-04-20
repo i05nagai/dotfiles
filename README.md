@@ -1,7 +1,17 @@
 dotfiles
 ========
 
-### 1. description   
+### 1. Description
+
+* `shell`      -> `~/.shell`
+* `.zshrc`     -> `~/.zshrc`
+* `.vimrc`     -> `~/.vimrc`
+* `.vimrc`     -> `~/.vimrc`
+* `.tmux.conf` -> `.tmux.conf`
+* `_vimrc`     ->  `_vimrc`
+* `_gvimrc`    -> `_gvimrc`
+* `.gitconfig` -> `.gitconfig`
+* `.ctags`     -> `.ctags`
 
 ### 2. how to use
 just execute following command.
