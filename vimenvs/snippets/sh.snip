@@ -1,4 +1,6 @@
 include shell_aws.snip
+include shell_git.snip
+include shell_date.snip
 include bash.snip
 
 snippet     echo_no_newline
@@ -107,6 +109,13 @@ options     head
     do
         ${3}
     done
+
+snippet     for_array_index
+abbr        for array
+options     head
+	for ((i=0;i<${#${1:array_name}[@]};++i)); do
+	${$1[i]}
+	done
 
 snippet     for_filelist
 abbr        for file
