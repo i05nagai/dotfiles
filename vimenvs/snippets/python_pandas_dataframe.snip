@@ -39,12 +39,30 @@ abbr        df plot bar histogram cumulative
 options     word
 	${1:df}.loc[df['${2:column_name}'] ${3:== value}]
 
-
 snippet     pd_df_filter_row_by_column_with_regexp
 abbr        df preview
 options     word
 	${1:df}[$1[${2:key}].fillna(value='False').str.contains(${3:regex})]
 
+snippet     pd_df_filter_row_by_column_in_list
+abbr        df preview
+options     word
+	${1:df}[$1[${2:key}].fillna(value='False').str.contains(${3:regex})]
+	symbols = [
+		'あいうえお',
+	]
+	symbols = [c for c in ''.join(symbols)]
+	df[df[key].fillna(value='False').isin(symbols)]
+
 #
+# show
 #
-#
+snippet     pd_df_show
+abbr        abbr
+options     word
+	print(${1:df}.head(${2:10}))
+
+snippet     pd_df_show_columns
+abbr        abbr
+options     word
+	print(${1:df}.columns)
