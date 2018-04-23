@@ -49,3 +49,19 @@ then
   zle -N fzf_gcloud_get_client_email
   bindkey '^Xggce' fzf_gcloud_get_client_email
 fi
+
+#コマンドラインが空ならENTERでls
+#ls->Enterとすると挙動がおかしい
+alls() {
+  if [ -n "$BUFFER" ]; then
+    zle accept-line
+    return 0;
+  fi
+  echo
+    ls
+  echo
+  zle reset-prompt
+  return 0;
+}
+zle -N alls
+bindkey "\C-m" alls

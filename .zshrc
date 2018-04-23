@@ -1,10 +1,12 @@
+# comment out if you want to profile zsh
+# zmodload zsh/zprof && zprof
+
 export LANG=ja_JP.UTF-8
 export LANG_ALL=ja_JP.UTF-8
 export TERM=xterm-256color
 
-#autoload
-autoload -Uz compinit
-compinit
+# autoload
+# autoload -Uz compinit
 autoload -Uz colors
 colors
 autoload history-search-end
@@ -133,4 +135,9 @@ source ~/.shell/zsh/zshrc.hook
 
 if [ ! -d $HOME/.vimbackup ]; then
   mkdir $HOME/.vimbackup
+fi
+
+# profiling. see line 1
+if (which zprof > /dev/null 2>&1) ;then
+  zprof
 fi
