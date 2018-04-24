@@ -1,29 +1,22 @@
 ################################################################################
 # Shell builtin
+# prefix: fzf_
 ################################################################################
 # fd - cd to selected directory
-fzf_cd() {
+fzf_run_cd() {
   local dir
   dir=$(find ${1:-.} -path '*/\.*' -prune \
                   -o -type d -print 2> /dev/null | fzf +m) &&
   cd "$dir"
 }
 
-fzf_select_history() {
-  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
-  CURSOR=$#BUFFER
-}
-
-fzf_bindkey() {
-  BUFFER=$(bindkey | fzf --no-sort +m --query "$LBUFFER" --prompt="Bindkey > ")
-}
-
 ################################################################################
 # Git
+# prefix: fzf_git_
 ################################################################################
 
 # fbr - checkout git branch
-fzf_git_checkout_branch() {
+fzf_git_run_checkout_branch() {
   local branches branch
   branches=$(git branch -vv) &&
   branch=$(echo "$branches" | fzf +m) &&
@@ -31,7 +24,7 @@ fzf_git_checkout_branch() {
 }
 
 # fbr - checkout git branch (including remote branches)
-fzf_git_checkout_branch_with_remote() {
+fzf_git_run_checkout_branch_with_remote() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
   branch=$(echo "$branches" |
@@ -40,7 +33,7 @@ fzf_git_checkout_branch_with_remote() {
 }
 
 # fco - checkout git branch/tag
-fzf_git_checkout_branch_tag() {
+fzf_git_run_checkout_branch_tag() {
   local tags branches target
   tags=$(
     git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
@@ -55,7 +48,7 @@ fzf_git_checkout_branch_tag() {
 }
 
 # fcoc - checkout git commit
-fzf_git_checkout_commit() {
+fzf_git_run_checkout_commit() {
   local commits commit
   commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
   commit=$(echo "$commits" | fzf --tac +s +m -e) &&
@@ -63,7 +56,7 @@ fzf_git_checkout_commit() {
 }
 
 # fshow - git commit browser
-fzf_git_commit_brwoser() {
+fzf_git_run_commit_brwoser() {
   git log --graph --color=always \
       --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
   fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
@@ -76,7 +69,7 @@ FZF-EOF"
 
 # fcs - get git commit sha
 # example usage: git rebase -i `fcs`
-fzf_git_get_git_commit_sha() {
+fzf_git_print_get_git_commit_sha() {
   local commits commit
   commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
   commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
@@ -88,7 +81,7 @@ fzf_git_get_git_commit_sha() {
 # enter shows you the contents of the stash
 # ctrl-d shows a diff of the stash against your current HEAD
 # ctrl-b checks the stash out as a branch, for easier merging
-fzf_git_show_stashes() {
+fzf_git_run_show_stashes() {
   local out q k sha
   while out=$(
     git stash list --pretty="%C(yellow)%h %>(14)%Cgreen%cr %C(blue)%gs" |
@@ -114,39 +107,44 @@ fzf_git_show_stashes() {
 
 ################################################################################
 # SSH
+# prefix: fzf_ssh_
 ################################################################################
 
-fzf_ssh_complete_host() {
+fzf_ssh_print_complete_host() {
   local host="$(egrep -i '^Host\s+.+' $HOME/.ssh/config $(find $HOME/.ssh/conf -type f 2>/dev/null) | egrep -v '[*?]' | awk '{print $2}' | sort | fzf)"
 
-  if [ ! -z "$host" ]; then
-    LBUFFER+="$host"
-  fi
-  zle reset-prompt
+  echo -n "${host}"
+}
+
+fzf_ssh_run_ssh() {
+  local host="$(egrep -i '^Host\s+.+' $HOME/.ssh/config $(find $HOME/.ssh/conf -type f 2>/dev/null) | egrep -v '[*?]' | awk '{print $2}' | sort | fzf)"
+
+  ssh "$host"
 }
 
 ################################################################################
 # Docker
 ################################################################################
 
-fzf_docker_ps_all() {
+fzf_docker_print_ps_all() {
   local name="$(docker ps -a --format "{{.Names}}"| awk '{print}' | sort | fzf)"
 
-  if [ ! -z "$name" ]; then
-    LBUFFER+="$name"
-  fi
-  zle reset-prompt
+  echo -n "${name}"
 }
+
+fzf_docker_print_image_repository_tag() {
+  local name="$(docker image ls --format "{{.Repository}}:{{.Tag}}"| awk '{print}' | sort | fzf)"
+
+  echo -n "${name}"
+}
+
 
 ################################################################################
 # gcloud
 ################################################################################
 
-fzf_gcloud_get_client_email() {
+fzf_gcloud_print_get_client_email() {
   local client_mail="$(egrep -i '"client_email":\s+.+' $(find $HOME/.config/gcloud -type f 2>/dev/null) | egrep -o '[^"]+@[^"]+' | sort | fzf)"
 
-  if [ ! -z "$client_mail" ]; then
-    LBUFFER+="$client_mail"
-  fi
-  zle reset-prompt
+  echo -n "${client_mail}"
 }

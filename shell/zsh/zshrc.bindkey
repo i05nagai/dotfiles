@@ -33,21 +33,14 @@ bindkey "" history-beginning-search-forward-end
 if which fzf >/dev/null 2>&1
 then
   # 
-  zle -N fzf_bindkey
-  bindkey '^X' fzf_bindkey
   zle -N fzf_select_history
   bindkey '^r' fzf_select_history
-  zle -N fzf_ssh_complete_host
-  bindkey '^Xsh' fzf_ssh_complete_host
-  # git
-  zle -N fzf_git_checkout_branch_with_remote
-  bindkey '^Xgcbr' fzf_git_checkout_branch_with_remote
-  # docker
-  zle -N fzf_docker_ps_all
-  bindkey '^Xdpa' fzf_docker_ps_all
-  # gcloud
-  zle -N fzf_gcloud_get_client_email
-  bindkey '^Xggce' fzf_gcloud_get_client_email
+  # print
+  zle -N fzf_p
+  bindkey '^Xp' fzf_p
+  # run
+  zle -N fzf_r
+  bindkey '^Xr' fzf_r
 fi
 
 #コマンドラインが空ならENTERでls
