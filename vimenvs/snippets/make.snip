@@ -3,6 +3,9 @@ abbr        PHONY
 options     word
 	.PHONY: ${1:build clean}
 
+#
+# functions
+#
 snippet     add_prefix
 abbr        add suffix
 options     word
@@ -43,6 +46,14 @@ abbr        basename
 options     word
 	$(basename ${1})
 
+snippet     foreach
+abbr        foreach
+options     word
+	$(foreach ${1:var_name},${2:list},${3:returned_text})
+
+#
+# path
+#
 snippet     path_to_call
 abbr        path to makefile
 options     word
@@ -68,6 +79,9 @@ abbr        PHONY
 options     word
 	${1} ?= ${2}
 
+#
+# if
+#
 snippet     if_not_define
 abbr        if not defined
 options     word
@@ -81,6 +95,24 @@ snippet     if_define
 abbr        if defined
 options     word
 	ifdef ${1:value}
+	
+	else
+	
+	endif
+
+snippet     if_equal
+abbr        if equal
+options     word
+	ifeq (${1:arg1}, ${2:arg2})
+	
+	else
+	
+	endif
+
+snippet     if_not_equal
+abbr        if not equal
+options     word
+	ifneq (${1:arg1}, ${2:arg2})
 	
 	else
 	
