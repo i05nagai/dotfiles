@@ -76,6 +76,14 @@ fzf_git_print_get_git_commit_sha() {
   echo -n $(echo "$commit" | sed "s/ .*//")
 }
 
+# git commit --fixup=
+fzf_git_run_commit_fixup() {
+  local commits commit sha1
+  commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
+  commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
+  git commit --fixup=$(echo "$commit" | sed "s/ .*//")
+}
+
 # sier way to deal with stashes
 # type fstash to get a list of your stashes
 # enter shows you the contents of the stash
