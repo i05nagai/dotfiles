@@ -295,6 +295,20 @@ options     word
 		${0}
 	fi
 
+snippet     if_equal_integer
+abbr        if commands exists
+options     word
+	if [ ${1} -eq ${2}]; then
+		${0}
+	fi
+
+snippet     if_not_equal_integer
+abbr        if commands exists
+options     word
+	if [ ${1} -ne ${2}]; then
+		${0}
+	fi
+
 #
 # return
 #
@@ -387,7 +401,9 @@ abbr        exec args
 options     word
 	readonly ${1:NAME}=${2:VALUE}
 
+#
 # set
+#
 snippet     set_error
 abbr        exec args
 options     word
