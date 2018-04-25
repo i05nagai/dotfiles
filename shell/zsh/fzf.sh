@@ -16,7 +16,7 @@ fzf_r() {
 ################################################################################
 # Shell builtin
 ################################################################################
-fzf_run_select_history() {
+fzf_select_history() {
   BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
   CURSOR=$#BUFFER
 }

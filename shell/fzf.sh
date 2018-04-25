@@ -56,7 +56,7 @@ fzf_git_run_checkout_commit() {
 }
 
 # fshow - git commit browser
-fzf_git_run_commit_brwoser() {
+fzf_git_run_commit_browser() {
   git log --graph --color=always \
       --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
   fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
