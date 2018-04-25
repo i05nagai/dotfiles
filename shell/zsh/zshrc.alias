@@ -2,7 +2,8 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-alias shell-reload="exec ${SHELL} -l"
+# alias shell-reload="exec ${SHELL} -l"
+alias shell-reload="exec zsh -l"
 alias group-show-list="cut -d: -f1 /etc/group"
 
 if which docker >/dev/null 2>&1
