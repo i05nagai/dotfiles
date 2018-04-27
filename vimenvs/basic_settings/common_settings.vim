@@ -280,6 +280,10 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundleLazy 'keith/swift.vim', {
         \ 'autoload' : {'filetypes' : 'swift'}
         \ }
+  "go
+  NeoBundleLazy 'fatih/vim-go', {
+        \ 'autoload' : {'filetypes' : 'go'}
+        \ }
   "C#
   "NeoBundleLazy 'nosami/Omnisharp', {
   "\   'autoload': {'filetypes': ['cs']},
@@ -509,6 +513,13 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/vim-terraform.vim" )
   source ~/.vim/plugin_settings/vim-terraform.vim
+endif
+
+"---------------------------------------------------------
+" vim-go
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/vim-go.vim" )
+  source ~/.vim/plugin_settings/vim-go.vim
 endif
 
 if filereadable( $HOME . "/.vim/envs.vim" )
