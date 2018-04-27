@@ -19,7 +19,7 @@ sudo apt-get install -y google-chrome-stable
 
 # misc
 sudo apt-get install -y \
-  vim \
+  vim-gnome \
   tmux \
   zsh
 
@@ -29,3 +29,5 @@ sudo apt-get install -y \
 git submodule init
 git submodule update
 vim -N -u NONE -i NONE -V1 -e -s --cmd "source .vimrc" --cmd NeoBundleInstall! --cmd qall!
+# change shell
+chsh -s /bin/zsh
