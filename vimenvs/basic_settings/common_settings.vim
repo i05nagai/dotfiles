@@ -282,6 +282,10 @@ call neobundle#begin(expand('~/.vim/bundle/'))
         \ }
   "nginx
   NeoBundle 'chr4/nginx.vim'
+  "go
+  NeoBundleLazy 'fatih/vim-go', {
+        \ 'autoload' : {'filetypes' : 'go'}
+        \ }
   "C#
   "NeoBundleLazy 'nosami/Omnisharp', {
   "\   'autoload': {'filetypes': ['cs']},
@@ -518,6 +522,13 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/nginx.vim" )
   source ~/.vim/plugin_settings/nginx.vim
+endif
+
+"---------------------------------------------------------
+" vim-go
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/vim-go.vim" )
+  source ~/.vim/plugin_settings/vim-go.vim
 endif
 
 if filereadable( $HOME . "/.vim/envs.vim" )

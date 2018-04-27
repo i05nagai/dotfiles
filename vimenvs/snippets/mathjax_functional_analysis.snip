@@ -1,0 +1,24 @@
+snippet     limit_strong
+abbr        strong limit
+options     word
+    \mathop{\text{s-lim}}_{x}
+
+snippet     limit_weak
+abbr        weak limit
+options     word
+    \mathop{\text{w-lim}}_{x}
+
+snippet     norm_operator
+abbr        norm
+options     word
+    \sup_{${1:u} \neq 0}
+        \frac{
+            |${1:operator}|
+        }{
+            \|$2\|
+        }
+
+snippet     linear_space
+abbr        norm
+options     word
+    \mathcal{L}(${1:X}, ${2:Y})
