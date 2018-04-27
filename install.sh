@@ -27,6 +27,24 @@ LINK_TO=(
 ".shell"
 )
 
+
+LINK_LIG_FROM=(
+"Xmodmap"
+)
+
+LINK_LIG_TO=(
+".Xmodmap"
+)
+
+function ln_env_from_to() {
+  local env_type=$1
+  local link_from=$2
+  local link_to=$3
+  for ((i=0;i<${#link_from[@]};++i)); do
+    ln_file_from_to envs/${env_type}/${link_from[i]} ${link_to[i]}
+  done
+}
+
 # Functions
 function goto_error() {
   cat << _EOT_
@@ -104,6 +122,7 @@ function env_install() {
     "lig" )
       echo "Linux GUI"
       for file in ${env_path}.*; do ln_env_file $file; done
+      ln_env_from_to lig ${LINK_LIG_FROM} ${LINK_LIG_TO}
       ;;
     "osx" )
       echo "OSX"
