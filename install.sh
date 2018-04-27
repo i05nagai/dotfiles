@@ -8,40 +8,29 @@ PATTERN_WIN="^w(|indows)$"        # windows
 # copying files
 CP_GROUP=(
 )
-# making link files
-LN_GROUP=(
-".ctags"
-".gitconfig"
-".vimrc"
-"_vimrc"
-"_gvimrc"
-".tmux.conf"
-".zshrc"
+
+LINK_COMMON_FROM_TO=(
+".ctags" ".ctags"
+".gitconfig" ".gitconfig"
+".tmux.conf" ".tmux.conf"
+".vimrc" ".vimrc"
+".zshrc" ".zshrc"
+"shell" ".shell"
 )
 
-LINK_FROM=(
-"shell"
+LINK_WIN_FROM_TO=(
+"envs/win7/_vimrc" "_vimrc"
+"envs/win7/_gvimrc" "_gvimrc"
 )
 
-LINK_TO=(
-".shell"
+LINK_LIG_FROM_TO=(
+"envs/lig/Xmodmap" ".Xmodmap"
 )
 
-
-LINK_LIG_FROM=(
-"Xmodmap"
-)
-
-LINK_LIG_TO=(
-".Xmodmap"
-)
-
-function ln_env_from_to() {
-  local env_type=$1
-  local link_from=$2
-  local link_to=$3
-  for ((i=0;i<${#link_from[@]};++i)); do
-    ln_file_from_to envs/${env_type}/${link_from[i]} ${link_to[i]}
+function link_from_to() {
+  local link_from_to=$1
+  for ((i=0;i<${#link_from_to[@]};i=i+2)); do
+    ln_file_from_to ${link_from_to[i]} ${link_from_to[i+1]}
   done
 }
 
@@ -105,10 +94,7 @@ function ln_vim_env_file() {
 function must_install() {
   echo "MUST INSTALL"
   for file in ${CP_GROUP[@]}; do cp_file $file; done
-  for file in ${LN_GROUP[@]}; do ln_file $file; done
-  for ((i=0;i<${#LINK_FROM[@]};++i)); do
-    ln_file_from_to ${LINK_FROM[i]} ${LINK_TO[i]}
-  done
+  link_from_to $LINK_COMMON_FROM_TO
 }
 
 #install fiels for settings which dpeend on environment.
@@ -122,7 +108,7 @@ function env_install() {
     "lig" )
       echo "Linux GUI"
       for file in ${env_path}.*; do ln_env_file $file; done
-      ln_env_from_to lig ${LINK_LIG_FROM} ${LINK_LIG_TO}
+      link_from_to ${LINK_LIG_FROM_TO}
       ;;
     "osx" )
       echo "OSX"
@@ -131,6 +117,7 @@ function env_install() {
     "win" )
       echo "Windows"
       for file in ${env_path}.*; do ln_env_file $file; done
+      link_from_to $LINK_WIN_FROM_TO
       ;;
     * )
       echo "Invalid env_type"
