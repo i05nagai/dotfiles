@@ -38,15 +38,3 @@ After installation, you need to set up vim.
 ```vim
 :NeoBundleInstall
 ```
-
-## ubuntu
-
-```
-vim
-zsh
-git
-tmux
-sudo add-apt-repostory ppa:git-core/ppa
-sudo apt-get update
-xmodmap ~/.Xmodmap`
-```
