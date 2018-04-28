@@ -27,6 +27,7 @@ sudo apt-get install vim-gnome=2:8.0.1752-0york1~16.04
 # misc
 sudo apt-get install -y \
   tmux \
+  i3 \
   zsh
 
 #
