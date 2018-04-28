@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#
+# for ubuntu 16.04
+#
 
 #
 # Install packages
@@ -16,10 +19,13 @@ echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sud
 sudo apt-get update
 sudo apt-get install -y google-chrome-stable
 
+# vim
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt-get update
+sudo apt-get install vim-gnome=2:8.0.1752-0york1~16.04
 
 # misc
 sudo apt-get install -y \
-  vim-gnome \
   tmux \
   zsh
 
