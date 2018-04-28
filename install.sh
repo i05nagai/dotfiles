@@ -28,13 +28,14 @@ LINK_LIC_FROM_TO=(
 
 LINK_LIG_FROM_TO=(
 "envs/lig/.bin" ".bin"
+"envs/lig/i3" ".config/i3"
 "envs/lig/.tmux.conf.env" ".tmux.conf.env"
 "envs/lig/.zshrc.env" ".zshrc.env"
 "envs/lig/Xmodmap" ".Xmodmap"
 )
 
 function link_from_to() {
-  local link_from_to=$1
+  local link_from_to=($@)
   for ((i=0;i<${#link_from_to[@]};i=i+2)); do
     ln_file_from_to ${link_from_to[i]} ${link_from_to[i+1]}
   done
@@ -100,7 +101,7 @@ function ln_vim_env_file() {
 function must_install() {
   echo "MUST INSTALL"
   for file in ${CP_GROUP[@]}; do cp_file $file; done
-  link_from_to $LINK_COMMON_FROM_TO
+  link_from_to ${LINK_COMMON_FROM_TO[@]}
 }
 
 #install fiels for settings which dpeend on environment.
@@ -114,7 +115,7 @@ function env_install() {
     "lig" )
       echo "Linux GUI"
       # for file in ${env_path}.*; do ln_env_file $file; done
-      link_from_to ${LINK_LIG_FROM_TO}
+      link_from_to ${LINK_LIG_FROM_TO[@]}
       ;;
     "osx" )
       echo "OSX"
@@ -123,7 +124,7 @@ function env_install() {
     "win" )
       echo "Windows"
       for file in ${env_path}.*; do ln_env_file $file; done
-      link_from_to $LINK_WIN_FROM_TO
+      link_from_to ${LINK_WIN_FROM_TO[@]}
       ;;
     * )
       echo "Invalid env_type"
