@@ -27,6 +27,9 @@ LINK_LIC_FROM_TO=(
 )
 
 LINK_LIG_FROM_TO=(
+"envs/lig/.bin" ".bin"
+"envs/lig/.tmux.conf.env" ".tmux.conf.env"
+"envs/lig/.zshrc.env" ".zshrc.env"
 "envs/lig/Xmodmap" ".Xmodmap"
 )
 
@@ -110,7 +113,7 @@ function env_install() {
       ;;
     "lig" )
       echo "Linux GUI"
-      for file in ${env_path}.*; do ln_env_file $file; done
+      # for file in ${env_path}.*; do ln_env_file $file; done
       link_from_to ${LINK_LIG_FROM_TO}
       ;;
     "osx" )
