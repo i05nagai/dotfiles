@@ -46,6 +46,11 @@ abbr        variable
 options     word
 	${#${1:parameter}[*]}
 
+snippet     bash_array
+abbr        variable
+options     word
+	${${1:parameter}[@]}
+
 snippet     bash_variable_replace
 abbr        variable
 options     word

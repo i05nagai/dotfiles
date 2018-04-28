@@ -8,24 +8,38 @@ PATTERN_WIN="^w(|indows)$"        # windows
 # copying files
 CP_GROUP=(
 )
-# making link files
-LN_GROUP=(
-".ctags"
-".gitconfig"
-".vimrc"
-"_vimrc"
-"_gvimrc"
-".tmux.conf"
-".zshrc"
+
+LINK_COMMON_FROM_TO=(
+".ctags" ".ctags"
+".gitconfig" ".gitconfig"
+".tmux.conf" ".tmux.conf"
+".vimrc" ".vimrc"
+".zshrc" ".zshrc"
+"shell" ".shell"
 )
 
-LINK_FROM=(
-"shell"
+LINK_WIN_FROM_TO=(
+"envs/win7/_vimrc" "_vimrc"
+"envs/win7/_gvimrc" "_gvimrc"
 )
 
-LINK_TO=(
-".shell"
+LINK_LIC_FROM_TO=(
 )
+
+LINK_LIG_FROM_TO=(
+"envs/lig/.bin" ".bin"
+"envs/lig/i3" ".config/i3"
+"envs/lig/.tmux.conf.env" ".tmux.conf.env"
+"envs/lig/.zshrc.env" ".zshrc.env"
+"envs/lig/Xmodmap" ".Xmodmap"
+)
+
+function link_from_to() {
+  local link_from_to=($@)
+  for ((i=0;i<${#link_from_to[@]};i=i+2)); do
+    ln_file_from_to ${link_from_to[i]} ${link_from_to[i+1]}
+  done
+}
 
 # Functions
 function goto_error() {
@@ -54,14 +68,14 @@ function ln_file() {
 #f: remove existing destination files.
 #s: make symbolic links instead of hard links.
 #v: verbose. print name of each file before linking.
-  ln -fsv `pwd`/$1 $HOME/$1
+  ln -fsnv `pwd`/$1 $HOME/$1
 }
 
 function ln_file_from_to() {
 #f: remove existing destination files.
 #s: make symbolic links instead of hard links.
 #v: verbose. print name of each file before linking.
-  ln -fsv `pwd`/$1 $HOME/$2
+  ln -fnsv `pwd`/$1 $HOME/$2
 }
 
 function ln_env_file() {
@@ -87,10 +101,7 @@ function ln_vim_env_file() {
 function must_install() {
   echo "MUST INSTALL"
   for file in ${CP_GROUP[@]}; do cp_file $file; done
-  for file in ${LN_GROUP[@]}; do ln_file $file; done
-  for ((i=0;i<${#LINK_FROM[@]};++i)); do
-    ln_file_from_to ${LINK_FROM[i]} ${LINK_TO[i]}
-  done
+  link_from_to ${LINK_COMMON_FROM_TO[@]}
 }
 
 #install fiels for settings which dpeend on environment.
@@ -103,7 +114,8 @@ function env_install() {
       ;;
     "lig" )
       echo "Linux GUI"
-      for file in ${env_path}.*; do ln_env_file $file; done
+      # for file in ${env_path}.*; do ln_env_file $file; done
+      link_from_to ${LINK_LIG_FROM_TO[@]}
       ;;
     "osx" )
       echo "OSX"
@@ -112,6 +124,7 @@ function env_install() {
     "win" )
       echo "Windows"
       for file in ${env_path}.*; do ln_env_file $file; done
+      link_from_to ${LINK_WIN_FROM_TO[@]}
       ;;
     * )
       echo "Invalid env_type"
