@@ -68,14 +68,14 @@ function ln_file() {
 #f: remove existing destination files.
 #s: make symbolic links instead of hard links.
 #v: verbose. print name of each file before linking.
-  ln -fsv `pwd`/$1 $HOME/$1
+  ln -fsnv `pwd`/$1 $HOME/$1
 }
 
 function ln_file_from_to() {
 #f: remove existing destination files.
 #s: make symbolic links instead of hard links.
 #v: verbose. print name of each file before linking.
-  ln -fsv `pwd`/$1 $HOME/$2
+  ln -fnsv `pwd`/$1 $HOME/$2
 }
 
 function ln_env_file() {
