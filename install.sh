@@ -23,6 +23,9 @@ LINK_WIN_FROM_TO=(
 "envs/win7/_gvimrc" "_gvimrc"
 )
 
+LINK_LIC_FROM_TO=(
+)
+
 LINK_LIG_FROM_TO=(
 "envs/lig/Xmodmap" ".Xmodmap"
 )
