@@ -28,7 +28,11 @@ sudo apt-get install vim-gnome=2:8.0.1752-0york1~16.04
 sudo apt-get install -y \
   tmux \
   i3 \
+  curl \
   zsh
+
+# zplug
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
 
 #
 # install
