@@ -34,6 +34,28 @@ sudo apt-get install -y \
 # zplug
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
 
+# prasmussen/gdrive 
+curl -o $HOME/.bin/gdrive -L 'https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download'
+chmod 755 $HOME/.bin/gdrive
+
+# openssh
+mkdir -p /tmp/openssh
+cd /tmp/openssh
+wget --no-check-certificate https://launchpadlibrarian.net/335526589/openssh-client_7.5p1-10_amd64.deb
+wget --no-check-certificate https://launchpadlibrarian.net/298453050/libgssapi-krb5-2_1.14.3+dfsg-2ubuntu1_amd64.deb
+wget --no-check-certificate https://launchpadlibrarian.net/298453058/libkrb5-3_1.14.3+dfsg-2ubuntu1_amd64.deb
+wget --no-check-certificate https://launchpadlibrarian.net/298453060/libkrb5support0_1.14.3+dfsg-2ubuntu1_amd64.deb
+sudo dpkg -i libkrb5support0_1.14.3+dfsg-2ubuntu1_amd64.deb
+sudo dpkg -i libkrb5-3_1.14.3+dfsg-2ubuntu1_amd64.deb
+sudo dpkg -i libgssapi-krb5-2_1.14.3+dfsg-2ubuntu1_amd64.deb
+sudo dpkg -i openssh-client_7.5p1-10_amd64.deb
+ssh -V
+
+# fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+
 #
 # install
 #
