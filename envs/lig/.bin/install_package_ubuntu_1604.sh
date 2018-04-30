@@ -40,6 +40,7 @@ chmod 755 $HOME/.bin/gdrive
 
 # pyenv
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
 
 # openssh
 mkdir -p /tmp/openssh
@@ -62,7 +63,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
 cd ~/.rbenv && src/configure && make -C src
 ~/.rbenv/bin/rbenv init
-git clone https://github.com/rbenv/ruby-build.git "$(~/.rbenv/bin/rbenv root)"/plugins/ruby-build
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
 
 #
