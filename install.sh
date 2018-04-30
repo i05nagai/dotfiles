@@ -32,6 +32,7 @@ LINK_LIG_FROM_TO=(
 "envs/lig/.tmux.conf.env" ".tmux.conf.env"
 "envs/lig/.zshrc.env" ".zshrc.env"
 "envs/lig/Xmodmap" ".Xmodmap"
+"config/powerline" ".config/powerline"
 )
 
 function link_from_to() {
