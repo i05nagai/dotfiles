@@ -38,6 +38,9 @@ curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/instal
 curl -o $HOME/.bin/gdrive -L 'https://docs.google.com/uc?id=0B3X9GlR6EmbnQ0FtZmJJUXEyRTA&export=download'
 chmod 755 $HOME/.bin/gdrive
 
+# pyenv
+git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+
 # openssh
 mkdir -p /tmp/openssh
 cd /tmp/openssh
@@ -54,6 +57,11 @@ ssh -V
 # fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+
+# rbenv
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+cd ~/.rbenv && src/configure && make -C src
+~/.rbenv/bin/rbenv init
 
 
 #
