@@ -34,6 +34,14 @@ LINK_LIG_FROM_TO=(
 "envs/lig/Xmodmap" ".Xmodmap"
 )
 
+LINK_OSX_FROM_TO=(
+"envs/osx/.bin/chtwt" ".bin/chtwt"
+"envs/osx/.tmux.conf.env" ".tmux.conf.env"
+"envs/osx/.zshrc.env" ".zshrc.env"
+)
+
+
+
 function link_from_to() {
   local link_from_to=($@)
   for ((i=0;i<${#link_from_to[@]};i=i+2)); do
@@ -119,7 +127,8 @@ function env_install() {
       ;;
     "osx" )
       echo "OSX"
-      for file in ${env_path}.*; do ln_env_file $file; done
+      # for file in ${env_path}.*; do ln_env_file $file; done
+      link_from_to ${LINK_OSX_FROM_TO[@]}
       ;;
     "win" )
       echo "Windows"
@@ -220,14 +229,13 @@ function add_install() {
 ################################################################################
 function link_ide() {
   local env_type=$1
-  if [ "${env_type}" = "osx" ]
-  then
+  if [ "${env_type}" = "osx" ]; then
     if [ ! -d $HOME/Library/Preferences/IdeaIC2017.3/templates ]; then
       mkdir -p ${HOME}/Library/Preferences/IdeaIC2017.3/templates
     fi
     for file in intellij_idea/templates/*; do
       filename=`basename $file`
-      ln_file_from_to "intellij_idea/templates/$filename" "Library/Preferences/IdeaIC2017.3/templates/$filename" 
+      ln_file_from_to "intellij_idea/templates/$filename" "Library/Preferences/IdeaIC2017.3/templates/$filename"
     done
   fi
 }
