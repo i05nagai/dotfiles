@@ -71,3 +71,26 @@ abbr        if script is sourced
 options     word
 	if [[ $_ != \$0 ]]; then
 	fi
+
+#
+# operator
+#
+snippet     bash_equal_not
+abbr        not_equal
+options     word
+	[[ ${1} != ${2} ]]
+
+snippet     bash_equal
+abbr        not_equal
+options     word
+	[[ ${1} == ${2} ]]
+
+snippet     bash_and
+abbr        not_equal
+options     word
+	[[  ${2} && ${2} ]]
+
+snippet     bash_not
+abbr        not_equal
+options     word
+	[[ ! ( ${1} ) ]]
