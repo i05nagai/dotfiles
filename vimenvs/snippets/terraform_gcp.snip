@@ -22,3 +22,41 @@ options     word
 			key = value
 		}
 	}
+
+#
+# SQL
+#
+snippet     terraform_gcp_sql_instance_second_generation
+abbr        instance
+options     word
+	resource "google_sql_database_instance" "master" {
+		name = "master-instance"
+		database_version = "MYSQL_5_7"
+		region = "us-central1"
+	
+		settings {
+			# Second-generation instance tiers are based on the machine
+			# type. See argument reference below.
+			tier = "db-f1-micro"
+		}
+	}
+
+snippet     terraform_gcp_sql_database
+abbr        database
+options     word
+	resource "google_sql_database" "users" {
+		name      = "users-db"
+		instance  = "${google_sql_database_instance.master.name}"
+		charset   = "latin1"
+		collation = "latin1_swedish_ci"
+	}
+
+snippet     terraform_gcp_sql_user
+abbr        user
+options     word
+	resource "google_sql_user" "users" {
+		name     = "me"
+		instance = "${google_sql_database_instance.master.name}"
+		host     = "me.com"
+		password = "changeme"
+	}
