@@ -66,3 +66,47 @@ snippet     pd_df_show_columns
 abbr        abbr
 options     word
 	print(${1:df}.columns)
+
+#
+# read
+#
+snippet     pd_df_read_from_double_array_no_header
+abbr        abbr
+options     word
+	df = pd.DataFrame(double_array[1:], columns=double_array[0], dtype=None)
+
+snippet     pd_df_read_from_double_array_header
+abbr        abbr
+options     word
+	df = pd.DataFrame(${1:double_array}[1:], columns=$1[0], dtype=None)
+
+#
+# 
+#
+snippet     pd_df_add_column
+abbr        abbr
+options     word
+	def func(row):
+		# row.name: index
+		return row['hoge']
+	$1['${2:new_column}'] = ${1:df}.apply(func, axis=1)
+
+snippet     pd_df_add_row
+abbr        abbr
+options     word
+	def func(col):
+		return sum(col)
+	${1:df}.apply(func, axis=0)
+
+#
+#  type
+#
+snippet     pd_df_get_type
+abbr        abbr
+options     word
+	${1:df}.dtypes
+
+snippet     pd_df_set_type_to_numeric_all
+abbr        abbr
+options     word
+	$1 = ${1:df}.apply(pd.to_numeric, errors='ignore')
