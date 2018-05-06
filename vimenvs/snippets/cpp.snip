@@ -28,10 +28,21 @@ snippet inc
 alias   #inc, #include
     #include <${1}>${0}
 
-# #include "..."
+#
+# include
+#
 snippet inc2
 alias   #inc2, #include2
-    #include "${1}"${0}
+	#include "${1}"${0}
+
+snippet include_size_t
+	#include <cstddef>
+
+snippet     include_enable_if
+abbr        include
+options     word
+	#include <type_traits>
+
 
 delete      namespace2
 snippet     namespace2

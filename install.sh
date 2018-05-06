@@ -32,6 +32,8 @@ LINK_LIG_FROM_TO=(
 "envs/lig/.tmux.conf.env" ".tmux.conf.env"
 "envs/lig/.zshrc.env" ".zshrc.env"
 "envs/lig/Xmodmap" ".Xmodmap"
+"envs/lig/.gdbinit" ".gdbinit"
+"config/powerline" ".config/powerline"
 )
 
 LINK_OSX_FROM_TO=(

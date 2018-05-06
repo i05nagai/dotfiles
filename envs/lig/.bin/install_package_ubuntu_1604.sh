@@ -42,9 +42,18 @@ chmod 755 $HOME/.bin/gdrive
 git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 git clone https://github.com/pyenv/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
 
+# pip
+pushd /tmp
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python get-pip.py install "pip==9.0.3"
+popd
+
+# powerline
+pip install --user powerline-status
+
 # openssh
 mkdir -p /tmp/openssh
-cd /tmp/openssh
+pushd /tmp/openssh
 wget --no-check-certificate https://launchpadlibrarian.net/335526589/openssh-client_7.5p1-10_amd64.deb
 wget --no-check-certificate https://launchpadlibrarian.net/298453050/libgssapi-krb5-2_1.14.3+dfsg-2ubuntu1_amd64.deb
 wget --no-check-certificate https://launchpadlibrarian.net/298453058/libkrb5-3_1.14.3+dfsg-2ubuntu1_amd64.deb
@@ -54,6 +63,7 @@ sudo dpkg -i libkrb5-3_1.14.3+dfsg-2ubuntu1_amd64.deb
 sudo dpkg -i libgssapi-krb5-2_1.14.3+dfsg-2ubuntu1_amd64.deb
 sudo dpkg -i openssh-client_7.5p1-10_amd64.deb
 ssh -V
+popd
 
 # fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
@@ -65,6 +75,9 @@ cd ~/.rbenv && src/configure && make -C src
 ~/.rbenv/bin/rbenv init
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
+# mendely desktop
+curl -L https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest -o mendeleydesktop.deb
+sudo dpkg -i mendeleydesktop-latest.deb
 
 #
 # install

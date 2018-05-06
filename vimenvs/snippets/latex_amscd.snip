@@ -1,0 +1,116 @@
+snippet     amscd
+abbr        abbr
+options     word
+	\begin{CD}
+		A @>{f}>> B
+		\\
+		@V{g}VV    @VVV
+		\\
+		C   @>>>  D
+	\end{CD}
+
+#
+# arrow
+#
+# upper
+snippet     amscd_arrow_upper
+abbr        arrow
+options     word
+	@AAA
+
+snippet     amscd_arrow_upper_caption_upper
+abbr        arrow
+options     word
+	@A{${1:upper}}AA${0}
+
+snippet     amscd_arrow_upper_caption_lower
+abbr        arrow
+options     word
+	@AA${1:lower}A${0}
+
+snippet     amscd_arrow_upper_caption_upper_lower
+abbr        arrow
+options     word
+	@A{${1:upper}}A${2:lower}A${0}
+
+# lower
+snippet     amscd_arrow_lower
+abbr        arrow
+options     word
+	@VVV
+
+snippet     amscd_arrow_lower_caption_upper
+abbr        arrow
+options     word
+	@V{${1:upper}}VV${0}
+
+snippet     amscd_arrow_lower_caption_lower
+abbr        arrow
+options     word
+	@VV{${1:lower}}V${0}
+
+snippet     amscd_arrow_lower_caption_upper_lower
+abbr        arrow
+options     word
+	@V{${1:upper}}V{${2:lower}}V${0}
+
+# right
+snippet     amscd_arrow_right
+abbr        arrow
+options     word
+	@>>>
+
+snippet     amscd_arrow_right_caption_left
+abbr        arrow
+options     word
+	@>{${1:left}}>>${0}
+
+snippet     amscd_arrow_right_caption_right
+abbr        arrow
+options     word
+	@>>{${1:right}}>${0}
+
+snippet     amscd_arrow_right_caption_left_right
+abbr        arrow
+options     word
+	@>{${1:left}}>{${2:right}}>${0}
+
+# left
+snippet     amscd_arrow_left
+abbr        arrow
+options     word
+	@<<<
+
+snippet     amscd_arrow_left_caption_left
+abbr        arrow
+options     word
+	@<{${1:left}}<<${0}
+
+snippet     amscd_arrow_left_caption_right
+abbr        arrow
+options     word
+	@<<{${1:right}}<${0}
+
+snippet     amscd_arrow_left_caption_left_right
+abbr        arrow
+options     word
+	@<{${1:left}}<{${2:right}}<${0}
+
+# no arrow
+snippet     amscd_arrow_no
+abbr        no arrow
+options     word
+	@.
+
+#
+# equality
+#
+snippet     amscd_equal_horizontal
+abbr        arrow
+options     word
+	@=
+
+snippet     amscd_equal_vertical
+abbr        arrow
+options     word
+	@|
