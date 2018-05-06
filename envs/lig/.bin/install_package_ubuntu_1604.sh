@@ -75,6 +75,9 @@ cd ~/.rbenv && src/configure && make -C src
 ~/.rbenv/bin/rbenv init
 git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 
+# mendely desktop
+curl -L https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest -o mendeleydesktop.deb
+sudo dpkg -i mendeleydesktop-latest.deb
 
 #
 # install
