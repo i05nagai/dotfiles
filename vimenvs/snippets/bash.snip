@@ -1,3 +1,14 @@
+#
+# path
+#
+snippet     bash_path_source
+abbr        if script is called from source
+options     word
+	PATH_TO_THIS_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd )
+
+#
+# if
+#
 snippet     bash_if_string_contain
 abbr        if string
 options     word
@@ -11,6 +22,19 @@ options     word
 	# ignore comments
 	[[ "$line" =~ ^#.*$ ]] && continue
 
+snippet     bash_if_script_is_called_from_source
+abbr        if script is called from source
+options     word
+	if [[ $_ != \$0 ]]; then
+		# if script is called from source command
+		readonly PATH_TO_THIS_DIR=${PATH_TO_ENV_DIR}
+	else
+		readonly PATH_TO_THIS_DIR=$(cd $(dirname \${0});pwd)
+	fi
+
+#
+# variable
+#
 snippet     bash_variable_with_default_value_without_substitution
 abbr        calculate
 options     word
