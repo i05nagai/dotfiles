@@ -3,14 +3,25 @@ include shell_git.snip
 include shell_date.snip
 include bash.snip
 
+#
+# echo
+#
 snippet     echo_no_newline
 abbr        echo without newline
 options     head
     printf "%s" ${1}
 
-snippet     usage
+snippet     echo_variable
+abbr        echo without newline
+options     head
+    echo '${1}'"=$1"
+
+#
+# template
+#
+snippet     template_usage
 abbr        usage
-	function usage {
+	usage() {
 	  cat <<EOF
 	${1:basename} is a tool for ...
 
@@ -23,13 +34,13 @@ abbr        usage
 	EOF
 	}
 
-snippet     version
+snippet     template_version
 abbr        version
-	function version {
+	version() {
 	  echo "basename${0} version 0.0.1"
 	}    
 	
-snippet     subcommand
+snippet     template_subcommand
 abbr        subcommand
 	case \${1} in
 	  start)
@@ -59,7 +70,7 @@ abbr        subcommand
 	  ;;
 	esac
 	
-snippet     argument
+snippet     template_option
 abbr        option
 	while [ $# -gt 0 ];
 	do
@@ -92,10 +103,10 @@ abbr        option
 	  shift
 	done
 
-snippet     error_func
+snippet     template_error_func
 abbr        error function
 options     head
-	function err() {
+	err() {
 	  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@" >&2
 	}
 
