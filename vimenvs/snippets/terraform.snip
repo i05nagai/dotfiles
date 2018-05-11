@@ -139,6 +139,11 @@ options     word
 #
 # if
 #
+snippet     terraform_if
+abbr        variable list
+options     word
+	"${${1:condition} ? ${2:true} : ${3:false}}"
+
 snippet     terraform_if_add_suffix
 abbr        variable list
 options     word
