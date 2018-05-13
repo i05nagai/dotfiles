@@ -1,0 +1,135 @@
+include python_cython_numpy.snip
+
+#
+# class
+#
+snippet     cython_class
+abbr        function
+options     word
+	cdef class ${1:Function}:
+		
+		cpdef ${2:evaluate}(self, ${3:double x}):
+			return ${4}
+
+#
+# static, compiler time
+#
+snippet     cython_static_constant
+abbr        function
+options     word
+	DEF ${1:name} = ${2}
+
+snippet     cython_static_if
+abbr        function
+options     word
+	IF ${1:conditon}:
+		${2:include "abc.pxi"}
+	ELIF ${3:condition}
+		${2:include "abcd.pxi"}
+	ELSE:
+		${2:include "abcde.pxi"}
+
+#
+# type
+#
+snippet     cython_type_int
+abbr        function
+options     word
+	cdef int ${1:name}
+
+snippet     cython_type_double
+abbr        function
+options     word
+	cdef double ${1:name}
+
+snippet     cython_type_double_array
+abbr        function
+options     word
+	cdef double ${1:name}[${2:2}]
+
+snippet     cython_type_struct
+abbr        struct
+options     word
+	cdef struct ${1:Name}:
+		int age
+		float volume
+
+snippet     cython_type_union
+abbr        union
+options     word
+	cdef union ${1:Name}:
+		char* spam
+		float* eggs
+
+snippet     cython_type_enum
+abbr        enum
+options     word
+	cdef enum ${1:Name}:
+		hard = 1
+		soft = 2
+		runny = 3
+
+snippet     cython_type_constant
+abbr        enum
+options     word
+	# use anonymous enum as constant
+	cdef enum:
+		${1:constant_name = 3}
+
+snippet     cython_typedef
+abbr        function
+options     word
+	ctypedef ${1:from} ${2:to}
+
+#
+# func
+#
+snippet     cython_malloc_1dim
+abbr        function
+options     word
+	cdef ${1:double}* ${2:my_array} = <$1 *>malloc(${3:num} * sizeof($1))
+	if not my_array:
+		raise MemoryError()
+	try:
+		${0:return do}
+	finally:
+		# return the previously allocated memory to the system
+		free($2)
+
+snippet     cython_funciton
+abbr        function
+options     word
+	cdef ${1:int} ${2:func_name}(${3:int a, int b}):
+		return ${4}
+
+snippet     cython_funciton_inline
+abbr        function
+options     word
+	cdef inline ${1:int} ${2:func_name}(${3:int a, int b}):
+		return ${4}
+
+snippet     cython_funciton_except_no_handle
+abbr        function
+options     word
+	cdef ${1:int} ${2:func_name}(${3:int a, int b}) except -1:
+		return ${4}
+
+snippet     cython_funciton_except_no_handle
+abbr        function
+options     word
+	cdef ${1:int} ${2:func_name}(${3:int a, int b}) except -1:
+		return ${4}
+
+#
+# import
+#
+snippet     cython_import_malloc
+abbr        function
+options     word
+	from libc.stdlib cimport malloc
+	from libc.stdlib cimport free
+
+snippet     cython_import_numpy
+abbr        function
+options     word
+	cimport numpy as np
