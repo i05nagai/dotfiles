@@ -2,7 +2,7 @@ snippet     ansible_output_with_neline
 abbr        debug
 options     word
 	debug:
-	  msg: "{{ ${1:result}.stdout.split('\n')[:-1] }}"
+		msg: "{{ ${1:result}.stdout.split('\n')[:-1] }}"
 
 snippet     ansible_debug
 abbr        debug
