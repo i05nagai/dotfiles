@@ -1,0 +1,68 @@
+snippet     comment_function
+abbr        comment to function
+options     head
+	################################################################################
+	# ${1:Description}
+	# Arguments:
+	#   ${2:None}
+	# Returns:
+	#   ${3:None}
+	################################################################################
+
+snippet     standard_sql_table_suffix_latest_week
+abbr        partition time
+options     word
+	/**
+	  betweenCalculationDate(_TABLE_SUFFIX)
+	*/
+	CREATE TEMPORARY FUNCTION betweenLatestWeeks(table_suffix STRING) AS (
+		table_suffix BETWEEN
+			FORMAT_DATE('%E4Y%m%d', DATE_SUB(CURRENT_DATE('Asia/Tokyo'), INTERVAL 6 WEEK))
+		AND
+		FORMAT_DATE('%E4Y%m%d', CURRENT_DATE('Asia/Tokyo'))
+	)
+	;
+
+snippet     standard_sql_create_udf_js
+abbr        format timestamp
+options     word
+	CREATE TEMPORARY FUNCTION ${1:func_name}(${2:x FLOAT64})
+	RETURNS ${3:FLOAT64}
+	LANGUAGE js AS """
+		// do something here
+		return x;
+	"""
+	;
+
+snippet     standard_sql_create_udf_sql
+abbr        format timestamp
+options     word
+	CREATE TEMPORARY FUNCTION ${1:func_name}(${2:x FLOAT64}) AS (
+		/* do something here */
+	)
+	;
+
+snippet     standard_sql_func_null_to_zero
+abbr        null to zero
+options     word
+	CREATE TEMPORARY FUNCTION NullToZero(val INT64) AS (
+		IF(val IS NULL, 0, val)
+	)
+	;
+
+snippet     standard_sql_func_divide_undef_to_null
+abbr        divide but undef to null
+options     word
+	CREATE TEMPORARY FUNCTION DivisionUndefToNull(dividend INT64, divisor INT64) AS (
+		IF(divisor = 0, NULL, dividend / divisor)
+	)
+	;
+
+snippet     standard_sql_nearly_equal
+abbr        nearly equal
+options     word
+	CREATE TEMPORARY FUNCTION NearlyEqual(val1 FLOAT64, val2 FLOAT64) AS (
+		# conventional equality for floating point
+		ABS(val2 - val1) < 1e-7
+	)
+	;
