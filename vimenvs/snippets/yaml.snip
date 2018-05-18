@@ -3,10 +3,23 @@ include yaml_embulk.snip
 include yaml_docker_compose.snip
 include yaml_kubernetes.snip
 
-snippet     yaml_anchor
+snippet     yaml_anchor_reference
 abbr        anchor
 options     word
-    hoge2: &anchor
-        fuga1: 
-        fuga2: 
-    hoge2: *anchor
+	hoge2: &anchor
+		fuga1: 
+		fuga2: 
+	hoge2: *anchor
+		#fuga1:
+		#fuga2:
+
+snippet     yaml_anchor_extend
+abbr        anchor
+options     word
+	hoge2: &anchor
+		fuga1: 
+		fuga2: 
+	hoge2:
+		<<: *anchor
+		#fuga1:
+		#fuga2:

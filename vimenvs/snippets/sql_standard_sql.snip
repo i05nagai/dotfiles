@@ -1,3 +1,9 @@
+include sql_standard_sql_date.snip
+include sql_standard_sql_utility.snip
+
+#
+# pseudo column
+#
 snippet     standard_sql_partition_time
 abbr        partition time
 options     word
@@ -28,179 +34,6 @@ options     word
 	)
 	;
 
-snippet     standard_sql_table_suffix_latest_week
-abbr        partition time
-options     word
-	/**
-	  betweenCalculationDate(_TABLE_SUFFIX)
-	*/
-	CREATE TEMPORARY FUNCTION betweenLatestWeeks(table_suffix STRING) AS (
-		table_suffix BETWEEN
-			FORMAT_DATE('%E4Y%m%d', DATE_SUB(CURRENT_DATE('Asia/Tokyo'), INTERVAL 6 WEEK))
-		AND
-		FORMAT_DATE('%E4Y%m%d', CURRENT_DATE('Asia/Tokyo'))
-	)
-	;
-
-snippet     standard_sql_to_second
-abbr        to second
-options     word
-	EXTRACT(SECOND FROM ${1:timestamp_expression}${2:AT TIME ZONE "Asia/Tokyo"})
-
-snippet     standard_sql_to_minute
-abbr        to minute
-options     word
-	EXTRACT(MINUTE FROM ${1:timestamp_expression}${2:AT TIME ZONE "Asia/Tokyo"})
-
-snippet     standard_sql_to_hour
-abbr        to hour
-options     word
-	EXTRACT(HOUR FROM ${1:timestamp_expression}${2:AT TIME ZONE "Asia/Tokyo"})
-
-snippet     standard_sql_to_day
-abbr        to day
-options     word
-	EXTRACT(DAY FROM ${1:date_expression})
-
-snippet     standard_sql_to_year
-abbr        to day
-options     word
-	EXTRACT(YEAR FROM ${1:date_expression})
-
-snippet     standard_sql_to_month
-abbr        to month
-options     word
-	EXTRACT(MONTH FROM ${1:date_expression})
-
-snippet     standard_sql_truncate_date_week
-abbr        truncate date week
-options     word
-	DATE_TRUNC(date, WEEK(${1:SUNDAY}))
-
-snippet     standard_sql_truncate_date_month
-abbr        truncate date week
-options     word
-	DATE_TRUNC(date, MONTH)
-
-snippet     standard_sql_date_add_week
-abbr        truncate date week
-options     word
-	DATE_ADD(date, INTERVAL ${1} WEEK)
-
-snippet     standard_sql_date_sub_week
-abbr        truncate date week
-options     word
-	DATE_SUB(date, INTERVAL ${1} WEEK)
-
-snippet     standard_sql_truncate_timestamp_week
-abbr        truncate date week
-options     word
-	TIMESTAMP_TRUNC(date, WEEK(${1:SUNDAY}))
-
-snippet     standard_sql_truncate_timestamp_week
-abbr        truncate date week
-options     word
-	TIMESTAMP_TRUNC(date, MONTH)
-
-snippet     standard_sql_timestamp_add_hour
-abbr        timestamp add by hour
-options     word
-	TIMESTAMP_ADD(${1:time_stamp} INTERVAL ${2:num} HOUR)
-
-snippet     standard_sql_timestamp_add_minute
-abbr        timestamp add by minute
-options     word
-	TIMESTAMP_ADD(${1:time_stamp} INTERVAL ${2:num} MINUTE)
-
-snippet     standard_sql_timestamp_sub_hour
-abbr        timestamp sub by hour
-options     word
-	TIMESTAMP_SUB(${1:time_stamp} INTERVAL ${2:num} HOUR)
-
-snippet     standard_sql_timestamp_sub_minute
-abbr        timestamp sub by minute
-options     word
-	TIMESTAMP_SUB(${1:time_stamp} INTERVAL ${2:num} MINUTE)
-
-snippet     standard_sql_timestamp_diff_hour
-abbr        timestamp diff by hour
-options     word
-    TIMESTAMP_DIFF(${1:base}, ${2:minus}, HOUR)
-
-snippet     standard_sql_timestamp_diff_minute
-abbr        timestamp diff by minute
-options     word
-    TIMESTAMP_DIFF(${1:base}, ${2:minus}, MINUTE)
-
-snippet     standard_sql_timestamp_format
-abbr        format timestamp
-options     word
-    FORMAT_TIMESTAMP('${1:type}', ${2:timestamp})
-
-snippet     standard_sql_timestamp_format_hour
-abbr        format timestamp
-options     word
-    FORMAT_TIMESTAMP('%H', ${1:timestamp})
-
-snippet     standard_sql_timestamp_format_year_month
-abbr        format timestamp
-options     word
-    FORMAT_TIMESTAMP('%Y/%m', ${1:timestamp})
-
-snippet     standard_sql_timestamp_format_year_month_day_hour
-abbr        format timestamp
-options     word
-    FORMAT_TIMESTAMP('%Y-%m-%d %H', ${1:timestamp})
-
-snippet     standard_sql_timestamp_format_year
-abbr        format timestamp
-options     word
-    FORMAT_TIMESTAMP('%Y', ${1:timestamp})
-
-snippet     standard_sql_timestamp_format_weekday
-abbr        format timestamp
-options     word
-    FORMAT_TIMESTAMP('%a', ${1:timestamp})
-
-snippet     standard_sql_datetime_current
-abbr        current datetime
-options     word
-	CURRENT_DATETIME(${1:timezone})
-
-snippet     standard_sql_date_current
-abbr        current date
-options     word
-	CURRENT_DATE(${1:timezone})
-
-snippet     standard_sql_time_current
-abbr        current time
-options     word
-	CURRENT_TIME()
-
-snippet     standard_sql_timestamp_current
-abbr        current timestamp
-options     word
-	CURRENT_TIMESTAMP()
-
-snippet     standard_sql_create_udf_js
-abbr        format timestamp
-options     word
-	CREATE TEMPORARY FUNCTION ${1:func_name}(${2:x FLOAT64})
-	RETURNS ${3:FLOAT64}
-	LANGUAGE js AS """
-		// do something here
-		return x;
-	"""
-	;
-
-snippet     standard_sql_create_udf_sql
-abbr        format timestamp
-options     word
-	CREATE TEMPORARY FUNCTION ${1:func_name}(${2:x FLOAT64}) AS (
-		/* do something here */
-	)
-	;
-
 snippet     standard_sql_type_boolean
 abbr        bool
 options     word
@@ -225,51 +58,6 @@ snippet     standard_sql_cast_to_float
 abbr        cast to float
 options     word
 	CAST(${1:var} AS FLOAT64)
-
-snippet     standard_sql_from_unixtime_to_date
-abbr        from unixtime second since 1970-01-01 00:00:00 UTC
-options     word
-	CAST(TIMESTAMP_SECONDS(CAST(${1:unix_time} AS INT64)) AS DATE)
-
-snippet     standard_sql_from_unixtime_to_timestamp
-abbr        from unixtime second since 1970-01-01 00:00:00 UTC
-options     word
-	TIMESTAMP_SECONDS(${1:int64_seconds})
-
-snippet     standard_sql_from_unixtime_milliseconds_to_timestamp
-abbr        from unixtime milli second 1970-01-01 00:00:00 UTC
-options     word
-	TIMESTAMP_MILLIS(${1:int64_milli_seconds})
-
-snippet     standard_sql_from_unixtime_microseconds_to_timestamp
-abbr        from unixtime micro second 1970-01-01 00:00:00 UTC
-options     word
-	TIMESTAMP_MICROS(${1:int64_milli_seconds})
-
-snippet     standard_sql_from_timestamp_to_unixtime_second
-abbr        to unixtime second 1970-01-01 00:00:00 UTC
-options     word
-	UNIX_SECONDS(${1:timestamp})
-
-snippet     standard_sql_from_timestamp_to_unixtime_milli_second
-abbr        to unixtime milli second 1970-01-01 00:00:00 UTC
-options     word
-	UNIX_MILLIS(${1:timestamp})
-
-snippet     standard_sql_from_timestamp_to_date
-abbr        to date
-options     word
-	CAST(${1:timestamp} AS DATE)
-
-snippet     standard_sql_from_timestamp_to_date_timezone
-abbr        to date
-options     word
-	EXTRACT(DATE FROM ${1:timestamp} AT TIME ZONE "${1:Asia/Tokyo}")
-
-snippet     standard_sql_from_timestamp_to_datetime
-abbr        to date
-options     word
-	CAST(${1:timestamp} AS DATETIME)
 
 snippet     standard_sql_regexp_contain
 abbr        contain or not
@@ -347,80 +135,9 @@ options     word
 		ROWS BETWEEN 3 PRECEDING AND CURRENT ROW
 	)
 
-snippet     comment_function
-abbr        comment to function
-options     head
-	################################################################################
-	# ${1:Description}
-	# Arguments:
-	#   ${2:None}
-	# Returns:
-	#   ${3:None}
-	################################################################################
-
-snippet     standard_sql_partition_time_function
-abbr        between timestamp
-options     word
-	CREATE TEMPORARY FUNCTION BetweenAggregationDate(PARTITIONTIME TIMESTAMP) AS (
-	  PARTITIONTIME BETWEEN
-		TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 24 * 2 HOUR)
-		AND
-		CURRENT_TIMESTAMP()
-	)
-	;
-
-snippet     standard_sql_func_unix_time_to_date
-abbr        between timestamp
-options     word
-	CREATE TEMPORARY FUNCTION UnixTimeToDate(unix_time FLOAT64) AS (
-		CAST(TIMESTAMP_SECONDS(CAST(unix_time AS INT64)) AS DATE)
-	)
-	;
-
-snippet     standard_sql_func_unix_time_to_date_in_jst
-abbr        between timestamp
-options     word
-	CREATE TEMPORARY FUNCTION castFromUnixTimeToDateJst(unix_time INT64) AS (
-		CAST(FORMAT_TIMESTAMP("%Y-%m-%d", TIMESTAMP_MICROS(unix_time), "Asia/Tokyo") AS DATE)
-	)
-	;
-
-snippet     standard_sql_func_null_to_zero
-abbr        null to zero
-options     word
-	CREATE TEMPORARY FUNCTION NullToZero(val INT64) AS (
-		IF(val IS NULL, 0, val)
-	)
-	;
-
-snippet     standard_sql_func_divide_undef_to_null
-abbr        divide but undef to null
-options     word
-	CREATE TEMPORARY FUNCTION DivisionUndefToNull(dividend INT64, divisor INT64) AS (
-		IF(divisor = 0, NULL, dividend / divisor)
-	)
-	;
-
-snippet     standard_sql_nearly_equal
-abbr        nearly equal
-options     word
-	CREATE TEMPORARY FUNCTION NearlyEqual(val1 FLOAT64, val2 FLOAT64) AS (
-		# conventional equality for floating point
-		ABS(val2 - val1) < 1e-7
-	)
-	;
-
-snippet     standard_sql_timestamp_los_angeles
-abbr        divide but undef to null
-options     word
-	${1:2014}-${2:09}-${3:27} ${4:12:30:00.45} ${5:America/Los_Angeles}
-
-snippet     standard_sql_timestamp_tokyo
-abbr        divide but undef to null
-options     word
-	${1:2014}-${2:09}-${3:27} ${4:12:30:00.45} ${5:Asia/Tokyo}
-
+#
 # string
+#
 snippet     standard_sql_string_null_char
 abbr        null character
 options     word
@@ -431,7 +148,9 @@ abbr        char length
 options     word
 	CHAR_LENGTH(${1:val})
 
+#
 # array
+#
 snippet     standard_sql_array_index_from_zero
 abbr        array index from zero
 options     word
@@ -452,8 +171,9 @@ abbr        array flatten
 options     word
 	UNNEST(${1:array_name})
 
+#
 # struct
-
+#
 snippet     standard_sql_struct_type_inline
 abbr        array flatten
 options     word
@@ -463,14 +183,3 @@ snippet     standard_sql_struct_inline
 abbr        array flatten
 options     word
 	STRUCT<${1:var1} ${2:type1}, ${3:var2}, ${4:type2}>(${5:val1}, ${6:val2})
-
-# 
-snippet     standard_sql_date_add_weekday_full
-abbr        array
-options     word
-	FORMAT_DATE('%Y-%m-%d (%A)', ${1:date})
-
-snippet     standard_sql_date_add_weekday_abbreviated
-abbr        array
-options     word
-	FORMAT_DATE('%Y-%m-%d (%a)', ${1:date})

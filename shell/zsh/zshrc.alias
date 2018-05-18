@@ -6,8 +6,7 @@ alias egrep='egrep --color=auto'
 alias shell-reload="exec zsh -l"
 alias group-show-list="cut -d: -f1 /etc/group"
 
-if which docker >/dev/null 2>&1
-then
+if which docker >/dev/null 2>&1; then
   alias docker-kill-stopped-process='docker rm $(docker ps -a -q)'
   alias docker-kill-running-process='docker kill $(docker ps -q)'
   alias docker-delete-all-images='docker rmi $(docker images -q)'
@@ -29,8 +28,7 @@ then
   }
 fi
 
-if which bq >/dev/null 2>&1
-then
+if which bq >/dev/null 2>&1; then
   alias bq-get-table-schema="bq show --format=prettyjson"
   alias bq-query-standard-sql="bq query --nouse_legacy_sql"
   bq-query-standard-sqls()
@@ -50,8 +48,7 @@ then
 fi
 
 # command exists
-if which jq >/dev/null 2>&1
-then
+if which jq >/dev/null 2>&1; then
   jq-pretty-print()
   {
     echo $1 | jq -M "."
@@ -59,8 +56,7 @@ then
 fi
 
 # command exists
-if which grep >/dev/null 2>&1
-then
+if which grep >/dev/null 2>&1; then
   grep-recursive-without-git()
   {
     grep -r $1 --exclude-dir .git $2
@@ -68,8 +64,7 @@ then
 fi
 
 # command exists
-if which git >/dev/null 2>&1
-then
+if which git >/dev/null 2>&1; then
   git-delete-and-checkout-current-branch()
   {
     git fetch

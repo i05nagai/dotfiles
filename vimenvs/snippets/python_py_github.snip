@@ -1,0 +1,82 @@
+snippet     github_import
+abbr        import
+options     word
+	import github
+
+#
+# utils
+#
+snippet     github_default_argument
+abbr        import
+options     word
+	github.GithubObject.NotSet
+
+snippet     github_auth_access_token
+abbr        import
+options     word
+	g = github.Github(${1:access_token})
+
+snippet     github_auth_pass
+abbr        import
+options     word
+	g = github.Github(${1:'username'}, ${2:'password'})
+
+#
+# repository
+#
+snippet     github_repository_get_repo
+abbr        import
+options     word
+	def get_repository(g, repository_name, repository_type='private'):
+		repos = g.get_user().get_repos(type=repository_type)
+		for _repo in repos:
+			if _repo.name == repository_name:
+				repo = _repo
+				break
+		
+		if repo is None:
+			msg = 'repository {0} does not exist'.format(repository_name)
+			raise ValueError(msg)
+		return repo
+
+#
+# repositories
+#
+snippet     github_repositories_get_organization
+abbr        import
+options     word
+	g.get_organization(${1:'organization'}).get_repos(${2:type='public'}):
+
+snippet     github_repositories_get_mine
+abbr        import
+options     word
+	g.get_user().get_repos(type='public')
+
+snippet     github_repository_get_user
+abbr        import
+options     word
+	g.get_user(${1:'user'}).get_repos(type='public')
+
+#
+# user
+#
+snippet     github_user_get
+abbr        import
+options     word
+	g.get_user()
+
+#
+# issues
+#
+snippet     github_issues_get_repository
+abbr        import
+options     word
+	g.get_user().get_repo(${2:'repo'}).get_issues()
+
+#
+# orgniazation
+#
+snippet     github_organization_get
+abbr        import
+options     word
+	g.get_organization(${1:'organization'}).get_repos(type='public'):
