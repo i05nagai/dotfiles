@@ -57,17 +57,6 @@ options     word
 		]
 	}
 
-snippet     terraform_var_list
-abbr        variable list
-options     word
-	variable "${1:var_name}" {
-		type = "list"
-		description = "${3:description}"
-		default = [
-			${2:key},
-		]
-	}
-
 #
 # string
 #
