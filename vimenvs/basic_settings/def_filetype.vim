@@ -7,3 +7,4 @@ autocmd BufRead,BufNewFile *.vue setfiletype vue.html.javascript.css
 autocmd BufRead,BufNewFile *.kt setfiletype kotlin
 autocmd BufRead,BufNewFile *.kts setfiletype kotlin
 autocmd BufRead,BufNewFile *.swift setfiletype swift
+autocmd BufRead,BufNewFile *.gitignore setfiletype gitignore
