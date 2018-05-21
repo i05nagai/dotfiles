@@ -1,0 +1,59 @@
+#
+# import
+#
+snippet     datetime_import
+abbr        datetime_from_string_to_datetime
+options     head
+	import datetime
+
+snippet     datetime_from_string_to_datetime
+abbr        datetime_from_string_to_datetime
+options     head
+    # https://docs.python.org/2.7/library/datetime.html#strftime-and-strptime-behavior
+    ${2:date} = datetime.datetime.strptime(${1:date_string}, "%Y-%m-%d %H:%M:%S")
+
+snippet     datetime_from_datetime_to_string
+abbr        datetime_from_datetime_to_string
+options     head
+    # https://docs.python.org/2.7/library/datetime.html#strftime-and-strptime-behavior
+    ${2:date_string} = ${1:date}.strftime('%Y/%m/%d')
+
+snippet     datetime_now
+abbr        date now
+options     head
+    datetime.datetime.now()
+
+snippet     datetime_to_date
+abbr        datetime to date
+options     word
+    ${1:datetime_var}.date()${0}
+
+snippet     datetime_from_unixtime_to_datetime
+abbr        datetime to date
+options     word
+    datetime.datetime.fromtimestamp(${1:unixtime})${0}
+
+snippet     datetime_to_unixtime
+abbr        datetime to date
+options     word
+    int(time.mktime(${1:datetime_var}.timetuple()))${0}
+
+snippet     date_now
+abbr        date now
+options     head
+    datetime.datetime.now().date()
+
+snippet     date_to_datetime
+abbr        date to datetime
+options     word
+    ${3:datetime_var} = datetime.datetime.combine(
+        ${1:date_var},
+        datetime.time().replace(tzinfo=${2:pytz.utc})
+    )
+
+snippet     datetime_from_datetime_to_unixtime
+abbr        datetime to unixtime
+options     word
+    # import time
+    int(time.mktime(${1:datetime}.timetuple()))
+
