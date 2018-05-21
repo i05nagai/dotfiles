@@ -1,116 +1,50 @@
-snippet     spark_read_from_textfile
-abbr        sc.textFile()
+include python_pyspark_context.snip
+include python_pyspark_dataframe.snip
+include python_pyspark_rdd.snip
+include python_pyspark_spark_session.snip
+
+#
+# import
+#
+snippet     spark_import
+abbr        import
 options     word
-	${1:spark_context}.textFile(${2:path_to_file}${3:, minPartitions=None}${4:, use_unicode=True})
+	import pyspark
 
-snippet     spark_session_read_json_as_df
-abbr        spark.read.json()
+snippet     spark_import_sql
+abbr        import
 options     word
-	${3:df} = ${1:spark_session}.read.json(${2:path_to_file})${0}
+	import pyspark.sql as sql
 
-snippet     spark_session_with_config
-abbr        spark session with config
+#
+# create
+#
+snippet     spark_create_spark_config
+abbr        pyspark.sparkconf
 options     word
-	${2:spark_session} = pyspark.sql.SparkSession.builder.config(conf=${1:spark_conf}).getOrCreate()
+	${4:conf} = pyspark.SparkConf(
+	).setMaster(
+		"${2:local}"
+	).setAppName(
+		"${3:name_of_app}"
+	)${0}
 
-snippet     spark_session_sql
-abbr        spark session sql
+#
+# template
+#
+snippet     spark_template_logger
+abbr        logger
 options     word
-	${3:df} = ${1:spark_session}.sql("${2:sql}")${0}
-
-snippet     spark_session_schema
-abbr        schema
-options     word
-    ${1:schema} = ${2:types.StructType}([
-        # types.StructField('timestamp', types.TimestampType(), True),
-    ])
-
-snippet     spark_session_create_df
-abbr        createDataFrame
-options     word
-   ${1:df} = spark_session.createDataFrame(${2:input_list}, ${3:schema})${0}
-
-snippet     spark_df_describe_all
-abbr        spark_df_describe
-options     word
-	${1:df}.describe().show()${0}
-
-snippet     spark_df_to_csv
-abbr        spark df to csv
-options     head
-    ${1:df}.repartition(${2:1}).write.format('com.databricks.spark.csv').save('${3:path_to_csv}')${0}
-
-snippet     spark_df_to_csv_with_mode
-abbr        spark df to csv with mode
-options     head
-    ${1:df}.repartition(
-        ${2:1}
-    ).write.format(
-        "com.databricks.spark.csv"
-    ).mode(
-        "${2:overwrite}"
-    ).save("${3:path_to_csv}")${0}
-
-snippet     spark_df_to_csv_with_header
-abbr        spark df to csv with mode
-options     head
-    ${1:df}.write.format(
-        "com.databricks.spark.csv"
-    ).mode(
-        "${2:overwrite}"
-    ).save("${3:path_to_csv}")${0}
-
-snippet     spark_df_column_list
-abbr        spark df column list
-options     word
-    ${1:df}.schema.names
-
-snippet     spark_df_column_rename
-abbr        spark df rename columb
-options     word
-    ${1:df}.withColumnRenamed(${2:now}, ${3:new})${0}
-
-snippet     spark_df_explain
-abbr        spark df explain
-options     word
-    ${2:explain} = ${1:df}._jdf.queryExecution().toString()${0}
-
-snippet     spark_df_show
-abbr        spark df show
-options     word
-    ${1:df}.show(n=${2:20} ,truncate=False)${0}
-
-snippet     spark_df_to_dict
-abbr        spark_df_to_dict
-options     word
-    ${1:var} = ${2:df}.rdd.map(lambda x: x.asDict()).collect()${0}
-
-snippet     spark_configure_local
-abbr        pyspark.SparkConf
-options     word
-    ${4:conf} = ${1:pyspark.}SparkConf(
-    ).setMaster(
-        "${2:local}"
-    ).setAppName(
-        "${3:name_of_app}"
-    )${0}
-
-snippet     spark_make_spark_context
-abbr        pyspark.SparkContext
-options     word
-    ${2:spark_context} = pyspark.SparkContext(${1:conf=conf})
-
-snippet     spark_schema_timestamp
-abbr        structfiled timestamp
-options     word
-    ${1:types.}StructField('${2:col_name}', $1${3:TimestampType()}, ${4:True})${0}
-
-snippet     spark_schema_string
-abbr        structfiled string
-options     word
-    ${1:types.}StructField('${2:col_name}', $1${3:StringType()}, ${4:True})${0}
-
-snippet     spark_schema_integer
-abbr        structfiled integer
-options     word
-    ${1:types.}StructField('${2:col_name}', $1${3:IntegerType()}, ${4:True})${0}
+	def get_logger(sc, name):
+		"""get_logger
+	
+		:param name:
+	
+		Example
+		========
+	
+		>>> logger = get_logger(sc, __name__)
+		>>> logger.info("pyspark script logger initialized")
+		"""
+		log4j = sc._jvm.org.apache.log4j
+		return log4j.LogManager.getLogger(name)
