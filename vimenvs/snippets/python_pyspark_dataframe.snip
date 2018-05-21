@@ -1,0 +1,62 @@
+snippet     spark_df_describe_all
+abbr        spark_df_describe
+options     word
+	${1:df}.describe().show()${0}
+
+snippet     spark_df_column_list
+abbr        spark df column list
+options     word
+    ${1:df}.schema.names
+
+snippet     spark_df_column_rename
+abbr        spark df rename columb
+options     word
+    ${1:df}.withColumnRenamed(${2:now}, ${3:new})${0}
+
+snippet     spark_df_explain
+abbr        spark df explain
+options     word
+    ${2:explain} = ${1:df}._jdf.queryExecution().toString()${0}
+
+snippet     spark_df_show
+abbr        spark df show
+options     word
+    ${1:df}.show(n=${2:20} ,truncate=False)${0}
+
+#
+# to
+#
+snippet     spark_df_to_csv
+abbr        spark df to csv
+options     head
+    ${1:df}.repartition(${2:1}).write.format('com.databricks.spark.csv').save('${3:path_to_csv}')${0}
+
+snippet     spark_df_to_csv_with_mode
+abbr        spark df to csv with mode
+options     head
+    ${1:df}.repartition(
+        ${2:1}
+    ).write.format(
+        "com.databricks.spark.csv"
+    ).mode(
+        "${2:overwrite}"
+    ).save("${3:path_to_csv}")${0}
+
+snippet     spark_df_to_csv_with_header
+abbr        spark df to csv with mode
+options     head
+    ${1:df}.write.format(
+        "com.databricks.spark.csv"
+    ).mode(
+        "${2:overwrite}"
+    ).save("${3:path_to_csv}")${0}
+
+snippet     spark_df_to_dict
+abbr        spark_df_to_dict
+options     word
+    ${1:var} = ${2:df}.rdd.map(lambda x: x.asDict()).collect()${0}
+
+snippet     spark_df_to_rdd
+abbr        spark_df_to_dict
+options     word
+    rdd = df.rdd
