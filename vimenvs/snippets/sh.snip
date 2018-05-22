@@ -196,17 +196,17 @@ options     word
 snippet     if_exit_if_error
 abbr        exit if error
 options     head
-    if [ $? -ne 0 ]; then
-        echo oops!
-        exit 1
-    fi
+	if [ $? -ne 0 ]; then
+		echo oops!
+		exit 1
+	fi
 
 snippet     if_string_contain
 abbr        exit if error
 options     head
-    if [ \`echo ${1:string} | grep '${2:match}'\` ]; then
-	  ${0}
-    fi
+	if [ \`echo ${1:string} | grep '${2:match}'\` ]; then
+		${0}
+	fi
 
 snippet     if_string_equal
 abbr        string equal
@@ -323,8 +323,9 @@ options     word
 
 snippet     if_in_not
 abbr        if commands exists
+alias       if_variable_not_one_of
 options     word
-	if [ ${1} != ${2} ] \
+	if [ ${1:"${VAR}"} != ${2} ] \
 		&& [ $1 != ${3} ]; then
 		${0}
 	fi
