@@ -6,22 +6,105 @@ options     word
 snippet     spark_df_column_list
 abbr        spark df column list
 options     word
-    ${1:df}.schema.names
+	${1:df}.schema.names
 
 snippet     spark_df_column_rename
 abbr        spark df rename columb
 options     word
-    ${1:df}.withColumnRenamed(${2:now}, ${3:new})${0}
+	${1:df}.withColumnRenamed(${2:now}, ${3:new})${0}
 
 snippet     spark_df_explain
 abbr        spark df explain
 options     word
-    ${2:explain} = ${1:df}._jdf.queryExecution().toString()${0}
+	${2:explain} = ${1:df}._jdf.queryExecution().toString()${0}
 
 snippet     spark_df_show
 abbr        spark df show
 options     word
-    ${1:df}.show(n=${2:20} ,truncate=False)${0}
+	${1:df}.show(n=${2:20} ,truncate=False)${0}
+
+snippet     spark_df_column_remove
+abbr        spark df remove column
+options     word
+	${1:df}.drop(${2:cols})
+
+snippet     spark_df_fill_null
+abbr        spark df fill null
+options     word
+	${1:df}.fillna(${2:cols})
+
+snippet     spark_df_filter
+abbr        spark df fill null
+options     word
+	${1:df}.filter(${2:df.col > 3})
+
+# 
+# groupby
+#
+snippet     spark_df_groupby_average
+abbr        spark df group by
+options     word
+	${1:df}.groupby(${2:'col_name'}).avg()
+
+snippet     spark_df_groupby_multiple_average
+abbr        spark df group by
+options     word
+	${1:df}.groupby(['${2:col_name}', $1.col_name2}]).avg()
+
+#
+# order by
+#
+snippet     spark_df_order_by_multiple_ascending
+abbr        spark df order by
+options     word
+	${1:df}.orderBy(['${2:col_name}', $1.col_name2}], [True, True])
+
+snippet     spark_df_order_by_ascending
+abbr        spark df order by
+options     word
+	${1:df}.orderBy('${2:col_name}', True)
+
+snippet     spark_df_order_by_descending
+abbr        spark df order by
+options     word
+	${1:df}.orderBy('${2:col_name}', False)
+
+#
+# join
+#
+snippet     spark_df_join_outer
+abbr        spark df group by
+options     word
+	${1:df}.join(df2, df.name == df2.name, 'outer').select(df.name, df2.height).collect()
+
+#
+# aggregate
+#
+snippet     spark_df_aggregate_max_dict
+abbr        spark df show
+options     word
+	${1:df}.agg({'${1:col_name}': 'max'}).collect()${0}
+
+snippet     spark_df_aggregate_max
+abbr        spark df show
+options     word
+	# from pyspark.sql import functions as F
+	${1:df}.agg(F.max($1.${2:col_name}))${0}
+
+snippet     spark_df_aggregate_count
+abbr        spark df show
+options     word
+	${1:df}.count()
+
+snippet     spark_df_coveriance
+abbr        spark df show
+options     word
+	${1:df}.cov(${2:col_name1}, ${3:col_name2})
+
+snippet     spark_df_correlation_peason
+abbr        spark df correlation
+options     word
+	${1:df}.corr(${2:col_name1}, ${3:col_name2}, method='pearson')
 
 #
 # to
@@ -29,34 +112,39 @@ options     word
 snippet     spark_df_to_csv
 abbr        spark df to csv
 options     head
-    ${1:df}.repartition(${2:1}).write.format('com.databricks.spark.csv').save('${3:path_to_csv}')${0}
+	${1:df}.repartition(${2:1}).write.format('com.databricks.spark.csv').save('${3:path_to_csv}')${0}
 
 snippet     spark_df_to_csv_with_mode
 abbr        spark df to csv with mode
 options     head
-    ${1:df}.repartition(
-        ${2:1}
-    ).write.format(
-        "com.databricks.spark.csv"
-    ).mode(
-        "${2:overwrite}"
-    ).save("${3:path_to_csv}")${0}
+	${1:df}.repartition(
+		${2:1}
+	).write.format(
+		"com.databricks.spark.csv"
+	).mode(
+		"${2:overwrite}"
+	).save("${3:path_to_csv}")${0}
 
 snippet     spark_df_to_csv_with_header
 abbr        spark df to csv with mode
 options     head
-    ${1:df}.write.format(
-        "com.databricks.spark.csv"
-    ).mode(
-        "${2:overwrite}"
-    ).save("${3:path_to_csv}")${0}
+	${1:df}.write.format(
+		"com.databricks.spark.csv"
+	).mode(
+		"${2:overwrite}"
+	).save("${3:path_to_csv}")${0}
 
 snippet     spark_df_to_dict
 abbr        spark_df_to_dict
 options     word
-    ${1:var} = ${2:df}.rdd.map(lambda x: x.asDict()).collect()${0}
+	${1:var} = ${2:df}.rdd.map(lambda x: x.asDict()).collect()${0}
 
 snippet     spark_df_to_rdd
 abbr        spark_df_to_dict
 options     word
-    rdd = df.rdd
+	rdd = df.rdd
+
+snippet     spark_df_to_row_list
+abbr        spark_df_to_dict
+options     word
+	list_of_row = df.collect()
