@@ -67,6 +67,16 @@ fzf_git_run_commit_browser() {
 FZF-EOF"
 }
 
+# fcs - get modified files
+# example usage: git checkout -- `fzf_git_print_get_files`
+fzf_git_print_get_files() {
+  local files file_selected
+  files=$(git status -s) &&
+  file_selected=$(echo "$files" | fzf --tac +s +m -e --ansi --reverse) &&
+  echo -n $(echo "$file_selected" | sed 's/^...//')
+}
+
+
 # fcs - get git commit sha
 # example usage: git rebase -i `fcs`
 fzf_git_print_get_git_commit_sha() {
