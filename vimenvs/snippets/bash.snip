@@ -12,9 +12,23 @@ options     word
 snippet     bash_if_string_contain
 abbr        if string
 options     word
-    if [[ ${1:string} == *"${2:search_word}"* ]]; then
-      ${2}
-    fi
+	if [[ ${1:string} == *"${2:str}"* ]]; then
+		${3}
+	fi
+
+snippet     bash_if_string_regexp
+abbr        if string
+options     word
+	if [[ ${1:string} =~ ${2:regexp} ]]; then
+		${3}
+	fi
+
+snippet     bash_if_string_regexp_not
+abbr        if string
+options     word
+	if [[ ! ${1:string} =~ ${2:regexp} ]]; then
+		${3}
+	fi
 
 snippet     bash_if_comment
 abbr        if string
