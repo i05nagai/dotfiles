@@ -3,6 +3,39 @@ abbr        spark_df_describe
 options     word
 	${1:df}.describe().show()${0}
 
+snippet     spark_df_explain
+abbr        spark df explain
+options     word
+	${2:explain} = ${1:df}._jdf.queryExecution().toString()${0}
+
+snippet     spark_df_show
+abbr        spark df show
+options     word
+	${1:df}.show(n=${2:20} ,truncate=False)${0}
+
+#
+# create dataframe
+#
+snippet     spark_df_create
+abbr        create dataframe
+options     word
+	# import pyspark.sql.types as types
+	# import datetime
+	schema = types.StructType([
+		types.StructField('event_timestamp', types.TimestampType(), True),
+		types.StructField('user_id', types.IntegerType(), True),
+	])
+	# column data
+	event_timestamp = datetime.datetime.strptime(date_string, "%Y-%m-%d %H:%M:%S")
+	user_id = 1
+	input_list = [
+		(event_timestamp, user_id),
+	]
+	df = spark_session.createDataFrame(input_list, schema)
+
+#
+# column
+#
 snippet     spark_df_column_list
 abbr        spark df column list
 options     word
@@ -13,15 +46,27 @@ abbr        spark df rename columb
 options     word
 	${1:df}.withColumnRenamed(${2:now}, ${3:new})${0}
 
-snippet     spark_df_explain
-abbr        spark df explain
+snippet     spark_df_column_add_lag
+abbr        spark df rename columb
 options     word
-	${2:explain} = ${1:df}._jdf.queryExecution().toString()${0}
+	window_over_uuid = (pyspark.sql.window.Window
+						.partitionBy('${1:col_name}')
+						.orderBy(df.${2:colname}))
+	lag_column = (pyspark.sql.functions
+					.lag(df.$2, count=1)
+					.over(window_over_uuid))
+	df = df.withColumn('lag', lag_column)
 
-snippet     spark_df_show
-abbr        spark df show
+snippet     spark_df_column_add_diff
+abbr        spark df rename columb
 options     word
-	${1:df}.show(n=${2:20} ,truncate=False)${0}
+	window_over_uuid = (pyspark.sql.window.Window
+						.partitionBy('${1:col_name}')
+						.orderBy(df.${2:colname}))
+	lag_column = (pyspark.sql.functions
+					.lag(df.$2, count=1)
+					.over(window_over_uuid))
+	df = (df.withColumn('diff', df.$2 - lag_column))
 
 snippet     spark_df_column_remove
 abbr        spark df remove column
@@ -33,6 +78,9 @@ abbr        spark df fill null
 options     word
 	${1:df}.fillna(${2:cols})
 
+#
+# filter
+#
 snippet     spark_df_filter
 abbr        spark df fill null
 options     word
