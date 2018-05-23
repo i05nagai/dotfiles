@@ -11,6 +11,18 @@ options     word
 	rdd = rdd_key_value.mapPartitions(_partition_func)
 
 #
+# create rdd
+#
+snippet     spark_rdd_create
+abbr        create rdd from list
+options     word
+	input_list = [
+		' hello spark ',
+		' hello again spark spark'
+	]
+	rdd = spark_context.parallelize(test_input, 1)
+
+#
 # to
 #
 snippet     spark_rdd_to_df
