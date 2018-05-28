@@ -1,0 +1,14 @@
+snippet     py4j_import
+abbr        import
+options     word
+	import py4j.java_gateway as java_gateway
+
+snippet     py4j_gateway
+abbr        import
+options     word
+	gateway = java_gateway.JavaGateway()
+
+snippet     py4j_java_class
+abbr        import
+options     word
+	gateway.jvm.${1:java.util.URI('')}
