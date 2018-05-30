@@ -27,6 +27,7 @@ options     word
 snippet     spark_session_read_json
 abbr        spark.read.json()
 options     word
+	# do not forget to cast timestamp
 	${3:df} = ${1:spark_session}.read.json(${2:path_to_file})${0}
 
 snippet     spark_read_csv_header
