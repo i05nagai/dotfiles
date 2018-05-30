@@ -36,6 +36,16 @@ options     word
 #
 # column
 #
+snippet     spark_df_column_select
+abbr        spark df column select
+options     word
+	${1:df}.select($1.column_name)
+
+snippet     spark_df_column_cast
+abbr        spark df column select
+options     word
+	${1:df}.select($1.col_name.cast('timestamp'))
+
 snippet     spark_df_column_list
 abbr        spark df column list
 options     word
@@ -86,6 +96,17 @@ abbr        spark df fill null
 options     word
 	${1:df}.filter(${2:df.col > 3})
 
+snippet     spark_df_string_like
+abbr        spark df fill null
+options     word
+	${1:df}.filter(${2:df.col.like('%char%')})
+
+snippet     spark_df_datetime
+abbr        spark df datetime
+options     word
+	# datetime_from = datetime.datetime.strptime('2018-05-18 23:59:30', '%Y-%m-%d %H:%M:%S')
+	${1:df}.filter(${2:df.col >= datetime_from})
+
 # 
 # groupby
 #
@@ -105,17 +126,17 @@ options     word
 snippet     spark_df_order_by_multiple_ascending
 abbr        spark df order by
 options     word
-	${1:df}.orderBy(['${2:col_name}', $1.col_name2}], [True, True])
+	${1:df}.orderBy(['${2:col_name}', $1.col_name2}], ascending=[True, True])
 
 snippet     spark_df_order_by_ascending
 abbr        spark df order by
 options     word
-	${1:df}.orderBy('${2:col_name}', True)
+	${1:df}.orderBy('${2:col_name}', ascending=True)
 
 snippet     spark_df_order_by_descending
 abbr        spark df order by
 options     word
-	${1:df}.orderBy('${2:col_name}', False)
+	${1:df}.orderBy('${2:col_name}', ascending=False)
 
 #
 # join
