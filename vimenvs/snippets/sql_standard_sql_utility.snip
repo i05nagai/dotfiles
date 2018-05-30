@@ -66,3 +66,9 @@ options     word
 		ABS(val2 - val1) < 1e-7
 	)
 	;
+
+snippet     standard_sql_parameter
+abbr        nearly equal
+options     word
+	# bq query --parameter name:type:value
+	@${1:parameter_name}
