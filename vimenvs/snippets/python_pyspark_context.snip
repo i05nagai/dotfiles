@@ -1,0 +1,15 @@
+#
+# create
+#
+snippet     spark_create_spark_context
+abbr        pyspark.SparkContext
+options     word
+    ${2:spark_context} = pyspark.SparkContext(${1:conf=conf})
+
+#
+# read
+#
+snippet     spark_read_textfile
+abbr        sc.textFile()
+options     word
+	rdd = ${1:spark_context}.textFile(${2:path_to_file}${3:, minPartitions=None}${4:, use_unicode=True})

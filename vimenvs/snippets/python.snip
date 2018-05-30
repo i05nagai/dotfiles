@@ -1,8 +1,10 @@
+include python_abc.snip
 include python_argparse.snip
 include python_beautifulsoup.snip
 include python_boto3.snip
 include python_click.snip
 include python_csv.snip
+include python_datetime.snip
 include python_faker.snip
 include python_flask.snip
 include python_google_cloud_bigquery.snip
@@ -21,6 +23,7 @@ include python_numpy.snip
 include python_pandas.snip
 include python_path.snip
 include python_pillow.snip
+include python_py4j.snip
 include python_py_github.snip
 include python_pyspark.snip
 include python_pystache.snip
@@ -29,163 +32,186 @@ include python_requests.snip
 include python_scikit_image.snip
 include python_setup_py.snip
 include python_sqlalchemy.snip
+include python_sqlite.snip
 include python_subprocess.snip
 include python_typing.snip
 include python_urllib.snip
 include python_re.snip
 include sphinx.snip
 
+#
+# import
+#
 snippet     debug
 abbr        import pdb;
 options     word
-   import pdb; pdb.set_trace() 
+	import pdb; pdb.set_trace() 
 
 snippet     debug_pudb
 abbr        from pudb import set_trace; set_trace()
 options     word
-    from pudb import set_trace; set_trace()
+	from pudb import set_trace; set_trace()
 
 snippet     debug_ipdb
 abbr        from ipdb import set_trace; set_trace()
 options     word
-    import ipdb; ipdb.set_trace()
-
-snippet shebang
-    #!/usr/bin/env python
-    # -*- coding: utf-8 -*-
-
-snippet shebang3
-    #!/usr/bin/env python3
-    # -*- coding: utf-8 -*-
+	import ipdb; ipdb.set_trace()
 
 snippet import
-    import ${0:module}
-
-snippet unicode
-    def __unicode__(self):
-        ${0:representation}
+	import ${0:module}
 
 snippet import_from
-    from ${1:package} import ${0:module}
+	from ${1:package} import ${0:module}
 
-# Module Docstring
-snippet docs_module
-    """
-    File: ${1:`vim_snippets#Filename('$1.py', 'foo.py')`}
-    Author: `g:snips_author`
-    Email: `g:snips_email`
-    Github: `g:snips_github`
-    Description: ${0}
-    """
+snippet     future
+abbr        future
+options     head
+	from __future__ import absolute_import
+	from __future__ import division
+	from __future__ import print_function
+	from __future__ import unicode_literals
 
-snippet while
-    while ${1:condition}:
-        ${0}
+#
+# shebang
+#
+snippet shebang
+	#!/usr/bin/env python
+	# -*- coding: utf-8 -*-
 
-snippet do_while
-    while True:
-        ${1}
-        if ${0:condition}:
-            break
+snippet shebang3
+	#!/usr/bin/env python3
+	# -*- coding: utf-8 -*-
+
+snippet utf8
+    # -*- coding: utf-8 -*-
 
 snippet with
-    with ${1:expr} as ${2:var}:
-        ${0}
+	with ${1:expr} as ${2:var}:
+		${0}
 
 delete with_open
 snippet with_open
-    try:
-        with open(${1:filename}, '${2:rwb}') as ${3:f}:
-            ${4:pass}
-    except IOError as e:
-        print(e)
+	try:
+		with open(${1:filename}, '${2:rwb}') as ${3:f}:
+			${4:pass}
+	except IOError as e:
+		print(e)
 
 snippet with_open_newline
-    try:
-        with open(${1:filename}, '${2:rwb}', newline='\n') as ${3:f}:
-            ${4:pass}
-    except IOError as e:
-        print(e)
+	try:
+		with open(${1:filename}, '${2:rwb}', newline='\n') as ${3:f}:
+			${4:pass}
+	except IOError as e:
+		print(e)
 
 snippet     print_to_file
 abbr        print to file
 options     word
-    def print_to_file(filename, data):
-        """print_to_file
-
-        :param filename: 
-        :param data:
-        """
-        with open(filename, "w") as f:
-            string = json.dumps(data, indent=4, sort_keys=True)
-            f.write(string)
+	def print_to_file(filename, data):
+		"""print_to_file
+	
+		:param filename: 
+		:param data:
+		"""
+		with open(filename, "w") as f:
+			string = json.dumps(data, indent=4, sort_keys=True)
+			f.write(string)
 
 # New Class
 snippet cl
-    class ${1:ClassName}(${2:object}):
-        """${3:docstring for $1}"""
-        def __init__(self, ${4:arg}):
-            ${5:super($1, self).__init__()}
-            self.$4 = $4
-            ${0}
+	class ${1:ClassName}(${2:object}):
+		"""${3:docstring for $1}"""
+		def __init__(self, ${4:arg}):
+			${5:super($1, self).__init__()}
+			self.$4 = $4
+			${0}
 
-# New Function
-snippet def
-    def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
-        ${0}
-
-# New Method
 snippet def_method
-    def ${1:mname}(self, ${2:arg}):
-        ${0}
+	def ${1:mname}(self, ${2:arg}):
+		${0}
 
-# New Property
+snippet def
+	def ${1:fname}(${2:`indent('.') ? 'self' : ''`}):
+		${0}
+
 snippet def_property
-    def ${1:foo}():
-        doc = "${2:The $1 property.}"
-        def fget(self):
-            ${3:return self._$1}
-        def fset(self, value):
-            ${4:self._$1 = value}
-        def fdel(self):
-            ${0:del self._$1}
-        return locals()
-    $1 = property(**$1())
+	def ${1:foo}():
+		doc = "${2:The $1 property.}"
+		def fget(self):
+			${3:return self._$1}
+		def fset(self, value):
+			${4:self._$1 = value}
+		def fdel(self):
+			${0:del self._$1}
+		return locals()
+	$1 = property(**$1())
 
-# Ifs
+#
+# if
+#
 snippet if
-    if ${1:condition}:
-        ${0}
-snippet else
-    else:
-        ${0}
+	if ${1:condition}:
+		${0}
 
-snippet elif
-    elif ${1:condition}:
-        ${0}
+snippet if_else
+	if ${1:condition}:
+		${2}
+	else:
+		${0}
 
-# For
+snippet if_elif
+	elif ${1:condition}:
+		${0}
+
+snippet     if_is_list
+abbr        if is list
+options     word
+	if isinstance(${1:var}, list):
+		${0}
+
+snippet     if_type
+abbr        if type
+options     word
+	if isinstance(${1:var}, ${2:list/str/int}):
+		${0}
+
+#
+# loop
+#
 snippet for
-    for ${1:item} in ${2:items}:
-        ${0}
+	for ${1:item} in ${2:items}:
+		${0}
 
-# Encodes
-snippet utf8
-    # -*- coding: utf-8 -*-
+snippet while
+	while ${1:condition}:
+		${0}
 
+snippet do_while
+	while True:
+		${1}
+		if ${0:condition}:
+			break
+
+snippet unicode
+	def __unicode__(self):
+		${0:representation}
+
+#
+# exception
+#
 snippet try_except
-    try:
-        ${1}
-    except ${2:Exception}, ${3:e}:
-        ${0:raise $3}
+	try:
+		${1}
+	except ${2:Exception}, ${3:e}:
+		${0:raise $3}
 
 snippet try_except_else
-    try:
-        ${1}
-    except ${2:Exception}, ${3:e}:
-        ${4:raise $3}
-    else:
-        ${0}
+	try:
+		${1}
+	except ${2:Exception}, ${3:e}:
+		${4:raise $3}
+	else:
+		${0}
 
 snippet try_except_finally
 	try:
@@ -209,35 +235,26 @@ snippet try_except_else_finally
 snippet main
 	def main():
 		pass
-
-
+	
+	
 	if __name__ == '__main__':
 		${0:main()}
 
+#
+# docstring
+#
 snippet """
-    """${0:doc}
+	"""${0:doc}
+	"""
+
+snippet docs_module
     """
-
-snippet     future
-abbr        future
-options     head
-    from __future__ import absolute_import
-    from __future__ import division
-    from __future__ import print_function
-    from __future__ import unicode_literals
-
-# re
-snippet     match_with_group
-abbr        re.match
-options     word
-    match_object = re.match(${1:pattern}, ${2:text})
-    if match_object:
-        ${3:match_object.group(1)}${0}
-
-snippet     re_replace
-abbr        re.sub
-options     word
-    ${1:replaced} = re.sub(r'${2:replacee}', '${3:replacer}', ${4:text})
+    File: ${1:`vim_snippets#Filename('$1.py', 'foo.py')`}
+    Author: `g:snips_author`
+    Email: `g:snips_email`
+    Github: `g:snips_github`
+    Description: ${0}
+    """
 
 snippet     sleep
 abbr        sleep
@@ -245,83 +262,32 @@ options     word
 	# import time
 	time.sleep(${1:sec})
 
-snippet     time_start
+snippet     time_start_end
 abbr        sleep
 options     word
 	import time
-	time.sleep(${1:sec})
-
-snippet     time_end
-abbr        sleep
-options     word
+	start = time.time()
+	${0}
 	elapsed_time = time.time() - start
 	print("elapsed_time:{0} [sec]".format(elapsed_time))
 
-# date
-snippet     datetime_from_string_to_datetime
-abbr        datetime_from_string_to_datetime
-options     head
-    # https://docs.python.org/2.7/library/datetime.html#strftime-and-strptime-behavior
-    ${2:date} = datetime.datetime.strptime(${1:date_string}, "%Y-%m-%d %H:%M:%S")
-
-snippet     datetime_from_datetime_to_string
-abbr        datetime_from_datetime_to_string
-options     head
-    # https://docs.python.org/2.7/library/datetime.html#strftime-and-strptime-behavior
-    ${2:date_string} = ${1:date}.strftime('%Y/%m/%d')
-
-snippet     datetime_now
-abbr        date now
-options     head
-    datetime.datetime.now()
-
-snippet     datetime_to_date
-abbr        datetime to date
-options     word
-    ${1:datetime_var}.date()${0}
-
-snippet     datetime_from_unixtime_to_datetime
-abbr        datetime to date
-options     word
-    datetime.datetime.fromtimestamp(${1:unixtime})${0}
-
-snippet     datetime_to_unixtime
-abbr        datetime to date
-options     word
-    int(time.mktime(${1:datetime_var}.timetuple()))${0}
-
-snippet     date_now
-abbr        date now
-options     head
-    datetime.datetime.now().date()
-
-snippet     date_to_datetime
-abbr        date to datetime
-options     word
-    ${3:datetime_var} = datetime.datetime.combine(
-        ${1:date_var},
-        datetime.time().replace(tzinfo=${2:pytz.utc})
-    )
-
-snippet     datetime_from_datetime_to_unixtime
-abbr        datetime to unixtime
-options     word
-    # import time
-    int(time.mktime(${1:datetime}.timetuple()))
-
-# pprint
+#
+# print
+#
 snippet     pretty_print_dict
 abbr        pretty printer
 options     word
-    import pprint
-    pprint.pprint(${2:dict})${0}
+	import pprint
+	pprint.pprint(${2:dict})${0}
 
-# print
 snippet     print_variable
 abbr        print variable
 options     word
-    print('${1}: {0}'.format($1))
+	print('${1}: {0}'.format($1))
 
+#
+# argument
+#
 snippet     argument_sys
 abbr        sys.argv
 options     word
@@ -345,6 +311,9 @@ snippet commandline_argument
         elif option in ("-v", "--verbose"):
             verbose = argument
 
+#
+# env
+#
 snippet     environment_variable_get
 abbr        environment variable
 options     head
@@ -357,6 +326,20 @@ options     head
 	import os
 	os.environ["${1:var_name}"] = ${2:set_var}
 
+snippet     make_directory_if_not_exists
+abbr        make directory
+options     head
+	# import os
+	# import errno
+	try:
+		os.makedirs(${1:path_to_directory})
+	except OSError as e:
+		if e.errno != errno.EEXIST:
+			raise${0}
+
+#
+# set
+#
 snippet     set_add_element
 abbr        set add set
 options     word
@@ -367,24 +350,18 @@ abbr        set add set
 options     word
 	${1:set_var} |= ${2:set_var2}
 
-snippet     make_directory_if_not_exists
-abbr        make directory
-options     head
-    # import os
-    # import errno
-    try:
-        os.makedirs(${1:path_to_directory})
-    except OSError as e:
-        if e.errno != errno.EEXIST:
-            raise${0}
 
+#
 # list
+#
 snippet     list_copy
 abbr        list copy
 options     word
     ${1:var} = ${2:list}[:]
 
+#
 # sort
+#
 snippet     sort_list_of_dict_by_elem
 abbr        sort list of dict
 options     head
@@ -405,50 +382,13 @@ abbr        sort list of dict
 options     head
 	sorted(${1:x}.items(), key=operator.itemgetter(0))${0}
 
-# abs class
-snippet     abc_class
-abbr        abs class
-options     head
-	class ${1:class_name}(object):
-	
-		__metaclass__ = abc.ABCMeta
-	
-		def __init__(self):
-			pass
-	
-		@abc.abstractmethod
-		def ${2:method}(self${3:, attr}):
-			raise NotImplemented()
-
-snippet     abc_method
-abbr        abs mehod
-options     head
-        @abc.abstractmethod
-        def ${1:method}(self${2:, attr}):
-            raise NotImplemented()
-
-snippet     sqlite_connect
-abbr        connect
-options     word
-    conn = sqlite3.connect(${1:path_to_db})
-
-snippet     sqlite_execute
-abbr        connect
-options     word
-    cursor = conn.cursor()
-    for row in cursor.execute(${1:query}):
-        ${2}
-
-snippet     log_set_output_file
-abbr        logging set output file
-options     word
-    logging.basicConfig(filename=${1:'example.log'}, level=logging.DEBUG)
-
 snippet     func_name
 abbr        get function name
 options     word
     ${1:function}.__name__
 
+#
+# str
 #
 snippet     bytestring_to_str
 abbr        get function name
@@ -475,12 +415,6 @@ options     word
 			return wrapped_f
 		
 		return wrap
-
-snippet     if_is_list
-abbr        if is list
-options     word
-	if isinstance(${1:var}, list):
-		${1}
 
 snippet     download_file
 abbr        download_file

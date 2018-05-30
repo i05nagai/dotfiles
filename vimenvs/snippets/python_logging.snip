@@ -1,3 +1,6 @@
+#
+# import
+#
 snippet     logging_import
 abbr        logging import
 options     word
@@ -12,6 +15,11 @@ snippet     logging_to_terminal
 abbr        logging to terminal
 options     word
     logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
+
+snippet     logging_set_output_file
+abbr        logging set output file
+options     word
+    logging.basicConfig(filename=${1:'example.log'}, level=logging.DEBUG)
 
 snippet     logging_format
 abbr        logging format

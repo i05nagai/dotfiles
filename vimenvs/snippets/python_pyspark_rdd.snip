@@ -1,0 +1,31 @@
+snippet     spark_rdd_repartition_and_sort_within_partitions
+abbr        repartitionAndSortWithinPartitions
+options     word
+	rdd = rdd.persist()
+	rdd_key_value = rdd.map(lambda x: (x[1], (x[0], x[2], x[3])))
+	rdd_key_value = rdd_key_value.repartitionAndSortWithinPartitions(
+		num_partitions, lambda x: abs(hash(x)) % num_partitions, True)
+	def _partition_func(key_value_list):
+		# do something
+		yield Row()
+	rdd = rdd_key_value.mapPartitions(_partition_func)
+
+#
+# create rdd
+#
+snippet     spark_rdd_create
+abbr        create rdd from list
+options     word
+	input_list = [
+		' hello spark ',
+		' hello again spark spark'
+	]
+	rdd = spark_context.parallelize(test_input, 1)
+
+#
+# to
+#
+snippet     spark_rdd_to_df
+abbr        to df
+options     word
+	df = rdd.toDF(sampleRatio=${1:0.2})

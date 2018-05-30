@@ -73,3 +73,5 @@ if which git >/dev/null 2>&1; then
     git checkout origin/$2 -b $2
   }
 fi
+
+source ~/.shell/zsh/awscli.sh

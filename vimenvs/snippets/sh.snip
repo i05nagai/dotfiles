@@ -9,12 +9,12 @@ include bash.snip
 snippet     echo_no_newline
 abbr        echo without newline
 options     head
-    printf "%s" ${1}
+	printf "%s" ${1}
 
 snippet     echo_variable
 abbr        echo without newline
 options     head
-    echo '${1}'"=$1"
+	echo '${1}'"=$1"
 
 #
 # template
@@ -24,10 +24,10 @@ abbr        usage
 	usage() {
 	  cat <<EOF
 	${1:basename} is a tool for ...
-
+	
 	Usage:
 	    $1 [command] [<options>]
-
+	
 	Options:
 	    --version, -v     print $1 version
 	    --help, -h        print this
@@ -46,19 +46,19 @@ abbr        subcommand
 	  start)
 	    start
 	  ;;
-
+	
 	  stop)
 	    stop
 	  ;;
-
+	
 	  restart)
 	    start && stop
 	  ;;
-
+	
 	  help|--help|-h)
 	    usage
 	  ;;
-
+	
 	  version|--version|-v)
 	    version
 	  ;;
@@ -69,7 +69,8 @@ abbr        subcommand
 	    exit 1
 	  ;;
 	esac
-	
+
+
 snippet     template_option
 abbr        option
 	while [ $# -gt 0 ];
@@ -78,22 +79,22 @@ abbr        option
 	    --debug|-d)
 	      set -x
 	    ;;
-
+	
 	    --help|-h)
 	      usage
 	      exit 0
 	    ;;
-
+	
 	    --some-command|-s)
 	      shift
 	      var=$1
 	    ;;
-
+	
 	    --version|-v)
 	      version
 	      exit 0
 	    ;;
-
+	
 	    *)
 	      echo "[ERROR] Invalid option '\${1}'"
 	      usage
@@ -124,10 +125,10 @@ options     head
 snippet     for_array
 abbr        for array
 options     head
-    for ${1} in \${${2:array}[@]}
-    do
-        ${3}
-    done
+	for ${1} in \${${2:array}[@]}
+	do
+		${3}
+	done
 
 snippet     for_array_index
 abbr        for array
@@ -139,16 +140,16 @@ options     head
 snippet     for_filelist
 abbr        for file
 options     word
-    for filename in $(ls ${1:path} ); do
-        ${0}
-    done
+	for filename in $(ls ${1:path} ); do
+		${0}
+	done
 
 snippet     for_filelist_filtered_by_ext
 abbr        for file
 options     word
-    for filename in $(ls ${1:path} | grep ${2:.txt}$ ); do
-        ${0}
-    done
+	for filename in $(ls ${1:path} | grep ${2:.txt}$ ); do
+		${0}
+	done
 
 snippet     for_read_lines
 abbr        for file
@@ -161,7 +162,7 @@ options     word
 snippet     get_filelist
 abbr        get
 options     head
-    filelist=$(find ${1:path_to_dir} ${2:condition})
+	filelist=$(find ${1:path_to_dir} ${2:condition})
 
 snippet     array
 abbr        array=()
@@ -171,17 +172,17 @@ options     word
 snippet     array_append
 abbr        array append
 options     word
-    ${1:array}=("\${$1[@]}" ${2})
+	${1:array}=("\${$1[@]}" ${2})
 
 snippet     array_insert_front
 abbr        array insert to front
 options     word
-    ${1:array}=(${2} "\${$1[@]}")
+	${1:array}=(${2} "\${$1[@]}")
 
 snippet     array_length
 abbr        array length
 options     word
-    ${#array[@]} 
+	${#array[@]} 
 
 #
 # if
@@ -196,17 +197,17 @@ options     word
 snippet     if_exit_if_error
 abbr        exit if error
 options     head
-    if [ $? -ne 0 ]; then
-        echo oops!
-        exit 1
-    fi
+	if [ $? -ne 0 ]; then
+		echo oops!
+		exit 1
+	fi
 
 snippet     if_string_contain
 abbr        exit if error
 options     head
-    if [ \`echo ${1:string} | grep '${2:match}'\` ]; then
-	  ${0}
-    fi
+	if [ \`echo ${1:string} | grep '${2:match}'\` ]; then
+		${0}
+	fi
 
 snippet     if_string_equal
 abbr        string equal
@@ -323,8 +324,9 @@ options     word
 
 snippet     if_in_not
 abbr        if commands exists
+alias       if_variable_not_one_of
 options     word
-	if [ ${1} != ${2} ] \
+	if [ ${1:"${VAR}"} != ${2} ] \
 		&& [ $1 != ${3} ]; then
 		${0}
 	fi

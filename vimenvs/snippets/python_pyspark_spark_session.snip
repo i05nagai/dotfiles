@@ -1,0 +1,87 @@
+#
+# create
+#
+snippet     spark_create_spark_session_with_config
+abbr        spark session with config
+options     word
+	${2:spark_session} = pyspark.sql.SparkSession.builder.config(conf=${1:spark_conf}).getOrCreate()
+
+snippet     spark_create_spark_session
+abbr        spark session with config
+options     word
+	${2:spark_session} = (pyspark.sql.SparkSession
+			.builder
+			.appName(${1:"appname"})
+			.config("spark.debug.maxToStringFields", 1000)
+			.config("spark.sql.shuffle.partitions", 10)
+			.getOrCreate())
+
+snippet     spark_create_spark_session_from_spark_context
+abbr        spark session with config
+options     word
+	${2:spark_session} = pyspark.sql.SparkSession(${1:sc})
+
+#
+# read
+#
+snippet     spark_session_read_json
+abbr        spark.read.json()
+options     word
+	# do not forget to cast timestamp
+	${3:df} = ${1:spark_session}.read.json(${2:path_to_file})${0}
+
+snippet     spark_read_csv_header
+abbr        sc.textFile()
+options     word
+	df = ${1:spark_session}.read..option("header", "true").csv(${2:"path_to_csv"})
+
+snippet     spark_read_csv
+abbr        sc.textFile()
+options     word
+	df = ${1:spark_session}.read.csv(${2:"path_to_csv"})
+
+#
+#
+#
+snippet     spark_session_sql
+abbr        spark session sql
+options     word
+	${3:df} = ${1:spark_session}.sql("${2:sql}")${0}
+
+#
+# schema
+#
+snippet     spark_session_schema
+abbr        schema
+options     word
+		${1:schema} = ${2:types.StructType}([
+			# types.StructField('timestamp', types.TimestampType(), True),
+		])
+
+snippet     spark_session_create_df
+abbr        createDataFrame
+options     word
+	${1:df} = spark_session.createDataFrame(${2:input_list}, ${3:schema})${0}
+
+snippet     spark_schema_timestamp
+abbr        structfiled timestamp
+options     word
+	${1:types.}StructField('${2:col_name}', $1${3:TimestampType()}, ${4:True})${0}
+
+snippet     spark_schema_string
+abbr        structfiled string
+options     word
+	${1:types.}StructField('${2:col_name}', $1${3:StringType()}, ${4:True})${0}
+
+snippet     spark_schema_integer
+abbr        structfiled integer
+options     word
+	${1:types.}StructField('${2:col_name}', $1${3:IntegerType()}, ${4:True})${0}
+
+#
+# to
+#
+snippet     spark_session_to_spark_context
+abbr        structfiled integer
+options     word
+	${1:spark_session}.sparkContext

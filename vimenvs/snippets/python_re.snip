@@ -1,3 +1,24 @@
+#
+# import
+#
+snippet     re_import
+abbr        import
+options     word
+	import re
+
+snippet     re_match_with_group
+alias       match_with_group
+abbr        re.match
+options     word
+	match_object = re.match(${1:pattern}, ${2:text})
+	if match_object:
+		${3:match_object.group(1)}${0}
+
+snippet     re_replace
+abbr        re.sub
+options     word
+	${1:replaced} = re.sub(r'${2:replacee}', '${3:replacer}', ${4:text})
+
 snippet     re_match
 abbr        match
 options     word

@@ -1,3 +1,6 @@
+#
+# import
+#
 snippet     mock_import
 abbr        import mock
 options     head
@@ -9,6 +12,9 @@ options     word
 	${1:mock}.patch.object(${2:target}, '${3:method}')
 	$2.$3.return_value = ${4}
 
+#
+# assert
+#
 snippet     mock_assert_called
 abbr        mock patch
 options     word
@@ -44,11 +50,13 @@ options     word
 snippet     mock_file_open
 abbr        mock file open
 options     word
+	# import builtins
 	read_data = ${1:'str'}
 	${3:mock} = ${2:mocker}.mock_open(read_data=read_data)
-	$2.patch.object(${4:target}, 'open', $3)
-	# $3().write.assert_called_once_with(expected_text)
-	# $3().read.assert_called_once()
+	$2.patch.object(builtins, 'open', $3)
+	# $3.write.assert_called_once_with(expected_text)
+	# $3.read.assert_called_once()
+	# $3.readlines.assert_called_once()
 
 snippet     mock_create_magic_mock_return_value
 abbr        magic mock

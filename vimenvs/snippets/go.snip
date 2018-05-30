@@ -12,12 +12,60 @@ options     word
 	}
 
 #
-# fmt
+# import
 #
-snippet     main
+snippet     import_multiple
 abbr        main
 options     word
+	import (
+		"fmt"
+		"math/cmplx"
+	)
+
+snippet     import
+abbr        main
+options     word
+	import "${1:fmt}"
+
+#
+# fmt
+#
+snippet     fmt
+abbr        main
+options     word
+	# import "fmt"
 	fmt.Printf(${1}")
+
+#
+# for
+#
+snippet     for
+abbr        for
+options     word
+	sum := 0
+	for i := 0; i < 10; i++ {
+		sum += i
+	}
+
+snippet     for_short
+abbr        for
+options     word
+	sum := 1
+	for sum < 1000 {
+		sum += sum
+	}
+
+snippet     for_infinite
+abbr        for
+options     word
+	for {
+	}
+
+snippet     for_map
+abbr        for
+options     word
+	for key, value := range ${1:map} {
+	}
 
 #
 # if
@@ -26,4 +74,176 @@ snippet     if_ok
 abbr        main
 options     word
 	if ${1:ret}, ok := ${2:data}; ok {
+	}
+
+snippet     if_os
+abbr        switch
+options     word
+	switch ${1:os := runtime.GOOS}; os {
+	case "darwin":
+		fmt.Println("OS X.")
+	case "linux":
+		fmt.Println("Linux.")
+	default:
+		// freebsd, openbsd,
+		// plan9, windows...
+		fmt.Printf("%s.", os)
+	}
+
+#
+# type
+#
+snippet     type_bool
+abbr        type
+options     word
+	bool
+
+snippet     type_string
+abbr        type
+options     word
+	string
+
+snippet     type_int
+abbr        type
+options     word
+	int
+
+snippet     type_int64
+abbr        type
+options     word
+	int64
+
+snippet     type_uint
+abbr        type
+options     word
+	uint
+
+snippet     type_uint64
+abbr        type
+options     word
+	uint64
+
+snippet     type_byte
+abbr        alias for uint8
+options     word
+	byte
+
+snippet     type_float32
+abbr        alias for uint8
+options     word
+	float32
+
+snippet     type_float64
+abbr        alias for uint8
+options     word
+	float64
+
+snippet     type_complex64
+abbr        type
+options     word
+	complex64
+
+snippet     type_complex128
+abbr        type
+options     word
+	complex128
+
+snippet     type_map
+abbr        type
+options     word
+	map[${1:keyType}]${2:valueType}
+
+snippet     type_def_struct
+abbr        type
+options     word
+	type ${1:type_name} struct {
+	}
+
+snippet     type_def_interface
+abbr        type
+options     word
+	type ${1:type_name} interface {
+	}
+
+snippet     type_def_func
+abbr        type
+options     word
+	type ${1:type_name} func {
+	}
+
+snippet     type_assert_if
+abbr        type
+options     word
+	if t, ok := ${1:var_name}.(${2:Type}); ok {
+	}
+
+
+#
+# cast
+#
+snippet     cast_from_float_to_uint
+abbr        type
+options     word
+	uint(${1:float_value})
+
+#
+# const
+#
+snippet     const
+abbr        type
+options     word
+	const ${1:Name = value}
+
+#
+# var
+#
+snippet     var_type
+abbr        type
+options     word
+	var ${1:var_name} ${2:TypeName}${3: = 1}
+
+snippet     var_multiple
+abbr        type
+options     word
+	var (
+		${1:var_name} ${2:TypeName}${3: = 1}
+	)
+
+snippet     var_without_type
+abbr        type
+options     word
+	${1:var_name} := ${3:value}
+
+
+#
+# func
+#
+snippet     func
+abbr        type
+options     word
+	func ${1:Funcname}(${2:name Type, name Type}) ${3:ReturnType} {
+		return result
+	}
+
+snippet     func_return_multiple
+abbr        type
+options     word
+	func ${1:Funcname}(${2:name Type, name Type}) ${3:(ReturnType1, ReturnType2)} {
+		return 1
+	}
+
+snippet     func_return_named
+abbr        type
+options     word
+	func ${1:Funcname}(${2:name Type, name Type}) ${3:(x ReturnType1, y ReturnType2)} {
+		// x := 1
+		// y := 2
+		return
+	}
+
+snippet     func_method
+abbr        type
+options     word
+	func ${1:Funcname}(${2:name Type, name Type}) ${3:ReturnType} {
+		return result
 	}

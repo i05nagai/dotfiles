@@ -1,0 +1,16 @@
+snippet     sqlite_import
+abbr        connect
+options     word
+	import sqlite3
+
+snippet     sqlite_connect
+abbr        connect
+options     word
+	conn = sqlite3.connect(${1:path_to_db})
+
+snippet     sqlite_execute
+abbr        connect
+options     word
+	cursor = conn.cursor()
+	for row in cursor.execute(${1:query}):
+		${2}

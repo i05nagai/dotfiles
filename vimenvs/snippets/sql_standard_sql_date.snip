@@ -58,26 +58,52 @@ abbr        truncate date week
 options     word
 	TIMESTAMP_TRUNC(date, MONTH)
 
+#
+# timestamp add
+#
 snippet     standard_sql_timestamp_add_hour
 abbr        timestamp add by hour
 options     word
-	TIMESTAMP_ADD(${1:time_stamp} INTERVAL ${2:num} HOUR)
+	TIMESTAMP_ADD(${1:time_stamp}, INTERVAL ${2:num} HOUR)
 
 snippet     standard_sql_timestamp_add_minute
 abbr        timestamp add by minute
 options     word
-	TIMESTAMP_ADD(${1:time_stamp} INTERVAL ${2:num} MINUTE)
+	TIMESTAMP_ADD(${1:time_stamp}, INTERVAL ${2:num} MINUTE)
 
+snippet     standard_sql_timestamp_add_day
+abbr        timestamp add by day
+options     word
+	TIMESTAMP_ADD(${1:time_stamp}, INTERVAL ${2:24} HOUR)
+
+snippet     standard_sql_timestamp_add_month
+abbr        timestamp add by day
+options     word
+	# 24 * 30
+	TIMESTAMP_ADD(${1:time_stamp}, INTERVAL 720 HOUR)
+
+snippet     standard_sql_timestamp_add_year
+abbr        timestamp add by day
+options     word
+	# 24 * 365
+	TIMESTAMP_ADD(${1:time_stamp}, INTERVAL 8760 HOUR)
+
+#
+# timestamp sub
+#
 snippet     standard_sql_timestamp_sub_hour
 abbr        timestamp sub by hour
 options     word
-	TIMESTAMP_SUB(${1:time_stamp} INTERVAL ${2:num} HOUR)
+	TIMESTAMP_SUB(${1:time_stamp}, INTERVAL ${2:num} HOUR)
 
 snippet     standard_sql_timestamp_sub_minute
 abbr        timestamp sub by minute
 options     word
-	TIMESTAMP_SUB(${1:time_stamp} INTERVAL ${2:num} MINUTE)
+	TIMESTAMP_SUB(${1:time_stamp}, INTERVAL ${2:num} MINUTE)
 
+#
+# timestamp diff
+#
 snippet     standard_sql_timestamp_diff_hour
 abbr        timestamp diff by hour
 options     word
@@ -138,6 +164,9 @@ abbr        current timestamp
 options     word
 	CURRENT_TIMESTAMP()
 
+#
+# from unixtime to
+#
 snippet     standard_sql_from_unixtime_to_date
 abbr        from unixtime second since 1970-01-01 00:00:00 UTC
 options     word
@@ -158,6 +187,9 @@ abbr        from unixtime micro second 1970-01-01 00:00:00 UTC
 options     word
 	TIMESTAMP_MICROS(${1:int64_milli_seconds})
 
+#
+# from timestamp
+#
 snippet     standard_sql_from_timestamp_to_unixtime_second
 abbr        to unixtime second 1970-01-01 00:00:00 UTC
 options     word
@@ -182,6 +214,32 @@ snippet     standard_sql_from_timestamp_to_datetime
 abbr        to date
 options     word
 	CAST(${1:timestamp} AS DATETIME)
+
+#
+# from string 
+#
+snippet     standard_sql_from_string_to_timestamp
+abbr        to date
+options     word
+	TIMESTAMP('${1:yyyy-mm-dd 00:00:00}')
+
+snippet     standard_sql_from_string_to_timestamp_yyyy-mm-dd_00:00:00
+abbr        to date
+options     word
+	# https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#supported-format-elements-for-timestamp
+	PARSE_TIMESTAMP('%Y-%m-%d %H:%M:%S', ${2:string})
+
+snippet     standard_sql_from_string_to_timestamp_yyyy-mm-dd
+abbr        to date
+options     word
+	# https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#supported-format-elements-for-timestamp
+	PARSE_TIMESTAMP('%Y-%m-%d', ${2:string})
+
+snippet     standard_sql_from_string_to_timestamp_yyyymmdd
+abbr        to date
+options     word
+	# https://cloud.google.com/bigquery/docs/reference/standard-sql/functions-and-operators#supported-format-elements-for-timestamp
+	PARSE_TIMESTAMP('%Y%m%d', ${2:string})
 
 snippet     standard_sql_date_add_weekday_full
 abbr        array

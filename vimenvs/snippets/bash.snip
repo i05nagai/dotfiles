@@ -12,9 +12,23 @@ options     word
 snippet     bash_if_string_contain
 abbr        if string
 options     word
-    if [[ ${1:string} == *"${2:search_word}"* ]]; then
-      ${2}
-    fi
+	if [[ ${1:string} == *"${2:str}"* ]]; then
+		${3}
+	fi
+
+snippet     bash_if_string_regexp
+abbr        if string
+options     word
+	if [[ ${1:string} =~ ${2:regexp} ]]; then
+		${3}
+	fi
+
+snippet     bash_if_string_regexp_not
+abbr        if string
+options     word
+	if [[ ! ${1:string} =~ ${2:regexp} ]]; then
+		${3}
+	fi
 
 snippet     bash_if_comment
 abbr        if string
@@ -90,10 +104,20 @@ abbr        variable
 options     word
 	${${1:parameter}^^}
 
+#
+# if
+#
 snippet     bash_if_sourced
 abbr        if script is sourced
 options     word
 	if [[ $_ != \$0 ]]; then
+	fi
+
+snippet     bash_if_contain
+abbr        if script is sourced
+options     word
+	if [[ ${1:testmystring} != *"${2:word}"* ]]; then
+		$0
 	fi
 
 #

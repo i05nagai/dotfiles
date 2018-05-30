@@ -1,0 +1,29 @@
+#
+# import
+#
+snippet     abc_import
+abbr        abs class
+options     word
+	import abc
+
+# abs class
+snippet     abc_class
+abbr        abs class
+options     head
+	class ${1:class_name}(object):
+	
+		__metaclass__ = abc.ABCMeta
+	
+		def __init__(self):
+			pass
+	
+		@abc.abstractmethod
+		def ${2:method}(self${3:, attr}):
+			raise NotImplemented()
+
+snippet     abc_method
+abbr        abs mehod
+options     head
+		@abc.abstractmethod
+		def ${1:method}(self${2:, attr}):
+			raise NotImplemented()
