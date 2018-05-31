@@ -1,3 +1,98 @@
+#
+# import
+#
+snippet     setup_py_import
+abbr        import
+options     word
+	from distutils.core import setup
+
+snippet     setup_py_import_extension
+abbr        import
+options     word
+	from distutils.core import Extension
+
+snippet     setup_py_import_command
+abbr        import
+options     word
+	from setuptools import Command
+
+#
+# template
+#
+snippet     setup_py_template_command
+abbr        import
+options     word
+	from setuptools import Command
+	class CustomCommand(Command):
+		
+		user_options = [
+			('run-type=', '-', "execcute asv run <run-type>. One of NEW, ALL."),
+			#
+			('bench=', 'b', "Regular expression(s) for benchmark to run. When not\
+							provided, all benchmarks are run."),
+			('config=', '-', "Benchmark configuration file"),
+			('dry-run', 'n', "Do not save any results to disk."),
+			('skip-existing', 'k', "Skip running benchmarks that have previous\
+									successful or failed results"),
+			('steps=', 's', "Maximum number of steps to benchmark. This is used to\
+							subsample the commits determined by range to a\
+							reasonable number."),
+			('verbose', 'v', "Increase verbosity"),
+		]
+		
+		def initialize_options(self):
+			self.run_type = None
+			self.bench = None
+			self.config = None
+			self.dry_run = None
+			self.skip_existing = None
+			self.steps = None
+			self.verbose = None
+			self.args = []
+		
+		def finalize_options(self):
+			pass
+		
+		def run(self):
+			if self.run_type is not None:
+				self.args += ["{0}".format(self.run_type)]
+			if self.bench is not None:
+				self.args += ["--bench={0}".format(self.bench)]
+			if self.config is not None:
+				self.args += ["--config={0}".format(self.config)]
+			else:
+				self.args += ["--config=benchmarks/asv.conf.json"]
+			if self.dry_run is not None:
+				self.args += ["--dry-run"]
+			if self.skip_existing is not None:
+				self.args += ["--skip-existing"]
+			if self.steps is not None:
+				self.args += ["--steps={0}".format(self.steps)]
+			if self.verbose is not None:
+				self.args += ["--verbose"]
+		
+			sys.exit(self.run_asv(self.args))
+		
+		def run_asv(self, args):
+			# current working directory
+			cwd = os.path.abspath(os.path.dirname(__file__))
+			cmd = ["asv", "run"] + list(args)
+			env = dict(os.environ)
+			# essential to execute benchmarks withou installing this packages
+			env["PYTHONPATH"] = cwd
+		
+			try:
+				print("executing '{0}'".format(" ".join(cmd)))
+				return subprocess.call(cmd, env=env, cwd=cwd)
+			except OSError as err:
+				if err.errno == 2:
+					print("Error when running '%s': %s\n" % (" ".join(cmd), str(err),))
+					print("You need to install Airspeed Velocity \
+						  https://spacetelescope.github.io/asv/")
+					print("to run Scipy benchmarks")
+					return 1
+				raise err
+
 snippet     template_setup_py_pytest
 abbr        template setup.py for pytst
 options     word
@@ -108,3 +203,4 @@ options     word
 	
 	if __name__ == '__main__':
 		main()
+
