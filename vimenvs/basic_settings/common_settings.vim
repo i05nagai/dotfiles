@@ -1,4 +1,3 @@
-
 "draw line
 set colorcolumn=80
 " backup and swap settings
@@ -7,37 +6,45 @@ set nobackup
 set noswapfile
 set directory=$HOME/.vim/vimbackup
 set backupdir=$HOME/.vim/vimbackup
-"新しい行のインデントを現在行と同じにする
-set autoindent
-"行番号を表示する
+" show linenumber
 set number
-"新しい行を作ったときに高度な自動インデントを行う
+"
+" indentaiton
+"
+" new line with current indentation
+set autoindent
+" newline with smart indentation
 set smartindent
-"ファイル内の <Tab> が対応する空白の数
+" the number of spaces for <Tab>
 set tabstop=4
-"インデントの大きさ
+" the number of spaces for shift key indentation
 set shiftwidth=4
-"ステータスラインの設定
+"
+" status line configurations
+"
 set laststatus=2
 set statusline=%F%m%r%h%w\ [%{&fileencoding}:\%{&ff}]\[%Y]\ %=\[a=\%03.3b,\h=\%02.2B]\[p=%04l,%04v][%p%%:\%L行]
-"altkeyを押したときメニューが出るのを無効にする
+" disable alt key
 set winaltkeys=no
 "
 set encoding=utf-8
 "
 set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp,utf-8
-"
+" show an underline on the line on cursor
 set cursorline
+"
+" serach
+"
 " hilight search
 set hlsearch
 set smartcase
-" 検索をファイルの先頭へループする
+" Search top of the file after reaching the end of files
 set wrapscan
 " show invisible characters
 set list
 set listchars=tab:»-,trail:-,nbsp:%
 
-"C-vの矩形選択で行末より後ろもカーソルを置ける
+" allow  C-v to select chars after end of lines
 set virtualedit=block
 
 "color
@@ -78,7 +85,7 @@ endif
 
 "-------------------Key mapping-------------------------
 "-------------------------------------------------------
-"--- <F6>  タイムスタンプを挿入してinsertモードへ移行 ----
+"-- <F6>  insert timestamp and change to insert mode ---
 function! GetTimeStampInEnglish(type)
   let wday = strftime("%w")
   let mday = strftime("%m")
@@ -97,12 +104,12 @@ function! GetTimeStampInEnglish(type)
 endfunction
 nmap <F6> <ESC>i<C-R>=GetTimeStampInEnglish(3)<CR>
 
-"-------------------タブ関連設定------------------------
+"------------------------Tab----------------------------
 "-------------------------------------------------------
-"常にタブを表示
+" always show tab
 set showtabline=2
 
-" キーマッピング
+" keymapping
 nnoremap [TABCMD]  <Nop>
 nmap     <leader>t [TABCMD]
 
@@ -117,8 +124,8 @@ nnoremap <silent> [TABCMD]o :<C-u>tabonly<cr>
 nnoremap <silent> [TABCMD]s :<C-u>tabs<cr>
 nnoremap <silent> [TABCMD]g :<C-u>tabnext
 
-"タブ一覧の行の設定
-"タブの番号を表示する
+" Customize tabbar
+" show tab number
 set tabline=%!MyTabLine()
 function! MyTabLine()
   let s = ''
@@ -145,13 +152,13 @@ function! MyTabLabel(n)
 endfunction
 
 ""---------------------------------------------------------
-"" netrw 
+"" netrw
 ""---------------------------------------------------------
-" 'v'でファイルを開くときは右側に開く。(デフォルトが左側なので入れ替え)
+" Open a file with 'v' in right side panel. By default, left side.
 let g:netrw_altv = 0
-" netrwは常にtree view
+" tree view
 let g:netrw_liststyle = 3
-" 'o'でファイルを開くときは下側に開く。(デフォルトが上側なので入れ替え)
+" Open a file with 'o' in bottom side panel. By default, upper side.
 let g:netrw_alto = 1
 
 "---------------------------------------------------------
@@ -297,8 +304,11 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   "\ }
 call neobundle#end()
 
-"vi上から、:NeoBundleInstallで.vmrcのNeoBundleで指定されているリポジトリのプラグインをインストールできる。
-"vimrc上からNeoBundleの記述をけせば、pluginはロードされない。
+" To install,
+" Execute :NeoBundleInstall
+"
+" To uninstall,
+" Delete lines starting with NeoBundle ''. NeoBundle don't read undeclared plugins
 
 "---------------------------------------------------------
 "unite

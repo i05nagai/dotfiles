@@ -1,77 +1,75 @@
-
 snippet     pytest_class
 abbr        pytest class 
 options     word
-    
-    class Test${2:Name}:
-        
-        # before all tests starts
-        @classmethod
-        def setup_class(cls):
-            pass
-        
-        # after all tests finish
-        @classmethod
-        def teardown_class(cls):
-            pass
-        
-        # before each test start
-        def setup(self):
-            pass
-        
-        # after each test finish
-        def teardown(self):
-            pass
-        
-        def test_${3:test_case}(self):
-            ${0:end}
+	class Test${2:Name}:
+		
+		# before all tests starts
+		@classmethod
+		def setup_class(cls):
+			pass
+		
+		# after all tests finish
+		@classmethod
+		def teardown_class(cls):
+			pass
+		
+		# before each test start
+		def setup(self):
+			pass
+		
+		# after each test finish
+		def teardown(self):
+			pass
+		
+		def test_${3:test_case}(self):
+			${0:end}
 
 snippet     pytest_func
 abbr        pytest function
 options     word
-    def test_${1:name}():
-        ${0:end}
+	def test_${1:name}():
+		${0:end}
 
 snippet     pytest_parameter
 abbr        pytest.mark.parametrize
 options     word
-    @pytest.mark.parametrize("${1:params}, expect", [
-        (${2:param_value}, ${3:expect}),${0:end}
-    ])
+	@pytest.mark.parametrize("${1:params}, expect", [
+		(${2:param_value}, ${3:expect}),${0:end}
+	])
 
 snippet     pytest_approx
 abbr        from pytest import approx
 options     head
-    from pytest import approx
+	from pytest import approx
 
 snippet     pytest_assert_equal_float
 abbr        assert expect == approx(actual)
 options     word
-    assert expect == approx(actual)
+	assert expect == approx(actual)
 
 snippet     pytest_assert_equal
 abbr        assert expect == actual
 options     word
-    assert expect == actual
+	assert expect == actual
 
 snippet     pytest_assert_exception
 abbr        assert expect == actual
 options     word
-    with pytest.raises(${1:Exception}):
-        ${2:target_function}
+	with pytest.raises(${1:Exception}):
+		${2:target_function}
 
 snippet     pytest_make_datetime
 abbr        make datetime for testing
 options     word
-    def make_datetime(hour, minute, second):
-        return datetime.datetime(${1}, ${2}, {$3}, hour, minute, second)
+	def make_datetime(hour, minute, second):
+		return datetime.datetime(${1}, ${2}, {$3}, hour, minute, second)
 
 snippet     pytest_use_fixture_in_instance_method
 abbr        use fixture in instance method
 options     word
-    @pytest.mark.usefixtures('${1:fixture_name}')
-    def ${2:test_method}(self, $1):
-        pass
+	@pytest.mark.usefixtures('${1:fixture_name}')
+	def ${2:test_method}(self, $1):
+		pass
 
 snippet     pytest_fixture
 abbr        pytest fixture

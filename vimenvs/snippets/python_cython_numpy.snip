@@ -1,0 +1,16 @@
+snippet     cython_type_numpy_ndarray
+abbr        array
+options     word
+	cdef np.ndarray[${1:np.int_t}, ndim=${2:2}] ${3f}
+
+snippet     cython_decorator_bound_check
+abbr        array
+options     word
+	# turn off bounds-checking for entire function
+	@cython.boundscheck(False)
+
+snippet     cython_decorator_negative_index
+abbr        array
+options     word
+	# turn off negative index wrapping for entire function
+	@cython.wraparound(False)
