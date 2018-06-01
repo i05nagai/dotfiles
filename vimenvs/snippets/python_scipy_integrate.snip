@@ -1,0 +1,14 @@
+snippet     scipy_import_integrate
+abbr        integrate
+options     word
+	import scipy.integrate as integrate
+
+snippet     scipy_integrate_quad
+abbr        integrate
+options     word
+	integrate.quad(${1:f}, ${2:from}, ${3:to})
+
+snippet     scipy_integrate_quad_inf
+abbr        integrate
+options     word
+	integrate.quad(${1:f}, ${2:-np.inf}, ${3:np.inf})
