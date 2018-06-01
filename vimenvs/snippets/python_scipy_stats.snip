@@ -1,0 +1,51 @@
+snippet     scipy_import_stats
+abbr        import
+options     word
+	import scipy.stats as stats
+
+#
+# t distribution
+#
+snippet     scipy_stats_t
+abbr        t
+options     word
+	mean, var, skew, kurt = stats.t.stats(${1:df}, moments='mvsk')
+
+snippet     scipy_stats_t_pdf
+abbr        t
+options     word
+	${3:vals} = stats.t.pdf(${1:xs}, ${2:df})
+
+snippet     scipy_stats_t_ppf
+abbr        t
+options     word
+	${3:vals} = stats.t.ppf(${1:xs}, ${2:df})
+
+snippet     scipy_stats_t_cdf
+abbr        t
+options     word
+	${3:vals} = stats.t.cdf(${1:xs}, ${2:df})
+
+#
+# normal distribution
+#
+snippet     scipy_stats_normal
+abbr        normal
+options     word
+	mean, var, skew, kurt = stats.norm.stats(${2:loc=0}, ${3:scale=1}, moments='mvsk')
+
+snippet     scipy_stats_normal_pdf
+abbr        normal
+options     word
+	${3:vals} = stats.norm.pdf(${1:xs}, ${2:loc=0}, ${3:scale=1})
+
+snippet     scipy_stats_normal_ppf
+abbr        normal
+options     word
+	${3:vals} = stats.norm.ppf(${1:xs}, ${2:loc=0}, ${3:scale=1})
+
+snippet     scipy_stats_normal_cdf
+abbr        normal
+options     word
+	${3:vals} = stats.norm.cdf(${1:xs}, ${2:loc=0}, ${3:scale=1})
+
