@@ -1,7 +1,15 @@
+#
+# import
+#
 snippet     hv_import
 abbr        abbr
 options     word
 	import holoviews as hs
+
+snippet     hv_import_streams
+abbr        abbr
+options     word
+	import holoviews.streams as streams
 
 snippet     hv_extension_matplotlib
 abbr        abbr
@@ -16,27 +24,22 @@ options     word
 snippet     hv_scatter_plot
 abbr        abbr
 options     word
-	hs.Points(${1})
+	hv.Points(${1})
 
 snippet     hv_scatter_plot_with_histogram
 abbr        abbr
 options     word
-	hs.Points(${1}).hist()
+	hv.Points(${1}).hist()
 
 snippet     hv_scatter_plot_with_label
 abbr        abbr
 options     word
-	hs.Points(${1}, label="${2:label}")
-
-snippet     hv_curve
-abbr        abbr
-options     word
-	hs.Curve((${1:x, y}), label="${2:label}")
+	hv.Points(${1}, label="${2:label}")
 
 snippet     hv_bar
 abbr        abbr
 options     word
-	hs.Bars((${1:label_1}, ${2:label_2}), (${3:val_1}, ${4:val_2}))
+	hv.Bars((${1:label_1}, ${2:label_2}), (${3:val_1}, ${4:val_2}))
 
 snippet     hv_histogram
 abbr        histogram
@@ -68,6 +71,16 @@ options     word
 	# import numpy as np
 	hv.RGB.load_image(${1:path_to_image})
 
+#
+# curve
+#
+snippet     hv_curve_multiple
+abbr        abbr
+options     word
+	curve_dict = {params: gen_curve(params) for params in params_list}
+	hv.NdOverlay(${1:curve_dict}, kdims="bar")
 
-
-
+snippet     hv_curve
+abbr        abbr
+options     word
+	hv.Curve((${1:x, y}), label="${2:label}")
