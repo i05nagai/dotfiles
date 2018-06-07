@@ -1,3 +1,6 @@
+include go_math.snip
+include go_type.snip
+
 snippet     main
 abbr        main
 options     word
@@ -39,15 +42,15 @@ options     word
 #
 # for
 #
+delete for
 snippet     for
 abbr        for
 options     word
-	sum := 0
-	for i := 0; i < 10; i++ {
-		sum += i
+	for ${1:i} := 0; $1 < ${2}; $1++ {
+		${0}
 	}
 
-snippet     for_short
+snippet     for_while
 abbr        for
 options     word
 	sum := 1
@@ -65,6 +68,20 @@ snippet     for_map
 abbr        for
 options     word
 	for key, value := range ${1:map} {
+	}
+
+snippet     for_array_index_elem
+abbr        for
+options     word
+	for i, elem := range ${1:array} {
+		${0}
+	}
+
+snippet     for_array_elem
+abbr        for
+options     word
+	for _, elem := range ${1:array} {
+		${0}
 	}
 
 #
@@ -89,102 +106,6 @@ options     word
 		// plan9, windows...
 		fmt.Printf("%s.", os)
 	}
-
-#
-# type
-#
-snippet     type_bool
-abbr        type
-options     word
-	bool
-
-snippet     type_string
-abbr        type
-options     word
-	string
-
-snippet     type_int
-abbr        type
-options     word
-	int
-
-snippet     type_int64
-abbr        type
-options     word
-	int64
-
-snippet     type_uint
-abbr        type
-options     word
-	uint
-
-snippet     type_uint64
-abbr        type
-options     word
-	uint64
-
-snippet     type_byte
-abbr        alias for uint8
-options     word
-	byte
-
-snippet     type_float32
-abbr        alias for uint8
-options     word
-	float32
-
-snippet     type_float64
-abbr        alias for uint8
-options     word
-	float64
-
-snippet     type_complex64
-abbr        type
-options     word
-	complex64
-
-snippet     type_complex128
-abbr        type
-options     word
-	complex128
-
-snippet     type_map
-abbr        type
-options     word
-	map[${1:keyType}]${2:valueType}
-
-snippet     type_def_struct
-abbr        type
-options     word
-	type ${1:type_name} struct {
-	}
-
-snippet     type_def_interface
-abbr        type
-options     word
-	type ${1:type_name} interface {
-	}
-
-snippet     type_def_func
-abbr        type
-options     word
-	type ${1:type_name} func {
-	}
-
-snippet     type_assert_if
-abbr        type
-options     word
-	if t, ok := ${1:var_name}.(${2:Type}); ok {
-	}
-
-
-#
-# cast
-#
-snippet     cast_from_float_to_uint
-abbr        type
-options     word
-	uint(${1:float_value})
 
 #
 # const
