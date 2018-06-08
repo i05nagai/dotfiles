@@ -2,46 +2,73 @@ snippet     argparse_generate_parser
 abbr        generate argument parser
 options     word
 	import argparse
-	parser = argparse.ArgumentParser(description="${1:description of program}")
+	parser = argparse.ArgumentParser(
+		description="${1:description of program}",
+		formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 	${2:args} = parser.parse_args()
 
-snippet     argparse_add_argument_with_type
+#
+# arugments
+#
+snippet     argparse_add_argument_list
 abbr        add argument
 options     word
-	parser.add_argument("${1:}",
-	                    metavar="${2:variable_name}",
-	                    type=${3:variable_type},
-	                    nargs="+",
-	                    help="${5:help message of this argument}")
+	parser.add_argument(
+		'${1:bar}',
+		type=${3:elem_type},
+		nargs='+',
+		help='${5:help message of this argument}')
 
-snippet     argparse_add_argument_true
+snippet     argparse_add_argument_N
+abbr        add N argument
+options     word
+	parser.add_argument(
+		'${1:bar}',
+		type=${3:elem_type},
+		nargs=${4:N},
+		help='${5:help message of this argument}')
+
+#
+# options
+#
+snippet     argparse_add_option_true
 abbr        add argument
 options     word
 	parser.add_argument(
 		'${1:--option}',
-		metavar='${2:variable_name}',
+		required=False,
 		action='store_true',
 		help='${5:help message of this argument}')
 
-snippet     argparse_add_argument_more_than_zero
+snippet     argparse_add_option_str
 abbr        add argument
 options     word
 	parser.add_argument(
 		'${1:--option}',
-		metavar="${2:variable_name}",
+		type=str,
+		required=False,
+		nargs=1,
+		help='${5:help message of this argument}')
+
+snippet     argparse_add_option_more_than_zero
+abbr        add argument
+options     word
+	parser.add_argument(
+		'${1:--option}',
 		type=${3:variable_type},
 		nargs='+',
 		help='${5:help message of this argument}')
 
-snippet     argparse_add_argument_with_default_and_type
+snippet     argparse_add_option_with_default_and_type
 abbr        add argument
 options     word
-	parser.add_argument("${1:--option}",
-	                    type=${2:variable_type},
-	                    default=${3:default_value}
-	                    help="${5:help message of this argument}")
+	parser.add_argument(
+		"${1:--option}",
+		type=${2:variable_type},
+		default=${3:default_value}
+		help="${5:help message of this argument}")
 
-snippet     argparse_add_argument_choice_str
+snippet     argparse_add_option_choice_str
 abbr        add argument
 options     word
 	parser.add_argument(
@@ -50,21 +77,7 @@ options     word
 		choices=[${3:'variable_type', }],
 		help='${4:help message of this argument}')
 
-snippet     argparse_add_subcommand_parser
-abbr        subcomand
-options     word
-	subparsers = parser.add_subparsers(
-	    help='${5:sub-command help}')
-	# create the subcommand parser
-	${6:subparser_a} = subparsers.add_parser(
-	    '${5:subcommand_a}',
-	    help='${7:help}')
-	$6.add_argument(
-	    '${8:bar}',
-	    type=${9:int},
-	    help='${10:bar}')
-
-snippet     argparse_add_argument_choice_range
+snippet     argparse_add_option_choice_range
 abbr        add argument
 options     word
 	parser.add_argument(
@@ -73,35 +86,146 @@ options     word
 		choices=range(${4:0, 2}),
 		help='${5:help message of this argument}')
 
-snippet     argparse_parser_make_parser_supporintg_subcommand
+#
+# subcommand
+#
+snippet     argparse_add_subcommand_parser
+abbr        subcomand
+options     word
+	subparsers = parser.add_subparsers(
+		help='${5:sub-command help}')
+	# create the subcommand parser
+	${6:subparser_a} = subparsers.add_parser(
+		'${5:subcommand_a}',
+		help='${7:help}')
+	$6.add_argument(
+		'${8:bar}',
+		type=${9:int},
+		help='${10:bar}')
+
+#
+# template
+#
+snippet     argparse_template_make_parser_and_subparser
 abbr        subcomand
 options     word
 	def make_argparser():
-	    # create the top-level parser
-	    parser = argparse.ArgumentParser(
-	        prog='${1:PROG}',
-	        description='${2}')
-	    parser.add_argument(
-	        '${3:--foo}',
-	        help='${4:foo help}')
-	    # subpersers
-	    subparsers = parser.add_subparsers(
-	        help='${5:sub-command help}')
-	    # create the subcommand parser
-	    ${6:subparser_a} = subparsers.add_parser(
-	        '${5:subcommand_a}',
-	        help='${7:help}')
-	    $6.add_argument(
-	        '${8:bar}',
-	        type=${9:int},
-	        help='${10:bar}')
-	    # create the parser for the "subcommand_b" command
-	    ${11:parser_b} = subparsers.add_parser(
-	        '${12:subcommand_b}',
-	        help='${13:b help}')
-	    $11.add_argument(
-	        '${14:--baz}',
-	        type=${15:int},
-	        help='${16:baz help}')
+		# create the top-level parser
+		parser = argparse.ArgumentParser(
+			prog='${1:PROG}',
+			description='${2}')
+		parser.add_argument(
+			'${3:--foo}',
+			help='${4:foo help}')
+		# subpersers
+		subparsers = parser.add_subparsers(
+			help='${5:sub-command help}')
+		# create the subcommand parser
+		${6:subparser_a} = subparsers.add_parser(
+			'${5:subcommand_a}',
+			help='${7:help}')
+		$6.add_argument(
+			'${8:bar}',
+			type=${9:int},
+			help='${10:bar}')
+		# create the parser for the "subcommand_b" command
+		${11:parser_b} = subparsers.add_parser(
+			'${12:subcommand_b}',
+			help='${13:b help}')
+		$11.add_argument(
+			'${14:--baz}',
+			type=${15:int},
+			help='${16:baz help}')
 	
-	    return parser
+		return parser
+
+snippet     argparse_template
+abbr        subcomand
+options     word
+	def release(args):
+		if 'GITHUB_API_KEY' in os.environ:
+			token = os.environ['GITHUB_API_KEY']
+		else:
+			token = args.token
+	
+		if token is None or token == '':
+			msg = '--token <token> or GITHUB_API_KEY environment variable required'
+			raise ValueError(msg)
+	
+		github = Github(token, repository_name=args.repository_name)
+		release = github.create_release(args.tag)
+		git_assets = github.upload_asset(release, args.path)
+		print(git_assets)
+	
+	
+	def add_subparser_release(subparsers):
+		# create the subcommand parser
+		subparser = subparsers.add_parser(
+			'release',
+			help='release commands',
+			formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+		subparser.set_defaults(func=release)
+		# required
+		subparser.add_argument(
+			'--repository',
+			required=True,
+			type=str,
+			help='Repository name.')
+		subparser.add_argument(
+			'--commitish',
+			required=True,
+			default='master',
+			type=str,
+			help='Commit SHA1 or branch name which the tag is added to.')
+		subparser.add_argument(
+			'--tag',
+			required=True,
+			nargs=1,
+			type=str,
+			help='Name of tag and release.')
+		# not requiredd
+		subparser.add_argument(
+			'--path',
+			action='append',
+			type=str,
+			help='Paths to asset. This can specify multiple times')
+		subparser.add_argument(
+			'--prerelease',
+			action='store_true',
+			default=False,
+			help='Set if prerelease')
+		subparser.add_argument(
+			'--draft',
+			action='store_true',
+			default=False,
+			help='Set if draft')
+		subparser.add_argument(
+			'--token',
+			type=str,
+			nargs=1,
+			help='Github API token. Required to set thid option or set GITHUB_API_KEY environ variables')
+	
+	
+	def make_parser():
+		parser = argparse.ArgumentParser(
+			description="Release helper",
+			formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+		# parser.set_defaults(help)
+		# sub parsers
+		subparsers = parser.add_subparsers(
+			help='subcommands')
+		add_subparser_release(subparsers)
+		return parser
+	
+	
+	def main():
+		parser = make_parser()
+		if len(sys.argv) == 1:
+			parser.print_help(sys.stderr)
+			sys.exit(1)
+		args = parser.parse_args()
+		args.func(args)
+	
+	
+	if __name__ == '__main__':
+		main()
