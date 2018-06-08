@@ -37,7 +37,14 @@ snippet     fmt
 abbr        main
 options     word
 	# import "fmt"
-	fmt.Printf(${1}")
+	fmt.Printf("${1}")
+
+snippet     fmt_print_variable
+alias       print_variable
+abbr        main
+options     word
+	# import "fmt"
+	fmt.Printf("${1:variable_name}: %v", ${2})
 
 #
 # for
@@ -168,3 +175,29 @@ options     word
 	func ${1:Funcname}(${2:name Type, name Type}) ${3:ReturnType} {
 		return result
 	}
+
+#
+# map
+#
+
+#
+# array
+#
+snippet     array_make_string
+abbr        type
+options     word
+	${1} := []string{
+		"a",
+	}
+
+snippet     array_make_int32
+abbr        type
+options     word
+	${1} := []int32{
+		1,
+	}
+
+snippet     array_make
+abbr        type
+options     word
+	${1} := make([]{$2:type}, ${3:length}, ${4:capacity})
