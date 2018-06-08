@@ -1,11 +1,43 @@
-snippet     url_join_python2
+#
+# import
+#
+snippet     urllib_import_all
 abbr        url join
 options     word
-    # import urlparse
-    urlparse.urljoin(${1:url1}, ${2:url2})
+	try:
+		from urllib.parse import urlparse
+		from urllib.parse import urlencode
+		from urllib.request import urlopen
+		from urllib.request import Request
+		from urllib.error import HTTPError
+	except ImportError:
+		from urlparse import urlparse
+		from urllib import urlencode
+		from urllib2 import urlopen
+		from urllib2 import Request
+		from urllib2 import HTTPError
 
-snippet     url_join
+snippet     urllib_join_python2
+abbr        url join
+options     word
+	# import urlparse
+	urlparse.urljoin(${1:url1}, ${2:url2})
+
+snippet     urllib_join
 abbr        url join python3
 options     word
-    # import urllib.parse
-    urllib.parse.urljoin(${1:url}, ${2:path})
+	# import urllib.parse
+	urllib.parse.urljoin(${1:url}, ${2:path})
+
+snippet     urllib_template_get_media_type
+abbr        url join
+options     word
+	try:
+		from urllib.request import pathname2url
+	except ImportError:
+		from urllib import pathname2url
+	import mimetypes
+	def guess_type(path):
+		url = pathname2url(path)
+		content_type, encoding = mimetypes.guess_type(url)
+		return content_type
