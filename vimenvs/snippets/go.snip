@@ -1,4 +1,11 @@
+include go_collections.snip
+include go_fmt.snip
+include go_io.snip
 include go_math.snip
+include go_os.snip
+include go_sort.snip
+include go_testing.snip
+include go_text_template.snip
 include go_type.snip
 
 snippet     main
@@ -31,22 +38,6 @@ options     word
 	import "${1:fmt}"
 
 #
-# fmt
-#
-snippet     fmt
-abbr        main
-options     word
-	# import "fmt"
-	fmt.Printf("${1}")
-
-snippet     fmt_print_variable
-alias       print_variable
-abbr        main
-options     word
-	# import "fmt"
-	fmt.Printf("${1:variable_name}: %v", ${2})
-
-#
 # for
 #
 delete for
@@ -69,26 +60,6 @@ snippet     for_infinite
 abbr        for
 options     word
 	for {
-	}
-
-snippet     for_map
-abbr        for
-options     word
-	for key, value := range ${1:map} {
-	}
-
-snippet     for_array_index_elem
-abbr        for
-options     word
-	for i, elem := range ${1:array} {
-		${0}
-	}
-
-snippet     for_array_elem
-abbr        for
-options     word
-	for _, elem := range ${1:array} {
-		${0}
 	}
 
 #
@@ -147,21 +118,21 @@ options     word
 # func
 #
 snippet     func
-abbr        type
+abbr        func
 options     word
 	func ${1:Funcname}(${2:name Type, name Type}) ${3:ReturnType} {
 		return result
 	}
 
 snippet     func_return_multiple
-abbr        type
+abbr        func
 options     word
 	func ${1:Funcname}(${2:name Type, name Type}) ${3:(ReturnType1, ReturnType2)} {
 		return 1
 	}
 
 snippet     func_return_named
-abbr        type
+abbr        func
 options     word
 	func ${1:Funcname}(${2:name Type, name Type}) ${3:(x ReturnType1, y ReturnType2)} {
 		// x := 1
@@ -170,15 +141,106 @@ options     word
 	}
 
 snippet     func_method
-abbr        type
+abbr        func
 options     word
-	func ${1:Funcname}(${2:name Type, name Type}) ${3:ReturnType} {
+	func (${1:recieverName} ${2:RecieverType}) ${3:Funcname}(${4:name Type, name Type}) ${5:ReturnType} {
 		return result
+	}
+
+snippet     func_method_pointer
+abbr        func
+options     word
+	func (${1:recieverName} *${2:RecieverType}) ${3:Funcname}(${4:name Type, name Type}) ${5:ReturnType} {
+		return result
+	}
+
+snippet     func_method_pointer_return_none
+abbr        func
+options     word
+	func (${1:recieverName} *${2:RecieverType}) ${3:Funcname}(${4:name Type, name Type}) {
+		return result
+	}
+
+snippet     func_method_stringer
+abbr        func
+options     word
+	func (${1:recieverName} ${2:RecieverType}) String() string {
+		return ""
+	}
+
+#
+# interface
+#
+snippet     interface_def
+abbr        interface
+options     word
+	type ${1:Name} interface {
+		${2:MethodName}(${3:val Type}) ${4:ReturnType}
 	}
 
 #
 # map
 #
+snippet     map_make_init
+abbr        type
+options     word
+	${1} := map[${2}]${3}{
+		${4:key}: ${5:val},
+	}
+
+snippet     map_make_init_empty
+abbr        type
+options     word
+	${1} := map[${2}]${3}{}
+
+snippet     map_make
+abbr        type
+options     word
+	${3} := make(map[${1}]${2})
+
+snippet     map_length
+abbr        type
+options     word
+	len(${1:map})
+
+snippet     map_delete
+abbr        map delete
+options     word
+	delete(${1:map}, ${2:key})
+
+snippet     map_if_contain
+abbr        map delete
+options     word
+	if val, ok := ${1:map}[${2:key}]; ok {
+		${0}
+	}
+
+snippet     map_if_not_contain
+abbr        map delete
+options     word
+	if val, ok := ${1:map}[${2:key}]; !ok {
+		${0}
+	}
+
+snippet     map_if_has_key
+abbr        map delete
+options     word
+	if _, ok := ${1:map}[${2:key}]; ok {
+		${0}
+	}
+
+snippet     map_for
+abbr        for
+options     word
+	for key, value := range ${1:map} {
+	}
+
+snippet     map_get_keys
+abbr        for
+options     word
+	for key, _ := range ${1:map} {
+		
+	}
 
 #
 # array
@@ -197,7 +259,54 @@ options     word
 		1,
 	}
 
+snippet     array_make_init
+abbr        type
+options     word
+	${1} := []${2:type}{
+	}
+
 snippet     array_make
 abbr        type
 options     word
-	${1} := make([]{$2:type}, ${3:length}, ${4:capacity})
+	${1} := make([]${2:type}, ${3:length}, ${4:capacity})
+
+snippet     array_for_index_elem
+abbr        for
+options     word
+	for i, elem := range ${1:array} {
+		${0}
+	}
+
+snippet     array_for_elem
+abbr        for
+options     word
+	for _, elem := range ${1:array} {
+		${0}
+	}
+
+#
+# struct
+#
+snippet     struct_make
+abbr        for
+options     word
+	${1:varName} := ${2:StructName}{
+		${3:MemberName: memberValue1}
+	}
+
+snippet     struct_make_pointer
+abbr        for
+options     word
+	${1:varName} := &${2:StructName}{
+		${3:MemberName: memberValue1}
+	}
+
+#
+# error
+#
+snippet     error_panic
+abbr        for
+options     word
+	if err != nil {
+		panic(err)
+	}
