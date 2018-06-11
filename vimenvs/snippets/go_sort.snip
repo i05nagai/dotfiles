@@ -1,0 +1,16 @@
+#
+# import
+#
+snippet     sort_import
+abbr        main
+options     word
+	import "sort"
+
+snippet     sort_closure
+abbr        sort
+options     word
+	sort.Slice(${1:array}, func(i, j int) bool {
+		// < is ascendant
+		// > is descendant
+		return array[i] < array[j]
+	})
