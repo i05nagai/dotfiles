@@ -1,0 +1,69 @@
+snippet     fmt_import
+abbr        fmt
+options     word
+	import "fmt"
+
+snippet     fmt_print_variable
+alias       print_variable
+abbr        fmt
+options     word
+	# import "fmt"
+	fmt.Printf("${1:variable_name}: %v\n", ${2})
+
+snippet     fmt_make_string
+abbr        fmt
+options     word
+	str := fmt.Sprintf("${1:variable_name}: %v", ${2})
+
+#
+# format
+#
+snippet     fmt_format_variable
+abbr        fmt
+options     word
+	%v
+
+snippet     fmt_format_base2
+abbr        fmt
+options     word
+	%b
+
+snippet     fmt_format_base10
+abbr        fmt
+options     word
+	%d
+
+snippet     fmt_format_base8
+abbr        fmt
+options     word
+	%o
+
+snippet     fmt_format_base16_lower_case
+abbr        fmt
+options     word
+	%x
+
+snippet     fmt_format_base16_upper_case
+abbr        fmt
+options     word
+	%X
+
+snippet     fmt_format_float_scientific_lower_case
+abbr        fmt
+options     word
+	%e
+
+snippet     fmt_format_float_scientific_upper_case
+abbr        fmt
+options     word
+	%E
+
+snippet     fmt_format_float_decimal
+abbr        fmt
+options     word
+	%f
+
+snippet     fmt_format_string
+abbr        fmt
+options     word
+	%s

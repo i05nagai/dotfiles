@@ -1,72 +1,6 @@
 include mathjax.snip
 include sql.snip
 
-snippet     template_docs
-abbr        template docs
-options     word
-    ## ${1:title}
-    ${2}
-
-    ## Reference
-
-snippet     template_docs_with_jekyll_header
-abbr        template docs
-options     word
-    ---
-    title: ${1:title}
-    ---
-
-    ## $1
-    ${2}
-
-    ## Reference
-
-snippet template_readme
-abbr git README.md
-    ${1:Name}
-    ====
-    
-    Overview
-    
-    ## Description
-    
-    ## Demo
-    
-    ## VS. 
-    
-    ## Requirement
-    
-    ## Usage
-    
-    ## Install
-    
-    ## Contribution
-    
-    ## Licence
-    
-    [MIT](https://opensource.org/licenses/MIT)
-    
-    ## Author
-    
-    [i05nagai](https://github.com/i05nagai)
-
-snippet     template_math
-abbr        math template
-options     head
-	# ${1}
-
-    ## Symbol
-
-	## Definition
-
-	## Problem
-
-	## Theory
-
-	## Algorithm
-
-	## Reference
-
 snippet table
 options     word
 abbr table cell
@@ -122,3 +56,87 @@ snippet     link_to_another_doc
 abbr        link to another doc
 options     word
     <a href="{{ site.baseurl }}/${1:url}">${2}</a>
+
+#
+# template
+#
+snippet     template_doc
+abbr        template docs
+options     word
+    ## ${1:title}
+    ${2}
+
+    ## Reference
+
+snippet     template_doc_with_jekyll_header
+abbr        template docs
+options     word
+    ---
+    title: ${1:title}
+    ---
+
+    ## $1
+    ${2}
+
+    ## Reference
+
+snippet     template_doc_book_chapter_section
+abbr        template docs
+options     word
+	---
+	title: Chapter${1:chapter}-${2:section}. ${3:section_title}
+	book_title: ${4:book_title}
+	book_chapter: $1
+	book_section: $2
+	---
+	
+	## $1-$2. $3
+	${0}
+	
+	## Reference
+
+snippet template_readme
+abbr git README.md
+    ${1:Name}
+    ====
+    
+    Overview
+    
+    ## Description
+    
+    ## Demo
+    
+    ## VS. 
+    
+    ## Requirement
+    
+    ## Usage
+    
+    ## Install
+    
+    ## Contribution
+    
+    ## Licence
+    
+    [MIT](https://opensource.org/licenses/MIT)
+    
+    ## Author
+    
+    [i05nagai](https://github.com/i05nagai)
+
+snippet     template_math
+abbr        math template
+options     head
+	# ${1}
+
+    ## Symbol
+
+	## Definition
+
+	## Problem
+
+	## Theory
+
+	## Algorithm
+
+	## Reference

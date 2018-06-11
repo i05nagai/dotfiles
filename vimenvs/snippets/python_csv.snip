@@ -34,6 +34,14 @@ options     word
 		for row in reader:
 			print(row['first_name'], row['last_name'])
 
+snippet     csv_read_tsv_as_dict
+abbr        csv_read
+options     word
+	with open('${1:filename}', 'r') as csvfile:
+		reader = csv.DictReader(csvfile, delimiter='\t')
+		for row in reader:
+			print(row['first_name'], row['last_name'])
+
 snippet     csv_write_dict
 abbr        csv_write
 options     word

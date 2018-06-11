@@ -1,3 +1,16 @@
+snippet     path_from_relative_path_to_abspath
+abbr        path
+options     word
+	if not os.path.isabs(${1}):
+		cwd = os.getcwd()
+		path_to_setup = os.path.abspath(os.path.join(cwd, $1))
+
+snippet     path_to_working_dir
+abbr        path
+options     word
+	# import os
+	cwd = os.getcwd()
+
 snippet     path_to_this_file
 abbr        path to this script
 options     word
@@ -132,6 +145,21 @@ abbr        delete directory recursively
 options     word
     # import shutil
     shutil.rmtree(${1:path})
+
+#
+# path is
+#
+snippet     path_is_absolute
+abbr        copy file
+options     word
+	if os.path.isabs(${1}):
+		${0}
+
+snippet     path_is_relative
+abbr        copy file
+options     word
+	if not os.path.isabs(${1}):
+		${0}
 
 snippet     if_file_exist
 abbr        if file exist

@@ -1,0 +1,34 @@
+snippet     io_import
+abbr        io
+options     word
+	import "io"
+
+#
+# read
+#
+snippet     io_read_stdin_size
+abbr        io
+options     word
+	reader := bufio.NewReaderSize(os.Stdin, 1024*1024*5)
+	scoresCount, err := readLine(reader)
+	func readLine(reader *bufio.Reader) string {
+		str, _, err := reader.ReadLine()
+		if err == io.EOF {
+			return ""
+		}
+	
+		return strings.TrimRight(string(str), "\r\n")
+	}
+
+#
+# write
+#
+snippet     io_write_stdout
+abbr        io
+options     word
+	stdout, err := os.Create(${1:path_to_output})
+	if err != nil {
+		panic(err)
+	}
+
+	defer stdout.Close()

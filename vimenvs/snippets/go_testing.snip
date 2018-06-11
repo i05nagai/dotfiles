@@ -1,0 +1,52 @@
+snippet     testing_import
+abbr        testing
+options     word
+	import "testing"
+
+#
+# test func
+#
+snippet     testing_func
+abbr        testing
+options     word
+	func Test${1}(t *testing.T) {
+	}
+
+#
+# benchmark func
+#
+snippet     testing_bench
+abbr        testing
+options     word
+	func Benchmark${1}(b *testing.B) {
+	b.ResetTimer()
+	}
+
+snippet     testing_bench_reset_timer
+abbr        testing
+options     word
+	func Benchmark${1}(b *testing.B) {
+		b.ResetTimer()
+	}
+
+#
+# assert
+#
+snippet     testing_assert_err
+abbr        testing
+options     word
+	if err != nil {
+		t.Fatalf("err: %s", err)
+	}
+
+#
+# template
+#
+snippet     testing_template_assert_int
+abbr        testing
+options     word
+	func assert(int expected, int actual) {
+		if expected != actual {
+			t.Erorrf("expected:%v,  actual: %v", expected, actual)
+		}
+	}

@@ -1,0 +1,161 @@
+#
+# type
+#
+snippet     type_bool
+abbr        type
+options     word
+	bool
+
+snippet     type_string
+abbr        type
+options     word
+	string
+
+snippet     type_int
+abbr        type
+options     word
+	int
+
+snippet     type_int64
+abbr        type
+options     word
+	int64
+
+snippet     type_uint
+abbr        type
+options     word
+	uint
+
+snippet     type_uint64
+abbr        type
+options     word
+	uint64
+
+snippet     type_byte
+abbr        alias for uint8
+options     word
+	byte
+
+snippet     type_float32
+abbr        alias for uint8
+options     word
+	float32
+
+snippet     type_float64
+abbr        alias for uint8
+options     word
+	float64
+
+snippet     type_complex64
+abbr        type
+options     word
+	complex64
+
+snippet     type_complex128
+abbr        type
+options     word
+	complex128
+
+snippet     type_map
+abbr        type
+options     word
+	map[${1:keyType}]${2:valueType}
+
+#
+# def
+#
+snippet     type_def_struct
+abbr        type
+options     word
+	type ${1:TypeName} struct {
+	}
+
+snippet     type_def_interface
+abbr        type
+options     word
+	type ${1:InterfaceName} interface {
+	}
+
+snippet     type_def_func
+abbr        type
+options     word
+	type ${1:FunctionType} func {
+	}
+
+#
+# type cast
+#
+snippet     cast_from_float_to_uint
+abbr        type
+options     word
+	uint(${1:float_value})
+
+snippet     cast_from_int_to_float32
+abbr        type
+options     word
+	float32(${1:float_value})
+
+snippet     cast_from_int_to_float32
+abbr        type
+options     word
+	float32(${1:float_value})
+
+#
+# type assertion
+#
+snippet     type_assert_if
+abbr        type
+options     word
+	if t, ok := ${1:var_name}.(${2:Type}); ok {
+	}
+
+snippet     type_assert
+abbr        type
+options     word
+	t, ok := ${1:var_name}.(${2:Type})
+
+#
+# switch
+#
+snippet     type_if
+abbr        type
+options     word
+	switch f := arg.(type) {
+		case bool:
+			p.fmtBool(f, verb)
+		case float32:
+			p.fmtFloat(float64(f), 32, verb)
+		case float64:
+			p.fmtFloat(f, 64, verb)
+		case complex64:
+			p.fmtComplex(complex128(f), 64, verb)
+		case complex128:
+			p.fmtComplex(f, 128, verb)
+		case int:
+			p.fmtInteger(uint64(f), signed, verb)
+		case int8:
+			p.fmtInteger(uint64(f), signed, verb)
+		case int16:
+			p.fmtInteger(uint64(f), signed, verb)
+		case int32:
+			p.fmtInteger(uint64(f), signed, verb)
+		case int64:
+			p.fmtInteger(uint64(f), signed, verb)
+		case uint:
+			p.fmtInteger(uint64(f), unsigned, verb)
+		case uint8:
+			p.fmtInteger(uint64(f), unsigned, verb)
+		case uint16:
+			p.fmtInteger(uint64(f), unsigned, verb)
+		case uint32:
+			p.fmtInteger(uint64(f), unsigned, verb)
+		case uint64:
+			p.fmtInteger(f, unsigned, verb)
+		case uintptr:
+			p.fmtInteger(uint64(f), unsigned, verb)
+		case string:
+			p.fmtString(f, verb)
+		case []byte:
+			p.fmtBytes(f, verb, "[]byte")
+		default:
+		}
