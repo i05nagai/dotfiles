@@ -1,0 +1,65 @@
+snippet     text_template_import
+abbr        text/template
+options     word
+	import "text/template"
+
+#
+# actions
+#
+snippet     text_template_action
+abbr        text/template
+options     word
+	{{${1}}}
+
+snippet     text_template_action_comment
+abbr        text/template
+options     word
+	{{/* ${1:a comment} */}}
+
+snippet     text_template_action_if
+abbr        text/template
+options     word
+	{{if ${1:pipelien}}} ${2} {{end}}
+
+snippet     text_template_action_if_else
+abbr        text/template
+options     word
+	{{if ${1:pipelien}}} ${2} {{else}} ${3} {{end}}
+
+snippet     text_template_action_if_else_if
+abbr        text/template
+options     word
+	{{if ${1:pipelien}}} ${2} {{else if ${3:pipeline}}} ${4} {{end}}
+
+snippet     text_template_action_for
+abbr        text/template
+options     word
+	{{range ${1:pipelineArray}}} ${2} {{end}}
+
+snippet     text_template_action_for
+abbr        text/template
+options     word
+	{{range ${1:pipelineArray}}} ${2} {{end}}
+
+#
+#
+#
+snippet     text_template_
+abbr        text/template
+options     word
+	{{range ${1:pipelineArray}}} ${2} {{end}}
+
+#
+# actions
+#
+snippet     text_template
+abbr        text/template
+options     word
+	tmpl, err := template.New("${1:nameOfTemplate}").Parse("${2:template}")
+	if err != nil {
+		panic(err)
+	}
+	err = tmpl.Execute(os.Stdout, ${1:structValue})
+	if err != nil {
+		panic(err)
+	}
