@@ -1,0 +1,13 @@
+snippet     os_import
+abbr        os
+options     word
+	import "os"
+
+snippet     os_create_file
+abbr        io
+options     word
+	fileptr, err := os.Create(${1:path_to_file})
+	if err != nil {
+		panic(err)
+	}
+	defer fileptr.Close()
