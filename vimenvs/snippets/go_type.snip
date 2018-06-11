@@ -61,22 +61,25 @@ abbr        type
 options     word
 	map[${1:keyType}]${2:valueType}
 
+#
+# def
+#
 snippet     type_def_struct
 abbr        type
 options     word
-	type ${1:type_name} struct {
+	type ${1:TypeName} struct {
 	}
 
 snippet     type_def_interface
 abbr        type
 options     word
-	type ${1:type_name} interface {
+	type ${1:InterfaceName} interface {
 	}
 
 snippet     type_def_func
 abbr        type
 options     word
-	type ${1:type_name} func {
+	type ${1:FunctionType} func {
 	}
 
 #
@@ -110,3 +113,49 @@ snippet     type_assert
 abbr        type
 options     word
 	t, ok := ${1:var_name}.(${2:Type})
+
+#
+# switch
+#
+snippet     type_if
+abbr        type
+options     word
+	switch f := arg.(type) {
+		case bool:
+			p.fmtBool(f, verb)
+		case float32:
+			p.fmtFloat(float64(f), 32, verb)
+		case float64:
+			p.fmtFloat(f, 64, verb)
+		case complex64:
+			p.fmtComplex(complex128(f), 64, verb)
+		case complex128:
+			p.fmtComplex(f, 128, verb)
+		case int:
+			p.fmtInteger(uint64(f), signed, verb)
+		case int8:
+			p.fmtInteger(uint64(f), signed, verb)
+		case int16:
+			p.fmtInteger(uint64(f), signed, verb)
+		case int32:
+			p.fmtInteger(uint64(f), signed, verb)
+		case int64:
+			p.fmtInteger(uint64(f), signed, verb)
+		case uint:
+			p.fmtInteger(uint64(f), unsigned, verb)
+		case uint8:
+			p.fmtInteger(uint64(f), unsigned, verb)
+		case uint16:
+			p.fmtInteger(uint64(f), unsigned, verb)
+		case uint32:
+			p.fmtInteger(uint64(f), unsigned, verb)
+		case uint64:
+			p.fmtInteger(f, unsigned, verb)
+		case uintptr:
+			p.fmtInteger(uint64(f), unsigned, verb)
+		case string:
+			p.fmtString(f, verb)
+		case []byte:
+			p.fmtBytes(f, verb, "[]byte")
+		default:
+		}
