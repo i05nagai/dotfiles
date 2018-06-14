@@ -7,13 +7,19 @@ snippet     fmt_print_variable
 alias       print_variable
 abbr        fmt
 options     word
-	# import "fmt"
-	fmt.Printf("${1:variable_name}: %v\n", ${2})
+	fmt.Printf("${1:variable_name}: %v\n", $1)
+
+snippet     fmt_print_type
+alias       print_type
+abbr        fmt
+options     word
+	// import "reflect"
+	fmt.Printf("${1:variable_name}: %v\n", reflect.TypeOf($1))
 
 snippet     fmt_make_string
 abbr        fmt
 options     word
-	str := fmt.Sprintf("${1:variable_name}: %v", ${2})
+	str := fmt.Sprintf("${1:variable_name}: %v", $1)
 
 #
 # format
