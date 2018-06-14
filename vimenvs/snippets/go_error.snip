@@ -1,0 +1,9 @@
+snippet     error_new
+abbr        error
+options     word
+	errors.New("${1:message}")
+
+snippet     error_new_format
+abbr        error
+options     word
+	fmt.Errorf("${1:msg}", ${2:args})
