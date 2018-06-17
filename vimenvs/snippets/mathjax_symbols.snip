@@ -1,5 +1,6 @@
-
+#
 # x
+#
 snippet     xi
 abbr        x_{i}
 options     word
@@ -30,7 +31,9 @@ abbr        x_{3}
 options     word
 	x_{3}
 
+#
 # y
+#
 snippet     yi
 abbr        y_{i}
 options     word
@@ -64,4 +67,54 @@ options     word
 snippet     step_point
 abbr        x^{(k)}
 options     head
-    ${1:x}^{(${2:k})}${0}
+	${1:x}^{(${2:k})}${0}
+
+#
+# parenthesis
+#
+snippet     left(
+abbr        left( right)
+options     word
+	\\left(
+		${1:inner}
+	\\right)
+	${2}
+
+snippet     left{
+abbr        left{ right}
+options     word
+	\\left\\{
+		${1:inner}
+	\\right\\}
+	${2}
+
+snippet     left[
+abbr        left[ right]
+options     word
+	\\left[
+		${1:inner}
+	\\right]
+	${2}
+
+snippet     left.
+abbr        left. right?
+options     word
+	\\left.
+		${1:inner}
+	\\right${2}
+	${3}
+
+snippet     ()
+abbr        ( )
+options     word
+	(${1})${0}
+
+snippet     {}
+abbr        { }
+options     word
+	{${1}}${0}
+
+snippet     []
+abbr        [ ]
+options     word
+	[${1}]${0}
