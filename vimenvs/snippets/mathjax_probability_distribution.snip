@@ -1,7 +1,97 @@
 #
 # binomial
 #
+snippet     binomial_pdf
+abbr        Bi(?, ?)
+options     word
+	\\mathrm{Bi}(${1:x_{1}}, \ldots, ${2:x_{N}}; ${3:p})${0}
 
+snippet     binomial_pdf
+abbr        Bi(?, ?)
+options     word
+	\mathrm{Bi}(x_{1}, \ldots, x_{N}; p)
+	:=
+	\left(
+		\begin{array}{c}
+			N \\
+			\sum_{i=1}^{N}
+				x_{i}
+		\end{array}
+	\right)
+	p^{
+		\sum_{i=1}^{N}
+			x_{i}
+	}
+	(1 - p)^{
+		N
+		-
+		\sum_{i=1}^{N}
+			x_{i}
+	}
+
+snippet     normal_cdf
+abbr        N(?, ?)
+options     word
+	F_{\\mathrm{Bi}}(${1:x_{1}}, \ldots, ${2:x_{N}}; ${3:p})${0}
+
+#
+# bernoulli
+#
+snippet     bernoulli_pdf_def
+abbr        Bi(?, ?)
+options     word
+	x \in \{0, 1\},
+	\
+	\mathrm{Ber}(x; p)
+	:=
+	\begin{cases}
+		p
+		&
+			x = 1 \\
+		1 - p
+		&
+			x = 0
+	\end{cases}
+
+#
+# hypergeometric
+#
+snippet     hypergeometric_pdf
+abbr        Bi(?, ?)
+options     word
+	\\mathrm{Hyper}(${1:k}; ${2:N, K, n})${0}
+
+snippet     hypergeometric_pdf_def
+abbr        Bi(?, ?)
+options     word
+	\\mathrm{Hyper}(${1:k}; ${2:N, K, n})
+	:=
+	\frac{
+		\left(
+			\begin{array}{c}
+				K \\
+				k
+			\end{array}
+		\right)
+		\left(
+			\begin{array}{c}
+				N - K \\
+				n - k
+			\end{array}
+		\right)
+	}{
+		\left(
+			\begin{array}{c}
+				N \\
+				n
+			\end{array}
+		\right)
+	}
+
+snippet     hypergeometric_cdf
+abbr        Bi(?, ?)
+options     word
+	F_{\mathrm{Hyper}}(${1:k}; ${2:N, K, n})
 
 #
 # normal
