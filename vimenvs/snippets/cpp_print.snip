@@ -1,0 +1,28 @@
+snippet     print
+options     word
+	std::cout << ${0:TARGET} << std::endl;
+
+snippet     print_variable
+options     word
+	std::cout << "${1:var}: " << $1 << std::endl;
+
+snippet     print_setprecision
+abbr        << precision
+options     word
+	// #include <iomanip>
+	std::cout
+		<< std::fixed
+		<< std::setprecision(${1:digit})
+		<< ${2:val}
+		<< std::endl;
+
+snippet     print_vector
+abbr        print
+	for (int vi = 0; vi < ${1:vector}.size(); ++vi) {
+		std::cout << $1[vi] << ", ";
+	}
+	std::cout << std::endl;
+
+snippet     print_variable
+abbr        print
+	std::cout << "$1: " << ${1} << std::endl;
