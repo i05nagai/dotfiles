@@ -79,6 +79,9 @@ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
 curl -L https://www.mendeley.com/repositories/ubuntu/stable/amd64/mendeleydesktop-latest -o mendeleydesktop.deb
 sudo dpkg -i mendeleydesktop-latest.deb
 
+# golang
+sudo apt-get install golang-1.10
+
 #
 # install
 #
@@ -87,3 +90,12 @@ git submodule update
 vim -N -u NONE -i NONE -V1 -e -s --cmd "source .vimrc" --cmd NeoBundleInstall! --cmd qall!
 # change shell
 chsh -s /bin/zsh
+
+#
+# install hub
+#
+curl -L -O https://github.com/github/hub/releases/download/v2.4.0/hub-linux-amd64-2.4.0.tgz
+mv hub-linux-amd64-2.4.0.tgz /tmp
+cd /tmp
+tar xfv /tmp/hub-linux-amd64-2.4.0.tgz
+cp hub-linux-amd64-2.4.0/bin/hub  ~/.bin
