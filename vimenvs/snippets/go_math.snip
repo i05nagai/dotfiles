@@ -4,6 +4,31 @@ options     word
 	import "math"
 
 snippet     math_abs
-abbr        math import
+abbr        math
 options     word
 	math.Abs(${1})
+
+snippet     math_floor
+abbr        math
+options     word
+	math.Floor(${1})
+
+snippet     math_floor_int
+abbr        math
+options     word
+	int(math.Floor(${1}))
+
+snippet     math_ceil
+abbr        math
+options     word
+	math.Ceil(${1})
+
+snippet     math_ceil_int
+abbr        math
+options     word
+	int(math.Ceil(${1}))
+
+snippet     math_sqrt
+abbr        math
+options     word
+	math.Sqrt(${1})
