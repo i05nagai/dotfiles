@@ -1,7 +1,20 @@
+#
+# space
+#
+snippet     probability_space
+abbr        probability triplet
+options     word
+	(\\Omega, \\mathcal{F}, P)
+
+snippet     probability_space_with_filtlation
+abbr        probability space with filtralation
+options     word
+	(\\Omega, \\mathcal{F}, P, \\{\\mathcal{F}_{t}\\}_{0 \\le t})
+
 # expectation
 snippet     expectation
 abbr        E[ ]
-options		word
+options     word
 	\\mathrm{E}
 	\\left[
 		${1}
@@ -9,7 +22,7 @@ options		word
 
 snippet     expectation_lower
 abbr        E[ ]
-options		word
+options     word
 	\\mathrm{E}_{${1}}
 	\\left[
 		${2}
@@ -17,7 +30,7 @@ options		word
 
 snippet     expectation_upper
 abbr        E^{?}[ ]
-options		word
+options     word
 	\\mathrm{E}^{${1:measure}}
 	\\left[
 		${2}
@@ -25,7 +38,7 @@ options		word
 
 snippet     expectation_lower_upper
 abbr        E_{t}^{Q}[ ]
-options		word
+options     word
 	\\mathrm{E}_{${1}}^{${2}}
 	\\left[
 		${3}
@@ -33,37 +46,37 @@ options		word
 
 snippet     expectation_inline
 abbr        E[ ]
-options		word
+options     word
 	\\mathrm{E}[${1}]${0}
 
 snippet     expectation_lower_inline
 abbr        E[ ]
-options		word
+options     word
 	\\mathrm{E}_{${1}}[${2}]
 
 snippet     expectation_upper_inline
 abbr        E^{?}[ ]
-options		word
+options     word
 	\\mathrm{E}^{${1}}[${2}]
 
 snippet     expectation_lower_upper_inline
 abbr        E_{t}^{Q}[ ]
-options		word
+options     word
 	\\mathrm{E}_{${1}}^{${2}}[${3}]
 
 snippet     expectation_without_parenthesis
 abbr        E^{?}
-options		word
+options     word
 	\\mathrm{E}${0}
 
 snippet     expectation_with_measure_without_parenthesis
 abbr        E^{?}
-options		word
+options     word
 	\\mathrm{E}^{${1:measure}}${2}
 
 snippet     conditional_expectation
 abbr        E[ | ]
-options		word
+options     word
 	\\mathrm{E}
 	\\left[
 	\\left.
