@@ -304,7 +304,9 @@ abbr        Epi
 options     word
 	\\mathrm{Epi}(${1:f})
 
+#
 # combination
+#
 snippet     combination
 abbr        ()
 options     word
@@ -314,6 +316,12 @@ options     word
 			${2}
 		\\end{array}
 	\\right)${0}
+
+snippet     combination_inline
+abbr        combination
+options     word
+	{${1:N} \\choose ${2:n}}${0}
+
 
 # map
 snippet     map
