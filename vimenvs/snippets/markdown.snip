@@ -1,3 +1,4 @@
+include liquid.snip
 include mathjax.snip
 include sql.snip
 
@@ -92,6 +93,42 @@ options     word
 	
 	## $1-$2. $3
 	${0}
+
+snippet     template_docs
+abbr        template docs
+options     word
+	## ${1:title}
+	${2}
+	
+	## Reference
+
+snippet     template_doc_jekyll_header
+abbr        template docs
+options     word
+	---
+	title: ${1:title}
+	---
+	
+	## $1
+	${2}
+	
+	## Reference
+
+snippet     template_doc_cli_jekyll_header
+abbr        template docs
+options     word
+	---
+	title: ${1:title}
+	---
+	
+	## $1
+	${2}
+	
+	## CLI
+	
+	## Usage
+	
+	## Configuration
 	
 	## Reference
 
@@ -128,15 +165,15 @@ snippet     template_math
 abbr        math template
 options     head
 	# ${1}
-
-    ## Symbol
-
+	
+	## Symbol
+	
 	## Definition
-
+	
 	## Problem
-
+	
 	## Theory
-
+	
 	## Algorithm
-
+	
 	## Reference
