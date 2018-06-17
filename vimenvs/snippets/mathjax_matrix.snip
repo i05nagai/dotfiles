@@ -83,3 +83,43 @@ snippet     trace_inline
 abbr        tr()
 options     word
 	\\mathrm{tr}(${1})
+
+#
+# definition
+#
+snippet     def_jacobian_matrix
+abbr        definition of jacobian matrix
+	\\left(
+		\\begin{array}{ccc}
+			\\frac{\\partial f_{1}(x)}{\\partial x_{1}} & \\ldots & \\frac{\\partial f_{1}(x)}{\\partial x_{N}} \\\\
+			\\vdots & \\ddots & \\vdots \\\\
+			\\frac{\\partial f_{N}(x)}{\\partial x_{1}} & \\ldots & \\frac{\\partial f_{N}(x)}{\\partial x_{N}} \\\\
+		\\end{array}
+	\\right)
+	${0}
+
+snippet     def_lower_matrix
+abbr        defnition of lower matrix
+	L = 
+		\\left(
+			\\begin{array}{ccccc}
+				l_{1}^{1} & 0         & \\ldots    &        & 0 \\\\
+				l_{1}^{2} & l_{2}^{2} & 0         & \\ldots & 0 \\\\
+				l_{1}^{3} & l_{2}^{3} & l_{3}^{3} & \\ldots & 0 \\\\
+				\\vdots    & \\vdots    & \\ddots    & \\ddots & \\vdots \\\\
+				l_{1}^{M} & l_{2}^{M} & \\ldots    &        & l_{M}^{M}
+			\\end{array}
+		\\right)
+
+snippet     def_upper_matrix
+abbr        defnition of upper matrix
+	U = 
+		\\left(
+			\\begin{array}{ccccc}
+			u_{1}^{1} & u_{2}^{1} & u_{3}^{2} & \\ldots & u_{N}^{1} \\\\
+			0         & u_{2}^{2} & u_{3}^{2} & \\ldots & u_{N}^{2} \\\\
+			\\vdots    & 0         & u_{3}^{3} & \\ldots & 0 \\\\
+					  & \\vdots    & \\ddots    & \\ddots & \\vdots \\\\
+			0         & 0         & \\ldots    &        & u_{N}^{M}
+			\\end{array}
+		\\right)
