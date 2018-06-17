@@ -1,10 +1,11 @@
-include c.snip
 include cpp_algorithm.snip
 include cpp_benchmark.snip
 include cpp_boost.snip
 include cpp_clang_foramt.snip
 include cpp_cmath.snip
 include cpp_limits.snip
+include cpp_preprocessor.snip
+include cpp_print.snip
 include cpp_random.snip
 include cppunit.snip
 include doxygen.snip
@@ -12,111 +13,90 @@ include gmock.snip
 include gtest.snip
 include mathjax.snip
 
-# pre processors
-snippet pragma_once
-alias	#pragma once 
-options word
-	#pragma once
-
-delete template
+delete  template
 snippet template
 alias   temp
-    template <typename ${1}>${0}
-
-delete inc
-snippet inc
-alias   #inc, #include
-    #include <${1}>${0}
-
-#
-# include
-#
-snippet inc2
-alias   #inc2, #include2
-	#include "${1}"${0}
-
-snippet include_size_t
-	#include <cstddef>
-
-snippet     include_enable_if
-abbr        include
-options     word
-	#include <type_traits>
-
+	template <typename ${1}>${0}
 
 delete      namespace2
 snippet     namespace2
 abbr        namespace { namespace { } }
 options     head
 	namespace ${1:#:name} { namespace ${2:name} {
-	  ${0:TARGET}
+		${0:TARGET}
 	} } // namespace $1 { namespace $2 {
 
 delete      namespace3
 snippet     namespcae3
 abbr        namespace { namespace { namespace { } } }
 options     head
-    namespace ${1:#:name} { namespace ${2:name} { namespace ${3:name} {
-      ${0:TARGET}
-    } } } // namespace $1 { namespace $2 { namespace $3 {
+	namespace ${1:#:name} { namespace ${2:name} { namespace ${3:name} {
+		${0:TARGET}
+	} } } // namespace $1 { namespace $2 { namespace $3 {
 
 snippet     ifndef2
 abbr        #ifndef HOGE...
-    #ifndef ${1:HOGE_}_H_INCLUDED
-    #define $1_H_INCLUDED
-    ${0:TARGET}
-    #endif // #ifndef $1_H_INCLUDED
+	#ifndef ${1:HOGE_}_H_INCLUDED
+	#define $1_H_INCLUDED
+	${0:TARGET}
+	#endif // #ifndef $1_H_INCLUDED
 
-snippet     ffunc
+snippet     func_free
 abbr        void func(...
-    ${1:void} ${2:func_name}(${3:attr})
-    {
-      ${0}
-    }
+	${1:void} ${2:func_name}(${3:attr})
+	{
+		${0}
+	}
 
-snippet     p
-options     head
-	std::cout << ${0:TARGET} << std::endl;
-
-
-snippet     mfunc
+snippet     func_member
 abbr        void className::funcitonName() {}
-    ${1:void} ${2:class}::${3:function}(${4:attr})
-    {
-        ${0:last}
-    }
+	${1:void} ${2:class}::${3:function}(${4:attr})
+	{
+		${0:last}
+	}
 
-snippet     sep1
+#
+# comment
+#
+snippet comment
+alias   /*
+	/* ${1:#:comment} */
+	${0}
+
+snippet     comment_separator
 abbr        /*--- comment ---*/
-    /*--------------------------------------------------------------------------
-    * ${0:TARGET}
-    *------------------------------------------------------------------------*/
+	/*--------------------------------------------------------------------------
+	* ${0:TARGET}
+	*------------------------------------------------------------------------*/
 
-snippet     cdcomment
+snippet     comment_constructor_destructor
 abbr        Constructers and Destructers
-    Constructers and Destructer
+	Constructers and Destructer
 
-snippet     mcomment
+snippet     comment_member_function
 abbr        member functions
-    member functions
+	member functions
 
-snippet     pvfcomment
+snippet     comment_pure_virtual_function
 abbr        pure virtual functions
-    pure virtual functions
+	pure virtual functions
 
-snippet     ipvfcomment
+snippet     comment_inherited_pure_virtual_function
 abbr        inherited pure virtual functions
-    inherited pure virtual functions
+	inherited pure virtual functions
 
-snippet     pvcomment
+snippet     comment_private_variable
 abbr        private variables 
-    private variables
+	private variables
 
-snippet     pfcomment
+snippet     comment_private_function
 abbr        private variables 
-    private functions
+	private functions
 
-delete class
+#
+# class
+#
+delete      class
 snippet     class
 abbr        class
 options     head
@@ -138,262 +118,16 @@ delete      struct
 snippet     struct
 abbr        simple struct
 options     head
-    struct ${1:name} {
-        ${0:end}
-    };
+	struct ${1:name} {
+		${0:end}
+	};
 
-snippet targetheader
-abbr targetheader
-	#pragma once
-	
-	namespace ${1:namespace} {
-	class ${2:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}${3} {
-	  //private typedef
-	  private:
-	  //public typedef
-	  public:
-	  //public function
-	  public:
-	    ${4:end}
-	  //private function
-	  private:
-	  //private members
-	  private:
-	}; // class $2$3 {
-	} // namespace $1 {
-
-snippet targetsource
-abbr target source
-	#include "${1:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`.h}"
-
-	namespace ${2:namespace} {
-	  ${0:mfunc}
-	} // namespace $2 {
-
-snippet targetheader2
-abbr namespace2 target header
-	#pragma once
-	
-	namespace ${1:namespace} { namespace ${2:namespace} {
-		class ${3:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}${4} {
-		//private typedef
-		private:
-		//public typedef
-		public:
-		//public function
-		public:
-			${0:end}
-		//private function
-		private:
-		//private members
-		private:
-		}; // class $3$4 {
-	} } // namespace $1 { namespace $2 {
-
-snippet targetsource2
-abbr namespace2 target source
-	#include "${1:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`.h}"
-
-	namespace ${2:namespace} { namespace ${3:namespace} {
-		${0:mfunc}
-	} } // namespace $2 { namespace $3 {
-
-snippet     targetiheader
-abbr        namespace target interface header
-options     head
-	#pragma once
-	
-	namespace ${1:namespace} {
-	  class ${2:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}${3} {
-	  //private typedef
-	  private:
-	  //public typedef
-	  public:
-	  //public function
-	  public:
-	  	${0:end}
-	  //private function
-	  private:
-	  //private members
-	  private:
-	  }; // class $2$3 {
-	} // namespace $1 { 
-
-snippet targetisource
-abbr namespace target interface source
-	#include "${1:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`.h}"
-
-	namespace ${2:namespace} {
-	  ${0:mfunc}
-	} // namespace $2 {
-
-snippet     targetiheader2
-abbr        namespace2 target interface header
-options     head
-	#pragma once
-	
-	namespace ${1:namespace} { namespace ${2:namespace} {
-		class ${3:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}${4} {
-		//private typedef
-		private:
-		//public typedef
-		public:
-		//public function
-		public:
-			${0:end}
-		//private function
-		private:
-		//private members
-		private:
-		}; // class $3$4 {
-	} } // namespace $1 { namespace $2 {
-
-snippet targetisource2
-abbr namespace2 target interface source
-	#include "${1:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`.h}"
-
-	namespace ${2:namespace} { namespace ${3:namespace} {
-	  ${0:mfunc}
-	} } // namespace $2 { namespace $3 {
-
-
-snippet     test_random_number_generator_source
-abbr        random number generator for test
-options     head
-	#include "test_util/RandomNumber.h"
-
-	namespace test_util {
-	  RandomNumber::RandomNumber(const std::size_t seed = 3252352)
-	  : _engine(), _distribution()
-	  {
-	  }
-
-	  double RandomNumber::operator()()
-	  {
-	    return _distribution(_engine);
-	  }
-
-	  double RandomNumber::operator()(const double min, const double max)
-	  {
-	    const int diff = max - min;
-	    return (*this)() * diff + min;
-	  }
-	} // namespace test_util
-
-snippet     test_random_number_generator_header
-abbr        random number generator for test
-options     head
-	#pragma once
-	#include <boost/random.hpp>
-
-	namespace test_util {
-	  class RandomNumber {
-	  //private typedef
-	  private:
-	  //public typedef
-	  public:
-	  //public function
-	  public:
-	    RandomNumber(const std::size_t seed = 3252352);
-	    /**
-	     * @brief random value in [0, 1). 
-	     *
-	     * @return random value in [0, 1).
-	     */
-	    double operator()();
-	    /**
-	     * @brief [min, max)
-	     *
-	     * @param min
-	     * @param max
-	     *
-	     * @return [min, max) 
-	     */
-	    double operator()(const double min, const double max);
-	  //private function
-	  private:
-	  //private members
-	  private:
-	    boost::random::mt19937 _engine;
-	    boost::random::uniform_01<double> _distribution;
-	  }; // class RandomNumber {
-	} // namespace test_util
-
-snippet     lambda_capture
-abbr        lambda capturing outside variable
-options     word
-	[&](${1:varDef}) { ${2} }${0:;}
-
-snippet     operator_output
-abbr        operator<<
-options     word
-	std::ostream& operator<<(std::ostream& os, const ${1})
-	{
-		os << ${2};
-		return os;
-	}
-
-snippet     output_setprecision
-abbr        << precision
-options     word
-	// #include <iomanip>
-	std::cout
-	  << std::fixed
-	  << std::setprecision(${1:digit})
-	  << ${2:val}
-	  << std::endl;
-
-snippet     write_to_file
-abbr        write to file
-options     word
-	// #include <fstream>
-	std::ofstream ${1:file};
-	$1.open(${2:path_to_file});
-	$1 << "write something";
-	$1.close();
-
-snippet     read_from_file
-abbr        read from file
-options     word
-	// #include <fstream>
-	std::ifstream ${1:var}(${2:file_name});
-
-snippet     normal_distribution_cdf
-abbr        normal distribution cdf
-options     head
-	double normal_distribution_cdf(double x)
-	{
-	  // https://www.johndcook.com/blog/cpp_phi/
-	  // #include <cmath>
-	  // constants
-	  const double a1 =  0.254829592;
-	  const double a2 = -0.284496736;
-	  const double a3 =  1.421413741;
-	  const double a4 = -1.453152027;
-	  const double a5 =  1.061405429;
-	  const double p  =  0.3275911;
-	
-	  // Save the sign of x
-	  int sign = 1;
-	  if (x < 0) {
-	    sign = -1;
-	  }
-	  x = std::fabs(x) / std::sqrt(2.0);
-	
-	  // A&S formula 7.1.26
-	  const double t = 1.0 / (1.0 + p * x);
-	  const double y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1)
-	    * t * std::exp(-x * x);
-	
-	  return 0.5 * (1.0 + sign * y);
-	}
-
-snippet     cpp_vector
+snippet     vector
 abbr        vector
 options     word
 	std::vector<${1:}> ${2:var}
 
-snippet     cpp_vector_of_vector
+snippet     vector_of_vector
 abbr        vector
 options     word
 	std::vector<std::vector<${1:}>> ${2:var}
@@ -417,13 +151,193 @@ abbr        for ()
 		${0}
 	}
 
-snippet     show_vector
-abbr        for ()
-	for (int vi = 0; vi < ${1:vector}.size(); ++vi) {
-		std::cout << $1[vi] << ", ";
+snippet     while
+abbr        while () {}
+	while (${1:#:condition}) {
+		${0:TARGET}
 	}
-	std::cout << std::endl;
 
-snippet     show_variable
-abbr        for ()
-	std::cout << "$1: " << ${1} << std::endl;
+#
+# if
+#
+snippet     if
+abbr        if () {}
+	if (${1:#:condition}) {
+		${0:TARGET}
+	}
+
+snippet else
+	else {
+		${0:TARGET}
+	}
+
+snippet elseif
+	else if (${1:#:condition}) {
+		${0:TARGET}
+	}
+
+snippet     ifelse
+abbr        if () {} else {}
+	if (${1:#:condition}) {
+		${2:TARGET}
+	} else {
+		${3}
+	}
+
+snippet     switch
+abbr        switch () {}
+	switch (${1:#:var}) {
+		case ${2:#:val}:
+			${0:TARGET}
+			break;
+	}
+
+snippet     enum
+abbr        enum {}
+	enum ${1:#:name} {
+		${0:TARGET}
+	};
+
+# Ternary conditional operator
+snippet conditional
+	(${1:#:condition}) ? ${2:#:a} : ${3:#:b}
+
+snippet typedef
+	typedef ${1:#:base_type} ${2:#:custom_type};
+
+snippet sizeof
+alias size
+	sizeof(${0:TARGET})
+
+#
+# lambda
+#
+snippet     lambda_capture
+abbr        lambda capturing outside variable
+options     word
+	[&](${1:varDef}) { ${2} }${0:;}
+
+snippet     operator_output
+abbr        operator<<
+options     word
+	std::ostream& operator<<(std::ostream& os, const ${1})
+	{
+		os << ${2};
+		return os;
+	}
+
+snippet     write_to_file
+abbr        write to file
+options     word
+	// #include <fstream>
+	std::ofstream ${1:file};
+	$1.open(${2:path_to_file});
+	$1 << "write something";
+	$1.close();
+
+snippet     read_from_file
+abbr        read from file
+options     word
+	// #include <fstream>
+	std::ifstream ${1:var}(${2:file_name});
+
+#
+# template
+#
+snippet     template_namespace_class
+abbr        simple struct
+options     word
+	#pragma once
+	
+	namespace ${1:namespace} {
+	class ${2:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}${3} {
+		//private typedef
+		private:
+		//public typedef
+		public:
+		//public function
+		public:
+			${4:end}
+		//private function
+		private:
+		//private members
+		private:
+	}; // class $2$3 {
+	} // namespace $1 {
+
+snippet     template_namespace
+abbr        template
+options     word
+	#include "${1:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`.h}"
+	
+	namespace ${2:namespace} {
+	  ${0:mfunc}
+	} // namespace $2 {
+
+snippet     template_namespace2_class
+abbr        template
+options     word
+	#pragma once
+	
+	namespace ${1:namespace} { namespace ${2:namespace} {
+		class ${3:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}${4} {
+		//private typedef
+		private:
+		//public typedef
+		public:
+		//public function
+		public:
+			${0:end}
+		//private function
+		private:
+		//private members
+		private:
+		}; // class $3$4 {
+	} } // namespace $1 { namespace $2 {
+
+snippet     template_namespace2
+abbr        template
+options     word
+	#include "${1:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`.h}"
+	
+	namespace ${2:namespace} { namespace ${3:namespace} {
+		${0:mfunc}
+	} } // namespace $2 { namespace $3 {
+
+snippet     template_normal_distribution_cdf
+abbr        normal distribution cdf
+options     word
+	double normal_distribution_cdf(double x)
+	{
+		// https://www.johndcook.com/blog/cpp_phi/
+		// #include <cmath>
+		// constants
+		const double a1 =  0.254829592;
+		const double a2 = -0.284496736;
+		const double a3 =  1.421413741;
+		const double a4 = -1.453152027;
+		const double a5 =  1.061405429;
+		const double p  =  0.3275911;
+		
+		// Save the sign of x
+		int sign = 1;
+		if (x < 0) {
+		sign = -1;
+		}
+		x = std::fabs(x) / std::sqrt(2.0);
+	
+		// A&S formula 7.1.26
+		const double t = 1.0 / (1.0 + p * x);
+		const double y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1)
+		* t * std::exp(-x * x);
+	
+		return 0.5 * (1.0 + sign * y);
+	}
+
+snippet template_main
+alias   main
+	int main(int argc, char const* argv[])
+	{
+		${0:TARGET}
+		return 0;
+	}
