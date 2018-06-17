@@ -1,4 +1,5 @@
 include go_collections.snip
+include go_container_list.snip
 include go_fmt.snip
 include go_io.snip
 include go_math.snip
@@ -168,6 +169,28 @@ options     word
 		return ""
 	}
 
+snippet     func_method_immutable
+abbr        type
+options     word
+	func (${1:r RecieverType})${1:Funcname}(${2:name Type, name Type}) ${3:ReturnType} {
+		return result
+	}
+
+snippet     func_method_mutable
+abbr        type
+options     word
+	func (${1:r RecieverType*})${1:Funcname}(${2:name Type, name Type}) ${3:ReturnType} {
+		return result
+	}
+
+snippet     func_closure
+abbr        closure
+options     word
+	func ${1:Funcname}(${2:name Type, name Type}) ${3:func(argType) returnType}} {
+		return $3 {
+		}
+	}
+
 #
 # interface
 #
@@ -302,11 +325,97 @@ options     word
 	}
 
 #
-# error
+# array
 #
-snippet     error_panic
-abbr        for
+snippet     array_length
+abbr        len
 options     word
-	if err != nil {
-		panic(err)
+	len(${1})
+
+snippet     array_capacity
+abbr        capacity
+options     word
+	cap(${1})
+
+snippet     array_make
+abbr        make
+options     word
+	a := make(${1:[]int}, ${2:size})
+
+snippet     array_for_index
+abbr        make
+options     word
+	for i := 0; i < len(${1:array}); i++ {
+		${1}
 	}
+
+snippet     array_for
+abbr        make
+options     word
+	for i, v := range ${1:array} {
+		${1}
+	}
+
+snippet     array_append
+abbr        make
+options     word
+	append(${1:array}, ${2:appendings})
+
+snippet     array_copy
+abbr        make
+options     word
+	b := append([]${1:type}(nil), ${2:array})
+
+snippet     array_cut
+abbr        make
+options     word
+	a = append(${1:array}[:${2:cut_start}], $1[${3:cut_end}:])
+
+snippet     array_cut_without_memory_leak
+abbr        make
+options     word
+	copy(a[i:], a[j:])
+	for k, n := len(a)-j+i, len(a); k < n; k++ {
+		a[k] = nil // or the zero value of T
+	}
+	a = a[:len(a)-j+i]
+
+snippet     array_pop
+abbr        array
+options     word
+	${1:elem}, ${2:array} = $2[0], $2[1:]
+
+snippet     array_pop_back
+abbr        array
+options     word
+	${1:elem}, ${2:array} = $2[len($2) - 1], $2[:len($2) - 1]
+
+snippet     array_push_front
+abbr        array
+options     word
+	${1:array} = append([]${2:type}{${3:elem}}, $1)
+
+#
+# map
+#
+snippet     map_make
+abbr        make
+options     word
+	make(map[${1:keyType}]${2:valueType})
+
+snippet     map_create
+abbr        make
+options     word
+	map[${1:keyType}]${2:valueType} {
+		${3:key}: ${4:value},
+	}
+
+snippet     map_delete
+abbr        make
+options     word
+	delete(${1:map}, ${2:key})
+
+snippet     map_get_ok
+abbr        make
+options     word
+	v, ok := ${1:map}[${2:key}]]

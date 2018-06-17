@@ -35,12 +35,12 @@ options     word
 	${1:df}.loc[df['${2:column_name}'] ${3:== value}]
 
 snippet     pd_df_filter_row_by_column_with_regexp
-abbr        df preview
+abbr        df filter
 options     word
 	${1:df}[$1[${2:key}].fillna(value='False').str.contains(${3:regex})]
 
 snippet     pd_df_filter_row_by_column_in_list
-abbr        df preview
+abbr        df filter
 options     word
 	${1:df}[$1[${2:key}].fillna(value='False').str.contains(${3:regex})]
 	symbols = [
@@ -48,6 +48,11 @@ options     word
 	]
 	symbols = [c for c in ''.join(symbols)]
 	df[df[key].fillna(value='False').isin(symbols)]
+
+snippet     pd_df_filter_row
+abbr        df filter
+options     word
+	${1:df}[${2:df['col_name'] == 1}]
 
 #
 # show
@@ -62,9 +67,22 @@ abbr        abbr
 options     word
 	print(${1:df}.columns)
 
+snippet     pd_df_preview
+abbr        df preview
+options     word
+	print(${1:df}.head(10))
+	print($1.tail(10))
+	print($1.describe())
+
 #
 # read
 #
+snippet     pd_read_from_dict
+abbr        abbr
+options     word
+	# data = {'col1': [1, 2], 'col2': [3, 4]}
+	df = pd.DataFrame(data=${1:data})
+
 snippet     pd_df_read_from_double_array_no_header
 abbr        abbr
 options     word
@@ -76,7 +94,7 @@ options     word
 	df = pd.DataFrame(${1:double_array}[1:], columns=$1[0], dtype=None)
 
 #
-# 
+#
 #
 snippet     pd_df_add_column
 abbr        abbr
@@ -94,7 +112,7 @@ options     word
 	${1:df}.apply(func, axis=0)
 
 #
-#  type
+# type
 #
 snippet     pd_df_get_type
 abbr        abbr
@@ -105,3 +123,157 @@ snippet     pd_df_set_type_to_numeric_all
 abbr        abbr
 options     word
 	$1 = ${1:df}.apply(pd.to_numeric, errors='ignore')
+
+snippet     pd_df_type_datetime
+abbr        df type datetime
+options     word
+	'datetime64[ns]'
+
+snippet     pd_df_to_datetime
+abbr        df type datetime
+options     word
+	df['${1}'] = df.to_datetime(df['$1'], format='${2:%Y-%m-%d')
+
+#
+# select
+#
+snippet     pd_df_select_column
+abbr        select column
+options     word
+	${1:df}.iloc[:, ${1:from}:${2:to}]
+
+snippet     pd_df_column_slice
+abbr        abbr
+options     word
+	${1:df}.loc[:, ${2:column}]
+
+snippet     pd_df_column_rename
+abbr        abbr
+options     word
+	${1:df}.columns = [${2:column_name,}]
+
+#
+# aggregation
+#
+snippet     pd_df_groupby
+abbr        abbr
+options     word
+	${1:df}.groupby([${2:columun_name}])
+
+snippet     pd_df_sort
+abbr        abbr
+options     word
+	${1:df}.sort_values(by=(${2:columun_names}), ascending=${3:False})
+
+#
+# write
+#
+snippet     pd_df_write_tsv
+abbr        abbr
+options     word
+	${1:df}.to_csv('${2:path_to_tsv}', sep='\t', index=False, header=True)
+
+snippet     pd_df_write_csv
+abbr        csv
+options     word
+	${1:df}.to_csv('${2:path_to_tsv}', index=False, header=True)
+
+#
+# plot
+#
+snippet     pd_df_plot
+abbr        df plot
+options     word
+	${1:df}.plot()
+
+snippet     pd_df_plot_bar
+abbr        df plot bar
+options     word
+	${1:df}.plot.bar()
+
+snippet     pd_df_plot_bar_stacked
+abbr        df plot bar stacked
+options     word
+	${1:df}.plot.bar(stacked=True)
+
+snippet     pd_df_plot_bar_horizontal
+abbr        df plot bar horizontal
+options     word
+	${1:df}.plot.barh()
+
+snippet     pd_df_plot_bar_horizontal_stacked
+abbr        df plot bar horizontal stacked
+options     word
+	${1:df}.plot.barh(stacked=True)
+
+snippet     pd_df_plot_histogram
+abbr        df plot bar histogram
+options     word
+	${1:df}.plot.hist()
+
+snippet     pd_df_plot_histogram_stacked
+abbr        df plot bar histogram
+options     word
+	${1:df}.plot.hist(stacked=True)
+
+snippet     pd_df_plot_histogram_bins
+abbr        df plot bar histogram
+options     word
+	${1:df}.plot.hist(bins=20)
+
+snippet     pd_df_plot_histogram_cumulative
+abbr        df plot bar histogram cumulative
+options     word
+	${1:df}.plot.hist(cumulative=True)
+
+snippet     pd_df_plot_histogram_horizontal
+abbr        df plot bar histogram cumulative
+options     word
+	${1:df}.plot.hist(orientation='horizontal')
+
+snippet     pd_df_plot_row_col
+abbr        df type datetime
+options     word
+	fig, axes = plt.subplots(nrows=${1:2}, ncols=${2:2})
+	df[${3:col}].plot(ax=axes[${4:i}, ${5:j}])
+
+snippet     pd_df_plot_multiple_row
+abbr        df type datetime
+options     word
+	fig, axes = plt.subplots(nrows=${1:2}, ncols=1)
+	for i, col in enumerate(${3:columns}):
+		df[col].plot(ax=axes[i])
+
+snippet     pd_df_plot_multiple_col
+abbr        df type datetime
+options     word
+	fig, axes = plt.subplots(nrows=1, ncols=${1:2})
+	for i, col in enumerate(${2:columns}):
+		df[df['${3:col}'] == col].plot(ax=axes[i])
+		axes[i].set_title(str(col))
+
+snippet     pd_df_aggregate
+abbr        df aggregate
+options     word
+	${1:df}.groupby(${2:col}).agg(['count', 'min', 'max', 'mean', 'std'])
+
+snippet     pd_df_iterate_rows
+abbr        df preview
+options     word
+	for index, row in ${1:df}.iterrows():
+		${2}
+
+snippet     pd_df_iterate_row_and_col
+abbr        df preview
+options     word
+	for row_index, row in ${1:df}.iterrows():
+		for col_index, col in enumrate(row):
+			${2}
+
+#
+# to
+#
+snippet     pd_df_to_matrix
+abbr        df matrix
+options     word
+	${1:df}.values

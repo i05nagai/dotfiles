@@ -15,3 +15,10 @@ snippet     variable_assign_expression
 abbr        concat
 options     word
     {% capture ${1:variable} %}{{ ${2:env.ENV} }}{% endcapture %}
+
+snippet     liquid_escape_tag
+abbr        concat
+options     word
+    {% raw  %}
+    ${1}
+    {% endraw %}

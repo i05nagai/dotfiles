@@ -9,10 +9,12 @@ include mathjax_font.snip
 include mathjax_functional_analysis.snip
 include mathjax_group.snip
 include mathjax_hilbert_space.snip
+include mathjax_mathmatical_finance.snip
 include mathjax_matrix.snip
 include mathjax_measure.snip
 include mathjax_optimization.snip
 include mathjax_probability.snip
+include mathjax_probability_distribution.snip
 include mathjax_set.snip
 include mathjax_statistics.snip
 include mathjax_symbols.snip
@@ -112,16 +114,6 @@ snippet     quotient_ring
 abbr        quotient ring
 options		word
 	\\mathbb{Z}_{${1}}${0}
-
-snippet     probability_space
-abbr        probability triplet
-options     word
-	(\\Omega, \\mathcal{F}, P)
-
-snippet     probability_space_with_filtlation
-abbr        probability space with filtralation
-options     word
-	(\\Omega, \\mathcal{F}, P, \\{\\mathcal{F}_{t}\\}_{0 \\le t})
 
 snippet     projective_space_d
 abbr        d-dim projective space
@@ -312,7 +304,9 @@ abbr        Epi
 options     word
 	\\mathrm{Epi}(${1:f})
 
+#
 # combination
+#
 snippet     combination
 abbr        ()
 options     word
@@ -323,7 +317,13 @@ options     word
 		\\end{array}
 	\\right)${0}
 
-## map
+snippet     combination_inline
+abbr        combination
+options     word
+	{${1:N} \\choose ${2:n}}${0}
+
+
+# map
 snippet     map
 abbr        ?: ? -> ?
 options     word
@@ -359,19 +359,19 @@ options     word
 # summation
 snippet     summation
 abbr        \\sum
-options		word
+options     word
 	\\sum
 	    ${3:summand}
 
 snippet     summation_with_lower
 abbr        \\sum_{}
-options		word
+options     word
 	\\sum_{${1:init}}
 	    ${3}
 
 snippet     summation_with_lower_and_upper
 abbr        \\sum_{}^{}
-options		word
+options     word
 	\\sum_{${1:init}}^{${2:cond}}
 	    ${3}
 
@@ -405,27 +405,27 @@ options     word
 snippet     integral_inline_with_lower
 abbr        inline interal with interval
 options     word
-	\\int_{${1:lower}} ${2:integrand}\\ ${3:\mu(dx)}${0}
+	\\int_{${1:lower}} ${2:integrand}\\ ${3:\\mu(dx)}${0}
 
 snippet     integral_inline_with_lower_upper
 abbr        inline interal with interval
-options		word
+options     word
 	\\int_{${1:lower}}^{${2:upper}} ${3:integrand}\\ ${4:\\mu(dx)}
 
 snippet     integral_without_interval_inline
 abbr        inline interal with interval
-	\\int ${1:integrand}\\ ${2:\mu(dx)}
+	\\int ${1:integrand}\\ ${2:\\mu(dx)}
 
 snippet     integral_with_lower_upper
 abbr        interal with interval
-options		word
+options     word
 	\\int_{${1:lower}}^{${2:upper}}
-		 ${3:integrand}
+		${3:integrand}
 	\\ d${4:\\mu(dx)}
 
 snippet     integral_with_lower
 abbr        interal with interval
-options		word
+options     word
 	\\int_{${1:lower}}
 		${3:integrand}
 	\\ ${4:\\mu(dx)}
@@ -436,8 +436,9 @@ abbr        interal with interval
 		${1:integrand}
 	\\ ${4:\\mu(dx)}
 
+#
 # Derivative
-
+#
 snippet     derivative
 abbr        frac{d }{ d}
 	\\frac{d${1:numerator}}{d${2:denominator}} ${0}
@@ -453,7 +454,9 @@ abbr        \\left. frac{partial }{partial } \\right|
 	\\right|_{${3}}
 	${0}
 
+#
 # word
+#
 snippet     domain
 abbr        Dom
 options     word
@@ -672,11 +675,11 @@ snippet     cases
 abbr        cases
 	\\begin{cases}
 		${1}
-        &
-            ${2} \\\\
+		&
+			${2} \\\\
 		${3}
-        &
-            ${4}
+		&
+			${4}
 	\\end{cases}
 
 snippet     array
@@ -706,8 +709,9 @@ abbr        label{}
 options     word
 	\\label{${1}}${0}
 
+#
 # definition
-
+#
 snippet     def_jacobian_matrix
 abbr        definition of jacobian matrix
 	\\left(
@@ -749,143 +753,3 @@ abbr        defnition of upper matrix
 			0         & 0         & \\ldots    &        & u_{N}^{M}
 			\\end{array}
 		\\right)
-
-## finance
-snippet     def_libar_market_model_stochastic_volatility
-abbr        defnition of Libor Market Model with stochastic volatility
-	\\begin{eqnarray}
-		dL_{n}(t) 
-			& = & \\sqrt{z(t)}\\phi(L_{n}(t)) \\lambda_{n}(t) ^{\\mathrm{T}} dW^{T_{n+1}}(t),
-			\\\\
-		d z(t)
-			& = & \\theta(z_{0} - z(t)) dt + \\eta(t) \\sqrt{z(t)} dZ(t), z(0) = z_{0} = 1,
-			\\\\
-		\\langle dW^{T_{n+1}}(t), dZ(t) \\rangle
-			& = & 0
-	\\end{eqnarray}
-
-snippet     def_black_call_formula
-abbr        definition of black formula for call option
-options     word
-	\\begin{eqnarray}
-		c(S, r, T, \\sigma; K)
-			& := & S\\Phi(d_{1}) - e^{-rT}K\\Phi(d_{2}),
-		\\\\
-		d_{1} 
-			& := &
-				\\frac{
-					\\ln\\left(\\frac{S}{K} \\right) + (r + \\frac{1}{2}\\sigma^{2})T
-				}{
-					\\sigma \\sqrt{T}
-				},
-		\\\\
-		d_{2}
-			& := & 
-				\\frac{
-					\\ln\\left(\\frac{S}{K} \\right) + (r - \\frac{1}{2}\\sigma^{2})T
-				}{
-					\\sigma \\sqrt{T}
-				}
-	\\end{eqnarray}
-
-snippet     def_sabr_model
-abbr        definition of SABR model in integral form
-options     word
-	\\begin{eqnarray}
-		S(t) 
-			& = & S(0) + \\int_{0}^{t} \\alpha(s) S(s)^{\\beta} dW_{1}(s),
-		\\\\
-		\\alpha(t) 
-			& = & \\alpha(0) + \\int_{0}^{t} \\nu\\alpha(s) dW_{2}(s),
-		\\\\
-		\\langle W_{1}(\\cdot), W_{2}(\\cdot) \\rangle(t)
-			& = & \\rho t
-	\\end{eqnarray}
-
-snippet     def_sabr_model_diff
-abbr        definition of SABR model in differential form
-options     word
-	\\begin{eqnarray}
-		d S(t) 
-			& = & \\alpha(t)S(t)^{\\beta} dW_{1}(t),
-		\\quad
-		S(0) = S,
-		\\\\
-		d\\alpha(t) 
-			& = & \\nu \\alpha(t) dW_{2}(t),
-		\\quad
-		\\alpha(0) = \\alpha,
-		\\\\
-		dW_{1}(t)dW_{2}(t) 
-			& = & \\rho dt,
-	\\end{eqnarray}
-
-snippet     def_sabr_model_implied_vol
-abbr        definition of implied volatility under SABR model
-options     word
-	\\begin{eqnarray}
-		\\sigma_{B}(K, S; T)
-			& \\approx &
-			\\frac{
-				\\alpha
-			}{
-				(SK)^{(1-\\beta)/2}
-				\\left(
-					1
-					+ \\frac{(1 - \\beta)^{2}}{24}
-						\\log^{2}\\frac{S}{K}
-					+ \\frac{(1 - \\beta)^{4}}{1920}
-						\\log^{4}\\frac{S}{K}
-				\\right)
-			}
-			\\left(
-				\\frac{z}{x(z)}
-			\\right)
-			\\left[
-				1
-				+
-				\\left(
-					\\frac{(1 - \\beta)^{2}}{24}
-						\\frac{\\alpha^{2}}{(SK)^{1-\\beta}}
-					+ \\frac{1}{4}
-						\\frac{\\rho\\beta\\nu\\alpha}{(SK)^{(1-\\beta)/2}}
-					+ \\frac{2 - 3\\rho^{2}}{24}\\nu^{2}
-				\\right) T
-			\\right],
-		\\\\
-		z 
-			& := &
-			\\frac{\\nu}{\\alpha}
-				(SK)^{(1-\\beta)/2}
-				\\log\\left( \\frac{S}{K} \\right),
-		\\\\
-		x(z) 
-			& := &
-				\\log
-				\\left(
-					\\frac{
-						\\sqrt{1 - 2\\rho z + z^{2}} + z - \\rho
-					}{
-						1 - \\rho
-					}
-				\\right)
-	\\end{eqnarray}
-
-snippet     def_sabr_model_atm_implied_vol
-abbr        definition of atm implied volatility under SABR model
-options     word
-	\\sigma_{ATM}(S; T)
-		:= \\sigma_{B}(S, S; T)
-	    \\approx
-	    \\frac{\\alpha}{S^{(1-\\beta)}}
-	    \\left[
-	        1
-	        + 
-	        \\left(
-	            \\frac{(1-\\beta)^{2}}{24}
-	                \\frac{\\alpha^{2}}{S^{2 - 2\\beta}}
-	            + \\frac{1}{4}
-	                \\frac{\\rho \\beta \\alpha \\nu}{S^{1-\\beta}}
-	            + \\frac{2 - 3\\rho^{2}}{24} \\nu^{2}
-	        \\right) T
-	    \\right]

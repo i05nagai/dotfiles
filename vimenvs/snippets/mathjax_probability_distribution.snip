@@ -1,0 +1,187 @@
+#
+# binomial
+#
+snippet     binomial_pdf
+abbr        Bi(?, ?)
+options     word
+	\\mathrm{Bi}(${1:x_{1}}, \ldots, ${2:x_{N}}; ${3:p})${0}
+
+snippet     binomial_pdf
+abbr        Bi(?, ?)
+options     word
+	\mathrm{Bi}(x_{1}, \ldots, x_{N}; p)
+	:=
+	\left(
+		\begin{array}{c}
+			N \\
+			\sum_{i=1}^{N}
+				x_{i}
+		\end{array}
+	\right)
+	p^{
+		\sum_{i=1}^{N}
+			x_{i}
+	}
+	(1 - p)^{
+		N
+		-
+		\sum_{i=1}^{N}
+			x_{i}
+	}
+
+snippet     normal_cdf
+abbr        N(?, ?)
+options     word
+	F_{\\mathrm{Bi}}(${1:x_{1}}, \ldots, ${2:x_{N}}; ${3:p})${0}
+
+#
+# bernoulli
+#
+snippet     bernoulli_pdf_def
+abbr        Bi(?, ?)
+options     word
+	x \in \{0, 1\},
+	\
+	\mathrm{Ber}(x; p)
+	:=
+	\begin{cases}
+		p
+		&
+			x = 1 \\
+		1 - p
+		&
+			x = 0
+	\end{cases}
+
+#
+# hypergeometric
+#
+snippet     hypergeometric_pdf
+abbr        Bi(?, ?)
+options     word
+	\\mathrm{Hyper}(${1:k}; ${2:N, K, n})${0}
+
+snippet     hypergeometric_pdf_def
+abbr        Bi(?, ?)
+options     word
+	\\mathrm{Hyper}(${1:k}; ${2:N, K, n})
+	:=
+	\frac{
+		\left(
+			\begin{array}{c}
+				K \\
+				k
+			\end{array}
+		\right)
+		\left(
+			\begin{array}{c}
+				N - K \\
+				n - k
+			\end{array}
+		\right)
+	}{
+		\left(
+			\begin{array}{c}
+				N \\
+				n
+			\end{array}
+		\right)
+	}
+
+snippet     hypergeometric_cdf
+abbr        Bi(?, ?)
+options     word
+	F_{\mathrm{Hyper}}(${1:k}; ${2:N, K, n})
+
+#
+# normal
+#
+snippet     normal_distribution
+abbr        N(?, ?)
+options     word
+	\\mathrm{N}(${1}, ${2})${0}
+
+snippet     standard_normal_distribution
+abbr        N(0, 1)
+options     word
+	\\mathrm{N}(0, 1)${0}
+
+snippet     def_normal_pdf
+abbr        definition of normal p.d.f.
+options     word
+	\\frac{
+	    1
+	}{
+	    \\sqrt{2\\pi}
+	    ${1:\\\\sigma}
+	}
+	\\exp
+	\\left(
+	    -
+	    \\frac{
+	        1
+	    }{
+	        2$1^{2}
+	    }
+	    (${2:x} - ${3:\\\\mu})^{2}
+	\\right)
+
+snippet     def_normal_pdf_d
+abbr        definition of d-dim normal p.d.f.
+options     word
+		\\frac{
+			1
+		}{
+			(2\\pi)^{k/2}
+			| $3 |^{1/2}
+		}
+		\\exp
+		\\left(
+			-
+			\\frac{1}{2}
+			(${1:y} - ${2:\\\\mu})^{\\mathrm{T}}
+			${3:\\\\Sigma} ^{-1}
+			($1 - $2)
+		\\right)
+	
+snippet     def_normal_cdf
+abbr        definition of normal c.d.f.
+options     word
+	\\int_{-\\infty}^{${1:x}} 
+		\\frac{
+			1
+		}{
+			\\sqrt{2\\pi}
+			${2:\\\\sigma}
+		}
+		\\exp
+		\\left(
+			-
+			\\frac{
+				1
+			}{
+				2$2^{2}
+			}
+			(${3:y} - ${4:\\\\mu})^{2}
+		\\right)
+	\\ d $3
+
+snippet     def_normal_cdf_d
+abbr        definition of d-dim normal c.d.f.
+options     word
+	\\int_{(-\\infty, ${1:x}_{1}] \\times \\cdots \\times (-\\infty, $1 _{${2:d}}
+		\\frac{
+			1
+		}{
+			(2\\pi)^{k/2}
+			|${3:\\\\Sigma}|^{1/2}
+		}
+		\\exp
+		\\left(
+			-
+			\\frac{1}{2}
+			(${4:y} - ${5:\\\\mu})^{\\mathrm{T}}
+			$2 ^{-1}
+			($4 - $5)
+		\\right)
+	\\ d $4
