@@ -166,7 +166,6 @@ let g:netrw_alto = 1
 "---------------------------------------------------------
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
-  "call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
   "utilities
