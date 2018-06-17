@@ -1,13 +1,14 @@
 include mathjax_abstract_algebra.snip
 include mathjax_amscd.snip
+include mathjax_category.snip
 include mathjax_complex_analysis.snip
 include mathjax_congruence.snip
 include mathjax_convex.snip
+include mathjax_differential_geometry.snip
 include mathjax_distance.snip
-include mathjax_field.snip
+include mathjax_environment.snip
 include mathjax_font.snip
 include mathjax_functional_analysis.snip
-include mathjax_group.snip
 include mathjax_hilbert_space.snip
 include mathjax_mathmatical_finance.snip
 include mathjax_matrix.snip
@@ -15,145 +16,19 @@ include mathjax_measure.snip
 include mathjax_optimization.snip
 include mathjax_probability.snip
 include mathjax_probability_distribution.snip
+include mathjax_real_analysis.snip
 include mathjax_set.snip
+include mathjax_space.snip
 include mathjax_statistics.snip
 include mathjax_symbols.snip
 include mathjax_topology.snip
 include mathjax_vector.snip
 
-#
-# require
-#
-snippet     require_commutative_diagrams
-abbr        abbr
-options     word
-	$\require{AMScd}$
-
 # Spaces
-snippet     rational_number_d
-abbr        \\mathbb{Q}^{?}
-options     word
-	\\mathbb{Q}^{${1}}${0}
-
-snippet     rational_number
-abbr        rational number
-options     word
-	\\mathbb{Q}
-
-snippet     real_number_d
-abbr        \\mathbb{R}^{?}
-options     word
-	\\mathbb{R}^{${1}}${0}
-
-snippet     real_number
-abbr        real number
-options		word
-	\\mathbb{R}
-
-snippet     complex_d
-abbr        \\mathbb{C}^{?}
-options		word
-	\\mathbb{C}^{${1}}${0}
-
-snippet     complex 
-abbr        complex
-options		word
-	\\mathbb{C}
-
-snippet     non_negative_real_number_d
-abbr        \\mathbb{R}^{?}
-options		word
-	\\mathbb{R}_{\\ge 0}^{${1}}${0}
-
-snippet     non_negative_real_number
-abbr        non negative real number
-options		word
-	\\mathbb{R}_{\\ge 0}
-
-snippet     positive_real_number_d
-abbr        positive real number
-options		word
-	\\mathbb{R}_{> 0}^{${1}}${0}
-
-snippet     positive_real_number
-abbr        positive real number
-options		word
-	\\mathbb{R}_{> 0}
-
-snippet     natural_number_d
-abbr        mathbb{N}^{?}
-options		word
-	\\mathbb{N}^{${1}}${0}
-
-snippet     natural_number
-abbr        Natural Number
-options		word
-	\\mathbb{N}
-
-snippet     integer_d
-abbr        d-dim integer
-options		word
-	\\mathbb{Z}^{${1}}${0}
-
-snippet     integer
-abbr        integer
-options		word
-	\\mathbb{Z}
-
-snippet     non_negative_integer
-abbr        non negative integer
-options		word
-	\\mathbb{Z}_{\\ge 0}
-
-snippet     non_negative_integer_d
-abbr        non negative integer
-options		word
-	\\mathbb{Z}_{\\ge 0}^{${1}}${0}
-
-snippet     quotient_ring
-abbr        quotient ring
-options		word
-	\\mathbb{Z}_{${1}}${0}
-
-snippet     projective_space_d
-abbr        d-dim projective space
-options     word
-	\\mathbb{RP}^{${1}}${0}
-
-snippet     projective_space
-abbr        projective space
-options     word
-	\\mathbb{RP}${0}
-
-snippet     Lp_space_with_space
-abbr        Lp
-options     word
-    L^{${1:p}}(${2})${0}
-
-snippet     Lp_space
-abbr        Lp
-options     word
-    L^{${1:p}}${0}
-
-snippet     lp_space_with_space
-abbr        Lp
-options     word
-    l^{${1:p}}(${2})${0}
-
-snippet     lp_space
-abbr        Lp
-options     word
-    l^{${1:p}}${0}
-
 snippet     hom
 abbr        Hom
-options     head
-	\mathrm{Hom}(${1:S}, ${2:R})${0}
-
-snippet     alg
-abbr        ?-alg
 options     word
-	${1}\mathrm{-alg}${0}
+	\mathrm{Hom}(${1:S}, ${2:R})${0}
 
 snippet     span
 abbr        span
@@ -182,44 +57,12 @@ options     word
 snippet     define
 abbr        define
 options     word
-    \\overset{\mathrm{def}}{\Leftrightarrow}
+	\\overset{\mathrm{def}}{\Leftrightarrow}
 
-#Symbols
-snippet     left(
-abbr        left( right)
-options		word
-	\\left(
-	    ${1:inner}
-	\\right)
-	${2}
-	
-snippet     left{
-abbr        left{ right}
-options		word
-	\\left\\{
-	    ${1:inner}
-	\\right\\}
-	${2}
-	
-snippet     left[
-abbr        left[ right]
-options		word
-	\\left[
-	    ${1:inner}
-	\\right]
-	${2}
-
-snippet     left.
-abbr        left. right?
-options		word
-	\\left.
-	    ${1:inner}
-	\\right${2}
-	${3}
-
+# Symbols
 snippet     left_norm
 abbr        left| right|
-options		word
+options     word
 	\\left\\|
 	    ${1:inner}
 	\\right\\|
@@ -245,21 +88,6 @@ abbr        \\lfloor \\rfloor
 options     word
 	\\lfloor ${1} \\rfloor ${0}
 
-snippet     ()
-abbr        ( )
-options		word
-	(${1})${0}
-
-snippet     {}
-abbr        { }
-options		word
-	{${1}}${0}
-
-snippet     []
-abbr        [ ]
-options		word
-	[${1}]${0}
-
 snippet     qed
 abbr        qed
 options     word
@@ -282,17 +110,17 @@ options     word
 
 snippet     eqref
 abbr        $$eqref{}$$
-options		word
+options     word
 	$$\\eqref{${1}}$$${0}
 	
 snippet     frac_inline
 abbr        frac{}{}
-options		word
+options     word
 	\\frac{${1:numerator}}{${2:denominator}}${3}
 
 snippet     frac
 abbr        frac{ }{ }
-options		word
+options     word
 	\\frac{
 		${1:numerator}
 	}{
@@ -322,7 +150,6 @@ abbr        combination
 options     word
 	{${1:N} \\choose ${2:n}}${0}
 
-
 # map
 snippet     map
 abbr        ?: ? -> ?
@@ -349,25 +176,27 @@ options     word
 snippet     support
 abbr        supp(X)
 options     word
-    \\mathrm{supp}(${1})${0}
+	\\mathrm{supp}(${1})${0}
 
 snippet     log_capital
 abbr        Log
 options     word
-    \mathrm{Log}
+	\\mathrm{Log}
 
+#
 # summation
+#
 snippet     summation
 abbr        \\sum
 options     word
 	\\sum
-	    ${3:summand}
+		${3:summand}
 
 snippet     summation_with_lower
 abbr        \\sum_{}
 options     word
 	\\sum_{${1:init}}
-	    ${3}
+		${3}
 
 snippet     summation_with_lower_and_upper
 abbr        \\sum_{}^{}
@@ -390,18 +219,17 @@ abbr        \\sum_{}^{}
 options     word
 	\\sum_{${1:init}}^{${2:cond}}${3:summand}
 
+#
 # product
+#
 snippet     product
 abbr        prod_{}^{}
-options		word
+options     word
 	\\prod_{${1}}^{${2}}${3}
 
-snippet     cardinality
-abbr        card()
-options     word
-	 \\mathrm{card}(${1})${0}
-
+#
 # Integral
+#
 snippet     integral_inline_with_lower
 abbr        inline interal with interval
 options     word
@@ -476,11 +304,6 @@ snippet     such_that
 abbr        s.t.
 options     word
     \\text{ s.t. }
-
-snippet     almost_everywhere
-abbr        a.e.
-options     word
-    \\text{-a.e.}
 
 snippet     almost_surely
 abbr        a.s.
@@ -591,103 +414,8 @@ options     word
 
 snippet     \\inverse
 abbr        ^{-1}
-options		word
+options     word
 	^{-1}
-
-snippet     equation
-abbr        \\begin{equation} \\end{equation}
-	\\begin{equation}
-		${1}
-	\\end{equation}
-
-snippet     equation*
-abbr        \\begin{equation*} \\end{equation*}
-	\\begin{equation*}
-		${1}
-	\\end{equation*}
-
-snippet     eqnarray
-abbr        \\begin{eqnarray} \\end{eqnarray}
-	\\begin{eqnarray}
-		${1}
-	\\end{eqnarray}
-
-snippet     eqnarray*
-abbr        \\begin{eqnarray*} \\end{eqnarray*}
-	\\begin{eqnarray*}
-		${1}
-	\\end{eqnarray*}
-
-snippet     eqnarray_newline
-abbr        \\\\\ & = &
-options     word
-	\\\\
-	& ${1:=} &
-	    ${0}
-
-snippet     eqnarray_newline_with_nonumber
-abbr        \nonumber \\ & = &
-options     word
-	\\nonumber
-	\\\\
-	& ${1:=} &
-	    ${0}
-
-snippet     eqnarray_newline_def_with_nonumber
-abbr        \\nonumber \\\\\ & = &
-options     word
-	\\nonumber
-	\\\\
-	${1}
-	& := &
-	    ${0}
-
-snippet     eqnarray_newline_statement_with_nonumber
-abbr        \\nonumber \\\\\ & = &
-options     word
-	\\nonumber
-	\\\\
-	${1}
-	& = &
-	    ${0}
-
-snippet     eqnarray_newline_equation
-abbr        \\\\\ & = &
-options     word
-	\\\\
-	${1}
-	& = &
-		${0}
-
-snippet     eqnarray_seperator_=
-abbr        & = &
-options     word
-	& = &
-		${0}
-
-snippet     eqnarray_seperator
-abbr        & ? &
-options     word
-	& ${1} &
-		${0}
-
-snippet     cases
-abbr        cases
-	\\begin{cases}
-		${1}
-		&
-			${2} \\\\
-		${3}
-		&
-			${4}
-	\\end{cases}
-
-snippet     array
-abbr        begin{array}{} \\end{array}
-options     word
-	\\begin{array}{${1}}
-		${2} & ${3}
-	\\end{array}
 
 snippet     tilde
 abbr        tilde{}
@@ -712,44 +440,7 @@ options     word
 #
 # definition
 #
-snippet     def_jacobian_matrix
-abbr        definition of jacobian matrix
-	\\left(
-		\\begin{array}{ccc}
-			\\frac{\\partial f_{1}(x)}{\\partial x_{1}} & \\ldots & \\frac{\\partial f_{1}(x)}{\\partial x_{N}} \\\\
-			\\vdots & \\ddots & \\vdots \\\\
-			\\frac{\\partial f_{N}(x)}{\\partial x_{1}} & \\ldots & \\frac{\\partial f_{N}(x)}{\\partial x_{N}} \\\\
-		\\end{array}
-	\\right)
-	${0}
-
 snippet     def_euclid_norm
 abbr        defnition of vector norm
 	\\|x - y\\|^{2}
 		= \\sum_{i}^{N} |x^{i} - y^{i}|
-
-snippet     def_lower_matrix
-abbr        defnition of lower matrix
-	L = 
-		\\left(
-			\\begin{array}{ccccc}
-				l_{1}^{1} & 0         & \\ldots    &        & 0 \\\\
-				l_{1}^{2} & l_{2}^{2} & 0         & \\ldots & 0 \\\\
-				l_{1}^{3} & l_{2}^{3} & l_{3}^{3} & \\ldots & 0 \\\\
-				\\vdots    & \\vdots    & \\ddots    & \\ddots & \\vdots \\\\
-				l_{1}^{M} & l_{2}^{M} & \\ldots    &        & l_{M}^{M}
-			\\end{array}
-		\\right)
-
-snippet     def_upper_matrix
-abbr        defnition of upper matrix
-	U = 
-		\\left(
-			\\begin{array}{ccccc}
-			u_{1}^{1} & u_{2}^{1} & u_{3}^{2} & \\ldots & u_{N}^{1} \\\\
-			0         & u_{2}^{2} & u_{3}^{2} & \\ldots & u_{N}^{2} \\\\
-			\\vdots    & 0         & u_{3}^{3} & \\ldots & 0 \\\\
-					  & \\vdots    & \\ddots    & \\ddots & \\vdots \\\\
-			0         & 0         & \\ldots    &        & u_{N}^{M}
-			\\end{array}
-		\\right)

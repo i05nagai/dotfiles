@@ -1,5 +1,6 @@
 include go_collections.snip
 include go_container_list.snip
+include go_error.snip
 include go_fmt.snip
 include go_io.snip
 include go_math.snip
@@ -41,11 +42,18 @@ options     word
 #
 # for
 #
+snippet     for_int
+abbr        for
+options     word
+	for ${1:i} := 0; $1 < ${2}; $1++ {
+		${0}
+	}
+
 delete for
 snippet     for
 abbr        for
 options     word
-	for ${1:i} := 0; $1 < ${2}; $1++ {
+	for ${1:i := 0}; ${2: i < 10}; ${3:i++} {
 		${0}
 	}
 
@@ -93,6 +101,39 @@ snippet     const
 abbr        type
 options     word
 	const ${1:Name = value}
+
+#
+# package
+#
+snippet     package
+abbr        type
+options     word
+	package main
+
+snippet     package_init
+abbr        type
+options     word
+	func init() {
+	
+	}
+
+#
+# enum
+#
+snippet     enum_constant
+abbr        enum
+options     word
+	const (
+		_          = iota // ignore first value by assigning to blank identifier
+		KB float64 = 1 << (10 * iota)
+		MB
+		GB
+		TB
+		PB
+		EB
+		ZB
+		YB
+	)
 
 #
 # var
@@ -234,14 +275,14 @@ options     word
 snippet     map_if_contain
 abbr        map delete
 options     word
-	if val, ok := ${1:map}[${2:key}]; ok {
+	if val, ok := ${1:mapName}[${2:key}]; ok {
 		${0}
 	}
 
 snippet     map_if_not_contain
 abbr        map delete
 options     word
-	if val, ok := ${1:map}[${2:key}]; !ok {
+	if val, ok := ${1:mapName}[${2:key}]; !ok {
 		${0}
 	}
 

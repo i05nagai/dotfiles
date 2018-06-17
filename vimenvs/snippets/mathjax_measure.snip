@@ -1,3 +1,26 @@
+#
+# space
+#
+snippet     Lp_space_with_space
+abbr        Lp
+options     word
+	L^{${1:p}}(${2})${0}
+
+snippet     Lp_space
+abbr        Lp
+options     word
+	L^{${1:p}}${0}
+
+snippet     lp_space_with_space
+abbr        Lp
+options     word
+	l^{${1:p}}(${2})${0}
+
+snippet     lp_space
+abbr        Lp
+options     word
+	l^{${1:p}}${0}
+
 snippet     borrel_sigma_algebra_of_real_number
 abbr        B(R)
 options     word
@@ -8,6 +31,9 @@ abbr        B(R^{n})
 options     word
 	\\mathcal{B}(\\mathbb{R}^{${1:n}})${0}
 
+#
+# space
+#
 snippet     measurable_space
 abbr        (S, A)
 options     word
@@ -17,3 +43,13 @@ snippet     measure_space
 abbr        (S, A, \mu)
 options     word
 	(${1:S}, \\mathcal{${2:A}}, ${3:\\mu})
+
+snippet     almost_everywhere
+abbr        a.e.
+options     word
+    \\text{-a.e.}
+
+snippet     alg
+abbr        ?-alg
+options     word
+	${1}\mathrm{-alg}${0}

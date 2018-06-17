@@ -1,0 +1,86 @@
+#
+# equation
+#
+snippet     equation
+abbr        \\begin{equation} \\end{equation}
+options     word
+	\\begin{equation}
+		${1}
+	\\end{equation}
+
+snippet     equation*
+abbr        \\begin{equation*} \\end{equation*}
+options     word
+	\\begin{equation*}
+		${1}
+	\\end{equation*}
+
+#
+# eqnarray
+#
+snippet     eqnarray
+options     word
+abbr        \\begin{eqnarray} \\end{eqnarray}
+	\\begin{eqnarray}
+		${1}
+	\\end{eqnarray}
+
+snippet     eqnarray*
+abbr        \\begin{eqnarray*} \\end{eqnarray*}
+	\\begin{eqnarray*}
+		${1}
+	\\end{eqnarray*}
+
+snippet     eqnarray_newline
+abbr        \\\\\ & = &
+options     word
+	\\\\
+	& ${1:=} &
+		${0}
+
+snippet     eqnarray_newline_nonumber
+abbr        \nonumber \\ & = &
+options     word
+	\\nonumber
+	\\\\
+	& ${1:=} &
+		${0}
+
+snippet     eqnarray_newline_equation
+abbr        \\\\\ & = &
+options     word
+	\\\\
+	${1}
+	& = &
+		${0}
+
+snippet     eqnarray_seperator
+abbr        & ? &
+options     word
+	& ${1} &
+		${0}
+
+#
+# case
+#
+snippet     cases
+abbr        cases
+	\\begin{cases}
+		${1}
+		&
+			${2}
+		\\\\
+		${3}
+		&
+			${4}
+	\\end{cases}
+
+#
+# array
+#
+snippet     array
+abbr        begin{array}{} \\end{array}
+options     word
+	\\begin{array}{${1}}
+		${2} & ${3}
+	\\end{array}
