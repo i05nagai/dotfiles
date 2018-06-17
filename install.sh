@@ -15,6 +15,7 @@ LINK_COMMON_FROM_TO=(
 ".tmux.conf" ".tmux.conf"
 ".vimrc" ".vimrc"
 ".zshrc" ".zshrc"
+".bash_profile" ".bash_profile"
 "shell" ".shell"
 )
 
@@ -33,6 +34,7 @@ LINK_LIG_FROM_TO=(
 "envs/lig/.zshrc.env" ".zshrc.env"
 "envs/lig/Xmodmap" ".Xmodmap"
 "envs/lig/.gdbinit" ".gdbinit"
+"envs/lig/bashrc.env" ".bashrc.env"
 "config/powerline" ".config/powerline"
 )
 
