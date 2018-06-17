@@ -1,0 +1,27 @@
+snippet pragma_once
+alias   #pragma_once
+options word
+	#pragma once
+
+#
+# include
+#
+delete  include_system
+snippet include_
+alias   #inc, #include
+options     word
+	#include <${1}>${0}
+
+snippet include_cwd
+alias   include
+options     word
+	#include "${1}"${0}
+
+snippet include_size_t
+options     word
+	#include <cstddef>
+
+snippet     include_enable_if
+abbr        include
+options     word
+	#include <type_traits>
