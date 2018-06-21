@@ -32,42 +32,42 @@ options     word
 snippet     path_file_list
 abbr        file list
 options     word
-    # return only file name
-    files = os.listdir(${1:path_to_dir})${0}
+	# return only file name
+	files = os.listdir(${1:path_to_dir})${0}
 
 snippet     path_file_list_iterate
 abbr        file list
 options     word
-    files = os.listdir(${1:path_to_dir})${0}
-    for fname in files:
-        abspath = os.path.join($1, fname)
+	files = os.listdir(${1:path_to_dir})${0}
+	for fname in files:
+		abspath = os.path.join($1, fname)
 
 snippet     path_move_in_dir
 abbr        file list
 options     word
-    files = os.listdir(${1:path_to_dir})${0}
-    for fname in files:
-        from_abspath = os.path.join($1, fname)
-        to_abspath = os.path.join(${2:path_to_dir}, fname)
-        os.rename(from_abspath, to_abspath)
+	files = os.listdir(${1:path_to_dir})${0}
+	for fname in files:
+		from_abspath = os.path.join($1, fname)
+		to_abspath = os.path.join(${2:path_to_dir}, fname)
+		os.rename(from_abspath, to_abspath)
 
 snippet     path_list_glob
 abbr        file list with glob
 options     word
-    # import glob
-    files = glob.glob(${1:path_to_dir})${0}
+	# import glob
+	files = glob.glob(${1:path_to_dir})${0}
 
 snippet     path_move
 abbr        file rename
 options     word
-    os.rename(${1:from}, ${2:to})${0}
+	os.rename(${1:from}, ${2:to})${0}
 
 snippet     path_rename
 abbr        replace filename keeping basepath
 options     word
-    basepath = os.path.basename(${1:path})
-    ${2:path}_new = '{0}/${3:new_filename}'.format(basepath)
-    os.rename($1, $2)${0}
+	basepath = os.path.basename(${1:path})
+	${2:path}_new = '{0}/${3:new_filename}'.format(basepath)
+	os.rename($1, $2)${0}
 
 snippet     path_rename_extension
 abbr        replace filename keeping basepath
@@ -162,18 +162,27 @@ options     word
 		${0}
 
 snippet     if_file_exist
+alias       path_is_file
 abbr        if file exist
 options     word
-    import os.path
-    os.path.isfile(fname)
+	import os.path
+	if os.path.isfile(${1}):
+		${2}
+
+snippet     path_is_directory
+abbr        path
+options     word
+	if os.path.isdir(${1}):
+		${2}
 
 snippet     filename_recursively
+alias       path_get_files_recursively
 abbr        files in the directory
 options     word
 	import os
 	for root, subdirs, files in os.walk(${1:rootdir}):
-	    for file in files:
-	        path_to_file = os.path.join(root, file)
+		for file in files:
+			path_to_file = os.path.join(root, file)
 
 snippet     file_copy
 abbr        copy file
@@ -192,3 +201,16 @@ abbr        copy file
 options     word
 	with open(${1:path}, '${2:w}') as ${3:f}:
 		$3.write(${4})
+
+#
+# template
+#
+snippet     path_template_to_asbpath
+abbr        path
+options     word
+	def to_abspath(path):
+		cwd = os.getcwd()
+		# relative path
+		if not os.path.isabs(path):
+			path = os.path.join(cwd, path)
+		return path
