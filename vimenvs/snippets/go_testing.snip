@@ -45,8 +45,24 @@ options     word
 snippet     testing_template_assert_int
 abbr        testing
 options     word
-	func assert(int expected, int actual) {
+	func testAssert(t *testing.T, expected int, actual int) {
 		if expected != actual {
-			t.Erorrf("expected:%v,  actual: %v", expected, actual)
+			t.Errorf("expected:%v,  actual: %v", expected, actual)
 		}
+	}
+
+snippet     testing_template
+abbr        testing
+options     word
+	package ${1:package_name}
+	
+	import "testing"
+	
+	func testAssert(t *testing.T, expected int, actual int) {
+		if expected != actual {
+			t.Errorf("expected:%v,  actual: %v", expected, actual)
+		}
+	}
+	
+	func Test${1}(t *testing.T) {
 	}
