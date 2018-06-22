@@ -1,0 +1,52 @@
+#
+#
+#
+snippet     func_anonymous
+abbr        func
+options     word
+	(${1:x: Type}) => ${2:x*x}
+
+snippet     func_def_oneline
+abbr        func
+options     word
+	def ${1:f}(${2:x: Int}) = { ${3:x*x} }
+
+#
+# variable
+#
+snippet     variable_const
+abbr        variable
+options     word
+	val ${2:name: Type} = ${2:5}
+
+snippet     variable
+abbr        variable
+options     word
+	var ${2:name: Type} = ${2:5}
+
+#
+# package
+#
+snippet     import
+abbr        variable
+options     word
+	import ${1:scala.collections}
+
+#
+# print
+#
+snippet     print
+abbr        print
+options     word
+	println("${1:%d}".format(${2}))
+
+#
+# for
+#
+snippet     for
+abbr        for
+options     word
+	for (i <- 1 to 5) {
+		println(i)
+	}
+
