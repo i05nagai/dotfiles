@@ -19,7 +19,7 @@ snippet     testing_bench
 abbr        testing
 options     word
 	func Benchmark${1}(b *testing.B) {
-	b.ResetTimer()
+		b.ResetTimer()
 	}
 
 snippet     testing_bench_reset_timer
