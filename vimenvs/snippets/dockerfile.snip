@@ -38,8 +38,20 @@ abbr        VOLUME
 options     head
 	VOLUME ["${1:path/to/mountable_volume}"${2: path/to}]${0}
 
-snippet     ubuntu_clean
-abbr        VOLUME
-options     head
-	RUN apt-get autoclean
-	RUN apt-get autoremove
+#
+# template
+#
+snippet     template_ubuntu_clean
+abbr        docker
+options     word
+		&& apt-get autoclean \
+		&& apt-get clean \
+		&& apt-get autoremove -y \
+		# Remove extraneous files
+		&& rm -rf /var/lib/apt/lists/* \
+		&& rm -rf /usr/share/man/* \
+		&& rm -rf /usr/share/info/* \
+		&& rm -rf /var/cache/man/* \
+		&& rm -rf /var/cache/apt/archives/* \
+		# Clean up tmp directory
+		&& rm -rf /tmp/*

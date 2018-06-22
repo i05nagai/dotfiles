@@ -1,8 +1,10 @@
 # comment out if you want to profile zsh
 # zmodload zsh/zprof && zprof
 
-export LANG=ja_JP.UTF-8
-export LANG_ALL=ja_JP.UTF-8
+# export LANG=ja_JP.UTF-8
+# export LANG_ALL=ja_JP.UTF-8
+export LANG=en_US.UTF-8
+export LANG_ALL=en_US.UTF-8
 export TERM=xterm-256color
 
 # autoload
@@ -11,7 +13,10 @@ autoload -Uz colors
 colors
 autoload history-search-end
 
-# VCSの情報を取得するzshの便利関数 vcs_infoを使う
+#
+# vcs info
+#
+# Use built-in vcs_info function which retrive VCS information
 autoload -Uz vcs_info
 # vcs's settings
 # 表示フォーマットの指定
@@ -78,7 +83,7 @@ setopt always_last_prompt
 setopt auto_list
 #ディレクトリ 補完 /を付与
 setopt auto_param_slash
-##スペースで /を削除
+# Delete '/' by pressing space
 setopt auto_remove_slash
 #補完要求に対してメニューをリストアップ
 setopt auto_menu
@@ -90,7 +95,7 @@ setopt correct
 setopt extended_glob
 # compacked complete list display
 setopt list_packed
-##補完の表示を水平方向に
+# list completions horizontally
 setopt list_rows_first
 #補完候補の表示を親切に ls -F
 ## /がディレクトリ

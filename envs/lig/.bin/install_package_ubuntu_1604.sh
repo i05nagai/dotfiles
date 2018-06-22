@@ -81,6 +81,7 @@ sudo dpkg -i mendeleydesktop-latest.deb
 
 # golang
 sudo apt-get install golang-1.10
+go get -u github.com/golang/dep/cmd/dep
 
 #
 # install

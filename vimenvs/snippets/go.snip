@@ -75,9 +75,17 @@ options     word
 # if
 #
 snippet     if_ok
-abbr        main
+abbr        if
 options     word
 	if ${1:ret}, ok := ${2:data}; ok {
+	}
+
+snippet     if_else
+abbr        if
+options     word
+	if ${1:a < b} {
+	} else ${2:a == b} {
+	} else {
 	}
 
 snippet     if_os
@@ -169,14 +177,14 @@ options     word
 snippet     func_return_multiple
 abbr        func
 options     word
-	func ${1:Funcname}(${2:name Type, name Type}) ${3:(ReturnType1, ReturnType2)} {
+	func ${1:Funcname}(${2:name Type, name Type}) ${3:(ReturnType1, error)} {
 		return 1
 	}
 
 snippet     func_return_named
 abbr        func
 options     word
-	func ${1:Funcname}(${2:name Type, name Type}) ${3:(x ReturnType1, y ReturnType2)} {
+	func ${1:Funcname}(${2:name Type, name Type}) ${3:(x ReturnType1, err error)} {
 		// x := 1
 		// y := 2
 		return
@@ -199,7 +207,7 @@ options     word
 snippet     func_method_pointer_return_none
 abbr        func
 options     word
-	func (${1:recieverName} *${2:RecieverType}) ${3:Funcname}(${4:name Type, name Type}) {
+	func (${1:recieverName} *${2:RecieverType}) ${3:Funcname}(${4:name Type, err error}) {
 		return result
 	}
 
@@ -267,27 +275,22 @@ abbr        type
 options     word
 	len(${1:map})
 
-snippet     map_delete
-abbr        map delete
-options     word
-	delete(${1:map}, ${2:key})
-
 snippet     map_if_contain
-abbr        map delete
+abbr        map
 options     word
 	if val, ok := ${1:mapName}[${2:key}]; ok {
 		${0}
 	}
 
 snippet     map_if_not_contain
-abbr        map delete
+abbr        map
 options     word
 	if val, ok := ${1:mapName}[${2:key}]; !ok {
 		${0}
 	}
 
 snippet     map_if_has_key
-abbr        map delete
+abbr        map
 options     word
 	if _, ok := ${1:map}[${2:key}]; ok {
 		${0}
@@ -304,6 +307,33 @@ abbr        for
 options     word
 	for key, _ := range ${1:map} {
 		
+	}
+
+snippet     map_delete
+abbr        make
+options     word
+	delete(${1:map}, ${2:key})
+
+snippet     map_get_ok
+abbr        make
+options     word
+	v, ok := ${1:map}[${2:key}]]
+
+#
+# struct
+#
+snippet     struct_make
+abbr        struct
+options     word
+	${1:varName} := ${2:StructName}{
+		${3:MemberName: memberValue1}
+	}
+
+snippet     struct_make_pointer
+abbr        struct
+options     word
+	${1:varName} := &${2:StructName}{
+		${3:MemberName: memberValue1}
 	}
 
 #
@@ -334,11 +364,12 @@ abbr        type
 options     word
 	${1} := make([]${2:type}, ${3:length}, ${4:capacity})
 
-snippet     array_for_index_elem
-abbr        for
+
+snippet     array_for
+abbr        make
 options     word
-	for i, elem := range ${1:array} {
-		${0}
+	for i, v := range ${1:array} {
+		${1}
 	}
 
 snippet     array_for_elem
@@ -347,27 +378,6 @@ options     word
 	for _, elem := range ${1:array} {
 		${0}
 	}
-
-#
-# struct
-#
-snippet     struct_make
-abbr        for
-options     word
-	${1:varName} := ${2:StructName}{
-		${3:MemberName: memberValue1}
-	}
-
-snippet     struct_make_pointer
-abbr        for
-options     word
-	${1:varName} := &${2:StructName}{
-		${3:MemberName: memberValue1}
-	}
-
-#
-# array
-#
 snippet     array_length
 abbr        len
 options     word
@@ -378,22 +388,10 @@ abbr        capacity
 options     word
 	cap(${1})
 
-snippet     array_make
-abbr        make
-options     word
-	a := make(${1:[]int}, ${2:size})
-
 snippet     array_for_index
 abbr        make
 options     word
 	for i := 0; i < len(${1:array}); i++ {
-		${1}
-	}
-
-snippet     array_for
-abbr        make
-options     word
-	for i, v := range ${1:array} {
 		${1}
 	}
 
@@ -435,28 +433,3 @@ snippet     array_push_front
 abbr        array
 options     word
 	${1:array} = append([]${2:type}{${3:elem}}, $1)
-
-#
-# map
-#
-snippet     map_make
-abbr        make
-options     word
-	make(map[${1:keyType}]${2:valueType})
-
-snippet     map_create
-abbr        make
-options     word
-	map[${1:keyType}]${2:valueType} {
-		${3:key}: ${4:value},
-	}
-
-snippet     map_delete
-abbr        make
-options     word
-	delete(${1:map}, ${2:key})
-
-snippet     map_get_ok
-abbr        make
-options     word
-	v, ok := ${1:map}[${2:key}]]
