@@ -356,20 +356,22 @@ abbr        Log
 options     word
     \mathrm{Log}
 
+#
 # summation
+
 snippet     summation
 abbr        \\sum
 options     word
 	\\sum
 	    ${3:summand}
 
-snippet     summation_with_lower
+snippet     summation_lower
 abbr        \\sum_{}
 options     word
 	\\sum_{${1:init}}
 	    ${3}
 
-snippet     summation_with_lower_and_upper
+snippet     summation_lower_upper
 abbr        \\sum_{}^{}
 options     word
 	\\sum_{${1:init}}^{${2:cond}}
@@ -380,12 +382,12 @@ abbr        \\sum
 options     word
 	\\sum${3:summand}
 
-snippet     summation_with_lower_inline
+snippet     summation_inline_lower
 abbr        \\sum_{}
 options     word
 	\\sum_{${1:init}}${3}
 
-snippet     summation_with_lower_and_upper_inline
+snippet     summation_lower_upper
 abbr        \\sum_{}^{}
 options     word
 	\\sum_{${1:init}}^{${2:cond}}${3:summand}
@@ -402,35 +404,35 @@ options     word
 	 \\mathrm{card}(${1})${0}
 
 # Integral
-snippet     integral_inline_with_lower
+snippet     integral_inline_lower
 abbr        inline interal with interval
 options     word
 	\\int_{${1:lower}} ${2:integrand}\\ ${3:\\mu(dx)}${0}
 
-snippet     integral_inline_with_lower_upper
-abbr        inline interal with interval
-options     word
-	\\int_{${1:lower}}^{${2:upper}} ${3:integrand}\\ ${4:\\mu(dx)}
-
-snippet     integral_without_interval_inline
-abbr        inline interal with interval
-	\\int ${1:integrand}\\ ${2:\\mu(dx)}
-
-snippet     integral_with_lower_upper
-abbr        interal with interval
-options     word
-	\\int_{${1:lower}}^{${2:upper}}
-		${3:integrand}
-	\\ d${4:\\mu(dx)}
-
-snippet     integral_with_lower
+snippet     integral_lower
 abbr        interal with interval
 options     word
 	\\int_{${1:lower}}
 		${3:integrand}
 	\\ ${4:\\mu(dx)}
 
-snippet     integral_without_interval
+snippet     integral_inline_lower_upper
+abbr        inline interal with interval
+options     word
+	\\int_{${1:lower}}^{${2:upper}} ${3:integrand}\\ ${4:\\mu(dx)}
+
+snippet     integral_lower_upper
+abbr        interal with interval
+options     word
+	\\int_{${1:lower}}^{${2:upper}}
+		${3:integrand}
+	\\ ${4:\\mu(dx)}
+
+snippet     integral_inline
+abbr        inline interal with interval
+	\\int ${1:integrand}\\ ${2:\\mu(dx)}
+
+snippet     integral_interval
 abbr        interal with interval
 	\\int
 		${1:integrand}
