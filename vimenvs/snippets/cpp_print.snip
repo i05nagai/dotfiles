@@ -16,6 +16,13 @@ options     word
 		<< ${2:val}
 		<< std::endl;
 
+snippet     print_array
+abbr        print
+	for (int vi = 0; vi < ${1:array_length}; ++vi) {
+		std::cout << ${2:array}[vi] << ", ";
+	}
+	std::cout << std::endl;
+
 snippet     print_vector
 abbr        print
 	for (int vi = 0; vi < ${1:vector}.size(); ++vi) {
