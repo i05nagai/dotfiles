@@ -3,119 +3,6 @@ abbr        #include <gtest/gtest.h>
 options     head
 	#include <gtest/gtest.h>
 
-snippet     gtest_main
-abbr        gtest main
-options     head
-	#include "pre_compiled_header.h"
-	#include <gtest/gtest.h>
-
-	int main(int argc, char **argv)
-	{
-		::testing::InitGoogleTest(&argc, argv);
-
-		return RUN_ALL_TESTS();
-	}
-
-snippet     gtest_header
-abbr        namespace test interface header
-options     head
-	#pragma once
-	#include <gtest/gtest.h>	
-	namespace ${1:namespace} {
-		class ${2:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`} : public ::testing::Test {
-		protected:
-			//set-up
-			$2();
-			//clean-up does not throw exceptions
-			virtual ~$2();
-			//called before every test immediately after constructor
-			virtual void SetUp();
-			//called after every test before destructor
-			virtual void TearDown();
-			
-			//target::Target _target;
-		}; // class $2 : public ::testing::Test {
-	} // namespace $1
-
-snippet     gtest_header2
-abbr        namespace test interface header
-options     head
-	#pragma once
-	#include <gtest/gtest.h>	
-	namespace ${1:namespace} { namespace ${2:namespace} {
-		class ${3:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`} : public ::testing::Test {
-		protected:
-			//set-up
-			$3();
-			//clean-up does not throw exceptions
-			virtual ~$3();
-			//called before every test immediately after constructor
-			virtual void SetUp();
-			//called after every test before destructor
-			virtual void TearDown();
-			
-			//target::Target _target;
-		}; // class $3 : public ::testing::Test {
-	} } // namespace $1 { namespace $2 {
-
-snippet     gtest_source
-abbr        namespace test interface header
-options     head
-	#include "${1:target}/pre_compiled_header.h"
-	#include "${2:path/to/test}/${3:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}.h"
-	
-	namespace ${4:namespace} {
-		$3::$3() 
-	    {
-		}
-
-		$3::~$3() 
-		{
-	    }
-
-		void $3::SetUp()
-		{
-	    }
-
-		void $3::TearDown()
-		{
-	    }
-
-		TEST_F($4, ${5:TestName})
-		{
-			${0:TARGET}
-		}
-	} // namespace $4
-
-snippet     gtest_source2
-abbr        gtest source2
-options     head
-	#include "${1:target}/pre_compiled_header.h"
-	#include "${2:path/to/test}/${3:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}.h"
-	
-	namespace ${4:namespace} { namespace ${5:namespace} {
-		$3::$3() 
-	    {
-		}
-		
-		$3::~$3() 
-		{
-	    }
-
-		void $3::SetUp()
-		{
-	    }
-		
-		void $3::TearDown()
-		{
-	    }
-
-		TEST_F($3, ${6:TestName})
-		{
-			${0:TARGET}
-		}
-	} } // namespace $4 { namespace $5 {
-
 snippet gtest_fixture
 abbr    TEST_F
 	TEST_F(${1:test class}, ${2:test name})
@@ -130,9 +17,9 @@ abbr    TEST
 	    ${0}
 	}
 
-###############################################################################
+#
 # Assert
-###############################################################################
+#
 snippet     gtest_assert_true
 abbr        ASSERT_TRUE
 options     word
@@ -186,9 +73,9 @@ abbr        ASSERT_DEATH
 options     word
 	ASSERT_DEATH(${1:statement}, ${2:error_regex});${0}
 
-###############################################################################
+#
 # Expect
-###############################################################################
+#
 snippet     gtest_expect_true
 abbr        EXPECT_TRUE
 options     word
@@ -242,9 +129,9 @@ abbr        ASSERT_DEATH
 options     word
 	EXPECT_DEATH(${1:statement}, ${2:error_regex});${0}
 
-###############################################################################
+#
 # Assert string
-###############################################################################
+#
 snippet     gtest_assert_str_equal
 abbr        ASSERT_STREQ
 options     word
@@ -268,10 +155,10 @@ abbr        ASSERT_STRCASENE
 options     word
 	ASSERT_STRCASENE(${1:expected}, ${2:actual});
 	${0}
-	
-###############################################################################
+
+#
 # Expect string
-###############################################################################
+#
 snippet     gtest_expect_str_equal
 abbr        EXPECT_STREQ
 options     word
@@ -296,9 +183,9 @@ options     word
 	EXPECT_STRCASENE(${1:expected}, ${2:actual});
 	${0}
 
-###############################################################################
+#
 # Assert double
-###############################################################################
+#
 snippet     gtest_assert_float_equal
 abbr        ASSERT_FLOAT_EQ
 options     word
@@ -335,6 +222,9 @@ options     word
 	EXPECT_NEAR(${1:val1}, ${2:val2}, ${3:abs_error});
 	${0}
 
+#
+# template
+#
 snippet     gtest_template_test
 abbr        template test
 options     word
@@ -346,3 +236,117 @@ options     word
 	{
 		// TypeParam refers the one of test type
 	}
+
+snippet     gtest_main
+alias       gtest_template_main
+abbr        gtest main
+options     head
+	#include "pre_compiled_header.h"
+	#include <gtest/gtest.h>
+	
+	int main(int argc, char **argv)
+	{
+		::testing::InitGoogleTest(&argc, argv);
+	
+		return RUN_ALL_TESTS();
+	}
+
+snippet     gtest_template_header
+abbr        namespace test interface header
+options     head
+	#pragma once
+	#include <gtest/gtest.h>
+	namespace ${1:namespace} {
+		class ${2:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`} : public ::testing::Test {
+		protected:
+			//set-up
+			$2();
+			//clean-up does not throw exceptions
+			virtual ~$2();
+			//called before every test immediately after constructor
+			virtual void SetUp();
+			//called after every test before destructor
+			virtual void TearDown();
+			
+			//target::Target _target;
+		}; // class $2 : public ::testing::Test {
+	} // namespace $1
+
+snippet     gtest_template_header2
+abbr        namespace test interface header
+options     head
+	#pragma once
+	#include <gtest/gtest.h>
+	namespace ${1:namespace} { namespace ${2:namespace} {
+		class ${3:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`} : public ::testing::Test {
+		protected:
+			//set-up
+			$3();
+			//clean-up does not throw exceptions
+			virtual ~$3();
+			//called before every test immediately after constructor
+			virtual void SetUp();
+			//called after every test before destructor
+			virtual void TearDown();
+			
+			//target::Target _target;
+		}; // class $3 : public ::testing::Test {
+	} } // namespace $1 { namespace $2 {
+
+snippet     gtest_template_source
+abbr        namespace test interface header
+options     head
+	#include "${1:target}/pre_compiled_header.h"
+	#include "${2:path/to/test}/${3:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}.h"
+	
+	namespace ${4:namespace} {
+		$3::$3() 
+		{
+		}
+	
+		$3::~$3() 
+		{
+		}
+	
+		void $3::SetUp()
+		{
+		}
+	
+		void $3::TearDown()
+		{
+		}
+	
+		TEST_F($4, ${5:TestName})
+		{
+			${0:TARGET}
+		}
+	} // namespace $4
+
+snippet     gtest_template_source2
+abbr        gtest source2
+options     head
+	#include "${1:target}/pre_compiled_header.h"
+	#include "${2:path/to/test}/${3:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}.h"
+	
+	namespace ${4:namespace} { namespace ${5:namespace} {
+		$3::$3() 
+		{
+		}
+		
+		$3::~$3() 
+		{
+		}
+	
+		void $3::SetUp()
+		{
+		}
+		
+		void $3::TearDown()
+		{
+		}
+	
+		TEST_F($3, ${6:TestName})
+		{
+			${0:TARGET}
+		}
+	} } // namespace $4 { namespace $5 {

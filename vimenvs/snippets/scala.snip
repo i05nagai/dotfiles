@@ -1,0 +1,164 @@
+include scala_collection.snip
+
+#
+#
+#
+snippet     func_anonymous
+abbr        func
+options     word
+	(${1:x: Type}) => ${2:x*x}
+
+snippet     func_def_oneline
+abbr        func
+options     word
+	def ${1:f}(${2:x: Int}) = { ${3:x*x} }
+
+snippet     func_def
+abbr        func
+options     word
+	def ${1:f}(${2:x: Int}): ${3:ReturnType} = {
+		${3:x*x}
+	}
+
+#
+# variable
+#
+snippet     variable_const
+abbr        variable
+options     word
+	val ${2:name: Type} = ${2:5}
+
+snippet     variable
+abbr        variable
+options     word
+	var ${2:name: Type} = ${2:5}
+
+#
+# package
+#
+snippet     import
+abbr        variable
+options     word
+	import ${1:scala.collections}
+
+#
+# print
+#
+snippet     print
+abbr        print
+options     word
+	println("${1:%d}".format(${2}))
+
+#
+# for
+#
+snippet     for
+abbr        for
+options     word
+	for (i <- ${1:1} to ${2:5}) {
+		println(i)
+	}
+
+
+#
+# list
+#
+snippet     list_val
+abbr        list
+options     word
+	val ${1:name} = List(${2:1, 2, 3})
+
+snippet     list_var
+abbr        list
+options     word
+	val ${1:name} = List(${2:1, 2, 3})
+
+snippet     list_concat
+abbr        list
+options     word
+	${1:lsit1} ::: ${2:list2}
+
+snippet     list_empty
+abbr        list
+options     word
+	List()
+
+snippet     list_for
+abbr        list
+options     word
+	for (${1:elem} <- ${2:list}) {
+	
+	}
+
+snippet     list_foreach
+abbr        list
+options     word
+	${1:list}.foreach(${2:s => s})
+
+snippet     list_map
+abbr        list
+options     word
+	${1:list}.map(${2:s => s})
+
+snippet     list_join_to_string
+abbr        list
+options     word
+	${1:list}.mkString("${2:, }")
+
+snippet     list_sort
+abbr        list
+options     word
+	${1:list}.sort("${2:, }")
+
+#
+# tuple
+#
+snippet     tuple_val
+abbr        tuple
+options     word
+	val ${1:name} = (${2:1, "a"})
+
+snippet     tuple_ref
+abbr        tuple
+options     word
+	${1:tuple}._1
+
+#
+# type
+#
+snippet     type_byte
+abbr        type
+options     word
+	Byte
+
+snippet     type_short
+abbr        type
+options     word
+	Short
+
+snippet     type_double
+abbr        type
+options     word
+	Double
+
+snippet     type_boolean
+abbr        type
+options     word
+	Boolean
+
+#
+# class
+#
+
+snippet     class_template
+abbr        class
+options     word
+	class ${1:Name}(${2:n: Int, d: Int}) {
+		// require(n > 1)
+		val a: Int = n
+		private val b: Int = d
+		// auxiliary constructor
+		def this(n: Int) = this(n, 1)
+		def add(n: Int) {
+		}
+	}

@@ -24,6 +24,29 @@ include mathjax_symbols.snip
 include mathjax_topology.snip
 include mathjax_vector.snip
 
+#
+# def
+#
+snippet     def
+abbr        def
+options     word
+	\\def${1:#1#2}{${2:}}
+
+snippet     def_restriction
+abbr        def
+options     word
+	\\def${1:#1#2}{${2:}}
+
+snippet     map_restriction
+abbr        map
+options     word
+	\left.${1:f}\right|_{${2:A}}
+
+snippet     map_restriction_harpoon
+abbr        map
+options     word
+	${1:f} {\restriction_{${2:A}}}
+
 # Spaces
 snippet     hom
 abbr        Hom

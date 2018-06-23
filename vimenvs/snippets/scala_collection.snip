@@ -1,0 +1,69 @@
+#
+# import
+#
+snippet     collection_import
+abbr        collection
+options     word
+	import scala.collection
+
+snippet     collection_import_immutable
+abbr        collection
+options     word
+	import scala.collection.immutable
+
+snippet     collection_import_immutable_set
+abbr        collection
+options     word
+	import scala.collection.immutable.Set
+	import scala.collection.immutable.HashSet
+
+snippet     collection_import_mutable_set
+abbr        collection
+options     word
+	import scala.collection.mutable.Set
+	import scala.collection.mutable.HashSet
+
+snippet     collection_import_immutable_map
+abbr        collection
+options     word
+	import scala.collection.immutable.Map
+	import scala.collection.immutable.HashMap
+
+snippet     collection_import_mutable_map
+abbr        collection
+options     word
+	import scala.collection.mutable.Map
+	import scala.collection.mutable.HashMap
+
+#
+# set
+#
+snippet     set_val
+abbr        collection
+options     word
+	val ${1:name} = Set(${2:"1", "2"})
+
+snippet     set_add
+abbr        collection
+options     word
+	${1:name} += ${2:"val"}
+
+#
+# map
+#
+snippet     map_val
+abbr        collection
+options     word
+	val ${1:name} = Map[${2:KeyType, ValueType}]()
+
+snippet     map_val_values
+abbr        collection
+options     word
+	val ${1:name} = Map[${2:KeyType, ValueType}](
+		${1:key -> value},
+	)
+
+snippet     map_add
+abbr        collection
+options     word
+	${1:name} += (${2:key} -> ${3:value})
