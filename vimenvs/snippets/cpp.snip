@@ -132,6 +132,9 @@ abbr        vector
 options     word
 	std::vector<std::vector<${1:}>> ${2:var}
 
+#
+# for
+#
 snippet     for_increment_start_with_0_with_size_t
 abbr       for (std::size_t index) {}
 	for (size_t ${1:index} = 0; $1 < ${2:size}; ++$1) {
@@ -146,8 +149,8 @@ abbr        for ()
 
 delete for
 snippet     for
-abbr        for ()
-	for (${1:initil}; ${2:compare}; ${3:post}) {
+abbr        for
+	for (${1:int i = 0}; ${2:i < n}; ${3:post}) {
 		${0}
 	}
 
