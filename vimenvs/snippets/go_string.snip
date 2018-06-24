@@ -1,10 +1,10 @@
 #
 # import
 #
-snippet     import_string
+snippet     import_strings
 abbr        string
 options     word
-	import "string"
+	import "strings"
 
 #
 #
@@ -12,4 +12,9 @@ options     word
 snippet     string_builder
 abbr        string
 options     word
-	string.Builder
+	strings.Builder
+
+snippet     string_join
+abbr        string
+options     word
+	strings.Join(${1:stringArray}, "${2:, }")
