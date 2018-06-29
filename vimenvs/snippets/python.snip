@@ -120,14 +120,18 @@ options     word
 			string = json.dumps(data, indent=4, sort_keys=True)
 			f.write(string)
 
+#
 # New Class
-snippet cl
+#
+delete class
+snippet     class
+abbr        class
+options     word
 	class ${1:ClassName}(${2:object}):
-		"""${3:docstring for $1}"""
+	
 		def __init__(self, ${4:arg}):
 			${5:super($1, self).__init__()}
 			self.$4 = $4
-			${0}
 
 snippet def_method
 	def ${1:mname}(self, ${2:arg}):
@@ -275,6 +279,15 @@ options     word
 	print("elapsed_time:{0} [sec]".format(elapsed_time))
 
 #
+# closure
+#
+snippet     closure_nonlocal
+abbr        closure
+options     word
+	def ${1:f}():
+		nonlcoal ${2}
+
+#
 # print
 #
 snippet     pretty_print_dict
@@ -358,9 +371,15 @@ options     word
 # list
 #
 snippet     list_copy
-abbr        list copy
+abbr        list
 options     word
-    ${1:var} = ${2:list}[:]
+	${1:var} = ${2:list}[:]
+
+snippet     list_reverse
+alias       tuple_reverse
+abbr        list
+options     word
+	${1:var} = list(reversed(${2:list}))
 
 #
 # sort

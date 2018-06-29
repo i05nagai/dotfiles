@@ -433,3 +433,11 @@ snippet     array_push_front
 abbr        array
 options     word
 	${1:array} = append([]${2:type}{${3:elem}}, $1)
+
+snippet     array_double
+abbr        array
+options     word
+	${1:array} := make([][]${2:int}, ${3:rowsize})
+	for i := 0; i < $3; i++ {
+		$1[i] = make([]$2, ${4:colsize})
+	}
