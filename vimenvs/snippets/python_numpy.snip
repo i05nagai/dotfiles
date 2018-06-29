@@ -30,3 +30,42 @@ abbr        multiply color matrix
 options     word
 	${1:a} = np.array(range(${2:1, 9}))
 	$1.shape = (${3:2, 2, 2})
+
+snippet     np_matrix_mult
+abbr        numpy
+options     word
+	np.matmul(${1:A}, ${2:B})
+
+snippet     np_tensordot
+abbr        numpy
+options     word
+	# list of axis of a and b
+	np.tensordot(${1:a}, ${2:b}, axes=[[${3:axis_a}], [${4:axis_b}]]).shape
+
+#
+# ndarray
+#
+snippet     np_ndarray_fill
+abbr        numpy
+options     word
+	np.full(${1:shape}, ${2:fill_value})
+
+snippet     np_ndarray_zero
+abbr        numpy
+options     word
+	np.zero(${1:shape(2, 2)}, ${2:fill_value})
+
+snippet     np_ndarray_identity
+abbr        numpy
+options     word
+	np.identity(${1:2d-array-size})
+
+snippet     np_ndarray_ones
+abbr        numpy
+options     word
+	np.ones(${1:shape(2, 2, 2)})
+
+snippet     np_ndarray_asarray
+abbr        numpy
+options     word
+	np.asarray(${1:obj})
