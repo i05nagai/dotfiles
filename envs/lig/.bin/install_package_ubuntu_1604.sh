@@ -100,3 +100,8 @@ mv hub-linux-amd64-2.4.0.tgz /tmp
 cd /tmp
 tar xfv /tmp/hub-linux-amd64-2.4.0.tgz
 cp hub-linux-amd64-2.4.0/bin/hub  ~/.bin
+
+#
+# java
+#
+sudo apt-get install default-jdk
