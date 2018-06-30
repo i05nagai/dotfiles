@@ -1,0 +1,19 @@
+snippet     fstream_include
+abbr        write to file
+options     word
+	#include <fstream>
+
+snippet     write_to_file
+abbr        write to file
+options     word
+	// #include <fstream>
+	std::ofstream ${1:file};
+	$1.open(${2:path_to_file});
+	$1 << "write something";
+	$1.close();
+
+snippet     read_from_file
+abbr        read from file
+options     word
+	// #include <fstream>
+	std::ifstream ${1:var}(${2:file_name});
