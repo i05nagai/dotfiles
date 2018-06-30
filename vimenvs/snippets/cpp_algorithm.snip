@@ -1,9 +1,49 @@
+#
+# inlcude
+#
+snippet     algorithm_include
+abbr        algorith
+options     word
+	#include <algorithm>
+
+#
+# transoform
+#
 snippet     algorithm_transform
 abbr        transfrom to 
 options     word
 	std::transform(${1:from_start}, ${2:from_end}, ${3:to_start}, ${4:functor});
 
+#
+# fill
+#
 snippet     algorithm_fill_ptr
 abbr        algorithm
 options     word
 	std::fill(${1:ptr}, $1 + ${2:num}, ${3:value});
+
+#
+# sort
+#
+snippet     algorithm_sort_ptr_ascending
+abbr        algorithm
+options     word
+	std::sort(${1:ptr}, $1 + ${2:num});
+
+snippet     algorithm_sort_ascending
+abbr        algorithm
+options     word
+	std::sort(${1:start_iter}, ${2:end_iter});
+
+snippet     algorithm_sort_descending
+abbr        algorithm
+options     word
+	std::sort(${1:start_iter}, ${2:end_iter}, std::greater<${3:int}>());
+
+snippet     algorithm_sort_descending
+abbr        algorithm
+options     word
+	std::sort(${1:start_iter}, ${2:end_iter}, [](${3:int} a, $3 b) {
+		// acending
+		// return a < b;
+	});
