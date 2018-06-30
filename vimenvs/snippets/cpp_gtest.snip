@@ -222,10 +222,7 @@ options     word
 	EXPECT_NEAR(${1:val1}, ${2:val2}, ${3:abs_error});
 	${0}
 
-#
-# template
-#
-snippet     gtest_template_test
+snippet     gtest_templating_test
 abbr        template test
 options     word
 	template<typename T>
@@ -237,6 +234,9 @@ options     word
 		// TypeParam refers the one of test type
 	}
 
+#
+# template
+#
 snippet     gtest_main
 alias       gtest_template_main
 abbr        gtest main
@@ -350,3 +350,35 @@ options     head
 			${0:TARGET}
 		}
 	} } // namespace $4 { namespace $5 {
+
+snippet     gtest_template_source_fixture_simple
+abbr        gtest
+options     word
+	#include "${1:path/to/test}/${2:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}.h"
+	
+	namespace ${3:namespace} {
+		void $2::SetUp()
+		{
+		}
+	
+		void $2::TearDown()
+		{
+		}
+	
+		TEST_F($2, ${4:TestName})
+		{
+			${0:TARGET}
+		}
+	} // namespace $3
+
+snippet     gtest_template_source_simple
+abbr        gtest
+options     word
+	#include "${1:path/to/test}/${2:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`}.h"
+	
+	namespace ${3:namespace} {
+		TEST($2, ${4:TestCaseName})
+		{
+			${0:TARGET}
+		}
+	} // namespace $3
