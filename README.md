@@ -1,7 +1,7 @@
 dotfiles
 ========
 
-### 1. Description
+### Description
 
 * `shell`      -> `~/.shell`
 * `.zshrc`     -> `~/.zshrc`
@@ -13,7 +13,7 @@ dotfiles
 * `.gitconfig` -> `.gitconfig`
 * `.ctags`     -> `.ctags`
 
-### 2. how to use
+### How to use
 just execute following command.
     ./install.sh
 
@@ -38,3 +38,14 @@ After installation, you need to set up vim.
 ```vim
 :NeoBundleInstall
 ```
+
+## Ffor not dotfiles
+
+```
+ln -s -f ~/Dropbox/host ~/host
+ln -s -f ~/host/.ssh ~/.ssh
+```
+
+## Dirctory structure
+* envs/
+* vimenvs/
