@@ -16,9 +16,29 @@ nnoremap <silent> [TABCMD]o :<C-u>tabonly<cr>
 nnoremap <silent> [TABCMD]s :<C-u>tabs<cr>
 nnoremap <silent> [TABCMD]g :<C-u>tabnext
 
-" Customize tabbar
-" show tab number
-set tabline=%!MyTabLine()
+"
+" Customize tabline this works only for GUI vim
+" for terminal vim tabline.vim
+" name of tab
+function! MyTabLabel(n)
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  let bufnr = buflist[winnr - 1]
+  let file = bufname(bufnr)
+  let buftype = getbufvar(bufnr, 'buftype')
+  if buftype == 'nofile'
+    if file =~ '\/.'
+      let file = substitute(file, '.*\/\ze.', '', '')
+    endif
+  else
+    let file = fnamemodify(file, ':p:t')
+  endif
+  if file == ''
+    let file = '[No Name]'
+  endif
+  return file
+endfunction
+" tabline
 function! MyTabLine()
   let s = ''
   for i in range(tabpagenr('$'))
@@ -36,9 +56,4 @@ function! MyTabLine()
   endif
   return s
 endfunction
-
-function! MyTabLabel(n)
-  let buflist = tabpagebuflist(a:n)
-  let winnr = tabpagewinnr(a:n)
-  return bufname(buflist[winnr - 1]) 
-endfunction
+set tabline=%!MyTabLine()
