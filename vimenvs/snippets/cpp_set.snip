@@ -1,0 +1,37 @@
+snippet     set_include
+abbr        set
+options     word
+	#include <set>
+
+#
+# set create
+#
+snippet     set_create
+abbr        set
+options     word
+	std::set<${1}> ${2};
+
+snippet     set_create_greater
+abbr        set
+options     word
+	std::set<${1}, std::greater<$1>> ${2};
+
+#
+# operate
+#
+snippet     set_insert
+abbr        set
+options     word
+	${1}.insert(${2});
+
+snippet     set_size
+abbr        set
+options     word
+	${1}.size();
+
+snippet     set_foreach
+abbr        set
+options     word
+	for (std::set<${1}>::iterator itr = ${2}.begin(); itr != ${2}.end(); ++itr) {
+		${0}
+	}
