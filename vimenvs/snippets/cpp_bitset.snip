@@ -1,0 +1,45 @@
+#
+# inlcude
+#
+snippet     bitset_include
+abbr        bitset
+options     word
+	#include <bitset>
+
+snippet     bitset_create_init
+abbr        bitset
+options     word
+	std::bitset<${1:size}> ${2:var}("00110101");
+
+snippet     bitset_create
+abbr        bitset
+options     word
+	std::bitset<${1:size}> ${2:var};
+
+#
+# op
+#
+snippet     bitset_size
+abbr        bitset
+options     word
+	${1:var}.size();
+
+snippet     bitset_count_true
+abbr        bitset
+options     word
+	${1:var}.count();
+
+snippet     bitset_revert
+abbr        bitset
+options     word
+	${1:var}.flip();
+
+snippet     bitset_to_string
+abbr        bitset
+options     word
+	${1:var}.to_string();
+
+snippet     bitset_to_integer
+abbr        bitset
+options     word
+	${1:var}.to_ulong();
