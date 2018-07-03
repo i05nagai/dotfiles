@@ -47,3 +47,70 @@ options     word
 		// acending
 		// return a < b;
 	});
+
+#
+# lower bound
+#
+snippet     algorithm_lower_bound
+abbr        algorithm
+options     word
+	std::lower_bound(${1:v.begin()}, ${2:v.end()}, ${3:value});
+
+snippet     algorithm_lower_bound_vector
+abbr        algorithm
+options     word
+	std::lower_bound(${1:v}.begin(), $1.end(), ${2:value});
+
+snippet     algorithm_lower_bound_vector_index
+abbr        algorithm
+options     word
+	std::lower_bound(${1:v}.begin(), $1.end(), ${2:value}) - $1.begin();
+
+snippet     algorithm_lower_bound_ptr
+abbr        algorithm
+options     word
+	std::lower_bound(${1:v}, $1 + ${2:num}, ${3:value});
+
+snippet     algorithm_lower_bound_ptr_index
+abbr        algorithm
+options     word
+	std::lower_bound(${1:v}, $1 + ${2:num}, ${3:value}) - $1;
+
+#
+# upper_bound
+#
+snippet     algorithm_upper_bound
+abbr        algorithm
+options     word
+	// an iterator to the upper bound position for val in the range
+	// if no element in the range, the function returns last.
+	std::upper_bound(${1:v.begin()}, ${2:v.end()}, ${3:value});
+
+snippet     algorithm_upper_bound_vector
+abbr        algorithm
+options     word
+	std::upper_bound(${1:v}.begin(), $1.end(), ${2:value});
+
+snippet     algorithm_upper_bound_vector_index
+abbr        algorithm
+options     word
+	std::upper_bound(${1:v}.begin(), $1.end(), ${2:value}) - $1.begin();
+
+snippet     algorithm_upper_bound_ptr
+abbr        algorithm
+options     word
+	std::upper_bound(${1:v}, $1 + ${2:num}, ${3:value});
+
+snippet     algorithm_upper_bound_ptr_index
+abbr        algorithm
+options     word
+	std::upper_bound(${1:v}, $1 + ${2:num}, ${3:value}) - $1;
+
+#
+# binary_search
+#
+snippet     algorithm_binary_saerch
+abbr        algorithm
+options     word
+	std::upper_bound(${1:v.begin()}, ${2:v.end()}, ${3:value});
+	- std::upper_bound(${1:v.begin()}, ${2:v.end()}, ${3:value});
