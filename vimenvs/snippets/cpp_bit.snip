@@ -1,0 +1,40 @@
+#
+# bit manupilation
+#
+# i \in A
+# iff
+# i-th bit is 1
+snippet     bit_power_set
+abbr        bit
+options     word
+	// all subsets of $2
+	for (int ${1:s} = 0; $1 < 1 << ${2:n}; ++s) {
+		// do anything
+	}
+
+snippet     bit_power_set_of
+abbr        bit
+options     word
+	// all subsets of $2
+	int subset = ${1};
+	do {
+		//
+		subset = (subset- 1) & $1;
+	} while (subset != $1)
+
+snippet     bit_power_set_of_for
+abbr        bit
+options     word
+	for (int subset = $1; subset != sup; subset = (subset - 1) & $1) {
+		// subset denotes subset of $1
+	}
+
+snippet     bit_subset_size_of
+abbr        bit
+options     word
+	int comb = (1 << ${1:bit_size}) - 1;
+	while (comb < 1 << ${2:max_bit_size}) {
+		int x = comb & -comb;
+		int y = comb + x;
+		comb = ((comb & ~y) / (x >> 1) | y;
+	}

@@ -6,6 +6,7 @@ include go_io.snip
 include go_math.snip
 include go_os.snip
 include go_sort.snip
+include go_string.snip
 include go_testing.snip
 include go_text_template.snip
 include go_type.snip
@@ -319,6 +320,14 @@ abbr        make
 options     word
 	v, ok := ${1:map}[${2:key}]]
 
+snippet     map_make_invert_map
+abbr        make
+options     word
+	${1:intToStr} := map[${2:int32}]${3:string}{}
+	for key, value := range ${2:strToInt} {
+		$1[value] = key
+	}
+
 #
 # struct
 #
@@ -398,7 +407,7 @@ options     word
 snippet     array_append
 abbr        make
 options     word
-	append(${1:array}, ${2:appendings})
+	${1:array} = append($1, ${2:appendings})
 
 snippet     array_copy
 abbr        make

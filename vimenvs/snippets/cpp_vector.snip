@@ -1,0 +1,14 @@
+snippet     vector_include
+abbr        vector
+options     word
+	#include <vector>
+
+snippet     vector_create
+abbr        vector
+options     word
+	std::vector<${1:}> ${2:var}
+
+snippet     vector_of_vector
+abbr        vector
+options     word
+	std::vector<std::vector<${1:}>> ${2:var}

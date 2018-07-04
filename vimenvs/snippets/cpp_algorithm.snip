@@ -1,9 +1,116 @@
+#
+# inlcude
+#
+snippet     algorithm_include
+abbr        algorith
+options     word
+	#include <algorithm>
+
+#
+# transoform
+#
 snippet     algorithm_transform
 abbr        transfrom to 
 options     word
 	std::transform(${1:from_start}, ${2:from_end}, ${3:to_start}, ${4:functor});
 
+#
+# fill
+#
 snippet     algorithm_fill_ptr
 abbr        algorithm
 options     word
 	std::fill(${1:ptr}, $1 + ${2:num}, ${3:value});
+
+#
+# sort
+#
+snippet     algorithm_sort_ptr_ascending
+abbr        algorithm
+options     word
+	std::sort(${1:ptr}, $1 + ${2:num});
+
+snippet     algorithm_sort_ascending
+abbr        algorithm
+options     word
+	std::sort(${1:start_iter}, ${2:end_iter});
+
+snippet     algorithm_sort_descending
+abbr        algorithm
+options     word
+	std::sort(${1:start_iter}, ${2:end_iter}, std::greater<${3:int}>());
+
+snippet     algorithm_sort_descending
+abbr        algorithm
+options     word
+	std::sort(${1:start_iter}, ${2:end_iter}, [](${3:int} a, $3 b) {
+		// acending
+		// return a < b;
+	});
+
+#
+# lower bound
+#
+snippet     algorithm_lower_bound
+abbr        algorithm
+options     word
+	std::lower_bound(${1:v.begin()}, ${2:v.end()}, ${3:value});
+
+snippet     algorithm_lower_bound_vector
+abbr        algorithm
+options     word
+	std::lower_bound(${1:v}.begin(), $1.end(), ${2:value});
+
+snippet     algorithm_lower_bound_vector_index
+abbr        algorithm
+options     word
+	std::lower_bound(${1:v}.begin(), $1.end(), ${2:value}) - $1.begin();
+
+snippet     algorithm_lower_bound_ptr
+abbr        algorithm
+options     word
+	std::lower_bound(${1:v}, $1 + ${2:num}, ${3:value});
+
+snippet     algorithm_lower_bound_ptr_index
+abbr        algorithm
+options     word
+	std::lower_bound(${1:v}, $1 + ${2:num}, ${3:value}) - $1;
+
+#
+# upper_bound
+#
+snippet     algorithm_upper_bound
+abbr        algorithm
+options     word
+	// an iterator to the upper bound position for val in the range
+	// if no element in the range, the function returns last.
+	std::upper_bound(${1:v.begin()}, ${2:v.end()}, ${3:value});
+
+snippet     algorithm_upper_bound_vector
+abbr        algorithm
+options     word
+	std::upper_bound(${1:v}.begin(), $1.end(), ${2:value});
+
+snippet     algorithm_upper_bound_vector_index
+abbr        algorithm
+options     word
+	std::upper_bound(${1:v}.begin(), $1.end(), ${2:value}) - $1.begin();
+
+snippet     algorithm_upper_bound_ptr
+abbr        algorithm
+options     word
+	std::upper_bound(${1:v}, $1 + ${2:num}, ${3:value});
+
+snippet     algorithm_upper_bound_ptr_index
+abbr        algorithm
+options     word
+	std::upper_bound(${1:v}, $1 + ${2:num}, ${3:value}) - $1;
+
+#
+# binary_search
+#
+snippet     algorithm_binary_saerch
+abbr        algorithm
+options     word
+	std::upper_bound(${1:v.begin()}, ${2:v.end()}, ${3:value});
+	- std::upper_bound(${1:v.begin()}, ${2:v.end()}, ${3:value});

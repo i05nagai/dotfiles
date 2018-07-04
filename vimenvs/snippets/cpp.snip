@@ -1,17 +1,30 @@
 include cpp_algorithm.snip
 include cpp_benchmark.snip
+include cpp_bit.snip
+include cpp_bitset.snip
 include cpp_boost.snip
 include cpp_clang_foramt.snip
 include cpp_cmath.snip
+include cpp_cppunit.snip
+include cpp_fstream.snip
 include cpp_gmock.snip
 include cpp_gtest.snip
 include cpp_limits.snip
 include cpp_preprocessor.snip
 include cpp_print.snip
+include cpp_queue.snip
 include cpp_random.snip
-include cppunit.snip
+include cpp_set.snip
+include cpp_vector.snip
 include doxygen.snip
 include mathjax.snip
+
+# include
+delete      include
+snippet     include
+abbr        includ
+options     word
+	#include <${1:iostream}>
 
 delete  template
 snippet template
@@ -122,16 +135,6 @@ options     head
 		${0:end}
 	};
 
-snippet     vector
-abbr        vector
-options     word
-	std::vector<${1:}> ${2:var}
-
-snippet     vector_of_vector
-abbr        vector
-options     word
-	std::vector<std::vector<${1:}>> ${2:var}
-
 #
 # for
 #
@@ -143,7 +146,7 @@ abbr       for (std::size_t index) {}
 
 snippet     for_increment_start_with_0
 abbr        for ()
-	for (${1:size_t} ${1:index} = 0; $1 < ${2:size}; ++$1) {
+	for (${1:int} ${2:i} = 0; $2 < ${3:size}; ++$2) {
 		${0}
 	}
 
@@ -229,21 +232,6 @@ options     word
 		return os;
 	}
 
-snippet     write_to_file
-abbr        write to file
-options     word
-	// #include <fstream>
-	std::ofstream ${1:file};
-	$1.open(${2:path_to_file});
-	$1 << "write something";
-	$1.close();
-
-snippet     read_from_file
-abbr        read from file
-options     word
-	// #include <fstream>
-	std::ifstream ${1:var}(${2:file_name});
-
 #
 # template
 #
@@ -274,7 +262,7 @@ options     word
 	#include "${1:`bufname('%') ==#'[Command Line]' ? expand('#:t:r:r:r') : expand('%:t:r:r:r')`.h}"
 	
 	namespace ${2:namespace} {
-	  ${0:mfunc}
+		${0:func}
 	} // namespace $2 {
 
 snippet     template_namespace2_class
