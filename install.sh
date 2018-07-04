@@ -36,6 +36,7 @@ LINK_LIG_FROM_TO=(
 "envs/lig/.gdbinit" ".gdbinit"
 "envs/lig/bashrc.env" ".bashrc.env"
 "config/powerline" ".config/powerline"
+"vscode/Code" ".config/Code"
 )
 
 LINK_OSX_FROM_TO=(
