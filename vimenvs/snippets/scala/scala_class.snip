@@ -1,0 +1,32 @@
+#
+# abstract class
+#
+snippet     class_abstract
+abbr        class
+options     word
+	abstract class ${1:Name}(${2:n: Int, d: Int}) {
+		// require(n > 1)
+		val a: Int = n
+		private val b: Int = d
+		// auxiliary constructor
+		def this(n: Int) = this(n, 1)
+		def add(n: Int) {
+		}
+	}
+
+#
+# template
+#
+snippet     class_template
+abbr        class
+options     word
+	class ${1:Name}(${2:n: Int, d: Int}) {
+		// require(n > 1)
+		val a: Int = n
+		private val b: Int = d
+		// auxiliary constructor
+		def this(n: Int) = this(n, 1)
+		def add(n: Int) {
+		}
+	}
+
