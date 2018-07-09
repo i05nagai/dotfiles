@@ -1,0 +1,56 @@
+#!/bin/sh
+
+function version {
+  echo "replace_text_in_folder version 0.0.1"
+}    
+
+function usage {
+    cat <<EOF
+replace_text_in_folder is a tool for ...
+
+Usage:
+    replace_text_in_folder [command] [<options>]
+
+Options:
+  --version, -v     print replace_text_in_folder version
+  --help, -h        print this
+EOF
+}
+
+#recrusively replace txt in file
+function replace_text_in_folder()
+{
+  local search_dir=${1}
+  local search=${2}
+  local replace=${3}
+
+  grep -r -l "$search" $search_dir | xargs sed -i.bak -e "s/$search/$replace/g"
+}
+
+while [ $# -gt 0 ];
+do
+  case ${1} in
+    --debug|-d)
+      set -x
+    ;;
+
+    --help|-h)
+      usage
+      exit 0
+    ;;
+
+    --version|-v)
+      version
+      exit 0
+    ;;
+
+    *)
+      echo "[ERROR] Invalid option '${1}'"
+      usage
+      exit 1
+    ;;
+  esac
+  shift
+done  
+
+replace_text_in_folder $@
