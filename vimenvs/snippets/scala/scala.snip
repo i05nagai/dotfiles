@@ -1,5 +1,7 @@
-include scala/scala_class.snip
-include scala/scala_collection.snip
+include scala_class.snip
+include scala_collection.snip
+include scala_package.snip
+include scala_trait.snip
 
 #
 #
@@ -33,14 +35,6 @@ snippet     variable
 abbr        variable
 options     word
 	var ${2:name: Type} = ${2:5}
-
-#
-# package
-#
-snippet     import
-abbr        variable
-options     word
-	import ${1:scala.collections}
 
 #
 # print
@@ -144,5 +138,24 @@ options     word
 		// auxiliary constructor
 		def this(n: Int) = this(n, 1)
 		def add(n: Int) {
+		}
+	}
+
+#
+# tempalte
+#
+snippet     template_main_method
+abbr        template
+options     word
+	def main(args: Array[String]) {
+	
+	}
+
+snippet     template_main
+abbr        template
+options     word
+	object ${1:Name} {
+		def main(args: Array[String]) {
+		
 		}
 	}
