@@ -8,7 +8,7 @@ include go/go_math.snip
 include go/go_os.snip
 include go/go_sort.snip
 include go/go_string.snip
-include go/go_testing.snip
+include go_testing.snip
 include go/go_text_template.snip
 include go/go_type.snip
 
@@ -388,6 +388,14 @@ options     word
 	for _, elem := range ${1:array} {
 		${0}
 	}
+
+snippet     array_for_index
+abbr        make
+options     word
+	for i := 0; i < len(${1:array}); i++ {
+		${1}
+	}
+
 snippet     array_length
 abbr        len
 options     word
@@ -397,13 +405,6 @@ snippet     array_capacity
 abbr        capacity
 options     word
 	cap(${1})
-
-snippet     array_for_index
-abbr        make
-options     word
-	for i := 0; i < len(${1:array}); i++ {
-		${1}
-	}
 
 snippet     array_append
 abbr        make
