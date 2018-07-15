@@ -2,3 +2,34 @@ snippet     show_users
 abbr        users
 options     word
 	SELECT user, host FROM mysql.user;
+
+#
+# set
+#
+snippet     mysql_variable
+abbr        variable
+options     word
+	SET @${1:var} = ${2:value};
+
+#
+# tempalte
+#
+snippet     mysql_template_rank
+abbr        rank for 5.7
+options     word
+	SET @prev_value = NULL;
+	SET @rank_count = 0;
+	SELECT id, rank_column, CASE
+		WHEN @prev_value = rank_column THEN @rank_count
+		WHEN @prev_value := rank_column THEN @rank_count := @rank_count + 1
+	END AS rank
+	FROM rank_table
+	ORDER BY rank_column
+
+#
+# cast
+#
+snippet     mysql_cast_int
+abbr        mysql
+options     word
+	CAST(${1} AS ${2:DECIMAL})
