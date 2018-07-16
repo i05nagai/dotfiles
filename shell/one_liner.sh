@@ -12,3 +12,8 @@ show_process_higher_memory() {
 show_process_higher_cpu() {
   watch -n 2 "ps aux| sort -nk +4 | tail"
 }
+
+delete_file_in_directory_recursive() {
+  local name=$1
+  find . -name "*${name}*" | xargs rm
+}
