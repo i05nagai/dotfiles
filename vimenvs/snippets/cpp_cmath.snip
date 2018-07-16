@@ -7,3 +7,8 @@ snippet     cmath_isinf
 abbr        fused multiply-add
 options     word
 	std::isinf(${1:x});
+
+snippet     cmath_hypot
+abbr        the square root of the sum of the squares of x and y
+options     word
+	std::hypot(${1:x}, ${2:y});

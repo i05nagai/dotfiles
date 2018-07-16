@@ -114,3 +114,20 @@ abbr        algorithm
 options     word
 	std::upper_bound(${1:v.begin()}, ${2:v.end()}, ${3:value});
 	- std::upper_bound(${1:v.begin()}, ${2:v.end()}, ${3:value});
+
+#
+# find
+#
+snippet     algorithm_find_value_vector_index
+abbr        algorithm
+options     word
+	std::find(${1:vec}.begin(), $1.end(), ${2:val}) - $1.begin();
+
+#
+# delete duplicate elements
+#
+snippet     algorithm_delete_duplicate_element
+abbr        algorithm
+options     word
+	std::sort(${1}.begin(), $1.end());
+	xs.erase(std::unique($1.begin(), $1.end()), $1.end());
