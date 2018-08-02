@@ -114,3 +114,16 @@ abbr        algorithm
 options     word
 	std::upper_bound(${1:v.begin()}, ${2:v.end()}, ${3:value});
 	- std::upper_bound(${1:v.begin()}, ${2:v.end()}, ${3:value});
+
+#
+# copy
+#
+snippet     algorithm_copy_vector
+abbr        algorithm
+options     word
+	std::copy(${1:from}.begin(), $1.end(), ${2:result}.end());
+
+snippet     algorithm_copy_ptr
+abbr        algorithm
+options     word
+	std::copy(${1:from}, $1 + ${2}, ${2:result});
