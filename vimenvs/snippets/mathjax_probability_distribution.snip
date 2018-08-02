@@ -35,6 +35,20 @@ options     word
 	F_{\\mathrm{Bi}}(${1:x_{1}}, \ldots, ${2:x_{N}}; ${3:p})${0}
 
 #
+# beta
+#
+snippet     beta_pdf
+abbr        Beta(?, ?)
+options     word
+	\\mathrm{Beta}(${1:x}; ${1:\\alpha}, ${2:\\beta})${0}
+
+snippet     beta_cdf
+abbr        Beta(?, ?)
+options     word
+	F_{\\mathrm{Beta}}${1:x}; ${1:\\alpha}, ${2:\\beta})${0}
+
+
+#
 # bernoulli
 #
 snippet     bernoulli_pdf_def
