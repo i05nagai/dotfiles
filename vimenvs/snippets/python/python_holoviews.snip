@@ -21,6 +21,9 @@ abbr        abbr
 options     word
 	hv.extension('bokeh')
 
+#
+# scatter
+#
 snippet     hv_scatter_plot
 abbr        abbr
 options     word
@@ -36,11 +39,22 @@ abbr        abbr
 options     word
 	hv.Points(${1}, label="${2:label}")
 
+#
+# bar
+#
 snippet     hv_bar
 abbr        abbr
 options     word
-	hv.Bars((${1:label_1}, ${2:label_2}), (${3:val_1}, ${4:val_2}))
+	hv.Bars((${1:label_1}, ${2:val_1}), (${3:label_2}, ${4:val_2}))
 
+snippet     hv_bar_pd_df
+abbr        abbr
+options     word
+	hv.Bars(zip(${1:df}.index, $1.values))
+
+#
+# histogram
+#
 snippet     hv_histogram
 abbr        histogram
 options     word
@@ -84,3 +98,45 @@ snippet     hv_curve
 abbr        abbr
 options     word
 	hv.Curve((${1:x, y}), label="${2:label}")
+
+#
+# table
+#
+snippet     hv_table_kdims
+abbr        table
+options     word
+	hv.Table(${1:pd_df}, kdims="${2:label}")
+
+snippet     hv_table
+abbr        table
+options     word
+	hv.Table(${1:pd_df})
+
+snippet     hv_table_groupby
+abbr        table
+options     word
+	table = table.groupby([${1:col_name}])
+
+#
+# grid matrix
+#
+snippet     hv_template_gridmatrix_from_table_groupby
+abbr        table
+options     word
+	table = hv.Table(${1:pd_df})
+	table_groupby = table.groupby([${2:col_name}])
+	grid = hv.operation.gridmatrix(table_groupby, diagonal_type=hv.Scatter)
+	grid.options('
+		Scatter',
+		tools=['hover', 'box_select'],
+		bgcolor='#efe8e2',
+		fill_alpha=0.2,
+	size=4)
+
+#
+# layout
+#
+snippet     hv_layout_column
+abbr        hv
+options     word
+	${1:layout}.options().cols(${2:num_col})
