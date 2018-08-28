@@ -12,3 +12,10 @@ snippet     vector_of_vector
 abbr        vector
 options     word
 	std::vector<std::vector<${1:}>> ${2:var}
+
+snippet     vector_erase_unique
+abbr        vector
+options     word
+    // #include <algorithm>
+	std::sort(${1:vs}.begin(), $1.end());
+	$1.erase(std::unique($1.begin(), $1.end()), $1.end());
