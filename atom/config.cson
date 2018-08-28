@@ -2,6 +2,7 @@
   core:
     disabledPackages: [
       "markdown-preview"
+      "markdown-preview-plus"
     ]
     openEmptyEditorOnStart: false
     telemetryConsent: "no"
