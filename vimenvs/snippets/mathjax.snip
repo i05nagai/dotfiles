@@ -26,12 +26,18 @@ include mathjax_vector.snip
 include tex/tex_logic.snip
 
 #
-# def
+# define
 #
 snippet     def
 abbr        def
 options     word
 	\\def${1:#1#2}{${2:}}
+
+snippet     define_function
+alias       define_operator
+abbr        def
+options     word
+	\\newcommand{\\${1:CVR}}{\\mathop{\\rm $1}\\nolimits}
 
 snippet     def_restriction
 abbr        def
@@ -456,10 +462,38 @@ abbr        mathrm{}
 options     word
 	\\mathrm{${1}}${0}
 
+#
+# misc
+#
 snippet     label
 abbr        label{}
 options     word
 	\\label{${1}}${0}
+
+snippet     because
+abbr        misc
+options     word
+	\\quad
+	(\\because ${1})
+
+snippet     because_text
+abbr        misc
+options     word
+	\\quad
+	(\\because \\text{ ${1}})
+
+snippet     because_eqref
+abbr        misc
+options     word
+	\\quad
+	(\\because \\eqref{${1}})
+
+#
+# relation
+#
+snippet     positive_semidefinite_relation
+abbr        relation
+options     word
 
 #
 # definition
