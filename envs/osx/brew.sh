@@ -8,9 +8,13 @@ brew install fzf
 brew install go
 brew install zsh
 brew install hub
+brew install pwgen
+brew install bazel
 
+brew cask install java
 brew cask install docker
 brew cask install slack
+brew cask install skype
 brew cask install dropbox
 brew cask install grammarly
 brew cask install google-chrome
@@ -18,8 +22,6 @@ brew cask install mendeley
 brew cask install google-japanese-ime
 
 # terrafrom
-# java
-# hub
 # scala
 # gcloud
 
