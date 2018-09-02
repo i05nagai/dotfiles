@@ -11,3 +11,9 @@ autocmd BufRead,BufNewFile *.gitignore setfiletype gitignore
 autocmd BufRead,BufNewFile *.pxd setfiletype cython
 autocmd BufRead,BufNewFile *.pix setfiletype cython
 autocmd BufRead,BufNewFile *.pyx setfiletype cython
+"
+" bazel
+"
+autocmd BufRead,BufNewFile *.BUILD setfiletype bzl
+autocmd BufRead,BufNewFile WORKSPACE setfiletype bzl
+autocmd BufRead,BufNewFile BUILD setfiletype bzl
