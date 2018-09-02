@@ -245,6 +245,11 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundleLazy 'hashivim/vim-terraform', {
         \ 'autoload' : {'filetypes' : 'tf'}
         \ }
+  " bazel
+  NeoBundle 'google/vim-maktaba'
+  NeoBundleLazy 'bazelbuild/vim-bazel', {
+        \ 'autoload' : {'filetypes' : 'bazel'}
+        \ }
   "swift
   NeoBundleLazy 'keith/swift.vim', {
         \ 'autoload' : {'filetypes' : 'swift'}
