@@ -248,7 +248,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   " bazel
   NeoBundle 'google/vim-maktaba'
   NeoBundleLazy 'bazelbuild/vim-bazel', {
-        \ 'autoload' : {'filetypes' : 'bazel'}
+        \ 'autoload' : {'filetypes' : 'bzl'}
         \ }
   "swift
   NeoBundleLazy 'keith/swift.vim', {
