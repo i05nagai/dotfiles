@@ -40,7 +40,7 @@ abbr        algorithm
 options     word
 	std::sort(${1:start_iter}, ${2:end_iter}, std::greater<${3:int}>());
 
-snippet     algorithm_sort_lambda
+snippet     algorithm_sort_descending_lambda
 abbr        algorithm
 options     word
 	std::sort(${1:start_iter}, ${2:end_iter}, [](${3:int} a, $3 b) {

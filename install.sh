@@ -40,7 +40,7 @@ LINK_LIG_FROM_TO=(
 )
 
 LINK_OSX_FROM_TO=(
-"envs/osx/.bin/chtwt" ".bin/chtwt"
+"envs/osx/.bin" ".bin"
 "envs/osx/.tmux.conf.env" ".tmux.conf.env"
 "envs/osx/.zshrc.env" ".zshrc.env"
 )
