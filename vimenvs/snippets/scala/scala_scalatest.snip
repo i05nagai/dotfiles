@@ -1,0 +1,30 @@
+snippet     scalatest_assert
+abbr        scalatest
+options     word
+	assert(${1})
+
+#
+# template
+#
+snippet     scalatest_template_class
+abbr        scalatest
+options     word
+	import org.scalatest.Suite
+	import ${1:target}
+	
+	class ${2:TestName} extends Suite {
+		def ${3:testMethod}() {
+		}
+	}
+
+snippet     scalatest_template_funclass
+abbr        scalatest
+options     word
+	import org.scalatest.FunSuite
+	import ${1:target}
+
+	class ${2:TestName} extends FunSuite {
+		test("${3:test name}")() {
+		}
+	}
+

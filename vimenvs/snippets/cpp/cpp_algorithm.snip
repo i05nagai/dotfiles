@@ -40,7 +40,7 @@ abbr        algorithm
 options     word
 	std::sort(${1:start_iter}, ${2:end_iter}, std::greater<${3:int}>());
 
-snippet     algorithm_sort_descending
+snippet     algorithm_sort_lambda
 abbr        algorithm
 options     word
 	std::sort(${1:start_iter}, ${2:end_iter}, [](${3:int} a, $3 b) {
@@ -131,3 +131,15 @@ abbr        algorithm
 options     word
 	std::sort(${1}.begin(), $1.end());
 	xs.erase(std::unique($1.begin(), $1.end()), $1.end());
+
+# copy
+#
+snippet     algorithm_copy_vector
+abbr        algorithm
+options     word
+	std::copy(${1:from}.begin(), $1.end(), ${2:result}.end());
+
+snippet     algorithm_copy_ptr
+abbr        algorithm
+options     word
+	std::copy(${1:from}, $1 + ${2}, ${2:result});

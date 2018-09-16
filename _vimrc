@@ -8,11 +8,11 @@ if filereadable( $HOME . "/.vim/basic_settings/common_settings.vim" )
 endif
 
 if has('vim_starting')
-	set runtimepath+=~/.vim/bundle/neobundle.vim
+  set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
-	" originalrepos on github
-	NeoBundle 'Shougo/vimshell.vim'
+  " originalrepos on github
+  NeoBundle 'Shougo/vimshell.vim'
 call neobundle#end()
 
 "---------------------------------------------------------

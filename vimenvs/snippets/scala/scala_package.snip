@@ -1,0 +1,22 @@
+#
+# package
+#
+snippet     package_import
+abbr        package
+options     word
+	import ${1:scala.collections}
+
+snippet     package_import_rename
+abbr        package
+options     word
+	import ${1:scala.collections}.{${2:original} => ${3:newname}}
+
+snippet     package_import_all
+abbr        package
+options     word
+	import ${1:scala.collections}._
+
+snippet     package_import_except
+abbr        package
+options     word
+	import ${1:scala.collections}.{${2:exception} => _, _}

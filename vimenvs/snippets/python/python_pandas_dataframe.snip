@@ -1,20 +1,25 @@
 #
-# nan
+# delete
 #
 snippet     pd_df_delete_nan_column
-abbr        df preview
+abbr        df
 options     word
 	${1:df}.dropna(axis=0)
 
 snippet     pd_df_delete_nan_row
-abbr        df preview
+abbr        df
 options     word
 	${1:df}.dropna(axis=1)
 
 snippet     pd_df_replace_index
-abbr        df preview
+abbr        df
 options     word
 	${1:df}.fillna(value=${2}, axis=0)
+
+snippet     pd_df_remove_column
+abbr        df
+options     word
+	${1:df}.drop(columns=[${2:col_name}])
 
 #
 # filter
@@ -53,6 +58,15 @@ snippet     pd_df_filter_row
 abbr        df filter
 options     word
 	${1:df}[${2:df['col_name'] == 1}]
+
+#
+# column
+#
+snippet     pd_df_column_replace
+abbr        df
+options     word
+	$1 = ${1:df}.replace(${2:{'old': new'}})
+
 
 #
 # show
@@ -137,18 +151,23 @@ options     word
 #
 # select
 #
-snippet     pd_df_select_column
+snippet     pd_df_select_column_from_to
 abbr        select column
 options     word
-	${1:df}.iloc[:, ${1:from}:${2:to}]
+	$1 = ${1:df}.iloc[:, ${1:from}:${2:to}]
+
+snippet     pd_df_select_column_name
+abbr        select column
+options     word
+	$1 = ${1:df}[[${2:col_name1}]]
 
 snippet     pd_df_column_slice
-abbr        abbr
+abbr        pd df
 options     word
 	${1:df}.loc[:, ${2:column}]
 
 snippet     pd_df_column_rename
-abbr        abbr
+abbr        pd df
 options     word
 	${1:df}.columns = [${2:column_name,}]
 
@@ -159,6 +178,7 @@ snippet     pd_df_groupby
 abbr        abbr
 options     word
 	${1:df}.groupby([${2:columun_name}])
+
 
 snippet     pd_df_sort
 abbr        abbr

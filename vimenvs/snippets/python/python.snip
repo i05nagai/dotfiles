@@ -1,49 +1,50 @@
-include python/python_abc.snip
-include python/python_argparse.snip
-include python/python_beautifulsoup.snip
-include python/python_boto3.snip
-include python/python_click.snip
-include python/python_csv.snip
-include python/python_cython.snip
-include python/python_datetime.snip
-include python/python_faker.snip
-include python/python_flask.snip
-include python/python_google_cloud_bigquery.snip
-include python/python_google_cloud_storage.snip
-include python/python_gspread.snip
-include python/python_holoviews.snip
-include python/python_joblib.snip
-include python/python_json.snip
-include python/python_keras.snip
-include python/python_logging.snip
-include python/python_matplotlib.snip
-include python/python_mecab.snip
-include python/python_mimetypes.snip
-include python/python_mock.snip
-include python/python_multiprocessing.snip
-include python/python_nose.snip
-include python/python_numpy.snip
-include python/python_pandas.snip
-include python/python_path.snip
-include python/python_pillow.snip
-include python/python_plotly.snip
-include python/python_py4j.snip
-include python/python_py_github.snip
-include python/python_pyspark.snip
-include python/python_pystache.snip
-include python/python_pytest.snip
-include python/python_re.snip
-include python/python_requests.snip
-include python/python_scikit_image.snip
-include python/python_scipy.snip
-include python/python_scrapy.snip
-include python/python_setup_py.snip
-include python/python_sqlalchemy.snip
-include python/python_sqlite.snip
-include python/python_subprocess.snip
-include python/python_tensorflow.snip
-include python/python_typing.snip
-include python/python_urllib.snip
+include python_abc.snip
+include python_argparse.snip
+include python_beautifulsoup.snip
+include python_boto3.snip
+include python_click.snip
+include python_csv.snip
+include python_cython.snip
+include python_datetime.snip
+include python_faker.snip
+include python_flask.snip
+include python_functools.snip
+include python_google_cloud_bigquery.snip
+include python_google_cloud_storage.snip
+include python_gspread.snip
+include python_holoviews.snip
+include python_joblib.snip
+include python_json.snip
+include python_keras.snip
+include python_logging.snip
+include python_matplotlib.snip
+include python_mecab.snip
+include python_mimetypes.snip
+include python_mock.snip
+include python_multiprocessing.snip
+include python_nose.snip
+include python_numpy.snip
+include python_pandas.snip
+include python_path.snip
+include python_pillow.snip
+include python_py4j.snip
+include python_py_github.snip
+include python_pyspark.snip
+include python_pystache.snip
+include python_pytest.snip
+include python_re.snip
+include python_requests.snip
+include python_scikit_image.snip
+include python_scipy.snip
+include python_scrapy.snip
+include python_setup_py.snip
+include python_sklearn.snip
+include python_sqlalchemy.snip
+include python_sqlite.snip
+include python_subprocess.snip
+include python_tensorflow.snip
+include python_typing.snip
+include python_urllib.snip
 include sphinx.snip
 
 #
@@ -242,8 +243,10 @@ snippet try_except_else_finally
 	finally:
 		${0}
 
-# if __name__ == '__main__':
-snippet main
+delete main
+snippet     main
+abbr        main
+options     word
 	def main():
 		pass
 	
@@ -255,6 +258,8 @@ snippet main
 # docstring
 #
 snippet """
+abbr        docstring
+options     word
 	"""${0:doc}
 	"""
 

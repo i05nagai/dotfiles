@@ -1,29 +1,27 @@
-" filetype=cpp が設定された時に呼ばれる関数
-"Vim で C++ の設定を行う場合はこの関数内で記述する
+" call when filetype=cpp is set
+" c++ specific settings
 function! s:cpp()
-    " インクルードパスを設定する
-    " gf などでヘッダーファイルを開きたい場合に影響する
-    "setlocal path+=D:/home/cpp/boost,D:/home/cpp/sprout
+  " include path
+  " gf などでヘッダーファイルを開きたい場合に影響する
+  "setlocal path+=D:/home/cpp/boost,D:/home/cpp/sprout
   let $BOOST_ROOT = "/opt/local/include/boost"
   set path+=$BOOST_ROOT
-  
 
-    "タブ文字の長さ
-    setlocal tabstop=2
-    setlocal shiftwidth=2
+  " tab
+  setlocal tabstop=2
+  setlocal shiftwidth=2
 
-    " 空白文字ではなくてタブ文字を使用する
-    "setlocal noexpandtab
-    setlocal expandtab
+  " use soft tab
+  setlocal expandtab
 
-    " 括弧を構成する設定に <> を追加する
-    " template<> を多用するのであれば
-    setlocal matchpairs+=<:>
+  " 括弧を構成する設定に <> を追加する
+  " template<> を多用するのであれば
+  setlocal matchpairs+=<:>
 
-    " 最後に定義された include 箇所へ移動してを挿入モードへ
-    nnoremap <buffer><silent> <Space>ii :execute "?".&include<CR> :noh<CR> o
+  " 最後に定義された include 箇所へ移動してを挿入モードへ
+  nnoremap <buffer><silent> <Space>ii :execute "?".&include<CR> :noh<CR> o
 
-    "indent option
+  "indent option
   "scope indent
   setlocal cino+=g0
   "Indent a function return type declaration N characters from the margin.  (default 'shiftwidth').
@@ -38,9 +36,9 @@ function! s:cpp()
   "  relative to the outer context (i.e. start of the line or the
   "  next unclosed parentheses).  (default: 0).
   setlocal cino+=(0,W4
-    " BOOST_PP_XXX 等のハイライトを行う
-    syntax match boost_pp /BOOST_PP_[A-z0-9_]*/
-    highlight link boost_pp cppStatement
+  " BOOST_PP_XXX 等のハイライトを行う
+  syntax match boost_pp /BOOST_PP_[A-z0-9_]*/
+  highlight link boost_pp cppStatement
 endfunction
 
 function! s:is_header(extension)

@@ -1,0 +1,24 @@
+snippet     map_include
+abbr        include
+options     word
+	#include <map>
+
+snippet     map_create
+abbr        include
+options     word
+	std::map<${1:Key}, ${2:Val}> ${3:data};
+
+snippet     map_add
+abbr        include
+options     word
+	${1:map}.insert(${2});
+
+snippet     map_add_pair
+abbr        include
+options     word
+	${1:map}.insert(std::make_pair<${2}>(${3}));
+
+snippet     map_remove
+abbr        include
+options     word
+	${1:map}.erase($1.begin(), $1.find(${2:key}));

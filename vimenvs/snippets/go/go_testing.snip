@@ -32,11 +32,18 @@ options     word
 #
 # assert
 #
-snippet     testing_assert_err
+snippet     testing_assert_fatal_if_err
 abbr        testing
 options     word
 	if err != nil {
 		t.Fatalf("err: %s", err)
+	}
+
+snippet     testing_assert_error_equal
+abbr        testing
+options     word
+	if expected != actual {
+		t.Errorf("expected:%v,  actual: %v", expected, actual)
 	}
 
 #
