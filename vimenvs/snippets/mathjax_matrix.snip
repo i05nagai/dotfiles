@@ -36,6 +36,11 @@ abbr        matrix5
 		\\end{array}
 	\\right)${0}
 
+snippet     trace_operator
+abbr        \\mathrm{rank}(${1})
+options     word
+	\\bullet
+
 snippet     rank
 abbr        \\mathrm{rank}(${1})
 options     word
@@ -50,6 +55,29 @@ snippet     positive_semidefinite
 abbr        p.s.d.
 options     word
 	\\mathcal{S}_{${1:dim}}${2}
+
+#
+# relation
+#
+snippet     positive_semidefinite_relation_<=
+abbr        relation
+options     word
+	\\preccurlyeq
+
+snippet     positive_definite_relation_<
+abbr        relation
+options     word
+	\\prec
+
+snippet     positive_semidefinite_relation_>=
+abbr        relation
+options     word
+	\\succcurlyeq
+
+snippet     positive_definite_relation_>
+abbr        relation
+options     word
+	\\succ
 
 snippet     nonnegative_definite
 abbr        nonnegatve definite
