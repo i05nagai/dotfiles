@@ -1,0 +1,19 @@
+snippet     utility_include
+abbr        utility
+options     word
+	#include <utility>
+
+snippet     utility_pair
+abbr        utility
+options     word
+	std::pair<${1}, ${2}> ${3}(${4}, ${5});
+
+snippet     utility_pair_make
+abbr        utility
+options     word
+	std::make_pair(${1}, ${2});
+
+snippet     utility_pair_typedef
+abbr        utility
+options     word
+	typedef std::pair<${1}, ${2}> ${3:Name};
