@@ -1,0 +1,24 @@
+snippet     stack_include
+abbr        stack
+options     word
+	#include <stack>
+
+snippet     stack_create
+abbr        stack
+options     word
+	std::stack<${1}> ${2:st};
+
+snippet     stack_push
+abbr        stack
+options     word
+	${1:stk}.push(${2});
+
+snippet     stack_pop
+abbr        stack
+options     word
+	${1:stk}.pop();
+
+snippet     stack_top
+abbr        stack
+options     word
+	${2} = ${1:stk}.top();
