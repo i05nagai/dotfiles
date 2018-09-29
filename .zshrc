@@ -8,7 +8,7 @@ export LANG_ALL=en_US.UTF-8
 export TERM=xterm-256color
 
 # autoload
-# autoload -Uz compinit
+autoload -Uz compinit
 autoload -Uz colors
 colors
 autoload history-search-end
@@ -19,9 +19,9 @@ autoload history-search-end
 # Use built-in vcs_info function which retrive VCS information
 autoload -Uz vcs_info
 # vcs's settings
-# 表示フォーマットの指定
-# %b ブランチ情報
-# %a アクション名(mergeなど)
+# display format
+# %b: branch information
+# %a: action (e.g. merge/rebase)
 zstyle ':vcs_info:*' formats '[%b]'
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 
@@ -37,69 +37,69 @@ setopt numeric_glob_sort
 setopt print_eight_bit
 
 # Completion
-#di: ディレクトリ
-#ln: シンボリックリンク
-#so: ソケットファイル
-#pi: FIFOファイル
-#ex: 実行ファイル
-#bd: ブロックスペシャルファイル
-#cd: キャラクタスペシャルファイル
-#su: setuidつき実行ファイル
-#sg: setgidつき実行ファイル
+#di: directory
+#ln: symbolic link
+#so: socket file
+#pi: FIFO file
+#ex: execution file
+#bd: block special file
+#cd: character special file
+#su: execution file with setuid
+#sg: execution file with setgid
 #tw: スティッキビットありother書き込み権限つきディレクトリ
 #ow: スティッキビットなしother書き込み権限つきディレクトリ
-#00: なにもしない
-#01: 太字化
-#04: 下線
-#05: 点滅
-#07: 前背色反転
-#08: 表示しない
+#00: do nothing
+#01: bold
+#04: underline
+#05: blink
+#07: invert foreground color
+#08: not displayed
 #22: ノーマル化
-#24: 下線なし
-#25: 点滅なし
-#27: 前背色反転なし
-#30: 黒(前景色)
-#31: 赤(前景色)
-#32: 緑(前景色)
-#33: 茶(前景色)
-#34: 青(前景色)
-#35: マゼンタ(前景色)
-#36: シアン(前景色)
-#37: 白(前景色)
-#39: デフォルト(前景色)
-#40: 黒(背景色)
-#41: 赤(背景色)
-#42: 緑(背景色)
-#43: 茶(背景色)
-#44: 青(背景色)
-#45: マゼンタ(背景色)
-#46: シアン(背景色)
-#47: 白(背景色)
-#49: デフォルト(背景色)
+#24: no underline
+#25: no blink
+#27: disable inverting foreground color
+#30: black foreground color
+#31: red foreground color
+#32: green foreground color
+#33: brown foreground color
+#34: blue foreground color
+#35: magenta foreground color
+#36: cyan foreground color
+#37: white foreground color
+#39: default foreground color
+#40: black background color
+#41: red background color
+#42: green background color
+#43: brown background color
+#44: blue background color
+#45: magenta background color
+#46: cyan background color
+#47: white background color
+#49: default background color
 zstyle ':completion:*' list-colors 'di=01;34' 'ln=01;36' 'so=01;41;37' 'ex=01;32' 'su=41;30' 'sg=41;30' 'bd=01;46;34' 'cd=01;43;34'
-#補完のときプロンプトの位置を変えない
+# not to change the position of prompt while completing
 setopt always_last_prompt
-#補完候補が複数あるとき自動でメニューをリストアップ
+# whent the completion is ambigious you get a list without having to type ^D
 setopt auto_list
-#ディレクトリ 補完 /を付与
+# If auto_param_slash is set, any parameter expressions whose value is the name of a directory will have a slash
 setopt auto_param_slash
 # Delete '/' by pressing space
 setopt auto_remove_slash
-#補完要求に対してメニューをリストアップ
+# you only get the menu when you hit TAB again on the ambiguous completion
 setopt auto_menu
 #
 setopt auto_param_keys
-#command correct edition before each completion attempt
+# command correct edition before each completion attempt
 setopt correct
-#
+# expand glob when you execute a command
 setopt extended_glob
 # compacked complete list display
 setopt list_packed
 # list completions horizontally
 setopt list_rows_first
-#補完候補の表示を親切に ls -F
-## /がディレクトリ
-## @がシンボリックリンク
+# discriptive completion ls -F
+# /: dir
+# @: symbolic linkc
 setopt list_types
 #
 setopt mark_dirs

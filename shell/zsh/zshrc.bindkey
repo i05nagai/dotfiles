@@ -1,22 +1,22 @@
 # General
 # keybind
-#Ctrl-A	行頭へジャンプ
-#Ctrl-E	行末へジャンプ
-#Ctrl-Y	ヤンク
-#Ctrl-X U	アンドゥ
-#Ctrl-@	マークセット
-#Ctrl-K	カーソルから行末までを削除
-#Ctrl-W	カーソルから行頭までを削除
-#Ctrl-U	一行削除
-#Ctrl-G	コマンド入力を実行せずに無視して次の行へ
-#Ctrl-B	←キー
-#Ctrl-F	→キー
-#Ctrl-P	↑キー
-#Ctrl-N	↓キー
-#Ctrl-D	Deleteキー
-#Ctrl-H	BackSpaceキー
-#Ctrl-I	展開または補完
-#Ctrl-L	クリアスクリーン
+#Ctrl-A: jump to the head of line
+#Ctrl-E: jump to the end of line
+#Ctrl-Y: yank
+#Ctrl-X U: undo
+#Ctrl-@: set mark
+#Ctrl-K: delete characters between cursor and the end of line
+#Ctrl-W: delete characters between the head of line and cursor
+#Ctrl-U: delete line
+#Ctrl-G: go to next line without executing current line
+#Ctrl-B: ←
+#Ctrl-F: →
+#Ctrl-P: ↑
+#Ctrl-N: ↓
+#Ctrl-D: Delete
+#Ctrl-H: BackSpace
+#Ctrl-I: expand or complete
+#Ctrl-L: clear screen
 # delete current keybind
 bindkey -d
 # use emacs keybind
@@ -43,8 +43,7 @@ then
   bindkey '^Xr' fzf_r
 fi
 
-#コマンドラインが空ならENTERでls
-#ls->Enterとすると挙動がおかしい
+# if commandline is empty, run ls
 alls() {
   if [ -n "$BUFFER" ]; then
     zle accept-line
@@ -58,3 +57,5 @@ alls() {
 }
 zle -N alls
 bindkey "\C-m" alls
+# for zsh-autosuggetions
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=alls

@@ -25,6 +25,7 @@ LINK_WIN_FROM_TO=(
 )
 
 LINK_LIC_FROM_TO=(
+"envs/lic/bashrc.env" ".bashrc.env"
 )
 
 LINK_LIG_FROM_TO=(

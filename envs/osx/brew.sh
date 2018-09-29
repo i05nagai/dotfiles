@@ -1,10 +1,8 @@
 #!/bin/bash
 
 brew install zsh
-brew install tmux-mem-cpu-load
 brew install tmux
 brew install git
-
 # brew install tmux-mem-cpu-load
 brew install pass
 brew install vim --with-lua --with-gettext --with-override-system-vi
@@ -14,6 +12,7 @@ brew install go
 brew install hub
 brew install pwgen
 brew install bazel
+brew install cmake
 
 brew cask install iterm2
 brew cask install karabiner-elements

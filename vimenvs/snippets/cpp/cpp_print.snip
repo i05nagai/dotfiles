@@ -29,3 +29,13 @@ abbr        print
 		std::cout << $1[vi] << ", ";
 	}
 	std::cout << std::endl;
+
+snippet     print_matrix
+abbr        print
+	for (int vi = 0; vi < ${1:Row}; ++vi) {
+		for (int vj = 0; vj < ${2:Col}; ++vj) {
+			std::cout << ${3:array}[vi][vj] << ", ";
+		}
+		std::cout << std::endl;
+	}
+	std::cout << std::endl;

@@ -1,0 +1,64 @@
+snippet     glog_include
+abbr        glog
+options     word
+	#include <glog/logging.h>
+
+snippet     glog_init
+abbr        glog
+options     word
+	google::InitGoogleLogging(argv[0]);
+
+#
+# log
+#
+snippet     glog_log_info
+abbr        glog
+options     word
+	LOG(INFO) << ${1:"msg"};
+
+snippet     glog_log_warning
+abbr        glog
+options     word
+	LOG(WARNING) << ${1:"msg"};
+
+snippet     glog_log_error
+abbr        glog
+options     word
+	LOG(ERROR) << ${1:"msg"};
+
+snippet     glog_log_fatal
+abbr        glog
+options     word
+	LOG(FATAL) << ${1:"msg"};
+
+snippet     glog_log_if_info
+abbr        glog
+options     word
+	LOG_IF(INFO, ${1:num_cookies > 10}) << ${2:"msg"};
+
+snippet     glog_log_if_counter_info
+abbr        glog
+options     word
+	# execute 1th, 11th
+	LOG_EVERY_N(INFO, ${1:10}) << "Got the " << google::COUNTER << "th cookie";
+
+#
+# flag
+#
+snippet     glog_flag_logtostderr
+abbr        glog
+options     word
+	FLAGS_logtostderr = 1;
+
+#
+# check
+#
+snippet     glog_check
+abbr        glog
+options     word
+	CHECK(${1:fp->Write(x) == 4}) << ${2:"Write failed!"};
+
+snippet     glog_check_notnull
+abbr        glog
+options     word
+	CHECK_NOTNULL(${1:some_ptr}) << ${2:msg};
