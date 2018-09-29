@@ -144,6 +144,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
     \ 'cygwin' : 'make -f make_cygwin.mak',
     \ 'mac' : 'make -f make_mac.mak',
     \ 'unix' : 'make -f make_unix.mak',
+    \ 'linux' : 'make -f make_unix.mak',
     \ },
   \ }
   NeoBundle 'Shougo/vimfiler.vim'
