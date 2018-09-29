@@ -1,14 +1,14 @@
 # Prompt
 local p_cdir="%B%{[35m%}[%~]%{[1;37m%}%b"$'\n'
 local p_info="${USER}"
-#直前のコマンドがエラーなら赤色
+# if previous command occurs error, print it red
 local p_mark="%B%(?,%{[35m%},%{[31m%})%(!,#,%%)%{[1;37m%}%b"
 
-#通常
+# default
 PROMPT="$p_cdir$p_info $p_mark "
-#while,for
+# while,for
 PROMPT2="%B(%_) %(!#,>)%b "
-#入力ミス
+# input error
 SPROMPT="%B%{[31m%}%r is correct? [n,y,a,e]:%{[m%}%b "
-# バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
+# if you are in a directory managed by VCS such as git, show information of VCS
 RPROMPT="%1(v|%F{green}%1v%f|) %F{cyan}%2v%{$reset_color%}"
