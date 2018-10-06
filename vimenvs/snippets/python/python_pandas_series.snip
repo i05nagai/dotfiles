@@ -2,3 +2,9 @@ snippet     pd_series_to_dataframe
 abbr        df preview
 options     word
 	series.to_frame(${1:col_name})
+
+snippet     pd_series_iter
+abbr        df preview
+options     word
+	for index, cols in ${1:sr}.iteritems():
+		${2}
