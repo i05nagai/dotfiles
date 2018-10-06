@@ -166,10 +166,15 @@ abbr        pd df
 options     word
 	${1:df}.loc[:, ${2:column}]
 
-snippet     pd_df_column_rename
+snippet     pd_df_column_rename_all
 abbr        pd df
 options     word
 	${1:df}.columns = [${2:column_name,}]
+
+snippet     pd_df_column_rename
+abbr        pd df
+options     word
+	${1:df}.rename(columns={${2:from}: ${3:to}})
 
 #
 # aggregation
@@ -179,6 +184,20 @@ abbr        abbr
 options     word
 	${1:df}.groupby([${2:columun_name}])
 
+snippet     pd_df_groupby_count
+abbr        abbr
+options     word
+	${1:df}.groupby([${2:columun_name}]).size()
+_
+snippet     pd_df_groupby_count_index_to_col
+abbr        abbr
+options     word
+	${1:df}.groupby([${2:columun_name}]).size().reset_index()
+
+snippet     pd_df_aggregate
+abbr        df aggregate
+options     word
+	${1:df}.groupby(${2:col}).agg(['count', 'min', 'max', 'mean', 'std'])
 
 snippet     pd_df_sort
 abbr        abbr
@@ -272,15 +291,12 @@ options     word
 		df[df['${3:col}'] == col].plot(ax=axes[i])
 		axes[i].set_title(str(col))
 
-snippet     pd_df_aggregate
-abbr        df aggregate
-options     word
-	${1:df}.groupby(${2:col}).agg(['count', 'min', 'max', 'mean', 'std'])
-
 snippet     pd_df_iterate_rows
 abbr        df preview
 options     word
-	for index, row in ${1:df}.iterrows():
+	for index, cols in ${1:df}.iterrows():
+		# index: int or tuple if multiindex
+		# cols: len(cols) == num column
 		${2}
 
 snippet     pd_df_iterate_row_and_col
@@ -297,3 +313,34 @@ snippet     pd_df_to_matrix
 abbr        df matrix
 options     word
 	${1:df}.values
+
+#
+# util
+#
+snippet     pd_df_round
+abbr        df
+options     word
+	${1:df['col']} = $1.round(${2:num_digit})
+
+#
+# merge
+#
+snippet     pd_df_join_inner
+abbr        df
+options     word
+	pd.merge(${1:df1}, ${2:df2}, on='${3:key}')
+
+snippet     pd_df_join_outer_left
+abbr        df
+options     word
+	pd.merge(${1:df1}, ${2:df2}, on='${3:key}', how='left')
+
+snippet     pd_df_join_outer_right
+abbr        df
+options     word
+	pd.merge(${1:df1}, ${2:df2}, on='${3:key}', how='right')
+
+snippet     pd_df_join_outer_full
+abbr        df
+options     word
+	pd.merge(${1:df1}, ${2:df2}, on='${3:key}', how='outer')
