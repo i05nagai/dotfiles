@@ -1,0 +1,146 @@
+#
+# create geography
+#
+snippet     standard_sql_gis_make_point
+abbr        standard sql
+options     word
+	ST_GEOGPOINT(${1:longitude}, ${2:latitude})
+
+snippet     standard_sql_gis_make_from_geojson
+abbr        standard sql
+options     word
+	ST_GEOGFROMGEOJSON(${1:geojson_string})
+
+snippet     standard_sql_gis_make_from_wkt
+abbr        standard sql
+options     word
+	ST_GEOGFROMTEXT(${1:wkt_string})
+
+snippet     standard_sql_gis_make_from_wkb
+abbr        standard sql
+options     word
+	ST_GEOGFROMWKB(${1:wkb_bytes})
+
+#
+# output
+#
+snippet     standard_sql_gis_to_geojson
+abbr        standard sql
+options     word
+	ST_ASGEOJSON(${1:geography_expression})
+
+snippet     standard_sql_gis_to_wkt
+abbr        standard sql
+options     word
+	ST_ASTEXT(${1:geography_expression})
+
+snippet     standard_sql_gis_to_wkb
+abbr        standard sql
+options     word
+	ST_ASBINARY(${1:geography_expression})
+
+#
+# convert geography -> geography
+#
+snippet     standard_sql_gis_make_line
+abbr        standard sql
+options     word
+	ST_MAKELINE(${1:geography1}, ${2:geography2})
+
+snippet     standard_sql_gis_make_line_from_array
+abbr        standard sql
+options     word
+	ST_MAKELINE(${1:geography_array})
+
+snippet     standard_sql_gis_make_polygon
+abbr        standard sql
+options     word
+	ST_MAKEPOLYGON(${1:geography})
+
+snippet     standard_sql_gis_make_polygon_from_array
+abbr        standard sql
+options     word
+	ST_MAKEPOLYGON(${1:geography}, ${2:geography_array})
+
+snippet     standard_sql_gis_make_boundary
+abbr        standard sql
+options     word
+	ST_BOUNDARY(${1:geography_expression})
+
+snippet     standard_sql_gis_make_centroid
+abbr        standard sql
+options     word
+	ST_CENTROID(${1:geography_expression})
+
+snippet     standard_sql_gis_make_closetpoint
+abbr        standard sql
+options     word
+	ST_CLOSESTPOINT(${1:geography1}, ${2:geography2})
+
+snippet     standard_sql_gis_make_difference
+abbr        standard sql
+options     word
+	ST_DIFFERENCE(${1:geography1}, ${2:geography2})
+
+snippet     standard_sql_gis_make_intersection
+abbr        standard sql
+options     word
+	ST_INTERSECTION(${1:geography1}, ${2:geography2})
+
+snippet     standard_sql_gis_make_union
+abbr        standard sql
+options     word
+	ST_UNION(${1:geography1}, ${2:geography2})
+
+snippet     standard_sql_gis_make_union_from_array
+abbr        standard sql
+options     word
+	ST_UNION(${1:geography_array})
+
+#
+# condition
+#
+snippet     standard_sql_gis_contain
+abbr        standard sql
+options     word
+	ST_CONTAINS(${1:geography_cointainer}, ${2:geography_containee})
+
+snippet     standard_sql_gis_within
+abbr        standard sql
+options     word
+	ST_DWITHIN(${1:point1}, ${2:point2}, ${2:distance_meter})
+
+snippet     standard_sql_gis_equal
+abbr        standard sql
+options     word
+	ST_EQUALS(${1:point1}, ${2:point2})
+
+snippet     standard_sql_gis_equal
+abbr        standard sql
+options     word
+	ST_INTERSECTS(geography_1, geography_2)
+
+snippet     standard_sql_gis_intersect_box
+abbr        standard sql
+options     word
+	ST_INTERSECTSBOX(${1:geography}, ${2:lng_min, lat_min}, ${3:lng_max, lat_max})
+
+#
+# util
+#
+snippet     standard_sql_gis_dimention
+abbr        standard sql
+options     word
+	# 0, 1, 2, or -1 if empty
+	ST_DIMENSION(${1:geography})
+
+snippet     standard_sql_gis_num_point
+abbr        standard sql
+options     word
+	ST_NUMPOINTS(${1:geography})
+
+snippet     standard_sql_gis_distance
+abbr        standard sql
+options     word
+	# return null if one of geography is NULL
+	ST_DISTANCE(${1:geography1}, ${2:geography2})
