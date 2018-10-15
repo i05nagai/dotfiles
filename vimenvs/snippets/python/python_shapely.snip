@@ -1,0 +1,46 @@
+snippet     shapely_import
+abbr        shapely
+options     word
+	import shapely
+
+#
+# make
+#
+snippet     shapely_make_point
+abbr        shapely
+options     word
+	# import shapely.geometry
+	shapely.geometry.Point(${1:x}, ${2:y})
+
+#
+# shape obj
+#
+snippet     shapely_contain
+abbr        shapely
+options     word
+	${1:obj}.contains(${2:obj2})
+
+snippet     shapely_equals
+abbr        shapely
+options     word
+	${1:obj}.equals(${2:obj2})
+
+snippet     shapely_equals_almost
+abbr        shapely
+options     word
+	${1:obj}.almost_equals(${2:obj2}, decimal=6)
+
+#
+# load
+#
+snippet     shapely_load_wkt_from_string
+abbr        shapely
+options     word
+	# import shapely.wkt
+	shapely.wkt.loads(${1:string})
+
+snippet     shapely_dump_wkt
+abbr        shapely
+options     word
+	# import shapely.wkt
+	shapely.wkt.dumps(${1:shapely})
