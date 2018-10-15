@@ -18,6 +18,11 @@ abbr        to day
 options     word
 	EXTRACT(DAY FROM ${1:date_expression})
 
+snippet     standard_sql_to_dayofweek
+abbr        standard sql
+options     word
+	EXTRACT(DAYOFWEEK FROM ${1:date_expression})
+
 snippet     standard_sql_to_year
 abbr        to day
 options     word
@@ -28,6 +33,22 @@ abbr        to month
 options     word
 	EXTRACT(MONTH FROM ${1:date_expression})
 
+#
+# condition
+#
+snippet     standard_sql_is_weekday
+abbr        standard sql
+options     word
+	EXTRACT(DAYOFWEEK FROM ${1:date_expression}) IN (2, 3, 4, 5, 6)
+
+snippet     standard_sql_is_weekend
+abbr        standard sql
+options     word
+	EXTRACT(DAYOFWEEK FROM ${1:date_expression}) IN (1, 7)
+
+#
+#
+#
 snippet     standard_sql_truncate_date_week
 abbr        truncate date week
 options     word
