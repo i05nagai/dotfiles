@@ -3,6 +3,9 @@ abbr        apache beam
 options     word
 	import apache_beam as beam
 
+#
+# do fn
+#
 snippet     beam_do_fn
 abbr        apache beam
 options     word
@@ -10,6 +13,9 @@ options     word
 	
 		def process(self, element):
 			return [len(element)]
+	
+	${2:p} = (${3:p}
+			| '${4}' >> beam.ParDo($1()))
 
 #
 # pipeline
@@ -46,7 +52,7 @@ options     word
 snippet     beam_io_read_from_text
 abbr        apache beam
 options     word
-	${1:lines} = ${2:p} | 'ReadFromText' >> beam.io.ReadFromText(${3:'path/to/input-*.csv'})
+	${1:lines} = ${2:p} | '${3:ReadFromText}' >> beam.io.ReadFromText(${4:'path/to/input-*.csv'})
 
 
 #
