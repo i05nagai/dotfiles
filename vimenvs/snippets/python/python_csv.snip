@@ -52,3 +52,12 @@ options     word
 		writer.writerow({'first_name': 'Baked', 'last_name': 'Beans'})
 		writer.writerow({'first_name': 'Lovely', 'last_name': 'Spam'})
 		writer.writerow({'first_name': 'Wonderful', 'last_name': 'Spam'})
+
+#
+#
+#
+snippet     csv_limit_change
+abbr        csv
+options     word
+	# by default, 131072 bytes?
+	csv.field_size_limit(csv.field_size_limit() * ${1:10})
