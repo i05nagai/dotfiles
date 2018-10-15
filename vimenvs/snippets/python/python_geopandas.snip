@@ -1,0 +1,16 @@
+snippet     geopandas_import
+abbr        geopandas
+options     word
+	import geopandas
+
+snippet     geopandas_readfile
+abbr        geopandas
+options     word
+	# shpaefile or geojson
+	df = geopandas.read_file(${1:url})
+
+snippet     geopandas_df_plot
+abbr        geopandas
+options     word
+	# shpaefile or geojson
+	df.plot(figsize=${1:(10, 3)})
