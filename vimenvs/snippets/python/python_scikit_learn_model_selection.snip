@@ -1,0 +1,28 @@
+snippet     sklearn_import_model_selection
+abbr        sklearn model_selection
+options     word
+	import sklearn.model_selection as model_selection
+
+#
+#
+#
+snippet     sklearn_model_selection_split_train_test
+abbr        sklearn model_selection
+options     word
+	X_train, X_test, y_train, y_test = model_selection.train_test_split(
+		${1:df_data}, ${2:df_target}, test_size=0.2, random_state=1)
+
+snippet     sklearn_model_selection_grid_search
+abbr        sklearn model_selection
+options     word
+	searcher = model_selection.GridSearchCV(
+			estimator,
+			tuned_params,
+			cv=5,
+			scoring='%s_macro' % score)
+	searcher.fit(X_train, y_train)
+	best_params = searcher.best_params_
+	means = searcher.cv_results_['mean_test_score']
+	stds = searcher.cv_results_['std_test_score']
+	y_true, y_pred = y_test, searcher.predict(X_test)
+	metrics.classification_report(y_true, y_pred)
