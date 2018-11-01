@@ -1,0 +1,63 @@
+snippet     sklearn_import_ensemble
+abbr        sklearn ensemble
+options     word
+	import sklearn.ensemble as ensemble
+
+#
+# random forest
+#
+snippet     sklearn_ensemble_random_forest
+abbr        sklearn ensemble
+options     word
+	estimator = ensemble.RandomForestClassifier(
+		n_estimators=100,
+		n_jobs=1,
+		# criterion='gini',
+		criterion='entropy',
+		max_depth=2,
+		random_state=0)
+
+snippet     sklearn_ensemble_random_forest_fit
+abbr        sklearn ensemble
+options     word
+	${1:estimator}.fit(${2:X}, ${3:y})
+
+snippet     sklearn_ensemble_random_forest_predict_proba
+abbr        sklearn ensemble
+options     word
+	${1:estimator}.predict_proba(${2:X})
+
+snippet     sklearn_ensemble_random_forest_predict
+abbr        sklearn ensemble
+options     word
+	${1:estimator}.predict_proba(${2:X})
+
+#
+# gradient boosting classifier
+#
+snippet     sklearn_ensemble_gradient_boosting_classifier_default_params
+abbr        sklearn ensemble
+options     word
+	def gradient_boosting_classifier_default_params():
+		return dict(
+			loss='deviance',
+			learning_rate=0.1,
+			n_estimators=100,
+			subsample=1.0,
+			criterion='friedman_mse',
+			min_samples_split=2,
+			min_samples_leaf=1,
+			min_weight_fraction_leaf=0.0,
+			max_depth=3,
+			min_impurity_decrease=0.0,
+			min_impurity_split=None,
+			init=None,
+			random_state=None,
+			max_features=None,
+			verbose=0,
+			max_leaf_nodes=None,
+			warm_start=False,
+			presort='auto',
+			validation_fraction=0.1,
+			n_iter_no_change=None,
+			tol=0.0001)
