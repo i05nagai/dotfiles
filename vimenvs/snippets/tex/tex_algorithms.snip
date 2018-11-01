@@ -1,0 +1,102 @@
+snippet     tex_algorithm_state
+abbr        tex algorithm
+options     word
+	\STATE ${1:text}
+
+#
+# if
+#
+snippet     tex_algorithm_if_else
+abbr        tex algorithm
+options     word
+	\IF{${1:condition}}
+		\STATE ${2:text}
+	\ELSE
+		\STATE ${3:text}
+	\ENDIF
+
+snippet     tex_algorithm_if
+abbr        tex algorithm
+options     word
+	\IF{${1:condition}}
+		\STATE ${2:text}
+	\ENDIF
+
+snippet     tex_algorithm_procedure
+abbr        tex algorithm
+options     word
+	\PROCEDURE{${1:procedure_name}}{}
+		${2}
+	\ENDPROCEDURE
+
+snippet     tex_algorithm_call
+abbr        tex algorithm
+options     word
+	\\CALL{${1:funcname}}{${2:arguments}}
+
+snippet     tex_algorithm_return
+abbr        tex algorithm
+options     word
+	\\RETURN ${1:$retval$}
+
+snippet     tex_algorithm_comment
+abbr        tex algorithm
+options     word
+	\\COMMENT{${1:line comment}}
+
+snippet     tex_algorithm_true
+abbr        tex algorithm
+options     word
+	\\TRUE
+
+snippet     tex_algorithm_false
+abbr        tex algorithm
+options     word
+	\\FALSE
+
+snippet     tex_algorithm_print
+abbr        tex algorithm
+options     word
+	\\PRINT \\texttt{${1:this is print statement}}
+
+#
+# loop
+#
+snippet     tex_algorithm_for
+abbr        tex algorithm
+options     word
+	\\FOR{${1:$j = p$ \TO $r - 1$}}
+		${2}
+	\\ENDFOR
+
+snippet     tex_algorithm_forall
+abbr        tex algorithm
+options     word
+	\FORALL{${1:$i \in \{0, 1, \cdots, n\}$}}
+		${2}
+	\ENDFOR
+
+snippet     tex_algorithm_to
+abbr        tex algorithm
+options     word
+	\\TO
+
+snippet     tex_algorithm_while
+abbr        tex algorithm
+options     word
+	\WHILE{${1:$i < n$}}
+		${2}
+	\ENDWHILE
+
+#
+# template
+#
+snippet     tex_algorithm_template
+abbr        tex algorithm
+options     word
+	\begin{algorithm}
+	\caption{${1:tilte}}
+	\begin{algorithmic}
+		${2}
+	\end{algorithmic}
+	\end{algorithm}
