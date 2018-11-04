@@ -143,10 +143,15 @@ abbr        df type datetime
 options     word
 	'datetime64[ns]'
 
-snippet     pd_df_to_datetime
-abbr        df type datetime
+snippet     pd_df_type_to_int
+abbr        abbr
 options     word
-	df['${1}'] = df.to_datetime(df['$1'], format='${2:%Y-%m-%d')
+	$1 = ${1:df}.astype('int64')
+
+snippet     pd_df_type_to_float
+abbr        abbr
+options     word
+	$1 = ${1:df}.astype('float64', copy=False)
 
 #
 # select
@@ -313,6 +318,71 @@ snippet     pd_df_to_matrix
 abbr        df matrix
 options     word
 	${1:df}.values
+
+snippet     pd_df_to_datetime_Y-m-d
+abbr        df type datetime
+options     word
+	df['${1}'] = pd.to_datetime(df['$1'], format='${2:%Y-%m-%d}')
+
+snippet     pd_df_to_datetime_y_m_d_h_m_s
+abbr        df type datetime
+options     word
+	df['${1}'] = pd.to_datetime(df['$1'], format='${2:%Y-%m-%d %H:%M:%S}')
+
+snippet     pd_df_to_datetime_y_m_d_h_m_s_f
+abbr        df type datetime
+options     word
+	df['${1}'] = pd.to_datetime(df['$1'], format='${2:%Y-%m-%d %H:%M:%S.%f}')
+
+snippet     pd_df_type_to_categorical
+abbr        df preview
+options     word
+	df['${1}'] = df['$1'].astype('category')
+
+snippet     pd_df_type_to_categorical_inplace
+abbr        df preview
+options     word
+	df['$1'].astype('category', copy=False)
+
+#
+# categorical
+#
+snippet     pd_df_categorical_count
+abbr        df preview
+options     word
+	df['${1}'].value_count()
+
+snippet     pd_df_categorical_rename
+abbr        df preview
+options     word
+	df['${1}'] = df['$1'].rename_categories({1: 'x', 2: 'y', 3: 'z'})
+
+snippet     pd_df_categorical_rename_inplace
+abbr        df preview
+options     word
+	df['$1'].rename_categories({1: 'x', 2: 'y', 3: 'z'}, inplace=True)
+
+snippet     pd_df_categorical_remove_unused_category
+abbr        df preview
+options     word
+	df['${1}'] = df['$1'].remove_unused_categories(inplace=True)
+
+snippet     pd_df_categorical_category
+abbr        df preview
+options     word
+	df['${1:column}'].values.categories
+
+#
+# create
+#
+snippet     pd_df_to_categorical
+abbr        df
+options     word
+	df['${1:group}'] = pd.cut(
+		df.value,
+		range(0, 105, 10),
+		right=False,
+		labels=labels)
 
 #
 # util
