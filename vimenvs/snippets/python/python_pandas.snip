@@ -21,12 +21,11 @@ abbr        abbr
 options     word
 	# pip install pandas-gbq
 	df = pd.read_gbq(${1:query},
-                     project_id=project_id,
-                     verbose=True,
-                     dialect='standard')
+					project_id=project_id,
+					verbose=True,
+					dialect='standard')
 
 snippet     pd_pivot_table
 abbr        df preview
 options     word
 	pd.pivot_table(df, values='D', index=['row1', 'row2'], columns=['C'], aggfunc=np.sum)
-
