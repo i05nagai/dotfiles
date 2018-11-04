@@ -1,0 +1,13 @@
+snippet     iostream_include
+abbr        iostream
+options     word
+	#include <iostream>
+
+snippet     iostream_operator
+abbr        includ
+options     word
+	std::ostream& operator<<(std::ostream &os, const ${1:Class}& target) {
+		os << ${1:target};
+		os << std::endl;
+		return os;
+	}
