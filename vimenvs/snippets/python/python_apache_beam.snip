@@ -4,6 +4,24 @@ options     word
 	import apache_beam as beam
 
 #
+#
+#
+snippet     beam_create
+abbr        apache beam
+options     word
+	${1:data} = [
+		('amy',),
+		('carl',),
+		('julia',),
+		('carl',),
+		('julia',),
+		('carl',),
+		('julia',),
+		('carl',),
+	]
+	${2:p_data} = ${3:p} | '${4:create_data}' >> beam.Create($1)
+
+#
 # do fn
 #
 snippet     beam_do_fn
