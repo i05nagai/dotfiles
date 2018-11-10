@@ -143,3 +143,11 @@ snippet     algorithm_copy_ptr
 abbr        algorithm
 options     word
 	std::copy(${1:from}, $1 + ${2}, ${2:result});
+
+#
+# equal
+#
+snippet     algorithm_equal_ptr
+abbr        algorithm
+options     word
+	std::equal(${1:data1}, $1 + ${2:size}, ${3:data2});
