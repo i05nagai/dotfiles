@@ -47,10 +47,15 @@ abbr        abbr
 options     word
 	hv.Bars((${1:label_1}, ${2:val_1}), (${3:label_2}, ${4:val_2}))
 
-snippet     hv_bar_pd_df
+snippet     hv_bar_pd_df_zip
 abbr        abbr
 options     word
 	hv.Bars(zip(${1:df}.index, $1.values))
+
+snippet     hv_bar_pd_df
+abbr        abbr
+options     word
+	hv.Bars(${1:df}, kdims=[${2:'x_axis_col_name'}], vdims=[${3:'y_axis_col_name'}])
 
 #
 # histogram
@@ -140,3 +145,19 @@ snippet     hv_layout_column
 abbr        hv
 options     word
 	${1:layout}.options().cols(${2:num_col})
+
+#
+#
+#
+snippet     hv_heatmap
+abbr        hv
+options     word
+	${1:points} = hv.HeatMap(
+		${2:df_scatter},
+		kdims=['${3:x_column}', '${3:y_column}'],
+		vdims=['${5:color_column}'],
+		label='${6:title of graph}'
+	).options(
+		tools=['hover'],
+		colorbar=True,
+		width=1000)
