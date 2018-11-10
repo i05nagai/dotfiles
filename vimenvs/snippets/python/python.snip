@@ -39,6 +39,7 @@ include python_pytest.snip
 include python_re.snip
 include python_requests.snip
 include python_scikit_image.snip
+include python_scikit_learn.snip
 include python_scipy.snip
 include python_scrapy.snip
 include python_setup_py.snip
@@ -477,3 +478,11 @@ options     word
 	import random
 	hashcode = random.getrandbits(128)
 	hex(hashcode)[2:-1]
+
+#
+# raise
+#
+snippet     raise_not_implemented_error
+abbr        raise
+options     word
+	raise NotImplementedError
