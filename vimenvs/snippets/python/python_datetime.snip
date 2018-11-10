@@ -12,6 +12,12 @@ options     head
     # https://docs.python.org/2.7/library/datetime.html#strftime-and-strptime-behavior
     ${2:date} = datetime.datetime.strptime(${1:date_string}, "%Y-%m-%d %H:%M:%S")
 
+snippet     datetime_from_string_to_datetime_microsecond
+abbr        datetime_from_string_to_datetime
+options     head
+    # https://docs.python.org/2.7/library/datetime.html#strftime-and-strptime-behavior
+    ${2:date} = datetime.datetime.strptime(${1:date_string}, "%Y-%m-%d %H:%M:%S.%f")
+
 snippet     datetime_from_datetime_to_string
 abbr        datetime_from_datetime_to_string
 options     head
