@@ -1,7 +1,7 @@
 snippet     tex_algorithm_state
 abbr        tex algorithm
 options     word
-	\STATE ${1:text}
+	\\STATE ${1:text}
 
 #
 # if
@@ -9,25 +9,25 @@ options     word
 snippet     tex_algorithm_if_else
 abbr        tex algorithm
 options     word
-	\IF{${1:condition}}
-		\STATE ${2:text}
-	\ELSE
-		\STATE ${3:text}
-	\ENDIF
+	\\IF{${1:condition}}
+		\\STATE ${2:text}
+	\\ELSE
+		\\STATE ${3:text}
+	\\ENDIF
 
 snippet     tex_algorithm_if
 abbr        tex algorithm
 options     word
-	\IF{${1:condition}}
+	\\IF{${1:condition}}
 		\STATE ${2:text}
-	\ENDIF
+	\\ENDIF
 
 snippet     tex_algorithm_procedure
 abbr        tex algorithm
 options     word
-	\PROCEDURE{${1:procedure_name}}{}
+	\\PROCEDURE{${1:procedure_name}}{}
 		${2}
-	\ENDPROCEDURE
+	\\ENDPROCEDURE
 
 snippet     tex_algorithm_call
 abbr        tex algorithm
@@ -57,32 +57,32 @@ options     word
 snippet     tex_algorithm_and
 abbr        tex algorithm
 options     word
-	\AND
+	\\AND
 
 snippet     tex_algorithm_or
 abbr        tex algorithm
 options     word
-	\OR
+	\\OR
 
 snippet     tex_algorithm_xor
 abbr        tex algorithm
 options     word
-	\XOR
+	\\XOR
 
 snippet     tex_algorithm_not
 abbr        tex algorithm
 options     word
-	\NOT
+	\\NOT
 
 snippet     tex_algorithm_ensure
 abbr        tex algorithm
 options     word
-	\ENSURE ${1}
+	\\ENSURE ${1}
 
 snippet     tex_algorithm_require
 abbr        tex algorithm
 options     word
-	\REQUIRE ${1}
+	\\REQUIRE ${1}
 
 snippet     tex_algorithm_print
 abbr        tex algorithm
@@ -124,9 +124,9 @@ options     word
 snippet     tex_algorithm_template
 abbr        tex algorithm
 options     word
-	\begin{algorithm}
-	\caption{${1:tilte}}
-	\begin{algorithmic}
+	\\begin{algorithm}
+	\\caption{${1:tilte}}
+	\\begin{algorithmic}
 		${2}
-	\end{algorithmic}
-	\end{algorithm}
+	\\end{algorithmic}
+	\\end{algorithm}
