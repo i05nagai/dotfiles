@@ -189,21 +189,26 @@ call neobundle#begin(expand('~/.vim/bundle/'))
         \ }}
   NeoBundle 'mzlogin/vim-markdown-toc'
   "restructuredText
-  NeoBundle 'Rykka/riv.vim'
+  NeoBundleLazy 'gu-fan/riv.vim', {
+        \ 'autoload' : {'filetypes' : 'rst'}
+        \ }
+  NeoBundleLazy 'gu-fan/InstantRst', {
+        \ 'autoload' : {'filetypes' : 'rst'}
+        \ }
   "C++
   NeoBundleLazy 'rhysd/unite-n3337', {
         \ 'depends' : 'Shougo/unite.vim',
         \ 'autoload' : {'filetypes' : 'cpp'}
         \ }
   "python
-  NeoBundleLazy "davidhalter/jedi-vim", {
-        \ "autoload": {
-        \   "filetypes": ["python", "python3", "djangohtml"],
-        \ },
-        \ "build": {
-        \   "mac": "",
-        \   "unix": "",
-        \ }}
+  " NeoBundleLazy "davidhalter/jedi-vim", {
+  "       \ "autoload": {
+  "       \    "filetypes": ["python", "python3", "djangohtml"],
+  "       \ },
+  "       \ "build": {
+  "       \   "mac": "git submodule update --init",
+  "       \   "unix": "",
+  "       \ }}
   NeoBundleLazy "andviro/flake8-vim", {
         \ "autoload": {
         \   "filetypes": ["python", "python3", "djangohtml"],
@@ -400,8 +405,8 @@ endif
 "---------------------------------------------------------
 " DoxygenToolkit
 "---------------------------------------------------------
-if filereadable( $HOME . "/.vim/plugin_settings/DoxygenToolkit.vim" )
-  source ~/.vim/plugin_settings/DoxygenToolkit.vim
+if filereadable( $HOME . "/.vim/plugin_settings/doxygen_toolkit.vim" )
+  source ~/.vim/plugin_settings/doxygen_toolkit.vim
 endif
 
 "---------------------------------------------------------
@@ -437,6 +442,13 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/riv.vim" )
   source ~/.vim/plugin_settings/riv.vim
+endif
+
+"---------------------------------------------------------
+" InstantRst
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/instant_rst.vim" )
+  source ~/.vim/plugin_settings/instant_rst.vim
 endif
 
 "---------------------------------------------------------
