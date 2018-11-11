@@ -1,0 +1,154 @@
+snippet     sphinx_breathe_class
+abbr        sphinx breathe
+options     word
+	.. doxygenclass:: ${1:class name}
+		:project: ...
+		:path: ...
+		:members: [...]
+		:protected-members:
+		:private-members:
+		:undoc-members:
+		:outline:
+		:no-link:
+
+snippet     sphinx_breathe_namespace
+abbr        sphinx breathe
+options     word
+	.. doxygennamespace:: ${1:namespace}
+		:project: ...
+		:path: ...
+		:content-only:
+		:outline:
+		:members:
+		:protected-members:
+		:private-members:
+		:undoc-members:
+		:no-link:
+
+snippet     sphinx_breathe_function
+abbr        sphinx breathe
+options     word
+	.. doxygenfunction:: ${1:function name}
+		:project: ${2:project_name}
+		:path: ...
+		:outline:
+		:no-link:
+
+snippet     sphinx_breathe_define
+abbr        sphinx breathe
+options     word
+	.. doxygendefine:: ${1:preprocessor_name}
+		:project: ${2:project_name}
+		:path: ...
+		:outline:
+		:no-link:
+
+snippet     sphinx_breathe_enum
+abbr        sphinx breathe
+options     word
+	.. doxygenenum:: ${1:enum name}
+		:project: ${2:project_name}
+		:path: ...
+		:outline:
+		:no-link:
+
+snippet     sphinx_breathe_enum_value
+abbr        sphinx breathe
+options     word
+	.. doxygenenumvalue:: ${1:enum value name}
+		:project: ${2:project_name}
+		:path: ...
+		:outline:
+		:no-link:
+
+snippet     sphinx_breathe_file
+abbr        sphinx breathe
+options     word
+	.. doxygenfile:: ${1:file name}
+		:project: ${2:project_name}
+		:path: ...
+		:no-link:
+
+snippet     sphinx_breathe_group
+abbr        sphinx breathe
+options     word
+	.. doxygengroup:: ${1:group name}
+		:project: ${2:project_name}
+		:path: ...
+		:content-only:
+		:outline:
+		:members:
+		:protected-members:
+		:private-members:
+		:undoc-members:
+		:no-link:
+
+snippet     sphinx_breathe_index
+abbr        sphinx breathe
+options     word
+	.. doxygenindex:: 
+		:project: ${2:project_name}
+		:path: ...
+		:outline:
+		:no-link:
+
+snippet     sphinx_breathe_auto_index
+abbr        sphinx breathe
+options     word
+	.. autodoxygenindex::
+		:project: ${2:project_name}
+		:outline:
+		:no-link:
+
+snippet     sphinx_breathe_struct
+abbr        sphinx breathe
+options     word
+	.. doxygenstruct:: ${1:struct name}
+		:project: ${2:project_name}
+		:path: ...
+		:members:
+		:protected-members:
+		:private-members:
+		:undoc-members:
+		:outline:
+		:no-link:
+
+snippet     sphinx_breathe_interface
+abbr        sphinx breathe
+options     word
+	.. doxygeninterface:: ${1:interface name}
+		:project: ${2:project_name}
+		:path: ...
+		:members:
+		:protected-members:
+		:private-members:
+		:undoc-members:
+		:outline:
+		:no-link:
+
+snippet     sphinx_breathe_typedef
+abbr        sphinx breathe
+options     word
+	.. doxygentypedef:: ${1:typedef name}
+		:project: ${2:project_name}
+		:path: ...
+		:outline:
+		:no-link:
+
+snippet     sphinx_breathe_union
+abbr        sphinx breathe
+options     word
+	.. doxygenunion:: ${1:union name}
+		:project: ${2:project_name}
+		:path: ...
+		:outline:
+		:no-link:
+
+snippet     sphinx_breathe_variable
+abbr        sphinx breathe
+options     word
+	.. doxygenvariable:: ${1:variable name}
+		:project: ${2:project_name}
+		:path: ...
+		:outline:
+		:no-link:
