@@ -1,0 +1,11 @@
+snippet     sstream_include
+abbr        sstream
+options     word
+	#include <sstream>
+
+snippet     sstream_output
+abbr        sstream
+options     word
+	std::ostringstream ${1:actual};
+	$1 << ${1:string};
+	$1.str()
