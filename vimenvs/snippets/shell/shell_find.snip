@@ -1,0 +1,9 @@
+snippet     find_file
+abbr        find
+options     word
+	find ${1:path} -name "${2:filename}"
+
+snippet     find_file_not_empty
+abbr        find
+options     word
+	find ${1:path} -name "${2:filename}" -a -not -empty
