@@ -1,0 +1,67 @@
+snippet     numeric_include
+abbr        numeric
+options     word
+	#include <numeric>
+
+#
+# iota
+#
+snippet     numeric_iota_iter
+abbr        numeric
+options     word
+	std::iota(${1:iter}.begin(), $1.end(), ${2:start_value});
+
+snippet     numeric_iota_iter_iter
+abbr        numeric
+options     word
+	std::iota(${1:iter}.begin(), $1.end(), ${2:iter2}.begin());
+
+#
+# reduce
+#
+snippet     numeric_reduce
+abbr        numeric
+options     word
+	std::reduce(${1:iter}.begin(), $1.end(), ${2:iter2}.begin());
+
+#
+# accumulate
+#
+snippet     numeric_accumulate
+abbr        numeric
+options     word
+	std::accumulate(${1:iter}.begin(), $1.end(), ${2:iter2}.begin());
+
+snippet     numeric_accumulate_multiply
+abbr        numeric
+options     word
+	// #include <functional>
+	std::accumulate(v.begin(), v.end(), 1, std::multiplies<${2:int}>());
+
+snippet     numeric_accumulate_lambda
+abbr        numeric
+options     word
+	// start with first elemenulx 
+	std::accumulate(std::next(v.begin()), v.end(), std::to_string(v[0]), [](std::string a, int b) { return a + '-' + std::to_string(b); });
+
+#
+# complex
+#
+snippet     numeric_complex
+abbr        numeric
+options     word
+	std::complex<${1:double}> ${2:z};
+
+snippet     numeric_complex_imaginary_unit
+abbr        numeric
+options     word
+	using namespace std::complex_literals;
+	1i;
+
+#
+# inner_product
+#
+snippet     numeric_inner_product_iter
+abbr        numeric
+options     word
+	std::inner_product(${1:v}.begin(), $1.end(), ${2}.begin(), ${3:initial_value});
