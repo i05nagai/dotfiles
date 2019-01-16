@@ -14,13 +14,42 @@ options     word
 		}
 	}
 
+snippet     class_constructor
+abbr        class
+options     word
+	def this(${1:n: Int}) = ${2:this(n, 1)}
+
+snippet     class_operator_add
+abbr        class
+options     word
+	def + (${1:n: Int, n: Int}) = {
+	}
+
+snippet     class_to_string
+abbr        class
+options     word
+	override def toString: String = {
+	}
+
+snippet     class_operator_equal
+abbr        class
+options     word
+	// if two objects are equal according to the equals mehtod,
+	// then calling the hashCode on each of the two object must
+	// produce the same integer results
+	override def hasCode(other: Any): Int = ${3}
+	override def equals(other: Any): other match {
+		case that: ${1} => ${2:this.x == that.x && this.y == that.y}
+		case _ => false
+	}
+
 #
 # template
 #
 snippet     class_template
 abbr        class
 options     word
-	class ${1:Name}(${2:n: Int, d: Int}) {
+	class ${1:Name[T]}(${2:private val n: Int, private val d: Int}) ${3:extends Base}{
 		// require(n > 1)
 		val a: Int = n
 		private val b: Int = d
