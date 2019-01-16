@@ -127,3 +127,35 @@ snippet     list_sort
 abbr        list
 options     word
 	${1:list}.sort("${2:, }")
+
+snippet     list_is_list
+abbr        list
+options     word
+	${1:list}.isInstanceOf[List[_]]]
+
+snippet     list_flatten
+abbr        list
+options     word
+	${1:list}.flatten
+
+snippet     list_flatmap
+abbr        list
+options     word
+	${1:list}.flatMap
+
+#
+# list mutable
+#
+snippet     list_mutable_create
+abbr        list mutable
+options     word
+	val ${1:list} = MutableList()
+
+
+#
+# zip
+#
+snippet     zip_collection_forall
+abbr        list
+options     word
+	${1:list}.zip(${2:collection}).forall(${1:e: (Double, Double = > e._1 == e._2)})
