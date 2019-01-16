@@ -1,16 +1,53 @@
+#
+# s3
+#
 snippet     terraform_aws_s3
 abbr        aws s3
 options     word
-    resource "aws_s3_bucket" "b" {
-      bucket = "my-tf-test-bucket"
-      acl    = "private"
+	resource "aws_s3_bucket" "${1}" {
+		bucket = "my-tf-test-bucket"
+		acl    = "private"
+	
+		tags {
+			Name        = "My bucket"
+			Environment = "Dev"
+		}
+	}
 
-      tags {
-        Name        = "My bucket"
-        Environment = "Dev"
-      }
-    }
+snippet     terraform_aws_s3_object
+abbr        aws s3
+options     word
+	resource "aws_s3_bucket_object" "${1}" {
+		bucket = "my-tf-test-bucket"
+		key    = "${2}"
+		source = "../sample/thumbnail/amazon_s3_event_sample.json"
+		etag   = "${md5(file("../sample/thumbnail/amazon_s3_event_sample.json"))}"
+	}
 
+snippet     terraform_aws_s3_notification
+abbr        aws s3
+options     word
+	resource "aws_s3_bucket_notification" "${1}" {
+		bucket = "{aws_s3_bucket.${2}.id}"
+		topic {
+			topic_arn     = "${aws_sns_topic.topic.arn}"
+			events        = ["s3:ObjectCreated:*"]
+			filter_suffix = ".log"
+		}
+	
+		lambda_function {
+			lambda_function_arn = "${aws_lambda_function.func.arn}"
+			events              = ["s3:ObjectCreated:*"]
+			filter_prefix       = "AWSLogs/"
+			filter_suffix       = ".log"
+		}
+	}
+
+
+
+#
+# route53
+#
 snippet     terraform_aws_route53_record_soa
 abbr        aws route53
 options     word
