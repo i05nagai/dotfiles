@@ -1,6 +1,8 @@
+include shell_awk.snip
 include shell_aws.snip
-include shell_git.snip
 include shell_date.snip
+include shell_find.snip
+include shell_git.snip
 include bash.snip
 
 #
@@ -15,6 +17,7 @@ snippet     echo_variable
 abbr        echo without newline
 options     head
 	echo '${1}'"=$1"
+
 #
 # for
 #
@@ -24,6 +27,13 @@ options     head
 	for ${1} in \${${2:array}[@]}
 	do
 		${3}
+	done
+
+snippet     for_file_in_directory
+abbr        for array
+options     head
+	for filename in $(find . -name "coverage.dat"); do
+		${2}
 	done
 
 snippet     for_array_index
@@ -183,6 +193,14 @@ options     word
 		${0}
 	fi
 
+snippet     if_command_failed
+abbr        string equal
+options     word
+	${1}
+	if [[ $? -ne 0 ]]; then
+		${2:failed}
+	fi
+
 snippet     if_command_output_contain_text
 abbr        string equal
 options     word
@@ -297,12 +315,22 @@ options     word
 		sleep 5
 	done
 
+#
 # string
+#
 snippet     string_replace
 abbr        string replace with sed
 options     word
 	echo ${1:string} | sed 's/${2:replacee}/${3:replacer}/'
 
+snippet     string_extract
+abbr        string replace with sed
+options     word
+	${4:extracted}=$(echo 'input_01.txt' | sed 's/input_\(.*\).txt/\1/')
+
+#
+#
+#
 snippet     exec_arguments
 abbr        exec args
 options     word
