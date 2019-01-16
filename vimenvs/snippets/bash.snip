@@ -142,3 +142,11 @@ snippet     bash_not
 abbr        not_equal
 options     word
 	[[ ! ( ${1} ) ]]
+
+#
+#
+#
+snippet     bash_ignore_error
+abbr        bash
+options     word
+	${1} || true
