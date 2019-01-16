@@ -3,3 +3,48 @@ abbr        flask get param
 options     word
 	# from flask import request
 	${1:var} = request.args.get('${2:query}')
+
+snippet     flask_route
+abbr        flask
+options     word
+	@app.route('${1:/}')
+	def ${2:index}():
+		return 'Index Page'
+
+snippet     flask_route
+abbr        flask
+options     word
+	@app.route('${1:/}', methods=['GET', 'POST'])
+	def ${2:index}():
+		return 'Index Page'
+
+snippet     flask_url_for_static
+abbr        flask
+options     word
+	from flask import url_for
+	url_for('static', filename='${1:style.css}')
+
+snippet     flask_render_template
+abbr        flask
+options     word
+	from flask import render_template
+	render_template('${1:hello.html}', ${2:name=name, kwargs})
+
+snippet     flask_template_main
+abbr        flask get param
+options     word
+	import flask
+	app = flask.Flask(__name__)
+	
+	
+	@app.route('/')
+	def index():
+		return 'Index Page'
+	
+	
+	def main():
+		index()
+	
+	
+	if __name__ == '__main__':
+		main()
