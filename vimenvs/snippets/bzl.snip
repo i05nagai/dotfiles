@@ -1,0 +1,34 @@
+#
+# select
+#
+snippet     bazel_select_list
+abbr        bazel
+options     word
+	select({
+		":conditionA": [valuesA],
+		":conditionB": [valuesB],
+		"//conditions:default": [valueA],
+	})
+
+snippet     bazel_select_value
+abbr        bazel
+options     word
+	select({
+		":conditionA": valuesA,
+		":conditionB": valuesB,
+		"//conditions:default": [valueA],
+	})
+
+#
+# config
+#
+snippet     bazel_config_setting_opt
+abbr        bazel
+options     word
+	config_setting(
+		name = "${1:optimized}",
+		values = {
+			"compilation_mode": "opt",
+		},
+		visibility = ["//visibility:public"],
+	)

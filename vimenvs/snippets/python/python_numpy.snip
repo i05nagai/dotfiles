@@ -17,7 +17,7 @@ snippet     np_multiply_color_matrix
 abbr        multiply color matrix
 options     word
 	# img = (W, H, RGB channel)
-    # RGB_vector_new = color_matrix * RGBvector
+	# RGB_vector_new = color_matrix * RGBvector
 	color_matrix = np.asarray([
 		[0.213 + 0.787 * s, 0.715 - 0.715 * s, 0.072 - 0.072 * s],
 		[0.213 - 0.213 * s, 0.715 + 0.285 * s, 0.072 - 0.072 * s],
@@ -69,3 +69,21 @@ snippet     np_ndarray_asarray
 abbr        numpy
 options     word
 	np.asarray(${1:obj})
+
+#
+# util
+#
+snippet     np_array_append_2d
+abbr        numpy
+options     word
+	arr1 = np.array([[${1}]])
+	arr2 = np.array([[${2}]])
+	output = np.append(arr1, arr2, axis=0)
+
+#
+# array
+#
+snippet     np_to_one_dim_from_two_dim
+abbr        numpy
+options     word
+	${1:array}.ravel()

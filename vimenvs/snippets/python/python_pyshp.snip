@@ -1,0 +1,46 @@
+snippet     pyshp_import
+abbr        pyshp
+options     word
+	import shapefile
+
+#
+# read
+#
+snippet     pyshp_read_with
+abbr        pyshp
+options     word
+	with shapefile.Reader('${1:path_to_shape}') as shp:
+		${1}
+
+snippet     pyshp_read
+abbr        pyshp
+options     word
+	shp = shapefile.Reader('${1:path_to_shape}')
+
+#
+# shape
+#
+snippet     pyshp_shape_type
+abbr        pyshp
+options     word
+	${1:shp}.shapeType
+
+snippet     pyshp_get_shape
+abbr        pyshp
+options     word
+	${1:shp}.shape(${1:index})
+
+snippet     pyshp_get_shapes
+abbr        pyshp
+options     word
+	${1:shp}.shapes()
+
+snippet     pyshp_records
+abbr        pyshp
+options     word
+	${1:shp}.records()
+
+snippet     pyshp_fields
+abbr        pyshp
+options     word
+	${1:shp}.fields

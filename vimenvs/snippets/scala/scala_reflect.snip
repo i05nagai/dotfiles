@@ -1,0 +1,30 @@
+snippet     reflect_import
+abbr        reflect
+options     word
+	import scala.reflect.ClassTag
+	import scala.reflect.classTag
+	import scala.reflect.runtime.universe.TypeTag
+	import scala.reflect.runtime.universe.typeTag
+	import scala.reflect.runtime.universe.TypeRef
+
+#
+# TypeTag
+#
+snippet     reflect_typetag
+abbr        reflect
+options     word
+	typeTag[${1:TypeName}]
+
+snippet     reflect_typetag_tpe
+abbr        reflect
+options     word
+	typeTag[${1:TypeName}].tpe
+
+#
+# ClassTag
+#
+
+
+#
+# WeakTypeTag
+#

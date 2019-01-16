@@ -1,0 +1,138 @@
+snippet     beam_import
+abbr        apache beam
+options     word
+	import apache_beam as beam
+
+#
+#
+#
+snippet     beam_create
+abbr        apache beam
+options     word
+	${1:data} = [
+		('amy',),
+		('carl',),
+		('julia',),
+		('carl',),
+		('julia',),
+		('carl',),
+		('julia',),
+		('carl',),
+	]
+	${2:p_data} = ${3:p} | '${4:create_data}' >> beam.Create($1)
+
+#
+# do fn
+#
+snippet     beam_do_fn
+abbr        apache beam
+options     word
+	class ${1:ComputeWordLengthFn}(beam.DoFn):
+	
+		def process(self, element):
+			return [len(element)]
+	
+	${2:p} = (${3:p}
+			| '${4}' >> beam.ParDo($1()))
+
+#
+# pipeline
+#
+snippet     beam_pipeline_create
+abbr        apache beam
+options     word
+	# import apache_beam.options.pipeline_options as pipeline_options
+	p = beam.Pipeline(options=pipeline_options.PipelineOptions())
+	${1}
+	result = p.run()
+	result.wait_until_finish()
+
+snippet     beam_pipeline_create_with
+abbr        apache beam
+options     word
+	# import apache_beam.options.pipeline_options as pipeline_options
+	with beam.Pipeline(options=pipeline_options.PipelineOptions()) as p:
+		${1}
+
+#
+# i/o
+#
+snippet     beam_io_write
+abbr        apache beam
+options     word
+	${1:pipe_out} = ${1:pipe_in} | 'Write' >> beam.io.WriteToText('${1:gs://some/outputData}')
+
+snippet     beam_io_write_suffix_csv
+abbr        apache beam
+options     word
+	${1:pipe_out} = ${1:pipe_in} | 'Write' >> beam.io.WriteToText('${1:gs://some/outputData}', file_name_suffix='.csv')
+
+snippet     beam_io_read_from_text
+abbr        apache beam
+options     word
+	${1:lines} = ${2:p} | '${3:ReadFromText}' >> beam.io.ReadFromText(${4:'path/to/input-*.csv'})
+
+
+#
+# test
+#
+snippet     beam_test_import
+abbr        apache beam
+options     word
+	from apache_beam.testing.util import assert_that
+	from apache_beam.testing.util import equal_to
+	rom apache_beam.testing.test_pipeline import TestPipeline
+
+snippet     beam_test_assert
+abbr        apache beam
+options     word
+	assert_that(${1:pipleline}, equal_to(${2:[1, 2, 3]}))
+	beam.io.WriteToText('gs://some/outputData')
+
+#
+# combine
+#
+snippet     beam_combine
+abbr        apache beam
+options     word
+	def bounded_sum(values, bound=500):
+		return min(sum(values), bound)
+	${1:p_o} = (${2:p_i}
+				| '${3:id}' >> beam.CombineGlobally(bounded_sum))
+
+snippet     beam_combine_func
+abbr        apache beam
+options     word
+	class AverageFn(beam.CombineFn):
+	
+		def create_accumulator(self):
+			# (sum_value, count_elem)
+			return (0.0, 0)
+	
+		def add_input(self, sum_count, input):
+			# return an accumator
+			(sum, count) = sum_count
+			return sum + input, count + 1
+	
+		def merge_accumulators(self, accumulators):
+			# return merged accumulator
+			sums, counts = zip(*accumulators)
+			return sum(sums), sum(counts)
+	
+		def extract_output(self, sum_count):
+			# extract outputs from merged accumator
+			(sum, count) = sum_count
+			return sum / count if count else float('NaN')
+
+#
+# flatten
+#
+snippet     beam_flatten
+abbr        apache beam
+options     word
+	${1:pipe} = ((${2:p1, p2, p3}),
+					| '${3:id}' >> beam.Flatten())
+
+#
+# partition
+#

@@ -1,4 +1,39 @@
 snippet     pd_series_to_dataframe
-abbr        df preview
+abbr        df
 options     word
 	series.to_frame(${1:col_name})
+
+snippet     pd_series_iter
+abbr        df
+options     word
+	for index, cols in ${1:sr}.iteritems():
+		${2}
+
+#
+#
+#
+snippet     pd_series_sort_descending
+abbr        df
+options     word
+	${1:series}.sort_values()
+
+snippet     pd_series_sort_ascending
+abbr        df
+options     word
+	${1:series}.sort_values(ascending=True)
+
+#
+#
+#
+snippet     pd_series_apply
+abbr        df
+options     word
+	${1:series}.apply(func=${1})
+
+#
+# create
+#
+snippet     pd_series_create
+abbr        df
+options     word
+	pd.Series(data=${1}, index=None)

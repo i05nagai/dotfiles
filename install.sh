@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Variables
 PATTERN_LIG="^(lg|linux-gui)$"    # linux-gui
 PATTERN_LIS="^l(c|inux-cui)$"     # linux-cui
@@ -44,14 +46,16 @@ LINK_OSX_FROM_TO=(
 "envs/osx/.bin" ".bin"
 "envs/osx/.tmux.conf.env" ".tmux.conf.env"
 "envs/osx/.zshrc.env" ".zshrc.env"
+"vscode/Code" "Library/Application Support/Code"
+"envs/osx/chunkwmrc" ".chunkwmrc"
 )
 
 
 
 function link_from_to() {
-  local link_from_to=($@)
+  local link_from_to=("$@")
   for ((i=0;i<${#link_from_to[@]};i=i+2)); do
-    ln_file_from_to ${link_from_to[i]} ${link_from_to[i+1]}
+    ln_file_from_to "${link_from_to[i]}" "${link_from_to[i+1]}"
   done
 }
 
@@ -89,7 +93,7 @@ function ln_file_from_to() {
 #f: remove existing destination files.
 #s: make symbolic links instead of hard links.
 #v: verbose. print name of each file before linking.
-  ln -fnsv `pwd`/$1 $HOME/$2
+  ln -fnsv `pwd`/$1 "$HOME/$2"
 }
 
 function ln_env_file() {
@@ -129,17 +133,17 @@ function env_install() {
     "lig" )
       echo "Linux GUI"
       # for file in ${env_path}.*; do ln_env_file $file; done
-      link_from_to ${LINK_LIG_FROM_TO[@]}
+      link_from_to "${LINK_LIG_FROM_TO[@]}"
       ;;
     "osx" )
       echo "OSX"
       # for file in ${env_path}.*; do ln_env_file $file; done
-      link_from_to ${LINK_OSX_FROM_TO[@]}
+      link_from_to "${LINK_OSX_FROM_TO[@]}"
       ;;
     "win" )
       echo "Windows"
       for file in ${env_path}.*; do ln_env_file $file; done
-      link_from_to ${LINK_WIN_FROM_TO[@]}
+      link_from_to "${LINK_WIN_FROM_TO[@]}"
       ;;
     * )
       echo "Invalid env_type"

@@ -1,0 +1,27 @@
+snippet     sklearn_import_preprocessing
+abbr        sklearn preprocessing
+options     word
+	import sklearn.preprocessing as preprocessing
+
+snippet     sklearn_preprocessing_scale
+abbr        sklearn preprocessing
+options     word
+	scaler = preprocessing.StandardScaler().fit(X_train)
+	X_train_scaled = scaler.transform(X_train)
+	X_test_scaled = scaler.transform(X_test)
+
+snippet     sklearn_preprocessing_to_categorical
+abbr        sklearn preprocessing
+options     word
+	encoder = preprocessing.OrdinalEncoder()
+	encoder.fit(X)
+	X_encoded = encoder.transform(X)
+
+snippet     sklearn_preprocessing_to_categorical_onehot
+abbr        sklearn preprocessing
+options     word
+	encoder = preprocessing.OneHotEncoder(
+		categories=[${1:genders, locations}],
+		handle_unknown='ignore')
+	encoder.fit(X)
+	X_encoded = encoder.transform(X)

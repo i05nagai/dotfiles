@@ -8,10 +8,13 @@ include cpp_cmath.snip
 include cpp_cppunit.snip
 include cpp_cstdlib.snip
 include cpp_cstring.snip
+include cpp_ctime.snip
 include cpp_fstream.snip
 include cpp_glog.snip
 include cpp_gmock.snip
 include cpp_gtest.snip
+include cpp_initializer_list.snip
+include cpp_iostream.snip
 include cpp_limits.snip
 include cpp_map.snip
 include cpp_preprocessor.snip
@@ -19,6 +22,7 @@ include cpp_print.snip
 include cpp_queue.snip
 include cpp_random.snip
 include cpp_set.snip
+include cpp_sstream.snip
 include cpp_stack.snip
 include cpp_utility.snip
 include cpp_vector.snip
@@ -26,6 +30,8 @@ include ../doxygen.snip
 include ../mathjax.snip
 
 # include
+#
+#
 delete      include
 snippet     include
 abbr        includ
@@ -241,6 +247,13 @@ options     word
 #
 # template
 #
+snippet     template_swap
+abbr        template
+options     word
+	void swap(${1:IntVector}& v1, ${2:IntVector}& v2) {
+		${3:v1.swap(v2)};
+	}
+
 snippet     template_namespace_class
 abbr        simple struct
 options     word

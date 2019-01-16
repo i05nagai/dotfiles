@@ -1,0 +1,16 @@
+snippet     tf_import
+abbr        tf
+options     word
+	import tensorflow as tf
+
+snippet     tf_op_constant
+abbr        tf
+options     word
+	tf.constant(${1})
+
+snippet     tf_op_gradient
+abbr        tf
+options     word
+	a = tf.constant(0.)
+	b = 2 * a
+	g = tf.gradients(a + b, [a, b], stop_gradients=[a, b])

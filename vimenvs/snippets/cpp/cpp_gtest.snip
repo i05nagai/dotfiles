@@ -135,13 +135,13 @@ options     word
 snippet     gtest_assert_str_equal
 abbr        ASSERT_STREQ
 options     word
-	ASSERT_STREQ(${1:expected}, ${2:actual});
+	ASSERT_STREQ(${1:expected}.c_str(), ${2:actual}.c_str());
 	${0}
 
 snippet     gtest_assert_str_not_equal
 abbr        ASSERT_STRNE
 options     word
-	ASSERT_STRNE(${1:expected}, ${2:actual});
+	ASSERT_STRNE(${1:expected.c_str()}, ${2:actual.c_str()});
 	${0}
 
 snippet     gtest_assert_str_equal_ignore_case
@@ -162,13 +162,13 @@ options     word
 snippet     gtest_expect_str_equal
 abbr        EXPECT_STREQ
 options     word
-	EXPECT_STREQ(${1:expected}, ${2:actual});
+	EXPECT_STREQ(${1:expected.c_str()}, ${2:actual.c_str()});
 	${0}
 
 snippet     gtest_expect_str_not_equal
 abbr        EXPECT_STRNE
 options     word
-	EXPECT_STRNE(${1:expected}, ${2:actual});
+	EXPECT_STRNE(${1:expected.c_str()}, ${2:actual.c_str()});
 	${0}
 
 snippet     gtest_expect_str_equal_ignore_case

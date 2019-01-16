@@ -25,6 +25,7 @@ brew cask install grammarly
 brew cask install google-chrome
 brew cask install mendeley
 brew cask install google-japanese-ime
+brew cask install skitch
 
 # terrafrom
 # scala

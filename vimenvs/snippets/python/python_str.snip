@@ -1,0 +1,17 @@
+#
+# str
+#
+snippet     bytestring_to_str
+abbr        str
+options     word
+	${1:var}.decode('${2:utf-8}')
+
+snippet     str_to_bytestring
+abbr        str
+options     word
+	${1:var}.encode('${2:utf-8}')
+
+snippet     str_replace
+abbr        str
+options     word
+	${1:var}.replace('${2:replacee}', '${3:replacer}')

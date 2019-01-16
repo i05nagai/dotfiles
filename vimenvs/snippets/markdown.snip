@@ -44,19 +44,20 @@ options     word
 snippet     image_html_center
 abbr        image at center by html
 options     word
-    <div style="text-align: center">
-           <img src="${1:path/to/image}">
-    </div>${0}
+	<div style="text-align: center">
+		<img src="${1:path/to/image}">
+	</div>${0}
 
 snippet     link_to_section
 abbr        link to section
 options     word
-    <a href="#${1:anchor}">${2}</a>
+	<a href="#${1:anchor}">${2}</a>
 
 snippet     link_to_another_doc
 abbr        link to another doc
 options     word
-    <a href="{{ site.baseurl }}/${1:url}">${2}</a>
+	<a href="{{ site.baseurl }}/${1:url}">${2}</a>
+
 
 #
 # template
@@ -64,22 +65,22 @@ options     word
 snippet     template_doc
 abbr        template docs
 options     word
-    ## ${1:title}
-    ${2}
+	## ${1:title}
+		${2}
+	
+		## Reference
 
-    ## Reference
-
-snippet     template_doc_with_jekyll_header
+snippet     template_doc_jekyll_header
 abbr        template docs
 options     word
-    ---
-    title: ${1:title}
-    ---
-
-    ## $1
-    ${2}
-
-    ## Reference
+	---
+	title: ${1:title}
+	---
+	
+	## $1
+	${2}
+	
+	## Reference
 
 snippet     template_doc_book_chapter_section
 abbr        template docs
@@ -98,18 +99,6 @@ snippet     template_docs
 abbr        template docs
 options     word
 	## ${1:title}
-	${2}
-	
-	## Reference
-
-snippet     template_doc_jekyll_header
-abbr        template docs
-options     word
-	---
-	title: ${1:title}
-	---
-	
-	## $1
 	${2}
 	
 	## Reference
@@ -134,32 +123,32 @@ options     word
 
 snippet template_readme
 abbr git README.md
-    ${1:Name}
-    ====
-    
-    Overview
-    
-    ## Description
-    
-    ## Demo
-    
-    ## VS. 
-    
-    ## Requirement
-    
-    ## Usage
-    
-    ## Install
-    
-    ## Contribution
-    
-    ## Licence
-    
-    [MIT](https://opensource.org/licenses/MIT)
-    
-    ## Author
-    
-    [i05nagai](https://github.com/i05nagai)
+	${1:Name}
+	====
+	
+	Overview
+	
+	## Description
+	
+	## Demo
+	
+	## VS.
+	
+	## Requirement
+	
+	## Usage
+	
+	## Install
+	
+	## Contribution
+	
+	## Licence
+	
+	[MIT](https://opensource.org/licenses/MIT)
+	
+	## Author
+	
+	[i05nagai](https://github.com/i05nagai)
 
 snippet     template_math
 abbr        math template
@@ -177,3 +166,35 @@ options     head
 	## Algorithm
 	
 	## Reference
+
+snippet     template_algorithm
+abbr        algorithm
+options     word
+	<p class="pseudocode-js">
+	<pre class="pseudocode-js-code" style="display:none">
+		\begin{algorithm}
+		\caption{${1:title}}
+		\begin{algorithmic}
+		\PROCEDURE{Quicksort}{$A, p, r$}
+			\IF{$p < r$} 
+				\STATE $q = $ \CALL{Partition}{$A, p, r$}
+				\STATE \CALL{Quicksort}{$A, p, q - 1$}
+				\STATE \CALL{Quicksort}{$A, q + 1, r$}
+			\ENDIF
+		\ENDPROCEDURE
+		\PROCEDURE{Partition}{$A, p, r$}
+			\STATE $x = A[r]$
+			\STATE $i = p - 1$
+			\FOR{$j = p$ \TO $r - 1$}
+				\IF{$A[j] < x$}
+					\STATE $i = i + 1$
+					\STATE exchange
+					$A[i]$ with     $A[j]$
+				\ENDIF
+				\STATE exchange $A[i]$ with $A[r]$
+			\ENDFOR
+		\ENDPROCEDURE
+		\end{algorithmic}
+		\end{algorithm}
+	</pre>
+	</p>

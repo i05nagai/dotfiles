@@ -1,6 +1,8 @@
 include python_abc.snip
+include python_apache_beam.snip
 include python_argparse.snip
 include python_beautifulsoup.snip
+include python_bokeh.snip
 include python_boto3.snip
 include python_click.snip
 include python_csv.snip
@@ -9,6 +11,7 @@ include python_datetime.snip
 include python_faker.snip
 include python_flask.snip
 include python_functools.snip
+include python_geopandas.snip
 include python_google_cloud_bigquery.snip
 include python_google_cloud_storage.snip
 include python_gspread.snip
@@ -29,18 +32,22 @@ include python_path.snip
 include python_pillow.snip
 include python_py4j.snip
 include python_py_github.snip
+include python_pyshp.snip
 include python_pyspark.snip
 include python_pystache.snip
 include python_pytest.snip
 include python_re.snip
 include python_requests.snip
 include python_scikit_image.snip
+include python_scikit_learn.snip
 include python_scipy.snip
 include python_scrapy.snip
 include python_setup_py.snip
+include python_shapely.snip
 include python_sklearn.snip
 include python_sqlalchemy.snip
 include python_sqlite.snip
+include python_str.snip
 include python_subprocess.snip
 include python_tensorflow.snip
 include python_typing.snip
@@ -214,21 +221,23 @@ snippet unicode
 snippet try_except
 	try:
 		${1}
-	except ${2:Exception}, ${3:e}:
+	except ${2:Exception} as ${3:e}:
+		${4:print('Custom error message')}
 		${0:raise $3}
 
 snippet try_except_else
 	try:
 		${1}
-	except ${2:Exception}, ${3:e}:
-		${4:raise $3}
+	except ${2:Exception} as ${3:e}:
+		${4:print('Custom error message')}
+		${5:raise $3}
 	else:
 		${0}
 
 snippet try_except_finally
 	try:
 		${1}
-	except ${2:Exception}, ${3:e}:
+	except ${2:Exception} as ${3:e}:
 		${4:raise $3}
 	finally:
 		${0}
@@ -236,7 +245,7 @@ snippet try_except_finally
 snippet try_except_else_finally
 	try:
 		${1}
-	except ${2:Exception}, ${3:e}:
+	except ${2:Exception} as ${3:e}:
 		${4:raise $3}
 	else:
 		${5}
@@ -418,18 +427,6 @@ abbr        get function name
 options     word
     ${1:function}.__name__
 
-#
-# str
-#
-snippet     bytestring_to_str
-abbr        get function name
-options     word
-	${1:var}.decode('${2:utf-8}')
-
-snippet     str_to_bytestring
-abbr        get function name
-options     word
-	${1:var}.encode('${2:utf-8}')
 
 snippet     decorator
 abbr        get function name
@@ -481,3 +478,11 @@ options     word
 	import random
 	hashcode = random.getrandbits(128)
 	hex(hashcode)[2:-1]
+
+#
+# raise
+#
+snippet     raise_not_implemented_error
+abbr        raise
+options     word
+	raise NotImplementedError

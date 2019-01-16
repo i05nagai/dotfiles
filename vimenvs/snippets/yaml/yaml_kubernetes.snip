@@ -46,16 +46,6 @@ options     head
 	data:
 		${2:key}: ${3:value}
 
-snippet     kubernetes_template_config_map
-abbr        multiple commands
-options     head
-	apiVersion: v1
-	kind: ConfigMap
-	metadata:
-		name: ${1:name-config-map}
-	data:
-		${2:key}: ${3:value}
-
 snippet     kubernetes_template_secret
 abbr        multiple commands
 options     word

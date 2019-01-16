@@ -1,0 +1,38 @@
+#
+# linear_model
+#
+snippet     sklearn_import_linear_model
+abbr        sklearn linear_model
+options     word
+	import sklearn.linear_model as linear_model
+
+snippet     sklearn_linear_model_fit
+abbr        sklearn linear_model
+options     word
+	${1:estimator}.fit(${2:X_train}, ${3:y_train})
+
+snippet     sklearn_linear_model_logistic_regression_multiclass
+abbr        sklearn linear_model
+options     word
+	estimator = linear_model.LogisticRegression(
+		random_state=0,
+		# solver='lbfgs',
+		solver='newton-cg',
+		max_iter=200,
+		verbose=0,
+		multi_class='multinomial')
+
+snippet     sklearn_linear_model_logistic_regression_predict
+abbr        sklearn linear_model
+options     word
+	${1:y_pred} = estimator.predict(${2:X_test})
+
+snippet     sklearn_linear_model_logistic_regression_coeff
+abbr        sklearn linear_model
+options     word
+	${1:estimator}.coef_
+
+snippet     sklearn_linear_model_logistic_regression_num_iter
+abbr        sklearn linear_model
+options     word
+	${1:estimator}.n_iter_

@@ -1,6 +1,8 @@
+include shell_awk.snip
 include shell_aws.snip
-include shell_git.snip
 include shell_date.snip
+include shell_find.snip
+include shell_git.snip
 include bash.snip
 
 #
@@ -17,109 +19,6 @@ options     head
 	echo '${1}'"=$1"
 
 #
-# template
-#
-snippet     template_usage
-abbr        usage
-	usage() {
-	  cat <<EOF
-	${1:basename} is a tool for ...
-	
-	Usage:
-	    $1 [command] [<options>]
-	
-	Options:
-	    --version, -v     print $1 version
-	    --help, -h        print this
-	EOF
-	}
-
-snippet     template_version
-abbr        version
-	version() {
-	  echo "basename${0} version 0.0.1"
-	}    
-	
-snippet     template_subcommand
-abbr        subcommand
-	case \${1} in
-	  start)
-	    start
-	  ;;
-	
-	  stop)
-	    stop
-	  ;;
-	
-	  restart)
-	    start && stop
-	  ;;
-	
-	  help|--help|-h)
-	    usage
-	  ;;
-	
-	  version|--version|-v)
-	    version
-	  ;;
-	  
-	  *)
-	    echo "[ERROR] Invalid subcommand '\${1}'"
-	    usage
-	    exit 1
-	  ;;
-	esac
-
-
-snippet     template_option
-abbr        option
-	while [ $# -gt 0 ];
-	do
-	  case \${1} in
-	    --debug|-d)
-	      set -x
-	    ;;
-	
-	    --help|-h)
-	      usage
-	      exit 0
-	    ;;
-	
-	    --some-command|-s)
-	      shift
-	      var=$1
-	    ;;
-	
-	    --version|-v)
-	      version
-	      exit 0
-	    ;;
-	
-	    *)
-	      echo "[ERROR] Invalid option '\${1}'"
-	      usage
-	      exit 1
-	    ;;
-	  esac
-	  shift
-	done
-
-snippet     template_error_func
-abbr        error function
-options     head
-	err() {
-	  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@" >&2
-	}
-
-snippet     template_check_command_status
-abbr        error function
-options     head
-	ret=$?
-	if [ $ret -ne 0 ]; then
-		exit $ret
-	fi
-
-#
 # for
 #
 snippet     for_array
@@ -128,6 +27,13 @@ options     head
 	for ${1} in \${${2:array}[@]}
 	do
 		${3}
+	done
+
+snippet     for_file_in_directory
+abbr        for array
+options     head
+	for filename in $(find . -name "coverage.dat"); do
+		${2}
 	done
 
 snippet     for_array_index
@@ -190,14 +96,14 @@ options     word
 snippet     if_elif
 abbr        if then elif then else
 options     word
-	if [ ${1} ]; then
-	elif [ ${2} ]; then
+	if [[ ${1} ]]; then
+	elif [[ ${2} ]]; then
 	fi
 
 snippet     if_exit_if_error
 abbr        exit if error
 options     head
-	if [ $? -ne 0 ]; then
+	if [[ $? -ne 0 ]]; then
 		echo oops!
 		exit 1
 	fi
@@ -205,28 +111,28 @@ options     head
 snippet     if_string_contain
 abbr        exit if error
 options     head
-	if [ \`echo ${1:string} | grep '${2:match}'\` ]; then
+	if [[ \`echo ${1:string} | grep '${2:match}'\` ]]; then
 		${0}
 	fi
 
 snippet     if_string_equal
 abbr        string equal
 options     word
-	if [ "${1:${var}}" = "${2:text}" ]; then
+	if [[ "${1:${var}}" = "${2:text}" ]]; then
 	  ${0}
 	fi
 
 snippet     if_string_empty
 abbr        string equal
 options     word
-	if [ -z "${1:${var}}" ]; then
+	if [[ -z "${1:${var}}" ]]; then
 		${0}
 	fi
 
 snippet     if_string_not_empty
 abbr        string equal
 options     word
-	if [ ! -z "${1:${var}}" ]; then
+	if [[ ! -z "${1:${var}}" ]]; then
 		${0}
 	fi
 
@@ -254,21 +160,21 @@ options     head
 snippet     if_is_directory
 abbr        if path is directory
 options     head
-	if [ -d ${1:path} ]; then
+	if [[ -d ${1:path} ]]; then
 		${0}
 	fi
 
 snippet     if_variable_empty
 abbr        if variable is empty
 options     head
-	if [ -z \${${1:variable}+x} ]; then
+	if [[ -z \${${1:variable}+x} ]]; then
 		${0}
 	fi
 
 snippet     if_variable_not_empty
 abbr        if variable is empty
 options     head
-	if [ ! -z \${${1:variable}+x} ]; then
+	if [[ ! -z \${${1:variable}+x} ]]; then
 		${0}
 	fi
 
@@ -287,6 +193,14 @@ options     word
 		${0}
 	fi
 
+snippet     if_command_failed
+abbr        string equal
+options     word
+	${1}
+	if [[ $? -ne 0 ]]; then
+		${2:failed}
+	fi
+
 snippet     if_command_output_contain_text
 abbr        string equal
 options     word
@@ -301,17 +215,24 @@ options     word
 		${0}
 	fi
 
-snippet     if_equal_integer
+snippet     if_integer_equal
 abbr        if commands exists
 options     word
-	if [ ${1} -eq ${2}]; then
+	if [[ ${1} -eq ${2}]]; then
 		${0}
 	fi
 
-snippet     if_not_equal_integer
+snippet     if_integer_equal_not
 abbr        if commands exists
 options     word
-	if [ ${1} -ne ${2} ]; then
+	if [[ ${1} -ne ${2} ]]; then
+		${0}
+	fi
+
+snippet     if_integer_greater_than
+abbr        if commands exists
+options     word
+	if [[ ${1} -gt ${2} ]]; then
 		${0}
 	fi
 
@@ -319,8 +240,8 @@ snippet     if_in_not
 abbr        if commands exists
 alias       if_variable_not_one_of
 options     word
-	if [ ${1:"${VAR}"} != ${2} ] \
-		&& [ $1 != ${3} ]; then
+	if [[ ${1:"${VAR}"} != ${2} ]] \
+		&& [[ $1 != ${3} ]]; then
 		${0}
 	fi
 
@@ -394,12 +315,22 @@ options     word
 		sleep 5
 	done
 
+#
 # string
+#
 snippet     string_replace
 abbr        string replace with sed
 options     word
 	echo ${1:string} | sed 's/${2:replacee}/${3:replacer}/'
 
+snippet     string_extract
+abbr        string replace with sed
+options     word
+	${4:extracted}=$(echo 'input_01.txt' | sed 's/input_\(.*\).txt/\1/')
+
+#
+#
+#
 snippet     exec_arguments
 abbr        exec args
 options     word
@@ -448,3 +379,108 @@ snippet     exit_command_not_found
 abbr        exec args
 options     word
 	exit 127
+
+
+#
+# template
+#
+snippet     template_usage
+abbr        usage
+	usage() {
+	  cat <<EOF
+	${1:basename} is a tool for ...
+	
+	Usage:
+	    $1 [command] [<options>]
+	
+	Options:
+	    --version, -v     print $1 version
+	    --help, -h        print this
+	EOF
+	}
+
+snippet     template_version
+abbr        version
+	version() {
+		echo "basename${0} version 0.0.1"
+	}
+	
+snippet     template_subcommand
+abbr        subcommand
+	case \${1} in
+		start)
+			start
+		;;
+	
+		stop)
+			stop
+		;;
+	
+		restart)
+			start && stop
+		;;
+	
+		help|--help|-h)
+			usage
+		;;
+	
+		version|--version|-v)
+			version
+		;;
+		
+		*)
+			echo "[ERROR] Invalid subcommand '\${1}'"
+			usage
+			exit 1
+		;;
+	esac
+
+
+snippet     template_option
+abbr        option
+	while [ $# -gt 0 ];
+	do
+		case \${1} in
+			--debug|-d)
+				set -x
+			;;
+	
+			--help|-h)
+				usage
+				exit 0
+			;;
+	
+			--some-command|-s)
+				shift || true  # in case of set -e
+				var=$1
+			;;
+	
+			--version|-v)
+				version
+				exit 0
+			;;
+	
+			*)
+				echo "[ERROR] Invalid option '\${1}'"
+				usage
+				exit 1
+			;;
+		esac
+		shift || true  # in case of set -e
+	done
+
+snippet     template_error_func
+abbr        error function
+options     head
+	err() {
+		echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@" >&2
+	}
+
+snippet     template_check_command_status
+abbr        error function
+options     head
+	ret=$?
+	if [ $ret -ne 0 ]; then
+		exit $ret
+	fi
+

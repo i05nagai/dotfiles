@@ -1,0 +1,14 @@
+snippet     seq_from_0_to
+abbr        seq
+options     word
+	(${1:0} to ${2})
+
+snippet     seq_foreach
+abbr        seq
+options     word
+	(${1:0} to ${2}).foreach(${3:(x:A) => do})
+
+snippet     seq_map
+abbr        seq
+options     word
+	(${1:0} to ${2}).map((x) => ${3:data.dim(x)})
