@@ -2,10 +2,12 @@ include scala_class.snip
 include scala_scalatest.snip
 include scala_collection.snip
 include scala_package.snip
+include scala_reflect.snip
+include scala_seq.snip
 include scala_trait.snip
 
 #
-#
+# lambda expression
 #
 snippet     func_anonymous
 abbr        func
@@ -22,6 +24,13 @@ abbr        func
 options     word
 	def ${1:f}(${2:x: Int}): ${3:ReturnType} = {
 		${3:x*x}
+	}
+
+snippet     func_package
+abbr        func
+options     word
+	package object ${1:yourpackage} {
+		def function(x: Int) = x*x
 	}
 
 #
@@ -48,7 +57,7 @@ options     word
 #
 # for
 #
-snippet     for
+snippet     for_from_to_index
 abbr        for
 options     word
 	for (i <- ${1:1} to ${2:5}) {
@@ -141,6 +150,39 @@ options     word
 		def add(n: Int) {
 		}
 	}
+
+#
+# pattern match
+#
+snippet     pattern_match
+abbr        object
+options     word
+	${1:selector} match {
+		case ${1:BinOp(op, left, right)} => ${2:do}
+		case _ => ${3:}
+	}
+
+snippet     pattern_match_case_sequence
+abbr        object
+options     word
+	case ${1:List(0, _*)} => ${2:do}
+
+snippet     pattern_match_case_tuple
+abbr        object
+options     word
+	case ${1:(a, b, c)} => ${2:do}
+
+snippet     pattern_match_case_typed_pattern
+abbr        object
+options     word
+	case ${1:s: String} => ${2:s.length}
+	case ${3:m: Map[_, _]} => ${4:m.size}
+	case _ => -1
+
+snippet     pattern_match_case_default
+abbr        object
+options     word
+	case _ => ${1}
 
 #
 # tempalte
