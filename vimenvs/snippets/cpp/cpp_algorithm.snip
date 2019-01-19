@@ -151,3 +151,12 @@ snippet     algorithm_equal_ptr
 abbr        algorithm
 options     word
 	std::equal(${1:data1}, $1 + ${2:size}, ${3:data2});
+
+#
+# shuffle
+#
+snippet     algorithm_shuffle_iter
+abbr        algorithm
+options     word
+	// #include <random>
+	std::shuffle(${1:v}.begin(), $1.end(), std::mt19937{std::random_device{}()});
