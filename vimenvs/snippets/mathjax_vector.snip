@@ -1,4 +1,5 @@
 snippet     vector
+options     word
 abbr        vector
 	\\left(
 		\\begin{array}{c}
@@ -11,9 +12,35 @@ abbr        vector
 	\\right)
 	${0}
 
+snippet     vector_row
+options     word
+abbr        vector
+	\\left(
+		\\begin{array}{ccc}
+			${1:first}
+			&
+			\\cdots 
+			&
+			${2:last}
+		\\end{array}
+	\\right)
+
+snippet     vector_row_transpose
+options     word
+abbr        vector
+	\\left(
+		\\begin{array}{ccc}
+			${1:first}
+			&
+			\\cdots 
+			&
+			${2:last}
+		\\end{array}
+	\\right)^{\\mathrm{T}}
+
 snippet     def_unit_vector
 abbr        unit vector
-options     head
+options     word
 	\\mathbf{e}_{${1}}
 	:=
 	(0, \\ldots, 0, \\stackrel{$1}{\\stackrel{\\vee}{1}}, 0, 0)${0}
