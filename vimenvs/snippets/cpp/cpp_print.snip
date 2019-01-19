@@ -2,6 +2,11 @@ snippet     print
 options     word
 	std::cout << ${0:TARGET} << std::endl;
 
+snippet     print_type
+options     word
+	// #include <typeinfo>
+	std::cout << typeid(${1}).name() << std::endl;
+
 snippet     print_variable
 options     word
 	std::cout << "${1:var}: " << $1 << std::endl;
@@ -27,6 +32,13 @@ snippet     print_vector
 abbr        print
 	for (int vi = 0; vi < ${1:vector}.size(); ++vi) {
 		std::cout << $1[vi] << ", ";
+	}
+	std::cout << std::endl;
+
+snippet     print_map
+abbr        print
+	for (auto p : m) {
+		std::cout << "(key, val): " << p.first << ", " << p.second << std::endl;
 	}
 	std::cout << std::endl;
 
