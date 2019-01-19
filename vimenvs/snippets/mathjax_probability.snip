@@ -16,6 +16,11 @@ abbr        probability space
 options     word
 	\\mathcal{F}
 
+snippet     borrel_sigma_algebra_of_continuous_function
+abbr        probability space
+options     word
+	\\mathcal{B}(C[0, \\infty))
+
 #
 # expectation
 #
@@ -95,6 +100,7 @@ options     word
 
 # variance
 snippet     variance
+options     word
 abbr        mathrm{Var}[ ]
 	\\mathrm{Var}
 	\\left[
@@ -102,6 +108,7 @@ abbr        mathrm{Var}[ ]
 	\\right]
 
 snippet     variance_lower
+options     word
 abbr        mathrm{Var}[ ]
 	\\mathrm{Var}_{${1}}
 	\\left[
@@ -109,6 +116,7 @@ abbr        mathrm{Var}[ ]
 	\\right]
 
 snippet     variance_upper
+options     word
 abbr        mathrm{Var}[ ]
 	\\mathrm{Var}^{${1}}
 	\\left[
@@ -116,6 +124,7 @@ abbr        mathrm{Var}[ ]
 	\\right]
 
 snippet     variance_lower_upper
+options     word
 abbr        mathrm{Var}[ ]
 	\\mathrm{Var}_{${1}}^{${2}}
 	\\left[
@@ -123,31 +132,38 @@ abbr        mathrm{Var}[ ]
 	\\right]
 
 snippet     variance_inline
+options     word
 abbr        mathrm{Var}[ ]
 	\\mathrm{Var}[${1}]
 
 snippet     variance_lower_inline
+options     word
 abbr        mathrm{Var}[ ]
 	\\mathrm{Var}_{${1}}[${2}]
 
 snippet     variance_upper_inline
+options     word
 abbr        mathrm{Var}[ ]
 	\\mathrm{Var}^{${1}}[${2}]
 
 snippet     variance_lower_upper_inline
+options     word
 abbr        mathrm{Var}[ ]
 	\\mathrm{Var}_{${1}}^{${2}}[${3}]
 
 snippet     variance_without_parenthesis
+options     word
 abbr        mathrm{Var}
 	\\mathrm{Var}${0}
 
 snippet     variance_upper_without_parenthesis
+options     word
 abbr        mathrm{Var}^{}
 	\\mathrm{Var}^{${1:measure}}${0}
 
 # covariance
 snippet     covariance
+options     word
 abbr        mathrm{Cov}[ ]
 	\\mathrm{Cov}
 	\\left[
@@ -155,6 +171,7 @@ abbr        mathrm{Cov}[ ]
 	\\right]
 
 snippet     covariance_lower
+options     word
 abbr        mathrm{Cov}[ ]
 	\\mathrm{Cov}_{${1}}
 	\\left[
@@ -162,6 +179,7 @@ abbr        mathrm{Cov}[ ]
 	\\right]
 
 snippet     covariance_upper
+options     word
 abbr        mathrm{Cov}[ ]
 	\\mathrm{Cov}^{${1}}
 	\\left[
@@ -169,6 +187,7 @@ abbr        mathrm{Cov}[ ]
 	\\right]
 
 snippet     covariance_lower_upper
+options     word
 abbr        mathrm{Cov}[ ]
 	\\mathrm{Cov}_{${1}}^{${2}}
 	\\left[
@@ -176,32 +195,52 @@ abbr        mathrm{Cov}[ ]
 	\\right]
 
 snippet     covariance_inline
+options     word
 abbr        mathrm{Cov}[ ]
 	\\mathrm{Cov}[${1}]
 
 snippet     covariance_lower_inline
+options     word
 abbr        mathrm{Cov}[ ]
 	\\mathrm{Cov}_{${1}}[${2}]
 
 snippet     covariance_upper_inline
+options     word
 abbr        mathrm{Cov}[ ]
 	\\mathrm{Cov}^{${1}}[${2}]
 
 snippet     covariance_lower_upper_inline
+options     word
 abbr        mathrm{Cov}[ ]
 	\\mathrm{Cov}_{${1}}^{${2}}[${3}]
 
 snippet     covariance_without_parenthesis
+options     word
 abbr        mathrm{Cov}
 	\\mathrm{Cov}${0}
 
 snippet     covariance_upper_without_parenthesis
+options     word
 abbr        mathrm{Cov}^{}
 	\\mathrm{Cov}^{${1:measure}}${0}
+
+#
+# convergence
+#
+snippet     converge_weakly
+options     word
+abbr        probability
+	\\overset{w}{\\rightarrow}
+
+snippet     converge_in_distribution
+options     word
+abbr        probability
+	\\overset{d}{\\rightarrow}
 
 #
 # word
 #
 snippet     cadlag
+options     word
 abbr        probability space
 	càdlàg
