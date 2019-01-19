@@ -6,7 +6,15 @@ snippet queue_priority_descending
 alias   queue
 	std::priority_queue<${1}> queue;
 
+snippet queue_priority_descending_by_pari_first
+alias   queue
+	std::priority_queue<${1}> queue;
+
 snippet queue_priority_ascending
+alias   queue
+	std::priority_queue<${1}, std::vector<$1>, std::greater<$1>> queue;
+
+snippet queue_priority_ascending_by_pair_first
 alias   queue
 	std::priority_queue<${1}, std::vector<$1>, std::greater<$1>> queue;
 
