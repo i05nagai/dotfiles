@@ -10,7 +10,6 @@ export TERM=xterm-256color
 # autoload
 autoload -Uz compinit
 autoload -Uz colors
-colors
 autoload history-search-end
 
 #
