@@ -1,6 +1,9 @@
 [user]
 	name = i05nagai
 	email = i05nagai@gmail.com
+[include]
+	# override some configuration
+	path = .gitconfig.env
 [core]
 	editor = vim
 	commentChar = "#"
