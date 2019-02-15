@@ -62,6 +62,8 @@ set wildmenu wildmode=list:longest,full
 " yank to clipboard
 set clipboard+=unnamed
 
+set switchbuf+=newtab
+
 "---------------------------------------------------------
 "key bind
 "---------------------------------------------------------

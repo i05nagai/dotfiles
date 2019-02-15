@@ -14,6 +14,7 @@ CP_GROUP=(
 LINK_COMMON_FROM_TO=(
 ".ctags" ".ctags"
 ".gitconfig" ".gitconfig"
+".gitconfig.env" ".gitconfig.env"
 ".tmux.conf" ".tmux.conf"
 ".vimrc" ".vimrc"
 ".zshrc" ".zshrc"

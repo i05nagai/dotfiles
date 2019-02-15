@@ -11,4 +11,6 @@ PROMPT2="%B(%_) %(!#,>)%b "
 # input error
 SPROMPT="%B%{[31m%}%r is correct? [n,y,a,e]:%{[m%}%b "
 # if you are in a directory managed by VCS such as git, show information of VCS
+# %(x.true-text.false-text)
+# http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 RPROMPT="%1(v|%F{green}%1v%f|) %F{cyan}%2v%{$reset_color%}"

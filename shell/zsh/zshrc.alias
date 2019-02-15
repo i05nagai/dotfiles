@@ -74,4 +74,15 @@ if which git >/dev/null 2>&1; then
   }
 fi
 
+if which ruby >/dev/null 2>&1; then
+  set-intersection()
+  {
+    ruby -e 'a=File.read("'$1'");b=File.read("'$2'");print (a.split & b.split).join("\n")'
+  }
+  set-subtract()
+  {
+    ruby -e 'a=File.read("'$1'");b=File.read("'$2'");puts (a.split - b.split).join("\n")'
+  }
+fi
+
 source ~/.shell/zsh/awscli.sh

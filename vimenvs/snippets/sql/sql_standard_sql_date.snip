@@ -1,3 +1,39 @@
+#
+# Timzezone
+#
+snippet     standard_sql_timezone_asia_tokyo
+abbr        timezone
+options     word
+	"Asia/Tokyo"
+
+snippet     standard_sql_timezone_us_alaska
+abbr        timezone
+options     word
+	"US/Alaska"
+
+snippet     standard_sql_timezone_utc
+abbr        timezone
+options     word
+	"US/Alaska"
+
+#
+# date
+#
+snippet     standard_sql_date_get_first_day_of_month
+abbr        date
+options     word
+	DATE_TRUNC(${1:date_expression}, MONTH)
+
+snippet     standard_sql_date_format
+abbr        date
+options     word
+	DATE_FORMAT("%Y-%m-%d", ${1:date_expression})
+
+snippet     standard_sql_date_format
+abbr        date
+options     word
+	PARSE_DATE("%Y-%m-%d", ${1:date_expression})
+
 snippet     standard_sql_to_second
 abbr        to second
 options     word
@@ -69,6 +105,22 @@ abbr        truncate date week
 options     word
 	DATE_SUB(date, INTERVAL ${1} WEEK)
 
+#
+# datetime
+#
+
+# timestamp
+#
+snippet     standard_sql_timestamp_to_year_month_utc
+abbr        date
+options     word
+	FORMAT_DATETIME('%Y-%m', DATETIME(ts, "UTC"))
+
+snippet     standard_sql_timestamp_to_year_month_jst
+abbr        date
+options     word
+	FORMAT_DATETIME('%Y-%m', DATETIME(ts, "Asia/Tokyo"))
+
 snippet     standard_sql_truncate_timestamp_week
 abbr        truncate date week
 options     word
@@ -79,9 +131,6 @@ abbr        truncate date week
 options     word
 	TIMESTAMP_TRUNC(date, MONTH)
 
-#
-# timestamp add
-#
 snippet     standard_sql_timestamp_add_hour
 abbr        timestamp add by hour
 options     word
@@ -109,9 +158,6 @@ options     word
 	# 24 * 365
 	TIMESTAMP_ADD(${1:time_stamp}, INTERVAL 8760 HOUR)
 
-#
-# timestamp sub
-#
 snippet     standard_sql_timestamp_sub_hour
 abbr        timestamp sub by hour
 options     word
@@ -122,9 +168,6 @@ abbr        timestamp sub by minute
 options     word
 	TIMESTAMP_SUB(${1:time_stamp}, INTERVAL ${2:num} MINUTE)
 
-#
-# timestamp diff
-#
 snippet     standard_sql_timestamp_diff_hour
 abbr        timestamp diff by hour
 options     word
@@ -252,7 +295,7 @@ options     word
 snippet     standard_sql_from_string_to_timestamp
 abbr        to date
 options     word
-	TIMESTAMP('${1:yyyy-mm-dd 00:00:00}')
+	PARSE_TIMESTAMP('${1:yyyy-mm-dd 00:00:00}', ${2:string})
 
 snippet     standard_sql_from_string_to_timestamp_yyyy-mm-dd_00:00:00
 abbr        to date

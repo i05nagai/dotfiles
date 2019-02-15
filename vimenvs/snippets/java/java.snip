@@ -1,2 +1,11 @@
 include java/java_jackson.snip
 include java/java_mockito.snip
+
+snippet     sleep
+abbr        sleep
+options     word
+	try {
+		Thread.sleep(1000);
+	} catch(InterruptedException ex) {
+		Thread.currentThread().interrupt();
+	}
