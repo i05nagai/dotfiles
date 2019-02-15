@@ -46,6 +46,11 @@ abbr        basename
 options     word
 	$(basename ${1})
 
+snippet     get_files
+abbr        make
+options     word
+	$(wildcard ${1:*.yml})
+
 snippet     foreach
 abbr        foreach
 options     word
