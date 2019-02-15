@@ -7,11 +7,13 @@ include bash.snip
 # echo
 #
 snippet     echo_no_newline
+alias       print_no_newline
 abbr        echo without newline
 options     head
 	printf "%s" ${1}
 
 snippet     echo_variable
+alias       print_variable
 abbr        echo without newline
 options     head
 	echo '${1}'"=$1"
