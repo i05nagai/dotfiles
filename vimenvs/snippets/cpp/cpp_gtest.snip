@@ -1,20 +1,36 @@
 snippet     gtest_include
-abbr        #include <gtest/gtest.h>
+abbr        gtest
 options     head
 	#include <gtest/gtest.h>
 
 snippet gtest_fixture
-abbr    TEST_F
-	TEST_F(${1:test class}, ${2:test name})
+options word
+abbr    gtest
+	class ${1:GetRowVectorTest}: public ::testing::Test {
+		protected:
+		void SetUp() override {
+			data0_ = MakeMatrix({
+				// clang-format off
+				{1, 2, 3},
+				{4, 5, 6},
+				{7, 8, 9},
+				// clang-format on
+			});
+		}
+		void TearDown() override {
+		}
+		Matrix data0_;
+	};
+	TEST_F($1, ${2:TestName})
 	{
-	    ${0}
+		${0}
 	}
 
 snippet gtest_test
 abbr    TEST
 	TEST(${1:test_case_name}, ${2:test_name})
 	{
-	    ${0}
+		${0}
 	}
 
 #

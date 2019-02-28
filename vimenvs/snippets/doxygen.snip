@@ -1,0 +1,23 @@
+snippet     doxygen_example
+abbr        doxygen
+options     word
+	@example ${1:filepath}
+
+snippet     doxygen_snippet
+abbr        doxygen
+options     word
+	@snippet ${1:snippets/example.cpp} ${3:block_id}
+
+snippet     doxygen_snippet_block
+abbr        doxygen
+options     word
+	@snippet ${1:snippets/example.cpp} ${3:block_id}
+	//! [${1:block_id}]
+		document->addResource(QTextDocument::ImageResource,
+			QUrl("mydata://image.png"), QVariant(image));
+	//! [$1]
+
+snippet     doxygen_function_ref
+abbr        doxygen
+options     word
+	@ref ${1:func_signature(args)} "${2:link_text}"

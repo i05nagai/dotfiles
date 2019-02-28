@@ -1,11 +1,11 @@
 include terraform_aws.snip
-include terraform/terraform_gcp.snip
-include terraform/terraform_provisioner.snip
-include terraform/terraform_resource.snip
-include terraform/terraform_backend.snip
+include terraform_gcp.snip
+include terraform_provisioner.snip
+include terraform_resource.snip
+include terraform_backend.snip
 
 snippet     terraform_merge_map
-abbr        a
+abbr        terraform
 options     word
 	"${merge(${local.common_map["label"]},
 		map(
@@ -16,22 +16,22 @@ options     word
 # variables
 #
 snippet     terraform_var_workspacek
-abbr        a
+abbr        terraform
 options     word
 	${terraform.workspace}
 
 snippet     terraform_var_get
-abbr        a
+abbr        terraform
 options     word
 	${var.${1:var_name}}
 
 snippet     terraform_var_get_map
-abbr        a
+abbr        terraform
 options     word
 	"${lookup(var.${1:var_name}, ${2:key})}"
 
 snippet     terraform_var_get_by_environment
-abbr        variable
+abbr        terraform
 options     word
 	"${lookup(var.${1:varname}, "${terraform.workspace}.${2:key}", var.$1["default.$2"])}"
 
@@ -167,7 +167,7 @@ snippet     terraform_template
 abbr        variable list
 options     word
 	data "template_file" "resource_name" {
-		# refer ${data.template_file.d.rendred}
+		# refer to the output with ${data.template_file.d.rendred}
 		template = "$${variable}"
 		vars {
 			variable = "value"
@@ -178,6 +178,7 @@ snippet     terraform_template_from_file
 abbr        variable list
 options     word
 	data "template_file" "resource_name" {
+		# refer to the output with ${data.template_file.d.rendred}
 		template = "${file("${path.module}/init.tpl")}"
 		# variables evaluated when file is loaded
 		vars {
@@ -233,3 +234,51 @@ snippet     terraform_list_concat
 abbr        concat to single list
 options     word
 	concat(list1, list2)
+
+#
+# path
+#
+snippet     terraform_path_module
+abbr        terraform path
+options     word
+	${path.module}
+
+snippet     terraform_path_cwd
+abbr        terraform path
+options     word
+	${path.cwd}
+
+snippet     terraform_path_root
+abbr        terraform path
+options     word
+	${path.root}
+
+#
+# local file
+#
+snippet     terraform_list_concat
+abbr        concat to single list
+options     word
+	resource "local_file" "spinnaker_master_key" {
+		content     = "${google_service_account_key.spinnaker_master_key.public_key}"
+		filename    = "${path.module}/spinnaker-master-key.json"
+	}
+
+#
+# resource
+#
+snippet     terraform_random_string
+abbr        terraform
+options     word
+	# you can get ${random_string.password.result}
+	resource "random_string" "password" {
+		length = 16
+		# without special
+		# you can override special
+		# override_special = "/@\" "
+		special = false
+		# include upper case
+		upper = true
+		# include lower case
+		lower = true
+	}

@@ -43,7 +43,7 @@ options     word
 snippet     def_restriction
 abbr        def
 options     word
-	\\def${1:#1#2}{${2:}}
+	\\def${1:#1#2}{\\left. f \\vphantom{\\big|} \\right|_{A}}
 
 snippet     map_restriction
 abbr        map
@@ -302,9 +302,17 @@ snippet     derivative
 abbr        frac{d }{ d}
 	\\frac{d${1:numerator}}{d${2:denominator}} ${0}
 
+snippet     derivative_n
+abbr        frac{d }{ d}
+	\\frac{d^{${1}}}{d ${2:denominator}^{$1}} ${0}
+
 snippet     partial_derivative
 abbr        frac{partial }{partial }
-	\\frac{\\partial${1:numerator}}{\\partial${2:denominator}} ${0}
+	\\frac{\\partial ${1:numerator}}{\\partial ${2:denominator}} ${0}
+
+snippet     partial_derivative_n
+abbr        frac{partial }{partial }
+	\\frac{\\partial^{${1}} ${2:numerator}}{\\partial ${2:denominator}^{$1}} ${0}
 
 snippet     partial_derivative_with_substitute
 abbr        \\left. frac{partial }{partial } \\right|

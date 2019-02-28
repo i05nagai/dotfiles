@@ -22,3 +22,34 @@ snippet     map_remove
 abbr        include
 options     word
 	${1:map}.erase($1.begin(), $1.find(${2:key}));
+
+snippet     map_exist
+abbr        map
+options     word
+	if (${1:map}.find(${2:key}) == $1.end()) {
+		// not found
+	} else {
+		// found
+	}
+
+snippet     map_exist_found
+abbr        map
+options     word
+	if (${1:map}.find(${2:key}) != $1.end()) {
+		// found
+	}
+
+snippet     map_exist_not_found
+abbr        map
+options     word
+	if (${1:map}.find(${2:key}) == $1.end()) {
+		// not found
+	}
+
+snippet     map_for
+abbr        map
+options     word
+	for (std::map<${1:Key, Value}>::iterator it = ${2}.begin(); it != $2.end(); ++it) {
+		// Key key = it->first;
+		// Value value = it->second;
+	}
