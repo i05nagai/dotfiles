@@ -167,7 +167,7 @@ snippet     terraform_template
 abbr        variable list
 options     word
 	data "template_file" "resource_name" {
-		# refer ${data.template_file.d.rendred}
+		# refer to the output with ${data.template_file.d.rendred}
 		template = "$${variable}"
 		vars {
 			variable = "value"
@@ -178,6 +178,7 @@ snippet     terraform_template_from_file
 abbr        variable list
 options     word
 	data "template_file" "resource_name" {
+		# refer to the output with ${data.template_file.d.rendred}
 		template = "${file("${path.module}/init.tpl")}"
 		# variables evaluated when file is loaded
 		vars {
@@ -233,6 +234,35 @@ snippet     terraform_list_concat
 abbr        concat to single list
 options     word
 	concat(list1, list2)
+
+#
+# path
+#
+snippet     terraform_path_module
+abbr        terraform path
+options     word
+	${path.module}
+
+snippet     terraform_path_cwd
+abbr        terraform path
+options     word
+	${path.cwd}
+
+snippet     terraform_path_root
+abbr        terraform path
+options     word
+	${path.root}
+
+#
+# local file
+#
+snippet     terraform_list_concat
+abbr        concat to single list
+options     word
+	resource "local_file" "spinnaker_master_key" {
+		content     = "${google_service_account_key.spinnaker_master_key.public_key}"
+		filename    = "${path.module}/spinnaker-master-key.json"
+	}
 
 #
 # resource
