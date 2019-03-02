@@ -57,15 +57,18 @@ abbr        Object.hasOwnProperty.call
 options     word
 	Object.hasOwnProperty.call(${1:object}, ${2:key})${0}
 
+#
+# array
+#
 snippet     array_foreach
-abbr        
+abbr        array
 options     word
 	${1:array}.forEach((element, index, array) => {
 		${2}
 	});
 
 snippet     array_last
-abbr        
+abbr        array
 options     word
 	${1:array}.[$1.length - 1];
 
