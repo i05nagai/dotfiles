@@ -25,73 +25,88 @@ fzf_git_run_checkout_branch() {
 
 # fbr - checkout git branch (including remote branches)
 fzf_git_run_checkout_branch_with_remote() {
-  local branches branch
-  branches=$(git branch --all | grep -v HEAD) &&
-  branch=$(echo "$branches" |
-           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
-  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+  local branches \
+  && local branch \
+  && branches=$(git branch --all | grep -v HEAD) \
+  && branch=$(echo "$branches" \
+    | fzf-tmux -d $( ( 2 + $(echo "$branches" | wc -l) ) ) +m) \
+  && git checkout $(echo "$branch" \
+    | sed "s/.* //" \
+    | sed "s#remotes/[^/]*/##")
 }
 
 # fco - checkout git branch/tag
 fzf_git_run_checkout_branch_tag() {
   local tags branches target
-  tags=$(
-    git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
+  tags=$(git tag \
+    | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
   branches=$(
-    git branch --all | grep -v HEAD             |
-    sed "s/.* //"    | sed "s#remotes/[^/]*/##" |
-    sort -u          | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}') || return
+    git branch --all \
+    | grep -v HEAD \
+    | sed "s/.* //" \
+    | sed "s#remotes/[^/]*/##" \
+    | sort -u \
+    | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}') || return
   target=$(
-    (echo "$tags"; echo "$branches") |
-    fzf-tmux -l30 -- --no-hscroll --ansi +m -d "\t" -n 2) || return
+    (echo "$tags"; echo "$branches") \
+    | fzf-tmux -l30 -- --no-hscroll --ansi +m -d "\t" -n 2) || return
   git checkout $(echo "$target" | awk '{print $2}')
 }
 
 # fcoc - checkout git commit
 fzf_git_run_checkout_commit() {
   local commits commit
-  commits=$(git log --pretty=oneline --abbrev-commit --reverse) &&
-  commit=$(echo "$commits" | fzf --tac +s +m -e) &&
-  git checkout $(echo "$commit" | sed "s/ .*//")
+  commits=$(git log --pretty=oneline --abbrev-commit --reverse) \
+  && commit=$(echo "$commits" | fzf --tac +s +m -e) \
+  && git checkout $(echo "$commit" | sed "s/ .*//")
 }
 
 # fshow - git commit browser
 fzf_git_run_commit_browser() {
-  git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
-      --bind "ctrl-m:execute:
-                (grep -o '[a-f0-9]\{7\}' | head -1 |
-                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
-                {}
+  git log \
+      --graph \
+      --color=always \
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" \
+  | fzf \
+    --ansi \
+    --no-sort \
+    --reverse \
+    --tiebreak=index \
+    --bind=ctrl-s:toggle-sort \
+    --bind "ctrl-m:execute:
+              (grep -o '[a-f0-9]\{7\}' | head -1 |
+              xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+              {}
 FZF-EOF"
 }
 
 # fcs - get modified files
 # example usage: git checkout -- `fzf_git_print_get_files`
 fzf_git_print_get_files() {
-  local files file_selected
-  files=$(git status -s) &&
-  file_selected=$(echo "$files" | fzf --tac +s +m -e --ansi --reverse) &&
-  echo -n $(echo "$file_selected" | sed 's/^...//')
+  local filesa \
+  && local file_selected \
+  && files=$(git status -s) \
+  && file_selected=$(echo "$files" \
+      | fzf --tac +s +m -e --ansi --reverse) \
+        && echo -n $(echo "$file_selected" \
+      | sed 's/^...//')
 }
-
 
 # fcs - get git commit sha
 # example usage: git rebase -i `fcs`
 fzf_git_print_get_git_commit_sha() {
   local commits commit
-  commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
-  commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
-  echo -n $(echo "$commit" | sed "s/ .*//")
+  commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) \
+  && commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) \
+  && echo -n $(echo "$commit" | sed "s/ .*//")
 }
 
 # git commit --fixup=
 fzf_git_run_commit_fixup() {
   local commits commit sha1
-  commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) &&
-  commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) &&
-  git commit --fixup=$(echo "$commit" | sed "s/ .*//")
+  commits=$(git log --color=always --pretty=oneline --abbrev-commit --reverse) \
+  && commit=$(echo "$commits" | fzf --tac +s +m -e --ansi --reverse) \
+  && git commit --fixup=$(echo "$commit" | sed "s/ .*//")
 }
 
 # sier way to deal with stashes
@@ -106,7 +121,7 @@ fzf_git_run_show_stashes() {
     fzf --ansi --no-sort --query="$q" --print-query \
         --expect=ctrl-d,ctrl-b);
   do
-    mapfile -t out <<< "$out"
+    echo "$out" | mapfile -t out
     q="${out[0]}"
     k="${out[1]}"
     sha="${out[-1]}"
@@ -129,13 +144,23 @@ fzf_git_run_show_stashes() {
 ################################################################################
 
 fzf_ssh_print_complete_host() {
-  local host="$(egrep -i '^Host\s+.+' $HOME/.ssh/config $(find $HOME/.ssh/conf -type f 2>/dev/null) | egrep -v '[*?]' | awk '{print $2}' | sort | fzf)"
+  local host="$(egrep -i '^Host\s+.+' $HOME/.ssh/config \
+    $(find $HOME/.ssh/conf -type f 2>/dev/null) \
+    | egrep -v '[*?]' \
+    | awk '{print $2}' \
+    | sort \
+    | fzf)"
 
   echo -n "${host}"
 }
 
 fzf_ssh_run_ssh() {
-  local host="$(egrep -i '^Host\s+.+' $HOME/.ssh/config $(find $HOME/.ssh/conf -type f 2>/dev/null) | egrep -v '[*?]' | awk '{print $2}' | sort | fzf)"
+  local host="$(egrep -i '^Host\s+.+' $HOME/.ssh/config \
+    $(find $HOME/.ssh/conf -type f 2>/dev/null) \
+      | egrep -v '[*?]' \
+      | awk '{print $2}' \
+      | sort \
+      | fzf)"
 
   ssh "$host"
 }
@@ -143,9 +168,15 @@ fzf_ssh_run_ssh() {
 ################################################################################
 # Docker
 ################################################################################
-
-fzf_docker_print_ps_all() {
-  local name="$(docker ps -a --format "{{.Names}}"| awk '{print}' | sort | fzf)"
+# https://docs.docker.com/engine/reference/commandline/ps/#formatting
+# "table {{}}" shows the header 
+fzf_docker_print_ps_all_name() {
+  local name="$(docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Names}}\t{{.Command}}\t{{.CreatedAt}}\t{{.Status}}\t{{.Ports}}" \
+    | tail -n +2 \
+    | awk '{print}' \
+    | sort \
+    | fzf \
+    | awk '{ print $3 }')"
 
   echo -n "${name}"
 }
