@@ -87,7 +87,7 @@ fzf_git_print_get_files() {
   && local file_selected \
   && files=$(git status -s) \
   && file_selected=$(echo "$files" \
-      | fzf --tac +s +m -e --ansi --reverse) \
+      | fzf --tac +s -m -e --ansi --reverse) \
         && echo -n $(echo "$file_selected" \
       | sed 's/^...//')
 }
