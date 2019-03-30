@@ -13,24 +13,24 @@ set guioptions-=l
 set guioptions-=L
 "水平スクロールバーを非表示にする
 set guioptions-=b
-"OSのクリップボードを使う
+" Use clipboard built-ined OS
 set clipboard=unnamed
-"ルーラーを表示
+" Display ruler
 set ruler
-"行数を表示
+" Show the line number
 set number
-"ステータスラインを常に表示
+" Dispaly the status line
 set laststatus=2
 "カーソルの上または下に表示する最小限の行数
 set scrolloff=5
 "コマンドラインモードで保存する履歴件数
 set history=100
-"コマンドラインモードでTABキーによるファイル名補完を有効にする
+" Enable completion コマンドラインモードでTABキーによるファイル名補完を有効にする
 set wildmenu wildmode=list:longest,full
-"スペルチェックを有効にする(ただし日本語は除外する)
+" Enable spell checiking except for Japanese
 set spelllang+=cjk
 set spell
-"不可視文字を可視化する
+" Visualize invisual chars
 set list
 set listchars=tab:>.,trail:_
 
@@ -43,18 +43,18 @@ if has('multi_byte_ime') || has('xim')
     highlight CursorIM guibg=Orange guifg=NONE
 endif
 
-"半角文字の設定
+" for fo non full-width chars
 set guifont=Ricty\ Discord:h12
-"全角文字の設定
+" font for full-width chars
 set guifontwide=Ricty\ Discord:h12
 
-"undoファイルの場所を指定
+" Specify the location of undo files
 set undodir=$HOME/.vim/undo
-"undoファイルの作成を無効化
+" Disable ceation of undo files
 "set noundofile
 
 "-----------------tab settings---------------
-"ドラッグアンドドロップで新しいタブで開く。（複数同時にドロップはだめ）
+" Open new tab by drags and dops
 "autocmd VimEnter * tab all
 "autocmd BufAdd * exe 'tablast | tabe "' . expand( "<afile") .'"'
 

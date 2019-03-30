@@ -268,6 +268,8 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundleLazy 'fatih/vim-go', {
         \ 'autoload' : {'filetypes' : 'go'}
         \ }
+  "jenkinsfile
+  NeoBundle 'martinda/Jenkinsfile-vim-syntax'
   "C#
   "NeoBundleLazy 'nosami/Omnisharp', {
   "\   'autoload': {'filetypes': ['cs']},
