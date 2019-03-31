@@ -2,7 +2,7 @@
 # get functions of which name starts with 'fzf_?_print_'
 #
 fzf_p() {
-  VALUE=`$(print -l ${(ok)functions} | grep "fzf_.*print_" | fzf)`
+  local VALUE=`$(print -l ${(ok)functions} | grep "fzf_.*print_" | fzf)`
   LBUFFER+=${VALUE}
 }
 
@@ -10,7 +10,8 @@ fzf_p() {
 # get functions of which name starts with 'fzf_?_run_'
 #
 fzf_r() {
-  $(print -l ${(ok)functions} | grep "fzf_.*run_" | fzf)
+  local VALUE=`$(print -l ${(ok)functions} | grep "fzf_.*run_" | fzf)`
+  LBUFFER+=${VALUE}
 }
 
 ################################################################################
