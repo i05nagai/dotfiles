@@ -256,8 +256,8 @@ options     word
 #
 # local file
 #
-snippet     terraform_list_concat
-abbr        concat to single list
+snippet     terraform_local_file_read
+abbr        terraform local_file
 options     word
 	resource "local_file" "spinnaker_master_key" {
 		content     = "${google_service_account_key.spinnaker_master_key.public_key}"
