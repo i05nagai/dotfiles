@@ -1,3 +1,37 @@
+snippet     sqlalchemy_import
+abbr        import
+options     word
+	import sqlalchemy
+
+snippet     sqlalchemy_import_type
+abbr        import
+options     word
+	from sqlalchemy import Integer
+	from sqlalchemy import LargeBinary
+	from sqlalchemy import PickleType
+	from sqlalchemy import String
+	from sqlalchemy import Text
+	from sqlalchemy import DateTime
+	from sqlalchemy import Float
+	from sqlalchemy import Boolean
+
+snippet     sqlalchemy_import_meta
+abbr        import
+options     word
+	from sqlalchemy import Column
+	from sqlalchemy import ForeignKey
+	from sqlalchemy import ForeignKeyConstraint
+	from sqlalchemy import Index
+	from sqlalchemy import UniqueConstraint
+
+snippet     sqlalchemy_import_orm
+abbr        import
+options     word
+	from sqlalchemy.orm import reconstructor
+	from sqlalchemy.orm import relationship
+	from sqlalchemy.orm import synonym
+	from sqlalchemy.orm import sessionmaker
+
 snippet     sqlalchemy_model_template
 abbr        model template
 options     word
@@ -46,6 +80,9 @@ options     word
 	engine = sqlalchemy.create_engine('sqlite:///${2::path/to/db}', echo=True)
 	conn = engine.connect()
 
+#
+# type
+#
 snippet     sqlalchemy_type_integer
 abbr        Integer
 options     word
@@ -81,6 +118,9 @@ abbr        column cast
 options     head
 	${1:column.}label(${2:col_name})
 
+#
+# sql
+#
 snippet     sqlalchemy_select_column
 abbr        select only column
 options     head

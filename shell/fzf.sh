@@ -197,3 +197,37 @@ fzf_gcloud_print_get_client_email() {
 
   echo -n "${client_mail}"
 }
+
+#
+# kubectl
+#
+fzf_kubectl_print_get_pod_all() {
+  local pod="$(kubectl get pods --all-namespaces=true \
+    | fzf --tac +s -m -e --ansi \
+    | awk '{print $2}')"
+  echo -n "${pod}"
+}
+
+fzf_kubectl_run_log_pod_all() {
+  local pod_info="$(kubectl get pods --all-namespaces=true \
+    | fzf --tac +s -m -e --ansi)" \
+  && local namespace=$(echo "${pod_info}" | awk '{print $1}') \
+  && local name=$(echo "${pod_info}" | awk '{ print $2}') \
+  && echo -n "kubectl logs --namespace \"${namespace}\" ${name}"
+}
+
+fzf_kubectl_run_describe_deployment_all() {
+  local deployment_info=$(kubectl get deployments --all-namespaces=true \
+    | fzf --tac +s -m -e --ansi) \
+  && local namespace="$(echo "$deployment_info" | awk '{ print $1 }')" \
+  && local deployment="$(echo "$deployment_info" | awk '{ print $2 }')" \
+  && echo -n "kubectl describe deployment -n \"${namespace}\" ${deployment}"
+}
+
+fzf_kubectl_run_describe_pod_all() {
+  local pod_info=$(kubectl get pods --all-namespaces=true \
+    | fzf --tac +s -m -e --ansi) \
+  && local namespace="$(echo "$pod_info" | awk '{ print $1 }')" \
+  && local pod="$(echo "$pod_info" | awk '{ print $2 }')" \
+  && echo -n "kubectl describe pods -n \"${namespace}\" ${pod}"
+}

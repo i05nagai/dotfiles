@@ -115,3 +115,27 @@ options     word
 		]
 		}
 	}
+
+snippet     terraform_aws_iam_aws_iam_policy_document
+abbr        aws iam
+options     word
+    data "aws_iam_policy_document" "${1}" {
+      version = "2012-10-17"
+      statement {
+        effect = "Allow"
+        sid = "Logging"
+        actions = [
+        ]
+
+        resources = [
+          "*",
+        ]
+
+        condition {
+          test     = "StringLike"
+          variable = "iam:AWSServiceName"
+
+          values = "elasticloadbalancing.amazonaws.com"
+        }
+      }
+    }

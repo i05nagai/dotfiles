@@ -49,6 +49,7 @@ LINK_OSX_FROM_TO=(
 "envs/osx/.zshrc.env" ".zshrc.env"
 "vscode/Code" "Library/Application Support/Code"
 "envs/osx/chunkwmrc" ".chunkwmrc"
+"envs/osx/skhdrc" ".skhdrc"
 )
 
 

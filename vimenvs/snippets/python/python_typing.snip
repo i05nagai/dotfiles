@@ -3,10 +3,12 @@ abbr        python typing
 options     word
 	from typing import Callable
 	from typing import Dict
+	from typing import Iterable
 	from typing import List
 	from typing import Set
 	from typing import Tuple
 	from typing import TypeVar
+	from typing import Union
 
 snippet     typing_import_any
 abbr        python typing
@@ -42,3 +44,18 @@ snippet     typing_dict
 abbr        typing dict
 options     word
 	Dict[${1:type_key}, ${2:type_value}]
+
+snippet     typing_union
+abbr        typing
+options     word
+	Union[${1:type_name1, typename2}]
+
+snippet     typing_iterable
+abbr        typing
+options     word
+	Iterable[${1:type_name}]
+
+snippet     typing_generator
+abbr        typing
+options     word
+	Generator[${1:yield_type}, ${2:send_type}, ${3:return_type}]

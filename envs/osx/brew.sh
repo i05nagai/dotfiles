@@ -14,6 +14,7 @@ brew install pwgen
 brew install bazel
 brew install cmake
 
+brew cask install anaconda
 brew cask install iterm2
 brew cask install karabiner-elements
 brew cask install java

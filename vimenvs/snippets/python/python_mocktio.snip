@@ -1,0 +1,17 @@
+snippet     mocktio_import
+abbr        mocktio
+options     word
+	import mocktio
+
+snippet     mocktio_import_submodule
+abbr        mocktio
+options     word
+	from mocktio import mock
+	from mocktio import unstub
+	from mocktio import when
+
+snippet     mocktio_mock_function
+abbr        mocktio
+options     word
+	${1:func_mock} = mock()
+	when($1).__call__(...).thenReturn(${2:return_val})

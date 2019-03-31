@@ -1,0 +1,48 @@
+snippet     unittest_import
+abbr        unittest
+options     word
+	import unittest
+
+snippet     unittest_testcase
+abbr        unittest
+options     word
+	${1:TestCases}(unittest.TestCase):
+		
+		# callled before each tests
+		def __init__():
+			pass
+		
+		# callled before each tests
+		def setUp(self):
+			pass
+		
+		# callled after each tests
+		def tearDown(self):
+			pass
+		
+		def ${2:test_case_name}(self):
+			pass
+
+snippet     unittest_expect_fail
+abbr        unittest
+options     word
+	@unittest.expectedFailure
+
+#
+# assert
+#
+snippet     unittest_assert_equal
+abbr        unittest
+options     word
+	self.assertEqual(${1:expect, actual})
+
+snippet     unittest_assert_raise
+abbr        unittest
+options     word
+	with self.assertRaises(${1:TypeError}):
+		${2:s.split(2)}
+
+snippet     unittest_assert_equal_not
+abbr        unittest
+options     word
+	self.assertNotEqual(${1:expect, actual})
