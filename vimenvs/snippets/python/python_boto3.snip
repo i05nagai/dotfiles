@@ -1,42 +1,46 @@
+#
 # EMR
+#
 snippet     boto3_emr_client
 abbr        client = boto3.client('emr')
 options     word
-    client = boto3.client('emr')
+	client = boto3.client('emr')
 
+#
 # S3
+#
 snippet     boto3_s3_client
 abbr        client = boto3.client('s3')
 options     word
-    client = boto3.client('s3')
+	client = boto3.client('s3')
 
 snippet     boto3_s3_download_file
 abbr        client = boto3.client('s3')
 options     word
-    ${1:client}.download_file(${2:bucket}, ${3:key}, ${4:to_path})${0}
+	${1:client}.download_file(${2:bucket}, ${3:key}, ${4:to_path})${0}
 
 snippet     boto3_s3_dowload_directory
 abbr        download directory
 options     word
-    def download_directory_in_s3(client, bucket, prefix, prefix_local):
-        response = client.list_objects(Bucket=bucket, Prefix=prefix)
-
-        # Loop through each file
-        for f in response['Contents']:
-            # Get the file name
-            name = f['Key'].rsplit('/', 1)
-            path = "{0}/{1}".format(prefix_local, name[1])
-            # Download each file to local disk
-            client.download_file(bucket, f['Key'], path)
-        return True
+	def download_directory_in_s3(client, bucket, prefix, prefix_local):
+		response = client.list_objects(Bucket=bucket, Prefix=prefix)
+	
+		# Loop through each file
+		for f in response['Contents']:
+			# Get the file name
+			name = f['Key'].rsplit('/', 1)
+			path = "{0}/{1}".format(prefix_local, name[1])
+			# Download each file to local disk
+			client.download_file(bucket, f['Key'], path)
+		return True
 
 snippet     boto3_s3_create_bucket
 abbr        create bucket
 options     word
-    ${1:client}.create_bucket(Bucket=${2:bucket_name})${0}
+	${1:client}.create_bucket(Bucket=${2:bucket_name})${0}
 
 snippet     boto3_s3_upload_file
 abbr        upload files
 options     word
-    ${1:client}.upload_file(${2:path_to_local_file}, ${3:bucket_name}, ${4:bucket_key})${0}
+	${1:client}.upload_file(${2:path_to_local_file}, ${3:bucket_name}, ${4:bucket_key})${0}
 
