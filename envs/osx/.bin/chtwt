@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if [ "$#" -eq 0 ];then
-#引数がなかった場合に使い方を表示
+  # show usage when arguments miss
   echo "usage chtwt 'titlename' "
 else
-#第1引数をウィンドウのタイトルに設定
+# set the first argument as a title
   echo -en "\033];$1\007"
 fi
