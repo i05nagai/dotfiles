@@ -24,6 +24,7 @@ include python_matplotlib.snip
 include python_mecab.snip
 include python_mimetypes.snip
 include python_mock.snip
+include python_mocktio.snip
 include python_multiprocessing.snip
 include python_nose.snip
 include python_numpy.snip
@@ -51,6 +52,7 @@ include python_str.snip
 include python_subprocess.snip
 include python_tensorflow.snip
 include python_typing.snip
+include python_unittest.snip
 include python_urllib.snip
 include sphinx.snip
 
@@ -486,3 +488,19 @@ snippet     raise_not_implemented_error
 abbr        raise
 options     word
 	raise NotImplementedError
+
+#
+# dict
+#
+snippet     dict_merge_python35
+abbr        dict
+options     word
+	{**${1:map1}, **${2:map2}}
+
+snippet     dict_merge
+abbr        dict
+options     word
+	def merge_two_dicts(x, y):
+		z = x.copy()   # start with x's keys and values
+		z.update(y)    # modifies z with y's keys and values & returns None
+		return z
