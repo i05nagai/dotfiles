@@ -12,3 +12,26 @@ snippet     cmath_hypot
 abbr        the square root of the sum of the squares of x and y
 options     word
 	std::hypot(${1:x}, ${2:y});
+
+# nan
+snippet     cmath_nan
+abbr        cmath
+options     word
+	std::nan(${1:x}});
+
+snippet     cmath_isnan
+abbr        cmath
+options     word
+	std::isnan(${1:x}});
+
+# isfinite
+snippet     cmath_isfinite
+abbr        cmath
+options     word
+	std::isfinite(${1:x}});
+
+# isnormal
+snippet     cmath_isnormal
+abbr        cmath
+options     word
+	std::isnormal(${1:x}});
