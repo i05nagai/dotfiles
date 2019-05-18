@@ -1,7 +1,7 @@
-################################################################################
+#
 # Shell builtin
 # prefix: fzf_
-################################################################################
+#
 # fd - cd to selected directory
 fzf_run_cd() {
   local dir
@@ -10,10 +10,10 @@ fzf_run_cd() {
   cd "$dir"
 }
 
-################################################################################
+#
 # Git
 # prefix: fzf_git_
-################################################################################
+#
 
 # fbr - checkout git branch
 fzf_git_run_checkout_branch() {
@@ -138,10 +138,10 @@ fzf_git_run_show_stashes() {
   done
 }
 
-################################################################################
+#
 # SSH
 # prefix: fzf_ssh_
-################################################################################
+#
 
 fzf_ssh_print_complete_host() {
   local host="$(egrep -i '^Host\s+.+' $HOME/.ssh/config \
@@ -165,9 +165,9 @@ fzf_ssh_run_ssh() {
   ssh "$host"
 }
 
-################################################################################
+#
 # Docker
-################################################################################
+#
 # https://docs.docker.com/engine/reference/commandline/ps/#formatting
 # "table {{}}" shows the header 
 fzf_docker_print_ps_all_name() {
@@ -188,9 +188,9 @@ fzf_docker_print_image_repository_tag() {
 }
 
 
-################################################################################
+#
 # gcloud
-################################################################################
+#
 
 fzf_gcloud_print_get_client_email() {
   local client_mail="$(egrep -i '"client_email":\s+.+' $(find $HOME/.config/gcloud -type f 2>/dev/null) | egrep -o '[^"]+@[^"]+' | sort | fzf)"
