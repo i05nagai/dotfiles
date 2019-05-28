@@ -1,6 +1,6 @@
 function! s:snippet()
-    " hardtab
-    setlocal noexpandtab
+  " hardtab
+  setlocal noexpandtab
 endfunction
 
 " filetype=neosnippet
