@@ -1,7 +1,8 @@
-include python/python_pyspark_context.snip
-include python/python_pyspark_dataframe.snip
-include python/python_pyspark_rdd.snip
-include python/python_pyspark_spark_session.snip
+include python_pyspark_context.snip
+include python_pyspark_dataframe.snip
+include python_pyspark_rdd.snip
+include python_pyspark_spark_session.snip
+include python_pyspark_streaming.snip
 
 #
 # import
@@ -30,6 +31,28 @@ snippet     spark_import_window
 abbr        import
 options     word
 	import pyspark.sql.window as window
+
+snippet     spark_import_types_all
+abbr        pyspark sql types
+options     word
+	from pyspark.sql.types import ArrayType
+	from pyspark.sql.types import BinaryType
+	from pyspark.sql.types import BooleanType
+	from pyspark.sql.types import ByteType
+	from pyspark.sql.types import DataType
+	from pyspark.sql.types import DateType
+	from pyspark.sql.types import DecimalType
+	from pyspark.sql.types import DoubleType
+	from pyspark.sql.types import FloatType
+	from pyspark.sql.types import IntegerType
+	from pyspark.sql.types import LongType
+	from pyspark.sql.types import MapType
+	from pyspark.sql.types import NullType
+	from pyspark.sql.types import ShortType
+	from pyspark.sql.types import StringType
+	from pyspark.sql.types import StructField
+	from pyspark.sql.types import StructType
+	from pyspark.sql.types import TimestampType
 
 #
 # create
