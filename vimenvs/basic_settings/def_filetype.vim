@@ -17,3 +17,5 @@ autocmd BufRead,BufNewFile *.pyx setfiletype cython
 autocmd BufRead,BufNewFile *.BUILD setfiletype bzl
 autocmd BufRead,BufNewFile WORKSPACE setfiletype bzl
 autocmd BufRead,BufNewFile BUILD setfiletype bzl
+" conf
+autocmd BufRead,BufNewFile *.conf setfiletype dosini
