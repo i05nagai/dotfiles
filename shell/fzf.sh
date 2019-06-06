@@ -175,7 +175,7 @@ fzf_docker_print_ps_all_name() {
     | tail -n +2 \
     | awk '{print}' \
     | sort \
-    | fzf \
+    | fzf --multi \
     | awk '{ print $3 }')"
 
   echo -n "${name}"
