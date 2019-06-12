@@ -231,3 +231,13 @@ fzf_kubectl_run_describe_pod_all() {
   && local pod="$(echo "$pod_info" | awk '{ print $2 }')" \
   && echo -n "kubectl describe pods -n \"${namespace}\" ${pod}"
 }
+
+#
+# shell
+#
+fzf_shell_print_get_alias() {
+  local alias_name="$(alias \
+    | fzf --tac +s -m -e --ansi \
+    | awk -F '=' '{print $1}')"
+  echo -n "${alias_name}"
+}
