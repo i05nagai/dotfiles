@@ -183,6 +183,11 @@ call neobundle#begin(expand('~/.vim/bundle/'))
   NeoBundle 'vim-scripts/DoxygenToolkit.vim'
   "latex
   NeoBundle 'vim-latex/vim-latex'
+  " jinja2
+  NeoBundleLazy "lepture/vim-jinja", {
+        \ "autoload": {
+        \   "filetypes": ["jinja"],
+        \ }}
   "markdown
   NeoBundle 'kannokanno/previm'
   NeoBundleLazy "plasticboy/vim-markdown", {

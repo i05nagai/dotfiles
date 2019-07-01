@@ -92,6 +92,11 @@ abbr        PHONY
 options     word
 	${1} ?= ${2}
 
+snippet     path_to_parent_windows_compatible
+abbr        path
+options     word
+	PATH_PARENT_DIR := $(dir $(realpath ${1:path_to_parent}..))
+
 #
 # if
 #

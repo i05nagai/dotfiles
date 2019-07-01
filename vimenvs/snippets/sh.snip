@@ -6,6 +6,21 @@ include shell_git.snip
 include bash.snip
 
 #
+#
+#
+snippet     text_random
+alias       text
+abbr        echo without newline
+options     word
+	cat /dev/urandom | tr -dc 'a-zA-Z0-9' | head --byte 10
+
+snippet     alias
+alias       alias
+abbr        alias
+options     word
+	alias ${1:ll}="${2:ls -l}"
+
+#
 # echo
 #
 snippet     echo_no_newline

@@ -11,3 +11,22 @@ options     word
 	
 	debug:
 		msg: "{{ $1.stdout.split('\n')[:-1] }}"
+
+#
+# host
+#
+
+snippet     ansible_host_intersection
+abbr        debug
+options     word
+	${1:host_name_1}:&${1:host_name_2}
+
+snippet     ansible_host_include
+abbr        debug
+options     word
+	${1:host_name_1}:${1:host_name_2}
+
+snippet     ansible_host_exclusion
+abbr        debug
+options     word
+	${1:host_name_1}:!${1:host_name_2}

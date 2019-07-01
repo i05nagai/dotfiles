@@ -175,7 +175,7 @@ fzf_docker_print_ps_all_name() {
     | tail -n +2 \
     | awk '{print}' \
     | sort \
-    | fzf \
+    | fzf --multi \
     | awk '{ print $3 }')"
 
   echo -n "${name}"
@@ -230,4 +230,14 @@ fzf_kubectl_run_describe_pod_all() {
   && local namespace="$(echo "$pod_info" | awk '{ print $1 }')" \
   && local pod="$(echo "$pod_info" | awk '{ print $2 }')" \
   && echo -n "kubectl describe pods -n \"${namespace}\" ${pod}"
+}
+
+#
+# shell
+#
+fzf_shell_print_get_alias() {
+  local alias_name="$(alias \
+    | fzf --tac +s -m -e --ansi \
+    | awk -F '=' '{print $1}')"
+  echo -n "${alias_name}"
 }

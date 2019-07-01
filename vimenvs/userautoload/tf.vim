@@ -7,3 +7,5 @@ endfunction
 " filetype=tf
 autocmd FileType tf call s:tf()
 
+" configuration for tfvars 
+autocmd FileType terraform call s:tf()

@@ -5,6 +5,26 @@ snippet     boto3_emr_client
 abbr        client = boto3.client('emr')
 options     word
 	client = boto3.client('emr')
+#
+# ssm
+#
+snippet     boto3_ssm_client
+abbr        ssm
+options     word
+	response = client.put_parameter(
+		Name=name,
+		Description=description,
+		Value=value,
+		Type='SecureString',
+		Overwrite=True,
+		Tags=tags,
+		Tier='Standard',
+	)
+
+snippet     boto3_ssm_put_parameter
+abbr        ssm
+options     word
+	client = boto3.client('ssm')
 
 #
 # S3

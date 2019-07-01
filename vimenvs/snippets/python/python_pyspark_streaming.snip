@@ -1,0 +1,44 @@
+snippet     pyspark_streaming_read_kafka
+abbr        pyspark streaming
+options     word
+	${1:spark_session}.readStream.format('kafka')
+
+#
+# writestream
+#
+
+snippet     pyspark_streaming_write_foreachbatch
+abbr        pyspark streaming
+options     word
+	def foreach_batch_function(df, epoch_id):
+		# Transform and write batchDF
+		pass
+	
+	streamingDF.writeStream.foreachBatch(foreach_batch_function).start()
+
+snippet     pyspark_streaming_write_foreach_func
+abbr        pyspark streaming
+options     word
+	def process_row(row):
+		# Write row to storage
+		pass
+		
+	query = streamingDF.writeStream.foreach(process_row).start()  
+
+snippet     pyspark_streaming_write_foreach_class
+abbr        pyspark streaming
+options     word
+	class ForeachWriter:
+		def open(self, partition_id, epoch_id):
+			# Open connection. This method is optional in Python.
+			pass
+	
+		def process(self, row):
+			# Write row to connection. This method is NOT optional in Python.
+			pass
+	
+		def close(self, error):
+			# Close the connection. This method in optional in Python.
+			pass
+	
+	query = streamingDF.writeStream.foreach(ForeachWriter()).start()
