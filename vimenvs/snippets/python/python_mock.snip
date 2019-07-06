@@ -9,8 +9,9 @@ options     head
 snippet     mock_patch
 abbr        mock patch
 options     word
-	${1:mock}.patch.object(${2:target}, '${3:method}')
-	$2.$3.return_value = ${4}
+	with ${1:mock}.patch.object(${2:target}, '${3:method}') as mock_method:
+		$2.$3.return_value = ${4}
+		mock_method.assert_called_once_with(1, 2, 3)
 
 #
 # assert
