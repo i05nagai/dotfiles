@@ -6,11 +6,7 @@ options     word
 snippet     unittest_testcase
 abbr        unittest
 options     word
-	${1:TestCases}(unittest.TestCase):
-		
-		# callled before each tests
-		def __init__():
-			pass
+	class ${1:TestCases}(unittest.TestCase):
 		
 		# callled before each tests
 		def setUp(self):
@@ -46,3 +42,13 @@ snippet     unittest_assert_equal_not
 abbr        unittest
 options     word
 	self.assertNotEqual(${1:expect, actual})
+
+snippet     unittest_assert_true
+abbr        unittest
+options     word
+	self.assertTrue(${1:actual})
+
+snippet     unittest_assert_false
+abbr        unittest
+options     word
+	self.assertFalse(${1:actual})
