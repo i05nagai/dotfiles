@@ -10,3 +10,24 @@ options     word
 	} catch (std::exception& e) {
 		// other erros
 	}
+
+snippet     exception_throw
+alias       exception_raise
+abbr        exception
+options     word
+	throw std::exception();
+
+snippet     exception_type_exception
+abbr        exception
+options     word
+	std::exception();
+
+snippet     exception_type_logic_error
+abbr        exception
+options     word
+	std::logic_error();
+
+snippet     exception_type_out_of_range
+abbr        exception
+options     word
+	std::out_of_range();
