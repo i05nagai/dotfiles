@@ -99,7 +99,7 @@ nnoremap [SHORTCUT]dv :tabedit ~/.vim<CR>
 nnoremap [SHORTCUT]dh :tabedit ~/<CR>
 
 nnoremap <CR> :<C-u>w<CR>
-"Escの2回押しでハイライト消去
+" remove hilighting by pressing esc twice
 nmap <esc><esc> :<C-u>nohlsearch<CR>
 
 "tag
