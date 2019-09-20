@@ -12,6 +12,15 @@ options     word
 	debug:
 		msg: "{{ $1.stdout.split('\n')[:-1] }}"
 
+snippet     ansible_debug_show_variable
+abbr        debug
+options     word
+	tasks:
+	- name: "debug"
+		debug:
+			var: s3_suffix
+			verbosity: 0
+
 #
 # host
 #
