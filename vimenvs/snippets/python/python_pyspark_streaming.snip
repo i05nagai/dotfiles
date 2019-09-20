@@ -25,6 +25,14 @@ options     word
 		
 	query = streamingDF.writeStream.foreach(process_row).start()  
 
+snippet     pyspark_streaming_write_console
+abbr        pyspark streaming
+options     word
+	df.writeStream \
+		.format("console") \
+		.trigger(processingTime='2 seconds') \
+		.start()
+
 snippet     pyspark_streaming_write_foreach_class
 abbr        pyspark streaming
 options     word
