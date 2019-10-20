@@ -12,6 +12,11 @@ autocmd BufRead,BufNewFile *.pxd setfiletype cython
 autocmd BufRead,BufNewFile *.pix setfiletype cython
 autocmd BufRead,BufNewFile *.pyx setfiletype cython
 "
+" typescript
+"
+autocmd BufRead,BufNewFile *.ts setfiletype typescript
+
+"
 " bazel
 "
 autocmd BufRead,BufNewFile *.BUILD setfiletype bzl
