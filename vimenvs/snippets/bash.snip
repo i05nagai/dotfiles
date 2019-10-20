@@ -1,7 +1,12 @@
 #
 # path
 #
-snippet     bash_path_source
+snippet     bash_path_to_source
+abbr        if script is called from source
+options     word
+	PATH_TO_THIS_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd )
+
+snippet     bash_path_to_this_dir
 abbr        if script is called from source
 options     word
 	PATH_TO_THIS_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd )

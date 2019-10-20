@@ -1,5 +1,4 @@
 function! s:html()
-    "タブ文字の長さ
     setlocal tabstop=2
     setlocal shiftwidth=2
 

@@ -1,0 +1,14 @@
+snippet     yaml_import
+abbr        yaml
+options     word
+	import yaml
+
+snippet     yaml_read_file
+abbr        yaml
+options     word
+	def read_yaml(path: str):
+		with open(path, 'r') as stream:
+			try:
+				return yaml.safe_load(stream)
+			except yaml.YAMLError as exc:
+				raise exc
