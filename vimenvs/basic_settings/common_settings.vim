@@ -244,6 +244,14 @@ call neobundle#begin(expand('~/.vim/bundle/'))
         \  'filetypes':['vue']
         \  },
         \  }
+  " typescript
+  " Not working
+  " NeoBundleLazy 'Quramy/tsuquyomi', {
+  "       \'autoload': {
+  "       \  'filetypes':['typescript']
+  "       \  },
+  "       \  }
+  NeoBundle 'leafgarland/typescript-vim.git'
   "coffee script
   NeoBundle 'kchmck/vim-coffee-script'
   "kotlin
