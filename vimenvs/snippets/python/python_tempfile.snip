@@ -1,0 +1,20 @@
+snippet     tempfile_import
+abbr        tempfile
+options     word
+	import tempfile
+
+snippet     tempfile_directory
+abbr        tempfile
+options     word
+	tempfile.TemporaryDirectory(suffix=None, prefix=None, dir=None)
+
+snippet     tempfile_directory_context
+abbr        tempfile
+options     word
+	with tempfile.TemporaryDirectory(suffix=None, prefix=None, dir=None) as tempdir:
+		pass
+
+snippet     tempfile_directory_create
+abbr        tempfile
+options     word
+	path = tempfile.mkdtemp()
