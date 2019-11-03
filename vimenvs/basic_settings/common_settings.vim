@@ -264,7 +264,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
         \ }
   "terraform
   NeoBundleLazy 'hashivim/vim-terraform', {
-        \ 'autoload' : {'filetypes' : 'tf'}
+        \ 'autoload' : {'filetypes' : ['tf', 'terraform']}
         \ }
   " bazel
   NeoBundle 'google/vim-maktaba'

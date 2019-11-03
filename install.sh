@@ -155,6 +155,7 @@ function env_install() {
 }
 
 function vim_env_install() {
+  local env_type=$1
   # check .vim
   if [ ! -d $HOME/.vim  ]; then
     mkdir $HOME/.vim
@@ -165,28 +166,9 @@ function vim_env_install() {
   fi
 
   env_path="vimenvs/$env_type/"
-  case "$1" in
-    "lic" )
-      echo "Linux CUI"
-      for file in ${env_path}*; do ln_vim_env_file $file; done
-      ;;
-    "lig" )
-      echo "Linux GUI"
-      for file in ${env_path}*; do ln_vim_env_file $file; done
-      ;;
-    "osx" )
-      echo "OSX"
-      for file in ${env_path}*; do ln_vim_env_file $file; done
-      ;;
-    "win" )
-      echo "Windows"
-      for file in ${env_path}*; do ln_vim_env_file $file; done
-      ;;
-    * )
-      echo "Invalid env_type"
-      goto_error
-      ;;
-  esac
+  for file in ${env_path}*; do
+    ln_vim_env_file $file
+  done
 
   #basic settings
   if [ ! -d $HOME/.vim/basic_settings ]; then
@@ -217,6 +199,22 @@ function vim_env_install() {
   if [ ! -d $HOME/.vim/bundle ]; then
     ln_file_from_to vimenvs/bundle .vim/bundle
   fi
+}
+
+#
+# this funciton depends on vim_env_install
+#
+function nvim_env_install() {
+  # ~/.config/nvim/init.vim (Unix)
+  # ~/AppData/Local/nvim/init.vim (Win32)
+  if [ ! -d $HOME/config/nvim  ]; then
+    mkdir -p $HOME/config/nvim
+  fi
+
+  link_file_from_to=(
+    ".vimrc" "config/nvim/init.vim"
+  )
+  link_from_to ${link_file_from_to[@]}
 }
 
 function atom_install()
@@ -281,6 +279,7 @@ atom_install
 # the environment files.
 env_install $env_type
 vim_env_install $env_type
+nvim_env_install $env_type
 add_install $@
 link_ide $env_type
 # git and vim

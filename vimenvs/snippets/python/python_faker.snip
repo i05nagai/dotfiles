@@ -23,6 +23,34 @@ options     word
 	${1:fake}.seed(${2:seed_num})${0}
 
 #
+# date_time
+#
+snippet     faker_date
+abbr        faker
+options     word
+	${1:fake}.date()
+
+snippet     faker_date_between
+abbr        faker
+options     word
+	${1:fake}.date_between(start_date="-30y", end_date="today")
+
+snippet     faker_date_between
+abbr        faker
+options     word
+	${1:fake}.date_of_birth(tzinfo=None, minimum_age=0, maximum_age=115)
+
+snippet     faker_date_between
+abbr        faker
+options     word
+	${1:fake}.iso8601(tzinfo=None, end_datetime=None)
+
+snippet     faker_date_unixtime
+abbr        faker
+options     word
+	${1:fake}.unix_time(end_datetime=None, start_datetime=None)
+
+#
 # python
 #
 snippet     faker_int
@@ -281,3 +309,11 @@ snippet     faker_image_url
 abbr        faker
 options     word
 	${1:faker}.image_url()
+
+#
+#
+#
+snippet     faker_address_country_2
+abbr        faker
+options     word
+	${1:faker}.country_code(representation="alpha-2")

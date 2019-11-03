@@ -61,3 +61,33 @@ snippet     logging_info
 abbr        logging info
 options     word
     logger.info(${0:msg})
+
+snippet     logging_set_level
+abbr        logging
+options     word
+	${1:logger}.setLevel(logging.INFO)
+
+snippet     logging_formatter
+abbr        logging info
+options     word
+	logger = logging.getLogger(__name__)
+	logger.setLevel(logging.INFO)
+	logging_handler = logging.StreamHandler()
+	formatter = logging.Formatter('%(asctime)s [%(levelname)s] %(name)s %(message)s')
+	logging_handler.setFormatter(formatter)
+	logger.addHandler(logging_handler)
+
+snippet     logging_formatter_basic_format
+abbr        logging info
+options     word
+	logger = logging.getLogger(__name__)
+	logger.setLevel(logging.INFO)
+	logging_handler = logging.StreamHandler()
+	logging_handler.setFormatter(logging.Formatter(logging.BASIC_FORMAT, None))
+	logger.addHandler(logging_handler)
+
+snippet     logging_template_simple
+abbr        logging
+options     word
+	logger = logging.getLogger(__name__)
+	logging.basicConfig(level=logging.INFO)

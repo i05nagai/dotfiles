@@ -24,6 +24,7 @@ let g:DoxygenToolkit_paramTag_pre = "@param "
 let g:DoxygenToolkit_python_autoFunctionReturn = "yes"
 let g:DoxygenToolkit_python_autoRemoveSelfParam = "yes"
 let g:DoxygenToolkit_returnTag = "@return "
+" comment
 let g:DoxygenToolkit_startCommentBlock = "///"
 let g:DoxygenToolkit_startCommentTag = "///"
 let g:DoxygenToolkit_interCommentBlock = "/// "

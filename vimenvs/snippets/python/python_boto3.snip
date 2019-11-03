@@ -5,6 +5,7 @@ snippet     boto3_emr_client
 abbr        client = boto3.client('emr')
 options     word
 	client = boto3.client('emr')
+
 #
 # ssm
 #
@@ -64,3 +65,96 @@ abbr        upload files
 options     word
 	${1:client}.upload_file(${2:path_to_local_file}, ${3:bucket_name}, ${4:bucket_key})${0}
 
+
+#
+# lambda
+#
+snippet     boto3_lambda_client
+abbr        lambda
+options     word
+	client = boto3.client('lambda')
+
+snippet     boto3_lambda_invoke
+abbr        lambda
+options     word
+	response = client.invoke(
+		FunctionName=function_name,
+		InvocationType='RequestResponse',
+		LogType='Tail',
+		Payload=json.dumps(data),
+	)
+	# print(response)
+	print(json.dumps(json.loads(response['Payload'].read()), indent=2, sort_keys=True))
+
+#
+# dynamodb
+#
+snippet     boto3_dynamodb_client
+abbr        dynamodb
+options     word
+	client = boto3.client('dynamodb')
+
+snippet     boto3_dynamodb_put_item
+abbr        dynamodb
+options     word
+	client.put_item(
+		TableName=table_name,
+		Item={
+			'key1': {
+				'S': 'Hello',
+			},
+			'key2': {
+				'N': '1.22',
+			},
+			'key3': {
+				'B': b'bytes',
+			},
+			# String Set
+			'key4': {
+				'SS': [
+					'string',
+				],
+			},
+			# number set
+			'key5': {
+				'NS': [
+					'string',
+				]
+			},
+			# binary set
+			'key6': {
+				'BS': [
+					b'bytes',
+				],
+			},
+			# map
+			'key7': {
+				'M': {
+					'map_key1': {
+						'S': 'Joe',
+					},
+				},
+			},
+			# list
+			'key8': {
+				"L": [
+					{"S": "Cookies"},
+					{"S": "Coffee"},
+					{"N", "3.14159"},
+				],
+			},
+			'key9': {
+				'NULL': True,
+			},
+			'key10': {
+				'BOOL': True
+			},
+		},
+		# ReturnValues='NONE'|'ALL_OLD'|'UPDATED_OLD'|'ALL_NEW'|'UPDATED_NEW',
+		# ReturnConsumedCapacity='INDEXES'|'TOTAL'|'NONE',
+		# ReturnItemCollectionMetrics='SIZE'|'NONE',
+	)
+
+snippet     boto3_dynamodb_query
+abbr        dynamodb
+options     word

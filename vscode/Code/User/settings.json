@@ -9,5 +9,7 @@
     "doxdocgen.c.lastLine": "/// ",
     "doxdocgen.c.triggerSequence": "///",
     "C_Cpp.clang_format_fallbackStyle": "Google",
-    "C_Cpp.clang_format_path": "clang-format"
+    "C_Cpp.clang_format_path": "clang-format",
+    "C_Cpp.default.cppStandard": "c++11",
+    "C_Cpp.default.cStandard": "c99"
 }
