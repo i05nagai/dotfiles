@@ -1,3 +1,8 @@
+snippet     argparse_import
+abbr        argparse
+options     word
+	import argparse
+
 snippet     argparse_generate_parser
 abbr        generate argument parser
 options     word
@@ -102,6 +107,18 @@ options     word
 		'${8:bar}',
 		type=${9:int},
 		help='${10:bar}')
+	
+	def main():
+		parser = make_parser()
+		if len(sys.argv) == 1:
+			parser.print_help(sys.stderr)
+			sys.exit(1)
+		args = parser.parse_args()
+		args.func(args)
+	
+	
+	if __name__ == '__main__':
+		main()
 
 #
 # template
