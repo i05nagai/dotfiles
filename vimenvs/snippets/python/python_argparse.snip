@@ -94,7 +94,7 @@ options     word
 #
 # subcommand
 #
-snippet     argparse_add_subcommand_parser
+snippet     argparse_template_add_subcommand_parser
 abbr        subcomand
 options     word
 	subparsers = parser.add_subparsers(
@@ -107,18 +107,6 @@ options     word
 		'${8:bar}',
 		type=${9:int},
 		help='${10:bar}')
-	
-	def main():
-		parser = make_parser()
-		if len(sys.argv) == 1:
-			parser.print_help(sys.stderr)
-			sys.exit(1)
-		args = parser.parse_args()
-		args.func(args)
-	
-	
-	if __name__ == '__main__':
-		main()
 
 #
 # template
@@ -155,6 +143,18 @@ options     word
 			help='${16:baz help}')
 	
 		return parser
+	
+	def main():
+		parser = make_parser()
+		if len(sys.argv) == 1:
+			parser.print_help(sys.stderr)
+			sys.exit(1)
+		args = parser.parse_args()
+		args.func(args)
+	
+	
+	if __name__ == '__main__':
+		main()
 
 snippet     argparse_template
 abbr        subcomand
