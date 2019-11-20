@@ -1,0 +1,15 @@
+snippet     jinja2_import
+abbr        jinja2
+options     word
+	import jinja2
+
+snippet     jinja2_template
+abbr        jinja2
+options     word
+	import jinja2 import Environment, PackageLoader, select_autoescape
+	env = jinja2.Environment(
+		loader=jinja2.PackageLoader('yourapplication', 'templates'),
+		autoescape=jinja2.select_autoescape(['html', 'xml'])
+	)
+	template = env.get_template('mytemplate.html')
+	template.render(**args)
