@@ -1,0 +1,30 @@
+snippet     os_import
+abbr        os
+options     head
+	import os
+
+#
+# env
+#
+snippet     environment_variable_get
+abbr        environment variable
+options     head
+	import os
+	${2:get_var} = os.environ["${1:var_name}"]
+
+snippet     environment_variable_set
+abbr        environment variable
+options     head
+	import os
+	os.environ["${1:var_name}"] = ${2:set_var}
+
+snippet     make_directory_if_not_exists
+abbr        make directory
+options     head
+	# import os
+	# import errno
+	try:
+		os.makedirs(${1:path_to_directory})
+	except OSError as e:
+		if e.errno != errno.EEXIST:
+			raise${0}
