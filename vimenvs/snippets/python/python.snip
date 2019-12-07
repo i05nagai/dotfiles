@@ -43,6 +43,7 @@ include python_pyshp.snip
 include python_pyspark.snip
 include python_pystache.snip
 include python_pytest.snip
+include python_random.snip
 include python_re.snip
 include python_requests.snip
 include python_scikit_image.snip
@@ -61,6 +62,7 @@ include python_tensorflow.snip
 include python_typing.snip
 include python_unittest.snip
 include python_urllib.snip
+include python_uuid.snip
 include python_yaml.snip
 include sphinx.snip
 
@@ -463,19 +465,6 @@ snippet     module_this
 abbr        this module
 options     word
 	this_module = sys.modules[__name__]
-
-snippet     random_hash_uuid
-abbr        uuid
-options     word
-	import uuid
-	uuid.uuid4()
-
-snippet     random_hash_bits
-abbr        uuid
-options     word
-	import random
-	hashcode = random.getrandbits(128)
-	hex(hashcode)[2:-1]
 
 #
 # raise
