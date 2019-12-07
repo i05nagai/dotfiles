@@ -1,0 +1,22 @@
+snippet     timeit_import
+abbr        timeit
+options     word
+	import timeit
+
+snippet     timeit_template_measure_function_simple
+abbr        timeit
+options     word
+	def measure(func):
+		t = timeit.timeit(func, number=10)
+		print(f"{func.__name__}: {t}")
+
+snippet     timeit_template_measure_function_mean_median
+abbr        timeit
+options     word
+	# import statistics
+	def measure(func, repeat=5):
+		ts = timeit.repeat(func, repeat=repeat, number=10)
+		mean = statistics.mean(ts)
+		print(f"{func.__name__} mean (N={repeat}): {mean}")
+		median = statistics.median(ts)
+		print(f"{func.__name__} median (N={repeat}): {median}")
