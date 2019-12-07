@@ -1,0 +1,7 @@
+
+snippet     random_hash_bits
+abbr        uuid
+options     word
+	import random
+	hashcode = random.getrandbits(128)
+	hex(hashcode)[2:-1]
