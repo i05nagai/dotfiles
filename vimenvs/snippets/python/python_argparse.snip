@@ -133,6 +133,7 @@ options     word
 			'${8:bar}',
 			type=${9:int},
 			help='${10:bar}')
+		$6.set_defaults(func=${18:some_method})
 		# create the parser for the "subcommand_b" command
 		${11:parser_b} = subparsers.add_parser(
 			'${12:subcommand_b}',
@@ -141,6 +142,7 @@ options     word
 			'${14:--baz}',
 			type=${15:int},
 			help='${16:baz help}')
+		$11.set_defaults(func=${17:some_method})
 	
 		return parser
 	
