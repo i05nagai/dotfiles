@@ -48,7 +48,7 @@ LINK_OSX_FROM_TO=(
 "envs/osx/.tmux.conf.env" ".tmux.conf.env"
 "envs/osx/.zshrc.env" ".zshrc.env"
 "vscode/Code" "Library/Application Support/Code"
-"envs/osx/chunkwmrc" ".chunkwmrc"
+"envs/osx/yabairc" ".yabairc"
 "envs/osx/skhdrc" ".skhdrc"
 )
 
