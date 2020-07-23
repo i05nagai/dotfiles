@@ -34,3 +34,9 @@ snippet     random_gauss
 abbr        random
 options     word
 	random.gauss(${1:mu}, ${2:sigma})
+
+
+snippet     random_generate_random_string_capital
+abbr        random
+options     word
+	''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(${1}))
