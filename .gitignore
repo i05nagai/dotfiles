@@ -26,13 +26,16 @@ vscode/Code/Backups
 vscode/Code/Cache
 vscode/Code/CachedData
 vscode/Code/CachedExtensions
-vscode/Code/GPUCache/
-vscode/Code/Local Storage
-vscode/Code/logs
-vscode/Code/User/workspaceStorage
+vscode/Code/Code Cache
 vscode/Code/Cookies
 vscode/Code/Cookies-journal
-vscode/Code/languagepacks.json
-vscode/Code/machineid
+vscode/Code/GPUCache
+vscode/Code/Local Storage
+vscode/Code/Network Persistent State
 vscode/Code/Preferences
+vscode/Code/User/globalStorage/
+vscode/Code/User/workspaceStorage
+vscode/Code/languagepacks.json
+vscode/Code/logs
+vscode/Code/machineid
 vscode/Code/storage.json

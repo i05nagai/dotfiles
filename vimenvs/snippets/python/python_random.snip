@@ -1,0 +1,42 @@
+snippet     random_import
+abbr        random
+options     word
+	import random
+
+snippet     random_hash_bits
+abbr        random
+options     word
+	import random
+	hashcode = random.getrandbits(128)
+	hex(hashcode)[2:-1]
+
+snippet     random_uniform_float_0_leq_le_1
+abbr        random
+options     word
+	random.random()
+
+snippet     random_uniform_float_a_leq_leq_b
+abbr        random
+options     word
+	random.uniform(${1:a}, ${2:b})
+
+snippet     random_beta
+abbr        random
+options     word
+	random.betavariate(${1:alpha}, ${2:beta})
+
+snippet     random_exp
+abbr        random
+options     word
+	random.expovariate(${1:lambda})
+
+snippet     random_gauss
+abbr        random
+options     word
+	random.gauss(${1:mu}, ${2:sigma})
+
+
+snippet     random_generate_random_string_capital
+abbr        random
+options     word
+	''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(${1}))

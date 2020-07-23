@@ -32,6 +32,8 @@ set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp,utf-8
 " show an underline on the line on cursor
 set cursorline
+" Maximum amount of memory in Kb to use for pattern matching. default 1000
+set maxmempattern=10000
 "
 " serach
 "
