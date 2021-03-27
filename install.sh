@@ -228,6 +228,13 @@ function atom_install()
   done
 }
 
+function nvm_install()
+{
+  if [ ! -d $HOME/.nvm ]; then
+      mkdir -p $HOME/.nvm
+  fi
+}
+
 function add_install() {
   if [ $# -gt 0 ]; then
     echo "ADDITIONAL INSTALL"
@@ -276,6 +283,7 @@ fi
 # the files must be installed
 must_install
 atom_install
+nvm_install
 # the environment files.
 env_install $env_type
 vim_env_install $env_type
