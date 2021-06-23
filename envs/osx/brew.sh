@@ -22,29 +22,24 @@ brew services start chunkwm
 brew install skhd
 brew services start skhd
 
-brew cask install anaconda
-brew cask install iterm2
-brew cask install karabiner-elements
-brew cask install java
-brew cask install docker
-brew cask install slack
-brew cask install skype
-brew cask install dropbox
-brew cask install grammarly
-brew cask install google-chrome
-brew cask install mendeley
-brew cask install google-japanese-ime
-brew cask install skitch
-brew cask install intellij-idea-ce
+brew install --cask miniconda
+brew install --cask iterm2
+brew install --cask karabiner-elements
+brew install --cask java
+brew install --cask docker
+brew install --cask slack
+brew install --cask skype
+brew install --cask dropbox
+brew install --cask grammarly
+brew install --cask google-chrome
+brew install --cask mendeley
+brew install --cask google-japanese-ime
+brew install --cask skitch
+brew install --cask intellij-idea-ce
 
 # terrafrom
 # scala
 # gcloud
-
-# miniconda2
-# curl -O -L https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-curl -L -O https://repo.anaconda.com/miniconda/Miniconda2-latest-MacOSX-x86_64.sh
-bash Miniconda2-latest-MacOSX-x86_64.sh -b
 
 #
 # Ricty
