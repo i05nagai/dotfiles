@@ -124,183 +124,171 @@ let g:netrw_liststyle = 3
 " Open a file with 'o' in bottom side panel. By default, upper side.
 let g:netrw_alto = 1
 
-"---------------------------------------------------------
-"NeoBundle
-"---------------------------------------------------------
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim
+""---------------------------------------------------------
+"" dein
+""---------------------------------------------------------
+"
+if &compatible
+  set nocompatible               " Be iMproved
 endif
-call neobundle#begin(expand('~/.vim/bundle/'))
-  "utilities
-  NeoBundle 'Shougo/neobundle.vim'
-  NeoBundle has('lua') ? 'Shougo/neocomplete' : 'Shougo/neocomplcache'
-  NeoBundle 'Shougo/neosnippet'
-  NeoBundle 'Shougo/neosnippet-snippets'
-  NeoBundle 'shinespark/vim-list2tree'
-  " unite
-  NeoBundle 'Shougo/unite.vim'
-  NeoBundle 'tsukkee/unite-tag'
-  NeoBundle 'hewes/unite-gtags'
-  NeoBundle 'osyo-manga/unite-quickrun_config'
-  NeoBundle 'Shougo/vimproc', {
-    \ 'build' : {
-    \ 'windows' : 'make -f make_mingw64.mak',
-    \ 'cygwin' : 'make -f make_cygwin.mak',
-    \ 'mac' : 'make -f make_mac.mak',
-    \ 'unix' : 'make -f make_unix.mak',
-    \ 'linux' : 'make -f make_unix.mak',
-    \ },
-  \ }
-  NeoBundle 'Shougo/vimfiler.vim'
-  NeoBundle 'thinca/vim-quickrun'
-  NeoBundle 'osyo-manga/shabadou.vim'
-  NeoBundle 'tpope/vim-surround'
-  NeoBundle 'mopp/next-alter.vim'
-  NeoBundle 'tyru/open-browser.vim'
-  NeoBundle 'h1mesuke/vim-alignta'
-  NeoBundle 'LeafCage/yankround.vim'
-  NeoBundleLazy 'vim-scripts/taglist.vim', {
-        \ 'autoload' : {'filetypes' : 'cpp'}
-        \ }
-  NeoBundle 'itchyny/lightline.vim'
-  NeoBundle 'dhruvasagar/vim-table-mode'
-  "text-object
-  NeoBundle 'kana/vim-textobj-user'
-  NeoBundle "bps/vim-textobj-python"
-  "cmake
-  "NeoBundleLazy 'jalcine/cmake.vim', {
-  "  \ "autoload": {
-  "  \  "filetypes": ["cmake"],
-  "  \ },
-  "  \ "build": {
-  "  \  "mac": "rake",
-  "  \  "unix": "rake",
-  "  \ }}
-  "git
-  NeoBundle 'tpope/vim-fugitive'
-  NeoBundle 'gregsexton/gitv'
-  "github
-  NeoBundle 'rhysd/github-complete.vim'
-  "doxygen
-  NeoBundle 'vim-scripts/DoxygenToolkit.vim'
-  "latex
-  NeoBundle 'vim-latex/vim-latex'
-  " jinja2
-  NeoBundleLazy "lepture/vim-jinja", {
-        \ "autoload": {
-        \   "filetypes": ["jinja"],
-        \ }}
-  "markdown
-  NeoBundle 'kannokanno/previm'
-  NeoBundleLazy "plasticboy/vim-markdown", {
-        \ "autoload": {
-        \   "filetypes": ["markdown", "md"],
-        \ }}
-  NeoBundle 'mzlogin/vim-markdown-toc'
-  "restructuredText
-  NeoBundleLazy 'gu-fan/riv.vim', {
-        \ 'autoload' : {'filetypes' : 'rst'}
-        \ }
-  NeoBundleLazy 'gu-fan/InstantRst', {
-        \ 'autoload' : {'filetypes' : 'rst'}
-        \ }
-  "C++
-  NeoBundleLazy 'rhysd/unite-n3337', {
-        \ 'depends' : 'Shougo/unite.vim',
-        \ 'autoload' : {'filetypes' : 'cpp'}
-        \ }
-  "python
-  " NeoBundleLazy "davidhalter/jedi-vim", {
-  "       \ "autoload": {
-  "       \    "filetypes": ["python", "python3", "djangohtml"],
-  "       \ },
-  "       \ "build": {
-  "       \   "mac": "git submodule update --init",
-  "       \   "unix": "",
-  "       \ }}
-  NeoBundleLazy "andviro/flake8-vim", {
-        \ "autoload": {
-        \   "filetypes": ["python", "python3", "djangohtml"],
-        \ },
-        \ }
-  NeoBundleLazy "hynek/vim-python-pep8-indent", {
-        \ "autoload": {
-        \   "filetypes": ["python", "python3", "djangohtml"],
-        \ },
-        \ }
-  NeoBundleLazy "heavenshell/vim-pydocstring", {
-        \ "autoload": {
-        \   "filetypes": ["python", "python3", "djangohtml"],
-        \ },
-        \ }
-  "powershell
-  NeoBundle 'PProvost/vim-ps1'
-  " javascript
-  NeoBundleLazy 'othree/yajs.vim', {
-        \'autoload': {
-        \  'filetypes':['javascript']
-        \  },
-        \  }
-  NeoBundleLazy 'posva/vim-vue', {
-        \'autoload': {
-        \  'filetypes':['vue']
-        \  },
-        \  }
-  " typescript
-  " Not working
-  " NeoBundleLazy 'Quramy/tsuquyomi', {
-  "       \'autoload': {
-  "       \  'filetypes':['typescript']
-  "       \  },
-  "       \  }
-  NeoBundle 'leafgarland/typescript-vim.git'
-  "coffee script
-  NeoBundle 'kchmck/vim-coffee-script'
-  "kotlin
-  NeoBundleLazy 'udalov/kotlin-vim', {
-        \ 'autoload' : {'filetypes' : 'kotlin'}
-        \ }
-  " scala
-  NeoBundleLazy 'derekwyatt/vim-scala', {
-        \ 'autoload' : {'filetypes' : 'scala'}
-        \ }
-  "terraform
-  NeoBundleLazy 'hashivim/vim-terraform', {
-        \ 'autoload' : {'filetypes' : ['tf', 'terraform']}
-        \ }
-  " bazel
-  NeoBundle 'google/vim-maktaba'
-  NeoBundleLazy 'bazelbuild/vim-bazel', {
-        \ 'autoload' : {'filetypes' : 'bzl'}
-        \ }
-  "swift
-  NeoBundleLazy 'keith/swift.vim', {
-        \ 'autoload' : {'filetypes' : 'swift'}
-        \ }
-  "nginx
-  NeoBundle 'chr4/nginx.vim'
-  "go
-  NeoBundleLazy 'fatih/vim-go', {
-        \ 'autoload' : {'filetypes' : 'go'}
-        \ }
-  "jenkinsfile
-  NeoBundle 'martinda/Jenkinsfile-vim-syntax'
-  "C#
-  "NeoBundleLazy 'nosami/Omnisharp', {
-  "\   'autoload': {'filetypes': ['cs']},
-  "\   'build': {
-  "\     'windows': 'MSBuild.exe server/OmniSharp.sln /p:Platform="Any CPU"',
-  "\     'mac': 'xbuild server/OmniSharp.sln',
-  "\     'unix': 'xbuild server/OmniSharp.sln',
-  "\   }
-  "\ }
-call neobundle#end()
+
+" Required:
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+
+" Required:
+call dein#begin(expand('~/.cache/dein'))
+
+" Let dein manage dein
+" Required:
+call dein#add(expand('~/.cache/dein/repos/github.com/Shougo/dein.vim'))
+
+" Add or remove your plugins here like this:
+if !has('nvim')
+  call dein#add('roxma/nvim-yarp')
+  call dein#add('roxma/vim-hug-neovim-rpc')
+endif
+call dein#add('Shougo/vimproc', {
+  \ 'build' : 'make all'
+\ })
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
+call dein#add('Shougo/deoplete.nvim')
+" NeoBundle 'shinespark/vim-list2tree'
+call dein#add('Shougo/unite.vim')
+call dein#add('tsukkee/unite-tag')
+call dein#add('hewes/unite-gtags')
+call dein#add('osyo-manga/unite-quickrun_config')
+call dein#add('Shougo/vimfiler.vim')
+call dein#add('thinca/vim-quickrun')
+call dein#add('osyo-manga/shabadou.vim')
+call dein#add('tpope/vim-surround')
+call dein#add('mopp/next-alter.vim')
+call dein#add('tyru/open-browser.vim')
+call dein#add('h1mesuke/vim-alignta')
+call dein#add('LeafCage/yankround.vim')
+call dein#add('vim-scripts/taglist.vim',
+      \{'on_ft': ['c', 'cpp']})
+call dein#add('itchyny/lightline.vim')
+call dein#add('dhruvasagar/vim-table-mode')
+"text-object
+call dein#add('kana/vim-textobj-user')
+call dein#add("bps/vim-textobj-python")
+"git
+call dein#add('tpope/vim-fugitive')
+call dein#add('gregsexton/gitv')
+"github
+call dein#add('rhysd/github-complete.vim')
+"doxygen
+call dein#add('vim-scripts/DoxygenToolkit.vim')
+"latex
+call dein#add('vim-latex/vim-latex')
+"jinja2
+call dein#add("lepture/vim-jinja",
+      \{'on_ft': ['jinja']})
+"markdown
+call dein#add('kannokanno/previm')
+call dein#add("plasticboy/vim-markdown",
+      \{'on_ft': ['markdown', 'md']})
+call dein#add('mzlogin/vim-markdown-toc')
+"restructuredText
+call dein#add('gu-fan/riv.vim',
+      \{'on_ft': ['rst']})
+call dein#add('gu-fan/InstantRst',
+      \{'on_ft': ['rst']})
+"C++
+call dein#add('rhysd/unite-n3337', {
+      \ 'depends' : 'Shougo/unite.vim',
+      \ 'on_ft' : ['cpp']
+      \ })
+"cmake
+"NeoBundleLazy 'jalcine/cmake.vim', {
+"  \ "autoload": {
+"  \  "filetypes": ["cmake"],
+"  \ },
+"  \ "build": {
+"  \  "mac": "rake",
+"  \  "unix": "rake",
+"  \ }}
+"python
+call dein#add("davidhalter/jedi-vim", {
+      \    "on_ft": ["python", "python3", "djangohtml"],
+      \ "build": {
+      \   "mac": "git submodule update --init",
+      \   "unix": "",
+      \ }})
+call dein#add("andviro/flake8-vim", {
+      \   "on_ft": ["python", "python3", "djangohtml"],
+      \ })
+call dein#add("hynek/vim-python-pep8-indent", {
+      \   "on_ft": ["python", "python3", "djangohtml"],
+      \ })
+call dein#add("heavenshell/vim-pydocstring", {
+      \   "on_ft": ["python", "python3", "djangohtml"],
+      \ })
+"powershell
+call dein#add('PProvost/vim-ps1')
+" javascript
+call dein#add('othree/yajs.vim', {
+      \  'on_ft':['javascript']
+      \  })
+call dein#add('posva/vim-vue', {
+      \  'on_ft':['vue']
+      \  })
+call dein#add('leafgarland/typescript-vim.git')
+"coffee script
+call dein#add('kchmck/vim-coffee-script')
+"kotlin
+call dein#add('udalov/kotlin-vim', {
+      \ 'on_ft' : ['kotlin']
+      \ })
+" scala
+call dein#add('derekwyatt/vim-scala', {
+      \ 'on_ft' : ['scala']
+      \ })
+"terraform
+call dein#add('hashivim/vim-terraform', {
+      \ 'on_ft' : ['tf', 'terraform']
+      \ })
+" bazel
+call dein#add('google/vim-maktaba')
+call dein#add('bazelbuild/vim-bazel', {
+      \ 'filetypes' : ['bzl']
+      \ })
+"swift
+call dein#add('keith/swift.vim', {
+      \ 'on_ft' : ['swift']
+      \ })
+"nginx
+call dein#add('chr4/nginx.vim')
+"go
+call dein#add('fatih/vim-go', {
+      \ 'on_ft' : ['go']
+      \ })
+"jenkinsfile
+call dein#add('martinda/Jenkinsfile-vim-syntax')
+"C#
+call dein#add('nosami/Omnisharp', {
+\   'on_ft': ['cs'],
+\   'build': {
+\     'windows': 'MSBuild.exe server/OmniSharp.sln /p:Platform="Any CPU"',
+\     'mac': 'xbuild server/OmniSharp.sln',
+\     'unix': 'xbuild server/OmniSharp.sln',
+\   }
+\ })
 
 " To install,
-" Execute :NeoBundleInstall
-"
-" To uninstall,
-" Delete lines starting with NeoBundle ''. NeoBundle don't read undeclared plugins
+" Execute :call dein#install()
+" build :call dein#build()
+
+" Required:
+call dein#end()
+
+"---------------------------------------------------------
+"nvim-yarp
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/nvim-yarp.vim" )
+  source ~/.vim/plugin_settings/nvim-yarp.vim
+endif
 
 "---------------------------------------------------------
 "unite
@@ -324,17 +312,17 @@ if filereadable( $HOME . "/.vim/plugin_settings/unite-quickrun_config.vim" )
 endif
 
 "---------------------------------------------------------
+"deoplete
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/deoplete.vim" )
+  source ~/.vim/plugin_settings/deoplete.vim
+endif
+
+"---------------------------------------------------------
 "vimfiler
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/vimfiler.vim" )
   source ~/.vim/plugin_settings/vimfiler.vim
-endif
-
-"---------------------------------------------------------
-"neocomplete and neocomplecache
-"---------------------------------------------------------
-if filereadable( $HOME . "/.vim/plugin_settings/neocomplete.vim" )
-  source ~/.vim/plugin_settings/neocomplete.vim
 endif
 
 "---------------------------------------------------------
