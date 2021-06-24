@@ -1,0 +1,80 @@
+include javascript/javascript_jest.snip
+
+snippet     function
+abbr        function
+options     word
+	function ${1:name}(${2: args: type}): ${3: return_type} {
+	}
+
+snippet     interface
+abbr        interface
+options     word
+	interface Padder {
+		${1:getPaddingString}(${2:arg: string}): ${3:string};
+		${4:id: number;}
+		${5:email?: string};
+	}
+
+snippet     class
+abbr        class
+options     word
+	class ${1:SpaceRepeatingPadder implements Padder} {
+		constructor(${2:private numSpaces: number}) {}
+		${3:getPaddingString(): string} {
+			return Array(this.numSpaces + 1).join(" ");
+		}
+	}
+
+snippet     import
+abbr        import
+options     word
+	import { ${1:} } from "${2}";
+
+snippet     type_nullable
+abbr        type
+options     word
+	${1:string} | null
+
+snippet     type_alias
+abbr        type
+options     word
+	type Second = number;
+
+snippet     type_pick
+abbr        type
+options     word
+	Pick<${1:Type}, ${2:Key}>
+
+snippet     type_record
+abbr        type
+options     word
+	Record<${1:Type}, ${2:Key}>
+
+snippet     type_omit
+abbr        type
+options     word
+	Omit<${1:Type}, ${2:Key}>
+
+snippet     type_array
+abbr        type
+options     word
+	Array<${1:Type}>
+
+snippet     type_tuple
+abbr        type
+options     word
+	[${1:string, number}]
+
+snippet     type_enum
+abbr        type
+options     word
+	enum ${1:Color} {
+		Red,
+		Green,
+		Blue,
+	}
+
+snippet     type_function
+abbr        type
+options     word
+	(${1:x: number, y: number}) => ${2:number}

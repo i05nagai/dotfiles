@@ -23,4 +23,4 @@ pushd /tmp \
 #
 # powerline
 #
-pip install --user powerline-status
+pip3 install --user powerline-status

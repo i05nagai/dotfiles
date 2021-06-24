@@ -1,0 +1,7 @@
+snippet     jest_test
+abbr        jest
+options     word
+	test('${1}', async () => {
+		const actual = sum.add(1, 2);
+		expect(actual).toEqual(3);
+	});
