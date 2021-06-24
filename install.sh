@@ -199,6 +199,12 @@ function vim_env_install() {
   if [ ! -d $HOME/.vim/bundle ]; then
     ln_file_from_to vimenvs/bundle .vim/bundle
   fi
+
+  # dein install
+  if [ ! -d $HOME/.cache/dein ]; then
+    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/installer.sh
+    sh /tmp/installer.sh ~/.cache/dein
+  fi
 }
 
 #
