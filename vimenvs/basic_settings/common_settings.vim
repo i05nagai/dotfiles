@@ -164,7 +164,7 @@ call dein#add('osyo-manga/shabadou.vim')
 call dein#add('tpope/vim-surround')
 call dein#add('mopp/next-alter.vim')
 call dein#add('tyru/open-browser.vim')
-call dein#add('h1mesuke/vim-alignta')
+call dein#add('junegunn/vim-easy-align')
 call dein#add('LeafCage/yankround.vim')
 call dein#add('vim-scripts/taglist.vim',
       \{'on_ft': ['c', 'cpp']})
@@ -421,6 +421,13 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/open-browser.vim" )
   source ~/.vim/plugin_settings/open-browser.vim
+endif
+
+"---------------------------------------------------------
+" vim-easy-align
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/vim-easy-align.vim" )
+  source ~/.vim/plugin_settings/vim-easy-align.vim
 endif
 
 "---------------------------------------------------------
