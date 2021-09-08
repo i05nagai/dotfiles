@@ -127,10 +127,6 @@ let g:netrw_alto = 1
 ""---------------------------------------------------------
 "" dein
 ""---------------------------------------------------------
-"
-if &compatible
-  set nocompatible               " Be iMproved
-endif
 
 " Required:
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
@@ -140,7 +136,7 @@ call dein#begin(expand('~/.cache/dein'))
 
 " Let dein manage dein
 " Required:
-call dein#add(expand('~/.cache/dein/repos/github.com/Shougo/dein.vim'))
+call dein#add('Shougo/dein.vim')
 
 " Add or remove your plugins here like this:
 if !has('nvim')
@@ -153,13 +149,12 @@ call dein#add('Shougo/vimproc', {
 call dein#add('Shougo/neosnippet.vim')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('Shougo/deoplete.nvim')
-" NeoBundle 'shinespark/vim-list2tree'
 call dein#add('Shougo/unite.vim')
 call dein#add('tsukkee/unite-tag')
 call dein#add('hewes/unite-gtags')
 call dein#add('osyo-manga/unite-quickrun_config')
-call dein#add('Shougo/vimfiler.vim')
 call dein#add('thinca/vim-quickrun')
+call dein#add('Shougo/defx.nvim')
 call dein#add('osyo-manga/shabadou.vim')
 call dein#add('tpope/vim-surround')
 call dein#add('mopp/next-alter.vim')
@@ -283,6 +278,8 @@ call dein#add('nosami/Omnisharp', {
 " Required:
 call dein#end()
 
+
+
 "---------------------------------------------------------
 "nvim-yarp
 "---------------------------------------------------------
@@ -319,13 +316,6 @@ if filereadable( $HOME . "/.vim/plugin_settings/deoplete.vim" )
 endif
 
 "---------------------------------------------------------
-"vimfiler
-"---------------------------------------------------------
-if filereadable( $HOME . "/.vim/plugin_settings/vimfiler.vim" )
-  source ~/.vim/plugin_settings/vimfiler.vim
-endif
-
-"---------------------------------------------------------
 "neosnippet
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/neosnippet.vim" )
@@ -337,6 +327,13 @@ endif
 "---------------------------------------------------------
 if filereadable( $HOME . "/.vim/plugin_settings/vim-quickrun.vim" )
   source ~/.vim/plugin_settings/vim-quickrun.vim
+endif
+
+"---------------------------------------------------------
+" defx
+"---------------------------------------------------------
+if filereadable( $HOME . "/.vim/plugin_settings/defx.vim" )
+  source ~/.vim/plugin_settings/defx.vim
 endif
 
 "---------------------------------------------------------
