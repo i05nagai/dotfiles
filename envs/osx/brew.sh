@@ -35,6 +35,7 @@ brew install --cask google-chrome
 brew install --cask mendeley
 brew install --cask google-japanese-ime
 brew install --cask skitch
+brew install --cask visual-studio-code
 brew install --cask intellij-idea-ce
 
 # terrafrom
