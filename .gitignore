@@ -25,16 +25,26 @@ vimenvs/bundle/*
 vscode/Code/Backups
 vscode/Code/Cache
 vscode/Code/CachedData
+vscode/Code/CachedExtensionVSIXs/
 vscode/Code/CachedExtensions
 vscode/Code/Code Cache
 vscode/Code/Cookies
 vscode/Code/Cookies-journal
+vscode/Code/Crashpad/
+vscode/Code/*.pma
 vscode/Code/GPUCache
 vscode/Code/Local Storage
 vscode/Code/Network Persistent State
 vscode/Code/Preferences
+vscode/Code/QuotaManager
+vscode/Code/QuotaManager-journal
+vscode/Code/Service Worker/
+vscode/Code/Session Storage/
+vscode/Code/TransportSecurity
+vscode/Code/User/History/
 vscode/Code/User/globalStorage/
 vscode/Code/User/workspaceStorage
+vscode/Code/databases/
 vscode/Code/languagepacks.json
 vscode/Code/logs
 vscode/Code/machineid
