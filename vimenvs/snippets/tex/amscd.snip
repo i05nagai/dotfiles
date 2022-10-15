@@ -1,0 +1,71 @@
+snippet     amscd_template_simple
+abbr        template_main
+	\\begin{CD}
+		A @>{f}>> B
+		\\
+		@V{g}VV    @VVV
+		\\
+		C   @>>>  D
+	\\end{CD}
+
+snippet     amscd_begin
+abbr        begin
+	\\begin{CD}
+		$1
+	\\end{CD}
+
+snippet     amscd_arrow_right
+abbr        right arrow
+	@>>>
+
+snippet     amscd_arrow_right_over_text
+abbr        right arrow
+	@>{$1}>>$0
+
+snippet     amscd_arrow_right_over_below_text
+abbr        right arrow over and below text
+	@>{$1}>{$2}>$0
+
+snippet     amscd_arrow_left
+abbr        left arrow
+	@<<<
+
+snippet     amscd_arrow_left_over_text
+abbr        left arrow over text
+	@<{$1}<<$0
+
+snippet     amscd_arrow_left_over_below_text
+abbr        left arrow over and below text
+	@<{$1}<{$2}<$0
+
+snippet     amscd_arrow_upper
+abbr        upper arrow
+	@AAA
+
+snippet     amscd_arrow_upper_left_text
+abbr        upper arrow with text
+	@A{$1}AA$0
+
+snippet     amscd_arrow_upper_left_right_text
+abbr        upper arrow with text
+	@A{$1}A{$2}A$0
+
+snippet     amscd_arrow_lower
+abbr        lower arrow
+	@VVV
+
+snippet     amscd_arrow_lower_text
+abbr        lower arrow wit htext
+	@V{$1}VV$0
+
+snippet     amscd_arrow_no
+abbr        equivalence
+	@.
+
+snippet     amscd_equal_horizontal
+abbr        equivalence
+	@=
+
+snippet     amscd_equal_vertical
+abbr        equivalence
+	@|

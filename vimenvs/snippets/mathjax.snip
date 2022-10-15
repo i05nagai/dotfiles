@@ -25,6 +25,7 @@ include mathjax_topology.snip
 include mathjax_vector.snip
 include tex/tex_logic.snip
 include tex/tex_algorithms.snip
+include tex/amscd.snip
 
 #
 # define
@@ -162,6 +163,11 @@ snippet     epigraph
 abbr        Epi
 options     word
 	\\mathrm{Epi}(${1:f})
+
+snippet     <>
+abbr        <>
+options     word
+	\\langle ${1}, ${2}\\rangle
 
 #
 # combination
@@ -426,13 +432,21 @@ abbr        arginf
 options     word
 	\\mathop{\\rm arg\\,inf}\\limits
 
-snippet     upper_right_arrow
+snippet     arrow_upper_right
 abbr        upper right
 	\\nearrow
 
-snippet     lower_right_arrow
+snippet     arrow_lower_right
 abbr        lower right
 	\\searrow
+
+snippet     arrow_text_over_right_arrow
+abbr        text over arrow
+	\\xrightarrow{$1}$0
+
+snippet     arrow_text_over_left_arrow
+abbr        text over left arrow
+	\\xleftarrow{$1}$0
 
 snippet     limit
 abbr        limit superior

@@ -48,6 +48,10 @@ snippet template
 alias   temp
 	template <typename ${1}>${0}
 
+snippet using_namespace
+alias   using
+	using namespace ${1:std};
+
 delete      namespace2
 snippet     namespace2
 abbr        namespace { namespace { } }
@@ -226,7 +230,7 @@ snippet conditional
 	(${1:#:condition}) ? ${2:#:a} : ${3:#:b}
 
 snippet typedef
-	typedef ${1:#:base_type} ${2:#:custom_type};
+	typedef ${1:#:long long} ${2:#:custom_type};
 
 snippet sizeof
 alias size
@@ -350,9 +354,27 @@ options     word
 	}
 
 snippet template_main
-alias   main
+alias   template_main
 	int main(int argc, char const* argv[])
 	{
 		${0:TARGET}
 		return 0;
 	}
+
+#
+# competitive programming 
+#
+
+snippet template_cp_header1
+alias   template_cp_header1
+	#include <algorithm>
+	#include <cmath>
+	#include <map>
+	#include <queue>
+	#include <set>
+	#include <string>
+	#include <vector>
+	using namespace std;
+	typedef long long ll;
+	typedef std::vector<ll> vec;
+	typedef std::vector<vec> mat;

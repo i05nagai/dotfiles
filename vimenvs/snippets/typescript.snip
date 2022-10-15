@@ -74,7 +74,45 @@ options     word
 		Blue,
 	}
 
-snippet     type_function
+snippet     type_function_inline
 abbr        type
 options     word
 	(${1:x: number, y: number}) => ${2:number}
+
+snippet     for
+abbr        type
+options     word
+	for (let ${1:i = 0}; ${2: i < 5}; ${3: i++}) {
+		${4}
+	}
+
+snippet     for_in
+abbr        type
+options     word
+	for (${1:let key} in ${2: object}) {
+		${3}
+	}
+
+snippet     for_of
+abbr        type
+options     word
+	for (${1:let key} of ${2: object}) {
+		${3}
+	}
+
+snippet     array_foreach
+abbr        type
+options     word
+	${1: array}.foreach((${2: x:number}) =>
+		${3}
+	);
+
+snippet     type_conditional_extend
+abbr        type
+options     word
+	${1:target} extends ${2:base} ? ${3:TrueType} : ${4:FalseType};
+
+snippet     type_conditional_extend
+abbr        type
+options     word
+	${1:target} extends ${2:base} ? ${3:TrueType} : ${4:FalseType};

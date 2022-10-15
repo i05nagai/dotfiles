@@ -26,9 +26,6 @@ nnoremap [SHORTCUT]ub :Unite bookmark<CR>
 nnoremap [SHORTCUT]uB :<C-u>Unite buffer<CR>
 nnoremap [SHORTCUT]ut :<C-u>Unite tab<CR>
 
-" customize default action
-call unite#custom#default_action('source/quickrun_config/*', 'execute')
-
 "
 " shortcut
 "

@@ -2,6 +2,10 @@ snippet     print
 options     word
 	std::cout << ${0:TARGET} << std::endl;
 
+snippet     print_pair
+options     word
+	std::cout << ${1:var_name}.first << ", " << $1.second << std::endl;
+
 snippet     print_type
 options     word
 	// #include <typeinfo>
