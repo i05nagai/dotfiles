@@ -238,8 +238,7 @@ options     word
 snippet     summation_lower_upper
 abbr        \\sum_{}^{}
 options     word
-	\\sum_{${1:init}}^{${2:cond}}
-	    ${3}
+	\\sum_{${1:init}}^{${2:cond}}${3:summand}
 
 snippet     summation_inline
 abbr        \\sum
@@ -250,11 +249,6 @@ snippet     summation_inline_lower
 abbr        \\sum_{}
 options     word
 	\\sum_{${1:init}}${3}
-
-snippet     summation_lower_upper
-abbr        \\sum_{}^{}
-options     word
-	\\sum_{${1:init}}^{${2:cond}}${3:summand}
 
 #
 # product
