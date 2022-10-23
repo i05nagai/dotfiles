@@ -1,0 +1,16 @@
+snippet     rake_task
+abbr        rake task
+options     word
+	task ${1::task_name} ${2:=> [:dependecy1, dependeci2]} do
+		$3
+	end
+
+snippet     rake_desc
+abbr        rake desc
+options     word
+	desc '${1:desc}'
+
+snippet     rake_default
+abbr        rake desc
+options     word
+	default :default => ${2:task_name}
