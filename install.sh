@@ -202,8 +202,9 @@ function vim_env_install() {
 
   # dein install
   if [ ! -d $HOME/.cache/dein ]; then
-    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/installer.sh
-    sh /tmp/installer.sh ~/.cache/dein
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/santosned/dein.vim/master/bin/installer.sh)"
+    # curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > /tmp/installer.sh
+    # sh /tmp/installer.sh ~/.cache/dein
   fi
 }
 
@@ -299,4 +300,4 @@ link_ide $env_type
 # git and vim
 git submodule init
 git submodule update
-vim -N -u NONE -i NONE -V1 -e -s --cmd "source .vimrc" --cmd NeoBundleInstall! --cmd qall!
+vim -N -u NONE -i NONE -V1 -e -s --cmd "source .vimrc" --cmd "call dein#update()" --cmd qall!
