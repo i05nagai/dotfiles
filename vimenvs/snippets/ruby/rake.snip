@@ -14,3 +14,21 @@ snippet     rake_default
 abbr        rake desc
 options     word
 	default :default => ${2:task_name}
+
+snippet     rake_clean
+abbr        rake celan
+options     word
+	require 'rake/clean'
+
+snippet     rake_rule
+abbr        rake rule
+options     word
+	rule ${1:'.o' => ['.c']} do |${2:target}
+		$0
+	end
+
+snippet     rake_namespace
+abbr        rake rule
+options     word
+	namespace ${1::namespace} do
+	end
