@@ -1,3 +1,5 @@
+include ruby/rake.snip
+
 snippet     gem_with_version
 abbr        gem "package", "version"
 options     word
@@ -7,3 +9,294 @@ snippet     assign_if_nil
 abbr        v = a || if_a_is_nil
 options     head
 	${1:var} = ${2:a} || ${3:if_a_is_nil}
+
+snippet     raise
+abbr        raise
+options     word
+	raise ${1:'string'}
+
+snippet     raise_exception_class
+abbr        raise
+options     word
+	raise ${1:StandardError}, ${2:'string'}
+
+snippet     exception
+abbr        exception
+options     word
+	begin
+		${1}
+	rescue ${2:ZeroDivisionError} => e
+		${3}
+	end
+
+snippet     exception_ensure
+abbr        exception
+options     word
+	begin
+		${1}
+	rescue ${2:ZeroDivisionError} => e
+		${3}
+	ensure
+		${4}
+	end
+
+snippet     exception_retry
+abbr        exception
+options     word
+	begin
+		failed ||= 0
+		${1}
+	rescue ${2:ZeroDivisionError} => e
+		${3}
+		failed += 1
+		retry if failed < 5
+	end
+
+snippet     catch
+abbr        catch
+options     word
+	catch :${1} do
+		throw :$1
+	end
+
+snippet     if_elif
+abbr        if elif
+options     word
+	if
+		${1}
+	elif ${2}
+		${3}
+	end
+
+snippet     if_elif_else
+abbr        if
+options     word
+	if
+		${1}
+	elif ${2}
+		${3}
+	else
+		${4}
+	end
+
+snippet     case
+abbr        case
+options     word
+	case ${1:var}
+	when ${2}
+		${3}
+	when ${4}
+		${5}
+	end
+
+snippet     case_else
+abbr        case else
+options     word
+	case ${1:var}
+	when ${2}
+		${3}
+	when ${4}
+		${5}
+	else
+		${6}
+	end
+
+snippet     while
+abbr        while
+options     word
+	while ${1:var}
+		${2}
+	end
+
+snippet     while_begin_end
+abbr        while begin end
+options     word
+	begin
+		${1}
+	end while ${2:var}
+
+snippet     until
+abbr        until
+options     word
+	until ${1:var}
+		${2}
+	end
+
+snippet     for_in
+abbr        for in
+options     word
+	for ${1:var in array}
+		${2}
+	end
+
+snippet     loop
+abbr        loop
+options     word
+	loop do
+		${1}
+	end
+
+snippet     loop_n
+abbr        loop n
+options     word
+	${1:n} do
+		${2}
+	end
+
+snippet     each
+abbr        each
+options     word
+	${1:n}.each do |${2:v}|
+		${3}
+	end
+
+snippet     each_with_index
+abbr        each with index
+options     word
+	${1:n}.each_with_index do |${2:name, index}|
+		${3}
+	end
+
+snippet     each_reverse
+abbr        each reverse
+options     word
+	${1:n}.reverse_each do |${2:val}|
+		${3}
+	end
+
+snippet     each_slice
+abbr        each slice
+options     word
+	${1:n}.each_slice ${2:length} do |${3:l1, l2, l3, ...}|
+		${4}
+	end
+
+snippet     each_cons
+abbr        each slice
+options     word
+	${1:n}.each_slice ${2:2} do |${3:val}|
+		${4}
+	end
+
+snippet     each
+abbr        each
+options     word
+	${1:n}.each do
+		${2}
+	end
+
+snippet     def
+abbr        def
+options     word
+	def ${1:func}(${2:name, message = 'Hi'})
+		${3}
+	end
+
+snippet     def_variadic
+abbr        def
+options     word
+	def ${1:func}(${2:name, *message})
+		${3}
+	end
+
+snippet     def_block
+abbr        def block
+options     word
+	def ${1:func}(${2:&block})
+		${3:block.call if block}
+	end
+
+snippet     def_keyword_argument
+abbr        def keyword arguments
+options     word
+	def ${1:func}(${2:key: value}) do |${3:key2: 'default'}|
+		${3:block.call if block}
+	end
+	${0:func(key: ..., key2: ...)}
+
+snippet     file_write
+abbr        file wrtie
+options     word
+	File.open '${1:file_name}', 'w' do |file|
+		${2:file.puts 'do'}
+	end
+
+snippet     trap
+abbr        trap
+options     word
+	trap ${1::INT}
+		${2:puts}
+	end
+
+snippet     class
+abbr        class
+options     word
+	class ${1::INT}
+		include ${3:mixin}
+		attr_accessor ${2::width, :height}
+		private
+		def private_method()
+		end
+		
+		def each
+			for v in @var
+				yield v
+			end
+		end
+	end
+
+snippet     module
+abbr        module
+options     word
+	module ${1:1}
+		module_function
+		def ${1:function}()
+		end
+	end
+
+snippet     require
+abbr        require
+options     word
+	require ${1:'/path/to/lib'}
+
+snippet     autoload
+abbr        autoload
+options     word
+	autload ${1::Symbol} ${2:'/path/to/lib'}
+
+snippet     object_tap
+abbr        object tap
+options     word
+	${1:object}.tap do |v|
+		{$2}
+	end
+
+snippet     reduce
+abbr        reduce
+alias       inject
+options     word
+	${1:array}.reduce(${2:initial}) do |${3:result, num}|
+		${4:result+num}
+	end
+
+snippet     hash_default
+abbr        hash default
+options     word
+	Hash.new do |hash, key|
+		${1:default value}
+	end
+
+snippet     thread_fork
+abbr        thread fork
+options     word
+	Thread.fork do
+		
+	end
+
+snippet     struct
+abbr        struct
+options     word
+	Struct.new('${1:ClassName}', ${2::age, :gender}) {
+		def teen?
+		end
+	}
