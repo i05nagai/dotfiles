@@ -2,8 +2,6 @@
     "files.autoSave": "off",
     "window.zoomLevel": -1,
     "editor.fontSize": 14,
-    "restructuredtext.rst2htmlCommand": "/Users/admin/miniconda2/bin/rst2html.py",
-    "restructuredtext.sphinxBuildPath": "/Users/admin/miniconda2/bin/sphinx-build",
     "doxdocgen.c.commentPrefix": "/// ",
     "doxdocgen.c.firstLine": "/// ",
     "doxdocgen.c.lastLine": "/// ",
