@@ -300,4 +300,4 @@ link_ide $env_type
 # git and vim
 git submodule init
 git submodule update
-vim -N -u NONE -i NONE -V1 -e -s --cmd "source .vimrc" --cmd "call dein#update()" --cmd qall!
+vim -N -u NONE -i NONE -V1 -e -s --cmd "source .vimrc" --cmd "call dein#install()" --cmd qall!
